@@ -1,4 +1,4 @@
-module github.com/example/news-crawler
+module github.com/jayeshmahajan/lwkd/scripts/release-crawler
 
 go 1.21
 
