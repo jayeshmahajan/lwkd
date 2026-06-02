@@ -29,22 +29,41 @@
         - name: Get current date
           id: date
           run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+  
+        - name: Configure git
+          run: |
+            git config user.name "Release Crawler"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+  
+        - name: Create and push branch with git commands
+          run: |
+            BRANCH="add/related-projects-${{ steps.date.outputs.date }}"
+            
+            # Create new branch
+            git checkout -b $BRANCH
+            
+            # Stage the release notes
+            git add scripts/release-crawler/release-notes-html/*.html
+            git add scripts/release-crawler/release-notes-md/*.md
+            
+            # Commit changes
+            git commit --signoff -m "Add last weeks releated Project Updates"
+            
+            # Push branch to remote
+            git push origin $BRANCH -f
+  
         - name: Create Pull Request
-          uses: peter-evans/create-pull-request@v7
-          with:
-            token: ${{ secrets.GITHUB_TOKEN }}
-            commit-message: Add last weeks releated Project Updates
-            committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-            author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
-            title: 'add: last week related project releases'
-            body: |
-              This PR is auto-generated.
-              It adds the latest releases of the past week ${{ steps.date.outputs.date }} to the repository
-            labels: add, automated pr
-            branch: add/related-projects-${{ steps.date.outputs.date }}
-            add-paths: |
-               scripts/release-crawler/release-notes-html/*.html
-               scripts/release-crawler/release-notes-md/*.md
-            base: main
-            signoff: true
-            delete-branch: true
+          run: |
+            BRANCH="add/related-projects-${{ steps.date.outputs.date }}"
+            DATE="${{ steps.date.outputs.date }}"
+            
+            gh pr create \
+              --title "add: last week related project releases" \
+              --base "main" \
+              --body "This PR is auto-generated.
+            It adds the latest releases of the past week $DATE to the repository" \
+              --label "add" \
+              --label "automated pr" \
+              --head "$BRANCH"
+          env:
+            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
