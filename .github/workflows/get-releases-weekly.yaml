@@ -44,8 +44,8 @@ jobs:
         run: |
           BRANCH="add/related-projects-${{ steps.date.outputs.date }}"
           git checkout -b $BRANCH
-          git add scripts/release-crawler/release-notes-html/*.html
-          git add scripts/release-crawler/release-notes-md/*.md
+          git add release-notes-html/*.html
+          git add release-notes-md/*.md
           git commit --signoff -m "Add last weeks releated Project Updates"
           git push origin $BRANCH -f
 
