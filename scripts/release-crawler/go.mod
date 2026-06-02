@@ -10,4 +10,6 @@ require (
 	github.com/alecthomas/chroma v0.10.0 // indirect
 	github.com/dlclark/regexp2 v1.4.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
+    github.com/google/go-github/v57 v57.0.0 // indirect
+    golang.org/x/oauth2 v0.36.0
 )
