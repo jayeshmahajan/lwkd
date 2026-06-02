@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Whats new in the last week</title>
+</head>
+
+<body>
+<h1>Latest Releases for the week 2026-05-26 - 2026-06-02</h1><h2>etcd-io/etcd</h2> <h3>Release notes for v3.7.0-rc.0</h3><h4>2026-06-01</h4><p>Please check out <a href="https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.7.md" target="_blank">CHANGELOG</a> for a full list of changes. And make sure to read our <a href="https://etcd.io/docs/v3.7/upgrades" target="_blank">upgrade guides</a> before upgrading etcd (there may be breaking changes).</p>
+
+<p>For installation guides, please check out <a href="https://etcd.io/docs/v3.7/op-guide/" target="_blank">operating etcd</a>. Latest support status for common architectures and operating systems can be found at <a href="https://etcd.io/docs/v3.7/op-guide/supported-platform/" target="_blank">supported platforms</a>.</p>
+
+<h6 id="linux">Linux</h6>
+
+<pre><code class="language-sh">ETCD_VER=v3.7.0-rc.0
+
+# choose either URL
+GOOGLE_URL=https://storage.googleapis.com/etcd
+GITHUB_URL=https://github.com/etcd-io/etcd/releases/download
+DOWNLOAD_URL=${GOOGLE_URL}
+
+rm -f /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+rm -rf /tmp/etcd-download-test &amp;&amp; mkdir -p /tmp/etcd-download-test
+
+curl -L ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-linux-amd64.tar.gz -o /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+tar xzvf /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz -C /tmp/etcd-download-test --strip-components=1 --no-same-owner
+rm -f /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+
+/tmp/etcd-download-test/etcd --version
+/tmp/etcd-download-test/etcdctl version
+/tmp/etcd-download-test/etcdutl version
+
+# start a local etcd server
+/tmp/etcd-download-test/etcd
+
+# write,read to etcd
+/tmp/etcd-download-test/etcdctl --endpoints=localhost:2379 put foo bar
+/tmp/etcd-download-test/etcdctl --endpoints=localhost:2379 get foo
+</code></pre>
+
+<h6 id="macos-darwin">macOS (Darwin)</h6>
+
+<pre><code class="language-sh">ETCD_VER=v3.7.0-rc.0
+
+# choose either URL
+GOOGLE_URL=https://storage.googleapis.com/etcd
+GITHUB_URL=https://github.com/etcd-io/etcd/releases/download
+DOWNLOAD_URL=${GOOGLE_URL}
+
+rm -f /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
+rm -rf /tmp/etcd-download-test &amp;&amp; mkdir -p /tmp/etcd-download-test
+
+curl -L ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-darwin-amd64.zip -o /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
+unzip /tmp/etcd-${ETCD_VER}-darwin-amd64.zip -d /tmp &amp;&amp; rm -f /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
+mv /tmp/etcd-${ETCD_VER}-darwin-amd64/* /tmp/etcd-download-test &amp;&amp; rm -rf mv /tmp/etcd-${ETCD_VER}-darwin-amd64
+
+/tmp/etcd-download-test/etcd --version
+/tmp/etcd-download-test/etcdctl version
+/tmp/etcd-download-test/etcdutl version
+</code></pre>
+
+<h6 id="docker">Docker</h6>
+
+<p>etcd uses <a href="https://gcr.io/etcd-development/etcd" target="_blank"><code>gcr.io/etcd-development/etcd</code></a> as a primary container registry, and <a href="https://quay.io/coreos/etcd" target="_blank"><code>quay.io/coreos/etcd</code></a> as secondary.</p>
+
+<pre><code class="language-sh">ETCD_VER=v3.7.0-rc.0
+
+rm -rf /tmp/etcd-data.tmp &amp;&amp; mkdir -p /tmp/etcd-data.tmp &amp;&amp; \
+  docker rmi gcr.io/etcd-development/etcd:${ETCD_VER} || true &amp;&amp; \
+  docker run \
+  -p 2379:2379 \
+  -p 2380:2380 \
+  --mount type=bind,source=/tmp/etcd-data.tmp,destination=/etcd-data \
+  --name etcd-gcr-${ETCD_VER} \
+  gcr.io/etcd-development/etcd:${ETCD_VER} \
+  /usr/local/bin/etcd \
+  --name s1 \
+  --data-dir /etcd-data \
+  --listen-client-urls http://0.0.0.0:2379 \
+  --advertise-client-urls http://0.0.0.0:2379 \
+  --listen-peer-urls http://0.0.0.0:2380 \
+  --initial-advertise-peer-urls http://0.0.0.0:2380 \
+  --initial-cluster s1=http://0.0.0.0:2380 \
+  --initial-cluster-token tkn \
+  --initial-cluster-state new \
+  --log-level info \
+  --logger zap \
+  --log-outputs stderr
+
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcd --version
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl version
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdutl version
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl endpoint health
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl put foo bar
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl get foo
+</code></pre>
+<br><h3>Release notes for v3.6.12</h3><h4>2026-06-01</h4><p>Please check out <a href="https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.6.md" target="_blank">CHANGELOG</a> for a full list of changes. And make sure to read <a href="https://etcd.io/docs/v3.6/upgrades/upgrade_3_6/" target="_blank">upgrade guide</a> before upgrading etcd (there may be breaking changes).</p>
+
+<p>For installation guides, please check out <a href="https://etcd.io/docs/v3.6/op-guide/" target="_blank">operating etcd</a>. Latest support status for common architectures and operating systems can be found at <a href="https://etcd.io/docs/v3.6/op-guide/supported-platform/" target="_blank">supported platforms</a>.</p>
+
+<h6 id="linux">Linux</h6>
+
+<pre><code class="language-sh">ETCD_VER=v3.6.12
+
+# choose either URL
+GOOGLE_URL=https://storage.googleapis.com/etcd
+GITHUB_URL=https://github.com/etcd-io/etcd/releases/download
+DOWNLOAD_URL=${GOOGLE_URL}
+
+rm -f /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+rm -rf /tmp/etcd-download-test &amp;&amp; mkdir -p /tmp/etcd-download-test
+
+curl -L ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-linux-amd64.tar.gz -o /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+tar xzvf /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz -C /tmp/etcd-download-test --strip-components=1 --no-same-owner
+rm -f /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+
+/tmp/etcd-download-test/etcd --version
+/tmp/etcd-download-test/etcdctl version
+/tmp/etcd-download-test/etcdutl version
+
+# start a local etcd server
+/tmp/etcd-download-test/etcd
+
+# write,read to etcd
+/tmp/etcd-download-test/etcdctl --endpoints=localhost:2379 put foo bar
+/tmp/etcd-download-test/etcdctl --endpoints=localhost:2379 get foo
+</code></pre>
+
+<h6 id="macos-darwin">macOS (Darwin)</h6>
+
+<pre><code class="language-sh">ETCD_VER=v3.6.12
+
+# choose either URL
+GOOGLE_URL=https://storage.googleapis.com/etcd
+GITHUB_URL=https://github.com/etcd-io/etcd/releases/download
+DOWNLOAD_URL=${GOOGLE_URL}
+
+rm -f /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
+rm -rf /tmp/etcd-download-test &amp;&amp; mkdir -p /tmp/etcd-download-test
+
+curl -L ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-darwin-amd64.zip -o /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
+unzip /tmp/etcd-${ETCD_VER}-darwin-amd64.zip -d /tmp &amp;&amp; rm -f /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
+mv /tmp/etcd-${ETCD_VER}-darwin-amd64/* /tmp/etcd-download-test &amp;&amp; rm -rf mv /tmp/etcd-${ETCD_VER}-darwin-amd64
+
+/tmp/etcd-download-test/etcd --version
+/tmp/etcd-download-test/etcdctl version
+/tmp/etcd-download-test/etcdutl version
+</code></pre>
+
+<h6 id="docker">Docker</h6>
+
+<p>etcd uses <a href="https://gcr.io/etcd-development/etcd" target="_blank"><code>gcr.io/etcd-development/etcd</code></a> as a primary container registry, and <a href="https://quay.io/coreos/etcd" target="_blank"><code>quay.io/coreos/etcd</code></a> as secondary.</p>
+
+<pre><code class="language-sh">ETCD_VER=v3.6.12
+
+rm -rf /tmp/etcd-data.tmp &amp;&amp; mkdir -p /tmp/etcd-data.tmp &amp;&amp; \
+  docker rmi gcr.io/etcd-development/etcd:${ETCD_VER} || true &amp;&amp; \
+  docker run \
+  -p 2379:2379 \
+  -p 2380:2380 \
+  --mount type=bind,source=/tmp/etcd-data.tmp,destination=/etcd-data \
+  --name etcd-gcr-${ETCD_VER} \
+  gcr.io/etcd-development/etcd:${ETCD_VER} \
+  /usr/local/bin/etcd \
+  --name s1 \
+  --data-dir /etcd-data \
+  --listen-client-urls http://0.0.0.0:2379 \
+  --advertise-client-urls http://0.0.0.0:2379 \
+  --listen-peer-urls http://0.0.0.0:2380 \
+  --initial-advertise-peer-urls http://0.0.0.0:2380 \
+  --initial-cluster s1=http://0.0.0.0:2380 \
+  --initial-cluster-token tkn \
+  --initial-cluster-state new \
+  --log-level info \
+  --logger zap \
+  --log-outputs stderr
+
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcd --version
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl version
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdutl version
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl endpoint health
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl put foo bar
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl get foo
+</code></pre>
+<br><h3>Release notes for v3.5.31</h3><h4>2026-06-01</h4><p>Please check out <a href="https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.5.md" target="_blank">CHANGELOG</a> for a full list of changes. And make sure to read <a href="https://etcd.io/docs/v3.5/upgrades/upgrade_3_5/" target="_blank">upgrade guide</a> before upgrading etcd (there may be breaking changes).</p>
+
+<p>For installation guides, please check out <a href="https://etcd.io/docs/v3.5/op-guide/" target="_blank">operating etcd</a>. Latest support status for common architectures and operating systems can be found at <a href="https://etcd.io/docs/v3.5/op-guide/supported-platform/" target="_blank">supported platforms</a>.</p>
+
+<h6 id="linux">Linux</h6>
+
+<pre><code class="language-sh">ETCD_VER=v3.5.31
+
+# choose either URL
+GOOGLE_URL=https://storage.googleapis.com/etcd
+GITHUB_URL=https://github.com/etcd-io/etcd/releases/download
+DOWNLOAD_URL=${GOOGLE_URL}
+
+rm -f /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+rm -rf /tmp/etcd-download-test &amp;&amp; mkdir -p /tmp/etcd-download-test
+
+curl -L ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-linux-amd64.tar.gz -o /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+tar xzvf /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz -C /tmp/etcd-download-test --strip-components=1 --no-same-owner
+rm -f /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+
+/tmp/etcd-download-test/etcd --version
+/tmp/etcd-download-test/etcdctl version
+/tmp/etcd-download-test/etcdutl version
+
+# start a local etcd server
+/tmp/etcd-download-test/etcd
+
+# write,read to etcd
+/tmp/etcd-download-test/etcdctl --endpoints=localhost:2379 put foo bar
+/tmp/etcd-download-test/etcdctl --endpoints=localhost:2379 get foo
+</code></pre>
+
+<h6 id="macos-darwin">macOS (Darwin)</h6>
+
+<pre><code class="language-sh">ETCD_VER=v3.5.31
+
+# choose either URL
+GOOGLE_URL=https://storage.googleapis.com/etcd
+GITHUB_URL=https://github.com/etcd-io/etcd/releases/download
+DOWNLOAD_URL=${GOOGLE_URL}
+
+rm -f /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
+rm -rf /tmp/etcd-download-test &amp;&amp; mkdir -p /tmp/etcd-download-test
+
+curl -L ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-darwin-amd64.zip -o /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
+unzip /tmp/etcd-${ETCD_VER}-darwin-amd64.zip -d /tmp &amp;&amp; rm -f /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
+mv /tmp/etcd-${ETCD_VER}-darwin-amd64/* /tmp/etcd-download-test &amp;&amp; rm -rf mv /tmp/etcd-${ETCD_VER}-darwin-amd64
+
+/tmp/etcd-download-test/etcd --version
+/tmp/etcd-download-test/etcdctl version
+/tmp/etcd-download-test/etcdutl version
+</code></pre>
+
+<h6 id="docker">Docker</h6>
+
+<p>etcd uses <a href="https://gcr.io/etcd-development/etcd" target="_blank"><code>gcr.io/etcd-development/etcd</code></a> as a primary container registry, and <a href="https://quay.io/coreos/etcd" target="_blank"><code>quay.io/coreos/etcd</code></a> as secondary.</p>
+
+<pre><code class="language-sh">ETCD_VER=v3.5.31
+
+rm -rf /tmp/etcd-data.tmp &amp;&amp; mkdir -p /tmp/etcd-data.tmp &amp;&amp; \
+  docker rmi gcr.io/etcd-development/etcd:${ETCD_VER} || true &amp;&amp; \
+  docker run \
+  -p 2379:2379 \
+  -p 2380:2380 \
+  --mount type=bind,source=/tmp/etcd-data.tmp,destination=/etcd-data \
+  --name etcd-gcr-${ETCD_VER} \
+  gcr.io/etcd-development/etcd:${ETCD_VER} \
+  /usr/local/bin/etcd \
+  --name s1 \
+  --data-dir /etcd-data \
+  --listen-client-urls http://0.0.0.0:2379 \
+  --advertise-client-urls http://0.0.0.0:2379 \
+  --listen-peer-urls http://0.0.0.0:2380 \
+  --initial-advertise-peer-urls http://0.0.0.0:2380 \
+  --initial-cluster s1=http://0.0.0.0:2380 \
+  --initial-cluster-token tkn \
+  --initial-cluster-state new \
+  --log-level info \
+  --logger zap \
+  --log-outputs stderr
+
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcd --version
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl version
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdutl version
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl endpoint health
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl put foo bar
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl get foo
+</code></pre>
+<br><h3>Release notes for v3.4.45</h3><h4>2026-06-01</h4><p>Please check out <a href="https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.4.md" target="_blank">CHANGELOG</a> for a full list of changes. And make sure to read <a href="https://etcd.io/docs/v3.4/upgrades/upgrade_3_4/" target="_blank">upgrade guide</a> before upgrading etcd (there may be breaking changes).</p>
+
+<p>For installation guides, please check out <a href="https://etcd.io/docs/v3.4/op-guide/" target="_blank">operating etcd</a>. Latest support status for common architectures and operating systems can be found at <a href="https://etcd.io/docs/v3.4/op-guide/supported-platform/" target="_blank">supported platforms</a>.</p>
+
+<h6 id="linux">Linux</h6>
+
+<pre><code class="language-sh">ETCD_VER=v3.4.45
+
+# choose either URL
+GOOGLE_URL=https://storage.googleapis.com/etcd
+GITHUB_URL=https://github.com/etcd-io/etcd/releases/download
+DOWNLOAD_URL=${GOOGLE_URL}
+
+rm -f /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+rm -rf /tmp/etcd-download-test &amp;&amp; mkdir -p /tmp/etcd-download-test
+
+curl -L ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-linux-amd64.tar.gz -o /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+tar xzvf /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz -C /tmp/etcd-download-test --strip-components=1 --no-same-owner
+rm -f /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+
+/tmp/etcd-download-test/etcd --version
+/tmp/etcd-download-test/etcdctl version
+/tmp/etcd-download-test/etcdutl version
+
+# start a local etcd server
+/tmp/etcd-download-test/etcd
+
+# write,read to etcd
+/tmp/etcd-download-test/etcdctl --endpoints=localhost:2379 put foo bar
+/tmp/etcd-download-test/etcdctl --endpoints=localhost:2379 get foo
+</code></pre>
+
+<h6 id="macos-darwin">macOS (Darwin)</h6>
+
+<pre><code class="language-sh">ETCD_VER=v3.4.45
+
+# choose either URL
+GOOGLE_URL=https://storage.googleapis.com/etcd
+GITHUB_URL=https://github.com/etcd-io/etcd/releases/download
+DOWNLOAD_URL=${GOOGLE_URL}
+
+rm -f /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
+rm -rf /tmp/etcd-download-test &amp;&amp; mkdir -p /tmp/etcd-download-test
+
+curl -L ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-darwin-amd64.zip -o /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
+unzip /tmp/etcd-${ETCD_VER}-darwin-amd64.zip -d /tmp &amp;&amp; rm -f /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
+mv /tmp/etcd-${ETCD_VER}-darwin-amd64/* /tmp/etcd-download-test &amp;&amp; rm -rf mv /tmp/etcd-${ETCD_VER}-darwin-amd64
+
+/tmp/etcd-download-test/etcd --version
+/tmp/etcd-download-test/etcdctl version
+/tmp/etcd-download-test/etcdutl version
+</code></pre>
+
+<h6 id="docker">Docker</h6>
+
+<p>etcd uses <a href="https://gcr.io/etcd-development/etcd" target="_blank"><code>gcr.io/etcd-development/etcd</code></a> as a primary container registry, and <a href="https://quay.io/coreos/etcd" target="_blank"><code>quay.io/coreos/etcd</code></a> as secondary.</p>
+
+<pre><code class="language-sh">ETCD_VER=v3.4.45
+
+rm -rf /tmp/etcd-data.tmp &amp;&amp; mkdir -p /tmp/etcd-data.tmp &amp;&amp; \
+  docker rmi gcr.io/etcd-development/etcd:${ETCD_VER} || true &amp;&amp; \
+  docker run \
+  -p 2379:2379 \
+  -p 2380:2380 \
+  --mount type=bind,source=/tmp/etcd-data.tmp,destination=/etcd-data \
+  --name etcd-gcr-${ETCD_VER} \
+  gcr.io/etcd-development/etcd:${ETCD_VER} \
+  /usr/local/bin/etcd \
+  --name s1 \
+  --data-dir /etcd-data \
+  --listen-client-urls http://0.0.0.0:2379 \
+  --advertise-client-urls http://0.0.0.0:2379 \
+  --listen-peer-urls http://0.0.0.0:2380 \
+  --initial-advertise-peer-urls http://0.0.0.0:2380 \
+  --initial-cluster s1=http://0.0.0.0:2380 \
+  --initial-cluster-token tkn \
+  --initial-cluster-state new \
+  --log-level info \
+  --logger zap \
+  --log-outputs stderr
+
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcd --version
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl version
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdutl version
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl endpoint health
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl put foo bar
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl get foo
+</code></pre>
+<br><h2>kubernetes/kops</h2> <h3>Release notes for v1.35.1</h3><h4>2026-05-28</h4><h2 id="what-s-changed">What&rsquo;s Changed</h2>
+
+<ul>
+<li>Automated cherry pick of #17740: Fix HasHighlyAvailableControlPlane to use AllInstanceGroups by @hakman in <a href="https://github.com/kubernetes/kops/pull/18117" target="_blank">https://github.com/kubernetes/kops/pull/18117</a></li>
+<li>Automated cherry pick of #18113: Add excludedInstanceTypes to instanceRequirements by @hakman in <a href="https://github.com/kubernetes/kops/pull/18119" target="_blank">https://github.com/kubernetes/kops/pull/18119</a></li>
+<li>Automated cherry pick of #18123: Fix instanceRequirements memory assignment bug by @hakman in <a href="https://github.com/kubernetes/kops/pull/18124" target="_blank">https://github.com/kubernetes/kops/pull/18124</a></li>
+<li>Automated cherry pick of #17999: aws: Bypass LBC webhook for cert-manager by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18125" target="_blank">https://github.com/kubernetes/kops/pull/18125</a></li>
+<li>Automated cherry pick of #18126: Add &ndash;use-kubeconfig to kops reconcile cluster by @hakman in <a href="https://github.com/kubernetes/kops/pull/18127" target="_blank">https://github.com/kubernetes/kops/pull/18127</a></li>
+<li>Automated cherry pick of #18128: vfs: Silence warnings when the S3 provider has no supported by @hakman in <a href="https://github.com/kubernetes/kops/pull/18130" target="_blank">https://github.com/kubernetes/kops/pull/18130</a></li>
+<li>Automated cherry pick of #18114: Pin upload-artifacts GHA to commit sha by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18208" target="_blank">https://github.com/kubernetes/kops/pull/18208</a></li>
+<li>Automated cherry pick of #18173: Update Golang to 1.25.9 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18205" target="_blank">https://github.com/kubernetes/kops/pull/18205</a></li>
+<li>Automated cherry pick of #18110: Update Cluster Autoscaler to 1.35.0 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18217" target="_blank">https://github.com/kubernetes/kops/pull/18217</a></li>
+<li>Automated cherry pick of #18237: cilium: require k8s-connectivity in liveness probe by @hakman in <a href="https://github.com/kubernetes/kops/pull/18242" target="_blank">https://github.com/kubernetes/kops/pull/18242</a></li>
+<li>aws: bypass LBC mservice webhook for kube-system by @hakman in <a href="https://github.com/kubernetes/kops/pull/18248" target="_blank">https://github.com/kubernetes/kops/pull/18248</a></li>
+<li>Automated cherry pick of #18251: aws: skip node S3 permissions when kops-controller serves node config by @hakman in <a href="https://github.com/kubernetes/kops/pull/18253" target="_blank">https://github.com/kubernetes/kops/pull/18253</a></li>
+<li>Cherrypick VPC CNI fixes to 1.35 by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18268" target="_blank">https://github.com/kubernetes/kops/pull/18268</a></li>
+<li>Cherrypick GCE resource dump fixes to 1.35 by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18282" target="_blank">https://github.com/kubernetes/kops/pull/18282</a></li>
+<li>Automated cherry pick of #18285: cilium: allow setting arbitrary cilium-config entries by @hakman in <a href="https://github.com/kubernetes/kops/pull/18286" target="_blank">https://github.com/kubernetes/kops/pull/18286</a></li>
+<li>Automated cherry pick of #18281: hetzner: Upgrade hcloud-cloud-controller-manager to v1.30.1 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18283" target="_blank">https://github.com/kubernetes/kops/pull/18283</a></li>
+<li>Automated cherry pick of #18298: dns-controller: make priorityClassName configurable by @hakman in <a href="https://github.com/kubernetes/kops/pull/18299" target="_blank">https://github.com/kubernetes/kops/pull/18299</a></li>
+<li>Automated cherry pick of #18232: Initial support for Ubuntu 26.04 by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18306" target="_blank">https://github.com/kubernetes/kops/pull/18306</a></li>
+<li>Automated cherry pick of #18302: dns-controller: default Provider when ExternalDNS is partially set by @hakman in <a href="https://github.com/kubernetes/kops/pull/18303" target="_blank">https://github.com/kubernetes/kops/pull/18303</a></li>
+<li>Automated cherry pick of #18307: gce: expose kops-controller on internal LB for gossip clusters by @hakman in <a href="https://github.com/kubernetes/kops/pull/18308" target="_blank">https://github.com/kubernetes/kops/pull/18308</a></li>
+<li>Automated cherry pick of #18260: azure: encode storage account in azureblob:// URLs by @hakman in <a href="https://github.com/kubernetes/kops/pull/18320" target="_blank">https://github.com/kubernetes/kops/pull/18320</a></li>
+<li>Automated cherry pick of #18319: azure: list VMSS NICs in protokube gossip seed discovery by @hakman in <a href="https://github.com/kubernetes/kops/pull/18321" target="_blank">https://github.com/kubernetes/kops/pull/18321</a></li>
+<li>Automated cherry pick of #18323: etcd-manager: upgrade to v3.0.20260512 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18324" target="_blank">https://github.com/kubernetes/kops/pull/18324</a></li>
+<li>Cherrypick GCE instance handling fixes to 1.35 by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18327" target="_blank">https://github.com/kubernetes/kops/pull/18327</a></li>
+<li>etcd-manager: bump etcd to latest patches (3.5.30, 3.6.11) by @yuzhouliu9 in <a href="https://github.com/kubernetes/kops/pull/18333" target="_blank">https://github.com/kubernetes/kops/pull/18333</a></li>
+<li>Automated cherry pick of #18375: cilium: add flags for bpf-lb-sock and bpf-lb-sock-hostns-only by @hakman in <a href="https://github.com/kubernetes/kops/pull/18376" target="_blank">https://github.com/kubernetes/kops/pull/18376</a></li>
+<li>Automated cherry pick of #18379: kops-controller and nodeup bug fixes by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18380" target="_blank">https://github.com/kubernetes/kops/pull/18380</a></li>
+<li>Automated cherry pick of #18384: Fix kops get assets when spec.dnsZone is a DNS name by @hakman in <a href="https://github.com/kubernetes/kops/pull/18386" target="_blank">https://github.com/kubernetes/kops/pull/18386</a></li>
+<li>Automated cherry pick of #18144: Move johngmyers to emeritus by @hakman in <a href="https://github.com/kubernetes/kops/pull/18388" target="_blank">https://github.com/kubernetes/kops/pull/18388</a></li>
+<li>Automated cherry pick of #18391: Validate instance group names in kops-controller by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18392" target="_blank">https://github.com/kubernetes/kops/pull/18392</a></li>
+<li>Upgrade Go to 1.26.3 for release-1.35 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18396" target="_blank">https://github.com/kubernetes/kops/pull/18396</a></li>
+<li>Update dependencies for release-1.35 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18399" target="_blank">https://github.com/kubernetes/kops/pull/18399</a></li>
+<li>Automated cherry pick of #18401: gomod: tidy and verify all modules by @hakman in <a href="https://github.com/kubernetes/kops/pull/18404" target="_blank">https://github.com/kubernetes/kops/pull/18404</a></li>
+<li>Automated cherry pick of #18403: build: use gcr.io/distroless/static as base image by @hakman in <a href="https://github.com/kubernetes/kops/pull/18417" target="_blank">https://github.com/kubernetes/kops/pull/18417</a></li>
+<li>Automated cherry pick of #18418: chore: Add hashes for additional May releases by @hakman in <a href="https://github.com/kubernetes/kops/pull/18419" target="_blank">https://github.com/kubernetes/kops/pull/18419</a></li>
+<li>Automated cherry pick of #18364: chore: upgrade containerd to v2.3.0
+#18422: chore: upgrade containerd to v2.3.1 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18423" target="_blank">https://github.com/kubernetes/kops/pull/18423</a></li>
+<li>Release 1.35.1 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18425" target="_blank">https://github.com/kubernetes/kops/pull/18425</a></li>
+</ul>
+
+<p><strong>Full Changelog</strong>: <a href="https://github.com/kubernetes/kops/compare/v1.35.0...v1.35.1" target="_blank">https://github.com/kubernetes/kops/compare/v1.35.0&hellip;v1.35.1</a></p>
+<br><h3>Release notes for v1.36.0-alpha.1</h3><h4>2026-05-27</h4><h2 id="what-s-changed">What&rsquo;s Changed</h2>
+
+<ul>
+<li>Remove support for Amazon Linux 2 by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/17898" target="_blank">https://github.com/kubernetes/kops/pull/17898</a></li>
+<li>Update distribution matrix for Amazon Linux 2 by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/17943" target="_blank">https://github.com/kubernetes/kops/pull/17943</a></li>
+<li>metal: Unpin K8s version by @hakman in <a href="https://github.com/kubernetes/kops/pull/17944" target="_blank">https://github.com/kubernetes/kops/pull/17944</a></li>
+<li>Create iproute2 symlink for kuberouter on older distros by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/17945" target="_blank">https://github.com/kubernetes/kops/pull/17945</a></li>
+<li>chore(channels): update alpha k8s versions with February releases by @moshevayner in <a href="https://github.com/kubernetes/kops/pull/17948" target="_blank">https://github.com/kubernetes/kops/pull/17948</a></li>
+<li>versionbump: go 1.25.7 by @justinsb in <a href="https://github.com/kubernetes/kops/pull/17956" target="_blank">https://github.com/kubernetes/kops/pull/17956</a></li>
+<li>Feature: pull user defined images for warm pool instances by @dezmodue in <a href="https://github.com/kubernetes/kops/pull/17861" target="_blank">https://github.com/kubernetes/kops/pull/17861</a></li>
+<li>Fix creation of discovery and state store buckets by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/17961" target="_blank">https://github.com/kubernetes/kops/pull/17961</a></li>
+<li>Migrate more scenario scripts to &ndash;test=exec by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/17962" target="_blank">https://github.com/kubernetes/kops/pull/17962</a></li>
+<li>Migrate e2e template AMIs to SSM params by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/17964" target="_blank">https://github.com/kubernetes/kops/pull/17964</a></li>
+<li>LBC Scenario - Pass region to AWS CLI by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/17965" target="_blank">https://github.com/kubernetes/kops/pull/17965</a></li>
+<li>Set kubeconfig for LBC test suite by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/17967" target="_blank">https://github.com/kubernetes/kops/pull/17967</a></li>
+<li>Enable nf_conntrack kernel module on Rocky 9 by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/17968" target="_blank">https://github.com/kubernetes/kops/pull/17968</a></li>
+<li>Remove DISCOVERY_STORE handling by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/17969" target="_blank">https://github.com/kubernetes/kops/pull/17969</a></li>
+<li>kube-router: bump version v2.5.0 -&gt; 2.7.1 by @aauren in <a href="https://github.com/kubernetes/kops/pull/17966" target="_blank">https://github.com/kubernetes/kops/pull/17966</a></li>
+<li>chore: Add asset hashes for February 2026 releases by @hakman in <a href="https://github.com/kubernetes/kops/pull/17980" target="_blank">https://github.com/kubernetes/kops/pull/17980</a></li>
+<li>Remove reference to unbound variable by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/17985" target="_blank">https://github.com/kubernetes/kops/pull/17985</a></li>
+<li>Use golang-based tool for AWS instances availability by @ameukam in <a href="https://github.com/kubernetes/kops/pull/17953" target="_blank">https://github.com/kubernetes/kops/pull/17953</a></li>
+<li>drop cdn.dl.k8s.io as a mirror by @upodroid in <a href="https://github.com/kubernetes/kops/pull/17976" target="_blank">https://github.com/kubernetes/kops/pull/17976</a></li>
+<li>drop storage.googleapis.com/k8s-artifacts-cni as a mirror by @hakman in <a href="https://github.com/kubernetes/kops/pull/17987" target="_blank">https://github.com/kubernetes/kops/pull/17987</a></li>
+<li>tests/ai-conformance: don&rsquo;t panic if no zones for AWS by @justinsb in <a href="https://github.com/kubernetes/kops/pull/17994" target="_blank">https://github.com/kubernetes/kops/pull/17994</a></li>
+<li>Scenario Fixes by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/17997" target="_blank">https://github.com/kubernetes/kops/pull/17997</a></li>
+<li>Use a deterministic bucket name in prow jobs by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/17998" target="_blank">https://github.com/kubernetes/kops/pull/17998</a></li>
+<li>Make region selection determistic from BUILD_ID by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18000" target="_blank">https://github.com/kubernetes/kops/pull/18000</a></li>
+<li>Addon Scenario - Remove old feature flag by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/17963" target="_blank">https://github.com/kubernetes/kops/pull/17963</a></li>
+<li>aws: Bypass LBC webhook for cert-manager by @hakman in <a href="https://github.com/kubernetes/kops/pull/17999" target="_blank">https://github.com/kubernetes/kops/pull/17999</a></li>
+<li>Bump actions/dependency-review-action from 4.8.2 to 4.8.3 by @dependabot[bot] in <a href="https://github.com/kubernetes/kops/pull/18002" target="_blank">https://github.com/kubernetes/kops/pull/18002</a></li>
+<li>tests/ai-conformance: fix syntax for enabling gatewayAPI with cilium by @justinsb in <a href="https://github.com/kubernetes/kops/pull/17992" target="_blank">https://github.com/kubernetes/kops/pull/17992</a></li>
+<li>tests/ai-conformance: fix syntax for enabling nvidia GPU in containerd by @justinsb in <a href="https://github.com/kubernetes/kops/pull/18001" target="_blank">https://github.com/kubernetes/kops/pull/18001</a></li>
+<li>Consolidate support for ENI-based CNIs by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/17940" target="_blank">https://github.com/kubernetes/kops/pull/17940</a></li>
+<li>tests/ai-conformance: use nvidia GPU operator by @justinsb in <a href="https://github.com/kubernetes/kops/pull/18005" target="_blank">https://github.com/kubernetes/kops/pull/18005</a></li>
+<li>tests/ai-conformance: create cluster with some non-GPU nodes by @justinsb in <a href="https://github.com/kubernetes/kops/pull/18006" target="_blank">https://github.com/kubernetes/kops/pull/18006</a></li>
+<li>tests/ai-conformance: update test job for DRA v1 by @justinsb in <a href="https://github.com/kubernetes/kops/pull/18008" target="_blank">https://github.com/kubernetes/kops/pull/18008</a></li>
+<li>tests/ai-conformance: use server-side-apply for KubeRay Operator by @justinsb in <a href="https://github.com/kubernetes/kops/pull/18007" target="_blank">https://github.com/kubernetes/kops/pull/18007</a></li>
+<li>fix: avoid panic if subnet ID is nil by @justinsb in <a href="https://github.com/kubernetes/kops/pull/18010" target="_blank">https://github.com/kubernetes/kops/pull/18010</a></li>
+<li>tests/ai-conformance: create first tests for AI Conformance by @justinsb in <a href="https://github.com/kubernetes/kops/pull/18009" target="_blank">https://github.com/kubernetes/kops/pull/18009</a></li>
+<li>gce: don&rsquo;t request migration on instance types that don&rsquo;t support it by @justinsb in <a href="https://github.com/kubernetes/kops/pull/18004" target="_blank">https://github.com/kubernetes/kops/pull/18004</a></li>
+<li>gce: Wait to delete InstanceManagers and InstanceTemplates by @Camila-B in <a href="https://github.com/kubernetes/kops/pull/18013" target="_blank">https://github.com/kubernetes/kops/pull/18013</a></li>
+<li>Bump release tools for E2E tests by @ameukam in <a href="https://github.com/kubernetes/kops/pull/18017" target="_blank">https://github.com/kubernetes/kops/pull/18017</a></li>
+<li>Add warning for non-production use in README by @ritazh in <a href="https://github.com/kubernetes/kops/pull/17952" target="_blank">https://github.com/kubernetes/kops/pull/17952</a></li>
+<li>Keep skipping certain tests on older cilium versions by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18019" target="_blank">https://github.com/kubernetes/kops/pull/18019</a></li>
+<li>chore: Add hashes for additional February releases by @hakman in <a href="https://github.com/kubernetes/kops/pull/18021" target="_blank">https://github.com/kubernetes/kops/pull/18021</a></li>
+<li>chore: Bump alpha channels with additional February releases by @hakman in <a href="https://github.com/kubernetes/kops/pull/18020" target="_blank">https://github.com/kubernetes/kops/pull/18020</a></li>
+<li>chore: Bump etcd-manager to v3.0.20260227 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18026" target="_blank">https://github.com/kubernetes/kops/pull/18026</a></li>
+<li>build(deps): bump actions/upload-artifact from 6 to 7 by @dependabot[bot] in <a href="https://github.com/kubernetes/kops/pull/18029" target="_blank">https://github.com/kubernetes/kops/pull/18029</a></li>
+<li>build(deps): bump actions/setup-go from 6.2.0 to 6.3.0 by @dependabot[bot] in <a href="https://github.com/kubernetes/kops/pull/18030" target="_blank">https://github.com/kubernetes/kops/pull/18030</a></li>
+<li>chore(channels): promote alpha to stable by @moshevayner in <a href="https://github.com/kubernetes/kops/pull/18033" target="_blank">https://github.com/kubernetes/kops/pull/18033</a></li>
+<li>feat: Use wellknownports for etcd and add cilium etcd ports by @apeabody in <a href="https://github.com/kubernetes/kops/pull/18035" target="_blank">https://github.com/kubernetes/kops/pull/18035</a></li>
+<li>tests/ai-conformance: Install prometheus for metrics by @ameukam in <a href="https://github.com/kubernetes/kops/pull/18018" target="_blank">https://github.com/kubernetes/kops/pull/18018</a></li>
+<li>build(deps): bump actions/dependency-review-action from 4.8.3 to 4.9.0 by @dependabot[bot] in <a href="https://github.com/kubernetes/kops/pull/18042" target="_blank">https://github.com/kubernetes/kops/pull/18042</a></li>
+<li>Fix node bootstrap challenge response hashing by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18043" target="_blank">https://github.com/kubernetes/kops/pull/18043</a></li>
+<li>Add addons node to scalability tests by @serathius in <a href="https://github.com/kubernetes/kops/pull/18036" target="_blank">https://github.com/kubernetes/kops/pull/18036</a></li>
+<li>test: Skip dumping not found nodes for GCE by @hakman in <a href="https://github.com/kubernetes/kops/pull/18049" target="_blank">https://github.com/kubernetes/kops/pull/18049</a></li>
+<li>allow pods to reach metric ports running on control plane nodes when using gce alias ip by @upodroid in <a href="https://github.com/kubernetes/kops/pull/18052" target="_blank">https://github.com/kubernetes/kops/pull/18052</a></li>
+<li>[aiconformance] Add test for gang scheduling with kueue by @justinsb in <a href="https://github.com/kubernetes/kops/pull/18053" target="_blank">https://github.com/kubernetes/kops/pull/18053</a></li>
+<li>chore: Bump Go to v1.25.8 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18058" target="_blank">https://github.com/kubernetes/kops/pull/18058</a></li>
+<li>[aiconformance] Add tests for security / isolation by @justinsb in <a href="https://github.com/kubernetes/kops/pull/18055" target="_blank">https://github.com/kubernetes/kops/pull/18055</a></li>
+<li>scaletest: Move Prometheus to addon nodes by @serathius in <a href="https://github.com/kubernetes/kops/pull/18048" target="_blank">https://github.com/kubernetes/kops/pull/18048</a></li>
+<li>[aiconformance]: Add robust_controller test using KubeRay by @justinsb in <a href="https://github.com/kubernetes/kops/pull/18056" target="_blank">https://github.com/kubernetes/kops/pull/18056</a></li>
+<li>scaletest: Use sleep instead of wait for large clusters by @serathius in <a href="https://github.com/kubernetes/kops/pull/18065" target="_blank">https://github.com/kubernetes/kops/pull/18065</a></li>
+<li>[aiconformance]: Enable Cluster Autoscaler for GPU Nodes by @ameukam in <a href="https://github.com/kubernetes/kops/pull/18066" target="_blank">https://github.com/kubernetes/kops/pull/18066</a></li>
+<li>scaletest: Increase scalability tests log verbosity to 3 by @serathius in <a href="https://github.com/kubernetes/kops/pull/18069" target="_blank">https://github.com/kubernetes/kops/pull/18069</a></li>
+<li>[aiconformance]: Enable Metrics Server by @ameukam in <a href="https://github.com/kubernetes/kops/pull/18067" target="_blank">https://github.com/kubernetes/kops/pull/18067</a></li>
+<li>fix: don&rsquo;t panic when dumping nodes if we didn&rsquo;t capture cloud resources by @justinsb in <a href="https://github.com/kubernetes/kops/pull/18072" target="_blank">https://github.com/kubernetes/kops/pull/18072</a></li>
+<li>[aiconformance]: Validate networking/ai_inference requirements by @justinsb in <a href="https://github.com/kubernetes/kops/pull/18063" target="_blank">https://github.com/kubernetes/kops/pull/18063</a></li>
+<li>[aiconformance]: Add accelerator metrics validator test by @justinsb in <a href="https://github.com/kubernetes/kops/pull/18064" target="_blank">https://github.com/kubernetes/kops/pull/18064</a></li>
+<li>[aiconformance]: observability/ai_service_metrics by @justinsb in <a href="https://github.com/kubernetes/kops/pull/18071" target="_blank">https://github.com/kubernetes/kops/pull/18071</a></li>
+<li>[aiconformance]: Add K8s wrapper for DaemonSet object by @ameukam in <a href="https://github.com/kubernetes/kops/pull/18073" target="_blank">https://github.com/kubernetes/kops/pull/18073</a></li>
+<li>[aiconformance]: Add driver_runtime_management validator by @ameukam in <a href="https://github.com/kubernetes/kops/pull/18074" target="_blank">https://github.com/kubernetes/kops/pull/18074</a></li>
+<li>[aiconformance]: unify output under tests/ directory by @justinsb in <a href="https://github.com/kubernetes/kops/pull/18076" target="_blank">https://github.com/kubernetes/kops/pull/18076</a></li>
+<li>[aiconformance]: render markdown to HTML by @justinsb in <a href="https://github.com/kubernetes/kops/pull/18077" target="_blank">https://github.com/kubernetes/kops/pull/18077</a></li>
+<li>scaletest: Align kops scalability configuration with kube-up for kube-apiserver <code>deleteCollectionsWorkers</code> and <code>MaxRequestInflight</code> by @ronaldngounou in <a href="https://github.com/kubernetes/kops/pull/18081" target="_blank">https://github.com/kubernetes/kops/pull/18081</a></li>
+<li>[aiconformance]: Write conformance report to file by @justinsb in <a href="https://github.com/kubernetes/kops/pull/18084" target="_blank">https://github.com/kubernetes/kops/pull/18084</a></li>
+<li>[aiconformance]: Unify how we write test artifacts by @justinsb in <a href="https://github.com/kubernetes/kops/pull/18087" target="_blank">https://github.com/kubernetes/kops/pull/18087</a></li>
+<li>scaletest: Align kops scalability configuration with kube-up for kubeapisever <code>CompactionInterval</code> by @ronaldngounou in <a href="https://github.com/kubernetes/kops/pull/18086" target="_blank">https://github.com/kubernetes/kops/pull/18086</a></li>
+<li>Refactor interface type check to more idiomatic syntax by @rramkumar1 in <a href="https://github.com/kubernetes/kops/pull/17951" target="_blank">https://github.com/kubernetes/kops/pull/17951</a></li>
+<li>scaletest: Align kops scalability configuration with kube-up for kubelet kubeAPIQPS by @ronaldngounou in <a href="https://github.com/kubernetes/kops/pull/18085" target="_blank">https://github.com/kubernetes/kops/pull/18085</a></li>
+<li>Move VFS acls framework closer to  VFS implementation code by @rramkumar1 in <a href="https://github.com/kubernetes/kops/pull/17949" target="_blank">https://github.com/kubernetes/kops/pull/17949</a></li>
+<li>Fix existing VPCs/Subnets with IPv6 by @rlees85 in <a href="https://github.com/kubernetes/kops/pull/18089" target="_blank">https://github.com/kubernetes/kops/pull/18089</a></li>
+<li>[aiconformance]: test for schedulingOrchestration pod autoscaling by @justinsb in <a href="https://github.com/kubernetes/kops/pull/18075" target="_blank">https://github.com/kubernetes/kops/pull/18075</a></li>
+<li>Enable E2E external CSI testing on GCP by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18098" target="_blank">https://github.com/kubernetes/kops/pull/18098</a></li>
+<li>[aiconformance] add test for schedulingOrchestration clusterAutoscaling by @justinsb in <a href="https://github.com/kubernetes/kops/pull/18100" target="_blank">https://github.com/kubernetes/kops/pull/18100</a></li>
+<li>Replace cwd with go:embed for storage.testdriver manifests by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18102" target="_blank">https://github.com/kubernetes/kops/pull/18102</a></li>
+<li>chore(channels): bump alpha channel k8s and ubuntu AMI versions by @moshevayner in <a href="https://github.com/kubernetes/kops/pull/18103" target="_blank">https://github.com/kubernetes/kops/pull/18103</a></li>
+<li>[aiconformance]: set namespace explicitly for testdata by @ameukam in <a href="https://github.com/kubernetes/kops/pull/18101" target="_blank">https://github.com/kubernetes/kops/pull/18101</a></li>
+<li>chore: Bump Google Cloud deps in kubetest by @hakman in <a href="https://github.com/kubernetes/kops/pull/18107" target="_blank">https://github.com/kubernetes/kops/pull/18107</a></li>
+<li>[aiconformance] Explicity set the namespace for kubectl commands by @ameukam in <a href="https://github.com/kubernetes/kops/pull/18108" target="_blank">https://github.com/kubernetes/kops/pull/18108</a></li>
+<li>Fix S3 DeleteBucket 301 redirect during teardown by @ameukam in <a href="https://github.com/kubernetes/kops/pull/18109" target="_blank">https://github.com/kubernetes/kops/pull/18109</a></li>
+<li>Update Cluster Autoscaler to 1.35.0 by @ameukam in <a href="https://github.com/kubernetes/kops/pull/18110" target="_blank">https://github.com/kubernetes/kops/pull/18110</a></li>
+<li>[aiconformance] add test for schedulingOrchestration clusterAutoscaling by @hakman in <a href="https://github.com/kubernetes/kops/pull/18112" target="_blank">https://github.com/kubernetes/kops/pull/18112</a></li>
+<li>Pin upload-artifacts GHA to commit sha by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18114" target="_blank">https://github.com/kubernetes/kops/pull/18114</a></li>
+<li>Add troubleshooting info for E2E jobs by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18116" target="_blank">https://github.com/kubernetes/kops/pull/18116</a></li>
+<li>Fix HasHighlyAvailableControlPlane to use AllInstanceGroups by @pkubicsek-sb in <a href="https://github.com/kubernetes/kops/pull/17740" target="_blank">https://github.com/kubernetes/kops/pull/17740</a></li>
+<li>Honor stderrthreshold when logtostderr is enabled by @pierluigilenoci in <a href="https://github.com/kubernetes/kops/pull/18115" target="_blank">https://github.com/kubernetes/kops/pull/18115</a></li>
+<li>Add excludedInstanceTypes to instanceRequirements by @jim-barber-he in <a href="https://github.com/kubernetes/kops/pull/18113" target="_blank">https://github.com/kubernetes/kops/pull/18113</a></li>
+<li>chore(channels): promote alpha to stable by @moshevayner in <a href="https://github.com/kubernetes/kops/pull/18122" target="_blank">https://github.com/kubernetes/kops/pull/18122</a></li>
+<li>Fix instanceRequirements memory assignment bug by @jim-barber-he in <a href="https://github.com/kubernetes/kops/pull/18123" target="_blank">https://github.com/kubernetes/kops/pull/18123</a></li>
+<li>Add &ndash;use-kubeconfig to kops reconcile cluster by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18126" target="_blank">https://github.com/kubernetes/kops/pull/18126</a></li>
+<li>vfs: Silence warnings when the S3 provider has no supported checksum by @hakman in <a href="https://github.com/kubernetes/kops/pull/18128" target="_blank">https://github.com/kubernetes/kops/pull/18128</a></li>
+<li>vfs: Pass VFS scheme to S3 client by @hakman in <a href="https://github.com/kubernetes/kops/pull/18129" target="_blank">https://github.com/kubernetes/kops/pull/18129</a></li>
+<li>do: Upgrade CSI and enable E2E by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18131" target="_blank">https://github.com/kubernetes/kops/pull/18131</a></li>
+<li>feat(vfs): add Linode (Akamai) object storage schema support by @moshevayner in <a href="https://github.com/kubernetes/kops/pull/18138" target="_blank">https://github.com/kubernetes/kops/pull/18138</a></li>
+<li>aws: Add EnableOutOfServiceTaint field to NodeTerminationHandler by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18140" target="_blank">https://github.com/kubernetes/kops/pull/18140</a></li>
+<li>test: Dump logs for upgrade-ab scenario when failing during validation by @hakman in <a href="https://github.com/kubernetes/kops/pull/18143" target="_blank">https://github.com/kubernetes/kops/pull/18143</a></li>
+<li>azure: Add support for Azure Disk CSI Driver by @hakman in <a href="https://github.com/kubernetes/kops/pull/18141" target="_blank">https://github.com/kubernetes/kops/pull/18141</a></li>
+<li>gce: support for role=apiserver by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18147" target="_blank">https://github.com/kubernetes/kops/pull/18147</a></li>
+<li>Fix cilium-etcd on GCE by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18146" target="_blank">https://github.com/kubernetes/kops/pull/18146</a></li>
+<li>gce: Fix instance group deletion by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18148" target="_blank">https://github.com/kubernetes/kops/pull/18148</a></li>
+<li>Move johngmyers to emeritus by @johngmyers in <a href="https://github.com/kubernetes/kops/pull/18144" target="_blank">https://github.com/kubernetes/kops/pull/18144</a></li>
+<li>test: Update verify-terraform to use v1.14.8 and support optional filter by @hakman in <a href="https://github.com/kubernetes/kops/pull/18150" target="_blank">https://github.com/kubernetes/kops/pull/18150</a></li>
+<li>Add node-volume-type flag to create cluster command by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18145" target="_blank">https://github.com/kubernetes/kops/pull/18145</a></li>
+<li>Add NodeLeaseDurationSeconds and EventRecordQPS API fields by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18153" target="_blank">https://github.com/kubernetes/kops/pull/18153</a></li>
+<li>Add some clarification to KubeSchedulerConfiguration by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18151" target="_blank">https://github.com/kubernetes/kops/pull/18151</a></li>
+<li>Add EnableHostFirewall field to CiliumNetworkingSpec by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18152" target="_blank">https://github.com/kubernetes/kops/pull/18152</a></li>
+<li>azure: Use larger VM SKU by default in tests and update skips by @hakman in <a href="https://github.com/kubernetes/kops/pull/18154" target="_blank">https://github.com/kubernetes/kops/pull/18154</a></li>
+<li>feat: Replace shipbot with gh-based script for promoting binaries by @hakman in <a href="https://github.com/kubernetes/kops/pull/18095" target="_blank">https://github.com/kubernetes/kops/pull/18095</a></li>
+<li>azure: Add experimental Terraform support by @hakman in <a href="https://github.com/kubernetes/kops/pull/18149" target="_blank">https://github.com/kubernetes/kops/pull/18149</a></li>
+<li>azure: Set provider ID when starting kubelet by @hakman in <a href="https://github.com/kubernetes/kops/pull/18155" target="_blank">https://github.com/kubernetes/kops/pull/18155</a></li>
+<li>azure: Fix task dependencies during cluster update by @hakman in <a href="https://github.com/kubernetes/kops/pull/18156" target="_blank">https://github.com/kubernetes/kops/pull/18156</a></li>
+<li>azure: Fix Terraform LoadBalancer task dependencies on PublicIP by @hakman in <a href="https://github.com/kubernetes/kops/pull/18157" target="_blank">https://github.com/kubernetes/kops/pull/18157</a></li>
+<li>gce: Fix apiserver e2e template by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18158" target="_blank">https://github.com/kubernetes/kops/pull/18158</a></li>
+<li>gce: Fix instance tags with role=apiserver by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18159" target="_blank">https://github.com/kubernetes/kops/pull/18159</a></li>
+<li>build(deps): bump actions/setup-go from 6.3.0 to 6.4.0 by @dependabot[bot] in <a href="https://github.com/kubernetes/kops/pull/18161" target="_blank">https://github.com/kubernetes/kops/pull/18161</a></li>
+<li>gce: Allow role=apiserver with dns=none by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18162" target="_blank">https://github.com/kubernetes/kops/pull/18162</a></li>
+<li>gce: Add kops-controller to internal load balancer by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18169" target="_blank">https://github.com/kubernetes/kops/pull/18169</a></li>
+<li>azure: Reduce flakiness of CSI e2e tests by @hakman in <a href="https://github.com/kubernetes/kops/pull/18168" target="_blank">https://github.com/kubernetes/kops/pull/18168</a></li>
+<li>gce: Use SSL health check for kops-controller by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18171" target="_blank">https://github.com/kubernetes/kops/pull/18171</a></li>
+<li>feat: Add optional <code>leases</code> etcd shard by @apeabody in <a href="https://github.com/kubernetes/kops/pull/18054" target="_blank">https://github.com/kubernetes/kops/pull/18054</a></li>
+<li>Add &ndash;control-plane-volume-type flag to kops create cluster by @Camila-B in <a href="https://github.com/kubernetes/kops/pull/17955" target="_blank">https://github.com/kubernetes/kops/pull/17955</a></li>
+<li>Revert &ldquo;gce: Use SSL health check for kops-controller&rdquo; by @hakman in <a href="https://github.com/kubernetes/kops/pull/18172" target="_blank">https://github.com/kubernetes/kops/pull/18172</a></li>
+<li>Update Golang to 1.25.9 by @ameukam in <a href="https://github.com/kubernetes/kops/pull/18173" target="_blank">https://github.com/kubernetes/kops/pull/18173</a></li>
+<li>Reapply &ldquo;gce: Use SSL health check for kops-controller&rdquo; by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18174" target="_blank">https://github.com/kubernetes/kops/pull/18174</a></li>
+<li>test: Run update cluster without &ndash;yes first for E2E templates by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18175" target="_blank">https://github.com/kubernetes/kops/pull/18175</a></li>
+<li>linode: add Linode (Akamai) node configuration and identity by @moshevayner in <a href="https://github.com/kubernetes/kops/pull/18166" target="_blank">https://github.com/kubernetes/kops/pull/18166</a></li>
+<li>Load nf_tables module and install iptables-nft on RHEL10+ by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18179" target="_blank">https://github.com/kubernetes/kops/pull/18179</a></li>
+<li>aws: Use HTTPS for kops-controller TG health check by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18178" target="_blank">https://github.com/kubernetes/kops/pull/18178</a></li>
+<li>build(deps): bump actions/upload-artifact from 7.0.0 to 7.0.1 by @dependabot[bot] in <a href="https://github.com/kubernetes/kops/pull/18180" target="_blank">https://github.com/kubernetes/kops/pull/18180</a></li>
+<li>chore: Make AssetBuilder concurrency-safe by @hakman in <a href="https://github.com/kubernetes/kops/pull/18181" target="_blank">https://github.com/kubernetes/kops/pull/18181</a></li>
+<li>feat(cloud): add Linode (Akamai) cloud provider API registration by @moshevayner in <a href="https://github.com/kubernetes/kops/pull/18177" target="_blank">https://github.com/kubernetes/kops/pull/18177</a></li>
+<li>azure: Use HTTPS health check for kops-controller by @hakman in <a href="https://github.com/kubernetes/kops/pull/18182" target="_blank">https://github.com/kubernetes/kops/pull/18182</a></li>
+<li>azure: Fix possible nil pointer dereferences by @hakman in <a href="https://github.com/kubernetes/kops/pull/18184" target="_blank">https://github.com/kubernetes/kops/pull/18184</a></li>
+<li>azure: Fix deletion ordering issues by @hakman in <a href="https://github.com/kubernetes/kops/pull/18185" target="_blank">https://github.com/kubernetes/kops/pull/18185</a></li>
+<li>azure: Delete RoleAssignment after VMScaleSet during cluster deletion by @hakman in <a href="https://github.com/kubernetes/kops/pull/18186" target="_blank">https://github.com/kubernetes/kops/pull/18186</a></li>
+<li>azure: Get node info from node labels for CSI driver by @hakman in <a href="https://github.com/kubernetes/kops/pull/18170" target="_blank">https://github.com/kubernetes/kops/pull/18170</a></li>
+<li>azure: Move load balancer probe and rule configuration to model by @hakman in <a href="https://github.com/kubernetes/kops/pull/18183" target="_blank">https://github.com/kubernetes/kops/pull/18183</a></li>
+<li>test: Set E2E &ndash;node-os-arch=arm64 for Rocky10 by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18192" target="_blank">https://github.com/kubernetes/kops/pull/18192</a></li>
+<li>Continue skipping networking tests in k8s 1.37 by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18193" target="_blank">https://github.com/kubernetes/kops/pull/18193</a></li>
+<li>azure: Fix disk deletion loop during cluster teardown by @hakman in <a href="https://github.com/kubernetes/kops/pull/18191" target="_blank">https://github.com/kubernetes/kops/pull/18191</a></li>
+<li>tests: fix KOPS_BASE_URL for build-kubernetes runs by @hakman in <a href="https://github.com/kubernetes/kops/pull/18189" target="_blank">https://github.com/kubernetes/kops/pull/18189</a></li>
+<li>Fix nil panic during GCE deletion by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18195" target="_blank">https://github.com/kubernetes/kops/pull/18195</a></li>
+<li>azure: Handle missing resource group in disk listing by @hakman in <a href="https://github.com/kubernetes/kops/pull/18194" target="_blank">https://github.com/kubernetes/kops/pull/18194</a></li>
+<li>azure: Move hardcoded task config to model using SDK types by @hakman in <a href="https://github.com/kubernetes/kops/pull/18190" target="_blank">https://github.com/kubernetes/kops/pull/18190</a></li>
+<li>azure: Fix disk deletion by blocking on parent VMSS instead of VM instance by @hakman in <a href="https://github.com/kubernetes/kops/pull/18196" target="_blank">https://github.com/kubernetes/kops/pull/18196</a></li>
+<li>vfs: Pass S3 provider-specific options to clients by @hakman in <a href="https://github.com/kubernetes/kops/pull/18132" target="_blank">https://github.com/kubernetes/kops/pull/18132</a></li>
+<li>azure: Deploy cloud-controller-manager for node lifecycle and LB support by @hakman in <a href="https://github.com/kubernetes/kops/pull/18197" target="_blank">https://github.com/kubernetes/kops/pull/18197</a></li>
+<li>fix: use KOPS_BASE_URL image version when side-loading by @hakman in <a href="https://github.com/kubernetes/kops/pull/18200" target="_blank">https://github.com/kubernetes/kops/pull/18200</a></li>
+<li>chore: Remove support for Kubernetes 1.30 in kOps 1.36 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18202" target="_blank">https://github.com/kubernetes/kops/pull/18202</a></li>
+<li>e2e: Stop running in-tree volume tests for CSI-migrated drivers by @hakman in <a href="https://github.com/kubernetes/kops/pull/18201" target="_blank">https://github.com/kubernetes/kops/pull/18201</a></li>
+<li>chore(channels): update k8s and ubuntu jammy ami versions in alpha channel by @moshevayner in <a href="https://github.com/kubernetes/kops/pull/18203" target="_blank">https://github.com/kubernetes/kops/pull/18203</a></li>
+<li>gce: Disallow role=apiserver with dns=none by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18214" target="_blank">https://github.com/kubernetes/kops/pull/18214</a></li>
+<li>hetzner: add cluster-autoscaler addon for Hetzner cloud provider by @bjornharrtell in <a href="https://github.com/kubernetes/kops/pull/18135" target="_blank">https://github.com/kubernetes/kops/pull/18135</a></li>
+<li>upgrade-ab: source env file to get CLUSTER_NAME by @hakman in <a href="https://github.com/kubernetes/kops/pull/18219" target="_blank">https://github.com/kubernetes/kops/pull/18219</a></li>
+<li>aws: Update EBS CSI driver to 1.58.0 by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18220" target="_blank">https://github.com/kubernetes/kops/pull/18220</a></li>
+<li>aws: update LBC to v3.2.2 via helm+kustomize by @hakman in <a href="https://github.com/kubernetes/kops/pull/18221" target="_blank">https://github.com/kubernetes/kops/pull/18221</a></li>
+<li>aws: Prune LBC deployment by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18222" target="_blank">https://github.com/kubernetes/kops/pull/18222</a></li>
+<li>aws: Run LBC E2E tests in parallel by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18223" target="_blank">https://github.com/kubernetes/kops/pull/18223</a></li>
+<li>azure: add regenerate.sh for addons by @hakman in <a href="https://github.com/kubernetes/kops/pull/18225" target="_blank">https://github.com/kubernetes/kops/pull/18225</a></li>
+<li>do: migrate to NodeReconciler and drop legacy code by @hakman in <a href="https://github.com/kubernetes/kops/pull/18227" target="_blank">https://github.com/kubernetes/kops/pull/18227</a></li>
+<li>fix: honor klog -stderrthreshold even when -logtostderr is true by @pierluigilenoci in <a href="https://github.com/kubernetes/kops/pull/18231" target="_blank">https://github.com/kubernetes/kops/pull/18231</a></li>
+<li>Initial support for Ubuntu 26.04 by @upodroid in <a href="https://github.com/kubernetes/kops/pull/18232" target="_blank">https://github.com/kubernetes/kops/pull/18232</a></li>
+<li>aws: Remove ALBTargetControlConfig CRD from LBC manifest by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18233" target="_blank">https://github.com/kubernetes/kops/pull/18233</a></li>
+<li>Deprecreate Debian 10 and Ubuntu 20.04 in kops 1.35 by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18234" target="_blank">https://github.com/kubernetes/kops/pull/18234</a></li>
+<li>Remove support for Ubuntu 20.04 and Debian 10 by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18235" target="_blank">https://github.com/kubernetes/kops/pull/18235</a></li>
+<li>aws: Use HTTPS health check with /healthz for kops-controller by @hakman in <a href="https://github.com/kubernetes/kops/pull/18236" target="_blank">https://github.com/kubernetes/kops/pull/18236</a></li>
+<li>Support NLBSecurityGroupMode for AWS Cloud Controller Manager by @mfbonfigli in <a href="https://github.com/kubernetes/kops/pull/18211" target="_blank">https://github.com/kubernetes/kops/pull/18211</a></li>
+<li>cilium: require k8s-connectivity in liveness probe by @hakman in <a href="https://github.com/kubernetes/kops/pull/18237" target="_blank">https://github.com/kubernetes/kops/pull/18237</a></li>
+<li>feat: verify config server IPs with DNS name by @hakman in <a href="https://github.com/kubernetes/kops/pull/18241" target="_blank">https://github.com/kubernetes/kops/pull/18241</a></li>
+<li>gce: Include MIG scaling errors when instances are not found by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18247" target="_blank">https://github.com/kubernetes/kops/pull/18247</a></li>
+<li>azure: drop unused UsesPrivateDNS clause from API LB by @hakman in <a href="https://github.com/kubernetes/kops/pull/18252" target="_blank">https://github.com/kubernetes/kops/pull/18252</a></li>
+<li>aws: skip node S3 permissions when kops-controller serves node config by @hakman in <a href="https://github.com/kubernetes/kops/pull/18251" target="_blank">https://github.com/kubernetes/kops/pull/18251</a></li>
+<li>tests: add minimal gossip create/update integration tests by @hakman in <a href="https://github.com/kubernetes/kops/pull/18256" target="_blank">https://github.com/kubernetes/kops/pull/18256</a></li>
+<li>validation: enforce supported DNS topology per cloud provider by @hakman in <a href="https://github.com/kubernetes/kops/pull/18255" target="_blank">https://github.com/kubernetes/kops/pull/18255</a></li>
+<li>Release notes for 1.35 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18250" target="_blank">https://github.com/kubernetes/kops/pull/18250</a></li>
+<li>addons: drop legacy 9.99.0 version shim by @hakman in <a href="https://github.com/kubernetes/kops/pull/18257" target="_blank">https://github.com/kubernetes/kops/pull/18257</a></li>
+<li>e2e: Pass prow job name to kops cloud labels by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18258" target="_blank">https://github.com/kubernetes/kops/pull/18258</a></li>
+<li>Remove explicit sysctl fs.inotify.max_user_watches setting by @ajoga in <a href="https://github.com/kubernetes/kops/pull/17556" target="_blank">https://github.com/kubernetes/kops/pull/17556</a></li>
+<li>chore(channels): promote alpha to stable by @moshevayner in <a href="https://github.com/kubernetes/kops/pull/18259" target="_blank">https://github.com/kubernetes/kops/pull/18259</a></li>
+<li>azure: enable CCM cloud routes for kubenet and kindnet by @hakman in <a href="https://github.com/kubernetes/kops/pull/18262" target="_blank">https://github.com/kubernetes/kops/pull/18262</a></li>
+<li>build: strip release binaries by default by @hakman in <a href="https://github.com/kubernetes/kops/pull/18263" target="_blank">https://github.com/kubernetes/kops/pull/18263</a></li>
+<li>Fix support for VPC CNI + Debian 11 by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18261" target="_blank">https://github.com/kubernetes/kops/pull/18261</a></li>
+<li>Update k8s.io dependencies and Go to v1.26.2 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18267" target="_blank">https://github.com/kubernetes/kops/pull/18267</a></li>
+<li>Fix support for VPC CNI + RHEL9 by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18264" target="_blank">https://github.com/kubernetes/kops/pull/18264</a></li>
+<li>protobuf: Migrate to google.golang.org/protobuf by @hakman in <a href="https://github.com/kubernetes/kops/pull/18230" target="_blank">https://github.com/kubernetes/kops/pull/18230</a></li>
+<li>chore: drop helm dependency and fork strvals by @hakman in <a href="https://github.com/kubernetes/kops/pull/18272" target="_blank">https://github.com/kubernetes/kops/pull/18272</a></li>
+<li>chore: switch structured-merge-diff from v4 to v6 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18273" target="_blank">https://github.com/kubernetes/kops/pull/18273</a></li>
+<li>chore: drop cloud-provider-gcp dependency and fork NewAltTokenSource by @hakman in <a href="https://github.com/kubernetes/kops/pull/18274" target="_blank">https://github.com/kubernetes/kops/pull/18274</a></li>
+<li>Upgrade AWS load balancer controller to 3.3.0 by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18276" target="_blank">https://github.com/kubernetes/kops/pull/18276</a></li>
+<li>azure: encode storage account in azureblob:// URLs by @hakman in <a href="https://github.com/kubernetes/kops/pull/18260" target="_blank">https://github.com/kubernetes/kops/pull/18260</a></li>
+<li>nodeup: stream verified image bytes into ctr import by @hakman in <a href="https://github.com/kubernetes/kops/pull/18278" target="_blank">https://github.com/kubernetes/kops/pull/18278</a></li>
+<li>nodeup: drop containerized mounter and Archive task by @hakman in <a href="https://github.com/kubernetes/kops/pull/18277" target="_blank">https://github.com/kubernetes/kops/pull/18277</a></li>
+<li>hetzner: Upgrade hcloud-cloud-controller-manager to v1.30.1 by @bjornharrtell in <a href="https://github.com/kubernetes/kops/pull/18281" target="_blank">https://github.com/kubernetes/kops/pull/18281</a></li>
+<li>Migrate deprecated kubelet flags to config file by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18280" target="_blank">https://github.com/kubernetes/kops/pull/18280</a></li>
+<li>cilium: allow setting arbitrary cilium-config entries by @hakman in <a href="https://github.com/kubernetes/kops/pull/18285" target="_blank">https://github.com/kubernetes/kops/pull/18285</a></li>
+<li>etcd-manager: Bump etcd patches and drop 3.4 support by @hakman in <a href="https://github.com/kubernetes/kops/pull/18290" target="_blank">https://github.com/kubernetes/kops/pull/18290</a></li>
+<li>gce: shrink etcd-cluster disk label to fit 63-char limit by @hakman in <a href="https://github.com/kubernetes/kops/pull/18292" target="_blank">https://github.com/kubernetes/kops/pull/18292</a></li>
+<li>protokube: drop unused flags, fields, and methods and cleanup by @hakman in <a href="https://github.com/kubernetes/kops/pull/18293" target="_blank">https://github.com/kubernetes/kops/pull/18293</a></li>
+<li>dns-controller: make priorityClassName configurable by @hakman in <a href="https://github.com/kubernetes/kops/pull/18298" target="_blank">https://github.com/kubernetes/kops/pull/18298</a></li>
+<li>dns-controller: default Provider when ExternalDNS is partially set by @hakman in <a href="https://github.com/kubernetes/kops/pull/18302" target="_blank">https://github.com/kubernetes/kops/pull/18302</a></li>
+<li>e2e: add upgrade test for gossip by @hakman in <a href="https://github.com/kubernetes/kops/pull/18296" target="_blank">https://github.com/kubernetes/kops/pull/18296</a></li>
+<li>aws: Only set nodeAllocatableUpdatePeriodSeconds on K8s 1.35+ by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18305" target="_blank">https://github.com/kubernetes/kops/pull/18305</a></li>
+<li>build(deps): bump actions/dependency-review-action from 4.9.0 to 5.0.0 by @dependabot[bot] in <a href="https://github.com/kubernetes/kops/pull/18297" target="_blank">https://github.com/kubernetes/kops/pull/18297</a></li>
+<li>gce: expose kops-controller on internal LB for gossip clusters by @hakman in <a href="https://github.com/kubernetes/kops/pull/18307" target="_blank">https://github.com/kubernetes/kops/pull/18307</a></li>
+<li>e2e: heartbeat Boskos lease during upgrade test by @hakman in <a href="https://github.com/kubernetes/kops/pull/18310" target="_blank">https://github.com/kubernetes/kops/pull/18310</a></li>
+<li>e2e: Improve resource dump reliability by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18311" target="_blank">https://github.com/kubernetes/kops/pull/18311</a></li>
+<li>Address misc TODO comments by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18314" target="_blank">https://github.com/kubernetes/kops/pull/18314</a></li>
+<li>azure: match VMSS VM/NIC ARM IDs case-insensitively in dumper by @hakman in <a href="https://github.com/kubernetes/kops/pull/18315" target="_blank">https://github.com/kubernetes/kops/pull/18315</a></li>
+<li>Dump containerd config files by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18313" target="_blank">https://github.com/kubernetes/kops/pull/18313</a></li>
+<li>azure: list VMSS NICs in protokube gossip seed discovery by @hakman in <a href="https://github.com/kubernetes/kops/pull/18319" target="_blank">https://github.com/kubernetes/kops/pull/18319</a></li>
+<li>etcd-manager: upgrade to v3.0.20260512 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18323" target="_blank">https://github.com/kubernetes/kops/pull/18323</a></li>
+<li>Use N4A machine type in GCE by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18330" target="_blank">https://github.com/kubernetes/kops/pull/18330</a></li>
+<li>hetzner: upgrade CCM to v1.31.0 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18317" target="_blank">https://github.com/kubernetes/kops/pull/18317</a></li>
+<li>hetzner: upgrade CSI driver to v2.20.2 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18318" target="_blank">https://github.com/kubernetes/kops/pull/18318</a></li>
+<li>kops toolbox dump fixes by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18326" target="_blank">https://github.com/kubernetes/kops/pull/18326</a></li>
+<li>Disable kube-proxy when Calico runs in eBPF mode by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18334" target="_blank">https://github.com/kubernetes/kops/pull/18334</a></li>
+<li>vfs: Use HeadBucket to resolve S3 bucket region by @hakman in <a href="https://github.com/kubernetes/kops/pull/18335" target="_blank">https://github.com/kubernetes/kops/pull/18335</a></li>
+<li>aws: drop cloud-provider-aws dependency by @hakman in <a href="https://github.com/kubernetes/kops/pull/18336" target="_blank">https://github.com/kubernetes/kops/pull/18336</a></li>
+<li>Abort rolling update on load balancer deregister failure by @hakman in <a href="https://github.com/kubernetes/kops/pull/18338" target="_blank">https://github.com/kubernetes/kops/pull/18338</a></li>
+<li>aws: allow disabling NTH enableScheduledEventDraining in Queue Processor mode by @hakman in <a href="https://github.com/kubernetes/kops/pull/18339" target="_blank">https://github.com/kubernetes/kops/pull/18339</a></li>
+<li>Reject non-http(s) URLs for assets.fileRepository by @hakman in <a href="https://github.com/kubernetes/kops/pull/18340" target="_blank">https://github.com/kubernetes/kops/pull/18340</a></li>
+<li>Align instancegroup node label across create cluster/instancegroup by @hakman in <a href="https://github.com/kubernetes/kops/pull/18341" target="_blank">https://github.com/kubernetes/kops/pull/18341</a></li>
+<li>aws: apply onDemandAllocationStrategy to ASG mixed instances policy by @hakman in <a href="https://github.com/kubernetes/kops/pull/18342" target="_blank">https://github.com/kubernetes/kops/pull/18342</a></li>
+<li>aws: propagate taints without value to ASG tags by @hakman in <a href="https://github.com/kubernetes/kops/pull/18343" target="_blank">https://github.com/kubernetes/kops/pull/18343</a></li>
+<li>kube-proxy: bind-mount kubeconfig directory instead of the file by @hakman in <a href="https://github.com/kubernetes/kops/pull/18344" target="_blank">https://github.com/kubernetes/kops/pull/18344</a></li>
+<li>e2e: trim job name by @hakman in <a href="https://github.com/kubernetes/kops/pull/18346" target="_blank">https://github.com/kubernetes/kops/pull/18346</a></li>
+<li>Remove the unused in-tree cloud config by @hakman in <a href="https://github.com/kubernetes/kops/pull/18347" target="_blank">https://github.com/kubernetes/kops/pull/18347</a></li>
+<li>azure: load cloud config from a Secret instead of azure.json by @hakman in <a href="https://github.com/kubernetes/kops/pull/18345" target="_blank">https://github.com/kubernetes/kops/pull/18345</a></li>
+<li>dump: time out per-node log dumping after one minute by @hakman in <a href="https://github.com/kubernetes/kops/pull/18349" target="_blank">https://github.com/kubernetes/kops/pull/18349</a></li>
+<li>e2e: delete upgraded clusters with the new kops binary by @hakman in <a href="https://github.com/kubernetes/kops/pull/18350" target="_blank">https://github.com/kubernetes/kops/pull/18350</a></li>
+<li>gossip: introduce hybrid worker bootstrap for gossip clusters     by @hakman in <a href="https://github.com/kubernetes/kops/pull/18245" target="_blank">https://github.com/kubernetes/kops/pull/18245</a></li>
+<li>gce: allow BGP from nodes to control plane for Calico by @hakman in <a href="https://github.com/kubernetes/kops/pull/18351" target="_blank">https://github.com/kubernetes/kops/pull/18351</a></li>
+<li>gossip: restrict seed discovery to control-plane nodes by @hakman in <a href="https://github.com/kubernetes/kops/pull/18352" target="_blank">https://github.com/kubernetes/kops/pull/18352</a></li>
+<li>azure: fix control-plane role tag spelling by @hakman in <a href="https://github.com/kubernetes/kops/pull/18353" target="_blank">https://github.com/kubernetes/kops/pull/18353</a></li>
+<li>gossip: stop exporting unused cloud credentials to worker nodes by @hakman in <a href="https://github.com/kubernetes/kops/pull/18354" target="_blank">https://github.com/kubernetes/kops/pull/18354</a></li>
+<li>azure: restrict VMSS role assignments to the control plane by @hakman in <a href="https://github.com/kubernetes/kops/pull/18357" target="_blank">https://github.com/kubernetes/kops/pull/18357</a></li>
+<li>gce: stop granting compute.viewer to worker nodes by @hakman in <a href="https://github.com/kubernetes/kops/pull/18356" target="_blank">https://github.com/kubernetes/kops/pull/18356</a></li>
+<li>aws: remove unused IAM server certificate permissions by @hakman in <a href="https://github.com/kubernetes/kops/pull/18355" target="_blank">https://github.com/kubernetes/kops/pull/18355</a></li>
+<li>nodeup: skip protokube/channels assets on workers by @hakman in <a href="https://github.com/kubernetes/kops/pull/18358" target="_blank">https://github.com/kubernetes/kops/pull/18358</a></li>
+<li>aws: remove KMS-based RNG seeding in nodeup by @hakman in <a href="https://github.com/kubernetes/kops/pull/18359" target="_blank">https://github.com/kubernetes/kops/pull/18359</a></li>
+<li>Bump CoreDNS memory on large clusters in scalability scenario by @Jefftree in <a href="https://github.com/kubernetes/kops/pull/18361" target="_blank">https://github.com/kubernetes/kops/pull/18361</a></li>
+<li>vfs: reject GCS paths without buckets by @immanuwell in <a href="https://github.com/kubernetes/kops/pull/18360" target="_blank">https://github.com/kubernetes/kops/pull/18360</a></li>
+<li>aws: scope ec2:DescribeInstances/DescribeRegions to roles that use them by @hakman in <a href="https://github.com/kubernetes/kops/pull/18362" target="_blank">https://github.com/kubernetes/kops/pull/18362</a></li>
+<li>Support containerd v3 config schema by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18291" target="_blank">https://github.com/kubernetes/kops/pull/18291</a></li>
+<li>aws: Use kms:ViaService condition on KMS data actions by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18363" target="_blank">https://github.com/kubernetes/kops/pull/18363</a></li>
+<li>chore(channels): bump k8s versions in alpha channel by @moshevayner in <a href="https://github.com/kubernetes/kops/pull/18367" target="_blank">https://github.com/kubernetes/kops/pull/18367</a></li>
+<li>linode: Add VPC cloudup task by @moshevayner in <a href="https://github.com/kubernetes/kops/pull/18316" target="_blank">https://github.com/kubernetes/kops/pull/18316</a></li>
+<li>nodeup: populate DefaultMachineType for Cilium-ENI clusters by @hakman in <a href="https://github.com/kubernetes/kops/pull/18365" target="_blank">https://github.com/kubernetes/kops/pull/18365</a></li>
+<li>Update coredns to v1.14.3 by @Jefftree in <a href="https://github.com/kubernetes/kops/pull/18368" target="_blank">https://github.com/kubernetes/kops/pull/18368</a></li>
+<li>Downgrade coredns to v1.14.2 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18369" target="_blank">https://github.com/kubernetes/kops/pull/18369</a></li>
+<li>Upgrade containerd to v2.3.0 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18364" target="_blank">https://github.com/kubernetes/kops/pull/18364</a></li>
+<li>aws: Use amazonaws.com suffix for kms:ViaService in all partitions by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18372" target="_blank">https://github.com/kubernetes/kops/pull/18372</a></li>
+<li>channels: move from protokube to a static pod by @hakman in <a href="https://github.com/kubernetes/kops/pull/18328" target="_blank">https://github.com/kubernetes/kops/pull/18328</a></li>
+<li>decouple client HTTP traffic in kops scalability tests by @Jefftree in <a href="https://github.com/kubernetes/kops/pull/18370" target="_blank">https://github.com/kubernetes/kops/pull/18370</a></li>
+<li>cilium: add flags for bpf-lb-sock and bpf-lb-sock-hostns-only by @hakman in <a href="https://github.com/kubernetes/kops/pull/18375" target="_blank">https://github.com/kubernetes/kops/pull/18375</a></li>
+<li>kops-controller and nodeup bug fixes by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18379" target="_blank">https://github.com/kubernetes/kops/pull/18379</a></li>
+<li>nodeup: fix protokube skip on hybrid-bootstrap workers by @hakman in <a href="https://github.com/kubernetes/kops/pull/18378" target="_blank">https://github.com/kubernetes/kops/pull/18378</a></li>
+<li>channels: stop distributing the standalone binary by @hakman in <a href="https://github.com/kubernetes/kops/pull/18374" target="_blank">https://github.com/kubernetes/kops/pull/18374</a></li>
+<li>kubetest2-kops: fix GCE DNS truncation by @Jefftree in <a href="https://github.com/kubernetes/kops/pull/18382" target="_blank">https://github.com/kubernetes/kops/pull/18382</a></li>
+<li>channels: build static pod manifest in cloudup by @hakman in <a href="https://github.com/kubernetes/kops/pull/18373" target="_blank">https://github.com/kubernetes/kops/pull/18373</a></li>
+<li>Fix kops get assets when spec.dnsZone is a DNS name by @hakman in <a href="https://github.com/kubernetes/kops/pull/18384" target="_blank">https://github.com/kubernetes/kops/pull/18384</a></li>
+<li>channels: fix region detection and discovery cache permission noise by @hakman in <a href="https://github.com/kubernetes/kops/pull/18390" target="_blank">https://github.com/kubernetes/kops/pull/18390</a></li>
+<li>Validate instance group names in kops-controller by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18391" target="_blank">https://github.com/kubernetes/kops/pull/18391</a></li>
+<li>Upgrade Go to 1.26.3 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18395" target="_blank">https://github.com/kubernetes/kops/pull/18395</a></li>
+<li>Update dependencies by @hakman in <a href="https://github.com/kubernetes/kops/pull/18398" target="_blank">https://github.com/kubernetes/kops/pull/18398</a></li>
+<li>gomod: tidy and verify all modules by @hakman in <a href="https://github.com/kubernetes/kops/pull/18401" target="_blank">https://github.com/kubernetes/kops/pull/18401</a></li>
+<li>e2e: set the v3 runtime class path in apiserver templates by @hakman in <a href="https://github.com/kubernetes/kops/pull/18402" target="_blank">https://github.com/kubernetes/kops/pull/18402</a></li>
+<li>build: use gcr.io/distroless/static as base image by @hakman in <a href="https://github.com/kubernetes/kops/pull/18403" target="_blank">https://github.com/kubernetes/kops/pull/18403</a></li>
+<li>addons: render addons as tasks by @hakman in <a href="https://github.com/kubernetes/kops/pull/18215" target="_blank">https://github.com/kubernetes/kops/pull/18215</a></li>
+<li>chore(channels): promote alpha to stable by @moshevayner in <a href="https://github.com/kubernetes/kops/pull/18409" target="_blank">https://github.com/kubernetes/kops/pull/18409</a></li>
+<li>hetzner: enable Cluster Autoscaler by @hakman in <a href="https://github.com/kubernetes/kops/pull/18226" target="_blank">https://github.com/kubernetes/kops/pull/18226</a></li>
+<li>chore(networking): bump aws cni to version 1.21.2 by @moshevayner in <a href="https://github.com/kubernetes/kops/pull/18410" target="_blank">https://github.com/kubernetes/kops/pull/18410</a></li>
+<li>Use protobuf by @serathius in <a href="https://github.com/kubernetes/kops/pull/18068" target="_blank">https://github.com/kubernetes/kops/pull/18068</a></li>
+<li>Release 1.36.0-alpha.1 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18413" target="_blank">https://github.com/kubernetes/kops/pull/18413</a></li>
+</ul>
+
+<h2 id="new-contributors">New Contributors</h2>
+
+<ul>
+<li>@ritazh made their first contribution in <a href="https://github.com/kubernetes/kops/pull/17952" target="_blank">https://github.com/kubernetes/kops/pull/17952</a></li>
+<li>@serathius made their first contribution in <a href="https://github.com/kubernetes/kops/pull/18036" target="_blank">https://github.com/kubernetes/kops/pull/18036</a></li>
+<li>@pkubicsek-sb made their first contribution in <a href="https://github.com/kubernetes/kops/pull/17740" target="_blank">https://github.com/kubernetes/kops/pull/17740</a></li>
+<li>@pierluigilenoci made their first contribution in <a href="https://github.com/kubernetes/kops/pull/18115" target="_blank">https://github.com/kubernetes/kops/pull/18115</a></li>
+<li>@mfbonfigli made their first contribution in <a href="https://github.com/kubernetes/kops/pull/18211" target="_blank">https://github.com/kubernetes/kops/pull/18211</a></li>
+<li>@ajoga made their first contribution in <a href="https://github.com/kubernetes/kops/pull/17556" target="_blank">https://github.com/kubernetes/kops/pull/17556</a></li>
+<li>@Jefftree made their first contribution in <a href="https://github.com/kubernetes/kops/pull/18361" target="_blank">https://github.com/kubernetes/kops/pull/18361</a></li>
+<li>@immanuwell made their first contribution in <a href="https://github.com/kubernetes/kops/pull/18360" target="_blank">https://github.com/kubernetes/kops/pull/18360</a></li>
+</ul>
+
+<p><strong>Full Changelog</strong>: <a href="https://github.com/kubernetes/kops/compare/v1.35.0-beta.1...v1.36.0-alpha.1" target="_blank">https://github.com/kubernetes/kops/compare/v1.35.0-beta.1&hellip;v1.36.0-alpha.1</a></p>
+<br><h3>Release notes for v1.34.3</h3><h4>2026-05-27</h4><h2 id="what-s-changed">What&rsquo;s Changed</h2>
+
+<ul>
+<li>Automated cherry pick of #17740: Fix HasHighlyAvailableControlPlane to use AllInstanceGroups by @hakman in <a href="https://github.com/kubernetes/kops/pull/18118" target="_blank">https://github.com/kubernetes/kops/pull/18118</a></li>
+<li>Automated cherry pick of #18114: Pin upload-artifacts GHA to commit sha by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18209" target="_blank">https://github.com/kubernetes/kops/pull/18209</a></li>
+<li>Automated cherry pick of #18173: Update Golang to 1.25.9 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18206" target="_blank">https://github.com/kubernetes/kops/pull/18206</a></li>
+<li>Automated cherry pick of #17877: truncate very long sqs queue names
+#17885: fix truncate long sqs by @hakman in <a href="https://github.com/kubernetes/kops/pull/18216" target="_blank">https://github.com/kubernetes/kops/pull/18216</a></li>
+<li>Automated cherry pick of #18110: Update Cluster Autoscaler to 1.35.0 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18218" target="_blank">https://github.com/kubernetes/kops/pull/18218</a></li>
+<li>Automated cherry pick of #18237: cilium: require k8s-connectivity in liveness probe by @hakman in <a href="https://github.com/kubernetes/kops/pull/18243" target="_blank">https://github.com/kubernetes/kops/pull/18243</a></li>
+<li>aws: bypass LBC mservice webhook for kube-system by @hakman in <a href="https://github.com/kubernetes/kops/pull/18249" target="_blank">https://github.com/kubernetes/kops/pull/18249</a></li>
+<li>Automated cherry pick of #18251: aws: skip node S3 permissions when kops-controller serves node config by @hakman in <a href="https://github.com/kubernetes/kops/pull/18254" target="_blank">https://github.com/kubernetes/kops/pull/18254</a></li>
+<li>Automated cherry pick of #18268: Cherrypick VPC CNI fixes by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18269" target="_blank">https://github.com/kubernetes/kops/pull/18269</a></li>
+<li>Automated cherry pick of #18285: cilium: allow setting arbitrary cilium-config entries by @hakman in <a href="https://github.com/kubernetes/kops/pull/18287" target="_blank">https://github.com/kubernetes/kops/pull/18287</a></li>
+<li>Automated cherry pick of #18281: hetzner: Upgrade hcloud-cloud-controller-manager to v1.30.1 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18284" target="_blank">https://github.com/kubernetes/kops/pull/18284</a></li>
+<li>Automated cherry pick of #18298: dns-controller: make priorityClassName configurable by @hakman in <a href="https://github.com/kubernetes/kops/pull/18300" target="_blank">https://github.com/kubernetes/kops/pull/18300</a></li>
+<li>Automated cherry pick of #18302: dns-controller: default Provider when ExternalDNS is partially set by @hakman in <a href="https://github.com/kubernetes/kops/pull/18304" target="_blank">https://github.com/kubernetes/kops/pull/18304</a></li>
+<li>Automated cherry pick of #18307: gce: expose kops-controller on internal LB for gossip clusters by @hakman in <a href="https://github.com/kubernetes/kops/pull/18309" target="_blank">https://github.com/kubernetes/kops/pull/18309</a></li>
+<li>Automated cherry pick of #18319: azure: list VMSS NICs in protokube gossip seed discovery by @hakman in <a href="https://github.com/kubernetes/kops/pull/18322" target="_blank">https://github.com/kubernetes/kops/pull/18322</a></li>
+<li>Automated cherry pick of #18323: etcd-manager: upgrade to v3.0.20260512 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18325" target="_blank">https://github.com/kubernetes/kops/pull/18325</a></li>
+<li>etcd-manager: bump etcd to latest patches (3.5.30, 3.6.11) by @yuzhouliu9 in <a href="https://github.com/kubernetes/kops/pull/18332" target="_blank">https://github.com/kubernetes/kops/pull/18332</a></li>
+<li>Automated cherry pick of #18375: cilium: add flags for bpf-lb-sock and bpf-lb-sock-hostns-only by @hakman in <a href="https://github.com/kubernetes/kops/pull/18377" target="_blank">https://github.com/kubernetes/kops/pull/18377</a></li>
+<li>Automated cherry pick of #18379: kops-controller and nodeup bug fixes by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18381" target="_blank">https://github.com/kubernetes/kops/pull/18381</a></li>
+<li>Automated cherry pick of #18384: Fix kops get assets when spec.dnsZone is a DNS name by @hakman in <a href="https://github.com/kubernetes/kops/pull/18387" target="_blank">https://github.com/kubernetes/kops/pull/18387</a></li>
+<li>Automated cherry pick of #18144: Move johngmyers to emeritus by @hakman in <a href="https://github.com/kubernetes/kops/pull/18389" target="_blank">https://github.com/kubernetes/kops/pull/18389</a></li>
+<li>Automated cherry pick of #18391: Validate instance group names in kops-controller by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18393" target="_blank">https://github.com/kubernetes/kops/pull/18393</a></li>
+<li>Upgrade Go to 1.26.3 for release-1.34 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18397" target="_blank">https://github.com/kubernetes/kops/pull/18397</a></li>
+<li>Update dependencies for release-1.34 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18400" target="_blank">https://github.com/kubernetes/kops/pull/18400</a></li>
+<li>Automated cherry pick of #18401: gomod: tidy and verify all modules by @hakman in <a href="https://github.com/kubernetes/kops/pull/18405" target="_blank">https://github.com/kubernetes/kops/pull/18405</a></li>
+<li>Release 1.34.3 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18412" target="_blank">https://github.com/kubernetes/kops/pull/18412</a></li>
+</ul>
+
+<p><strong>Full Changelog</strong>: <a href="https://github.com/kubernetes/kops/compare/v1.34.2...v1.34.3" target="_blank">https://github.com/kubernetes/kops/compare/v1.34.2&hellip;v1.34.3</a></p>
+<br><h2>kubernetes/autoscaler</h2> <h3>Release notes for vertical-pod-autoscaler-1.7.0</h3><h4>2026-05-29</h4><h2 id="changes-by-kind">Changes by Kind</h2>
+
+<h3 id="api-change">API Change</h3>
+
+<ul>
+<li>Added MemoryAggregationIntervalSeconds for the VPA object (<a href="https://github.com/kubernetes/autoscaler/pull/9317" target="_blank">#9317</a>, <a href="https://github.com/omerap12" target="_blank">@omerap12</a>)</li>
+<li>EvictAfterOOMThreshold is now per vpa (<a href="https://github.com/kubernetes/autoscaler/pull/9071" target="_blank">#9071</a>, <a href="https://github.com/omerap12" target="_blank">@omerap12</a>)</li>
+<li>The VPA support InPlace update mode. VPA will not evict any pods and only try to resize pods inplace. (<a href="https://github.com/kubernetes/autoscaler/pull/8888" target="_blank">#8888</a>, <a href="https://github.com/omerap12" target="_blank">@omerap12</a>)</li>
+<li>Users can configure a startupBoost policy in the VPA spec. (<a href="https://github.com/kubernetes/autoscaler/pull/9141" target="_blank">#9141</a>, <a href="https://github.com/kamarabbas99" target="_blank">@kamarabbas99</a>)</li>
+<li>VPA now stores a observedGeneration in both status and condition fields. (<a href="https://github.com/kubernetes/autoscaler/pull/9524" target="_blank">#9524</a>, <a href="https://github.com/adrianmoisey" target="_blank">@adrianmoisey</a>)</li>
+</ul>
+
+<h3 id="bug-or-regression">Bug or Regression</h3>
+
+<ul>
+<li>Fix bug where VPA admission-controller could write a webhook with an empty cert for a brief period. (<a href="https://github.com/kubernetes/autoscaler/pull/9599" target="_blank">#9599</a>, <a href="https://github.com/adrianmoisey" target="_blank">@adrianmoisey</a>)</li>
+<li>Fixed OOM detection for pods with <code>restartPolicy: Never</code> (<a href="https://github.com/kubernetes/autoscaler/pull/7955" target="_blank">#7955</a>, <a href="https://github.com/tkukushkin" target="_blank">@tkukushkin</a>)</li>
+<li>Fixed a bug where the presence of a LimitRange object with CPU constraints in the cluster prevented VPA from recreating Pods managed by the targeted controllers. The updated code section, which proportionally reduces resource requests and limits, could result in the loss of sub-millicore values. (<a href="https://github.com/kubernetes/autoscaler/pull/8946" target="_blank">#8946</a>, <a href="https://github.com/iamzili" target="_blank">@iamzili</a>)</li>
+<li>Fixed a bug where users could use alpha (off-by-default) features by updating an existing VPA resource, bypassing the feature gate check. (<a href="https://github.com/kubernetes/autoscaler/pull/9557" target="_blank">#9557</a>, <a href="https://github.com/adrianmoisey" target="_blank">@adrianmoisey</a>)</li>
+</ul>
+
+<h3 id="other-cleanup-or-flake">Other (Cleanup or Flake)</h3>
+
+<ul>
+<li>Bump Kubernetes dependencies to 1.36.0 (<a href="https://github.com/kubernetes/autoscaler/pull/9547" target="_blank">#9547</a>, <a href="https://github.com/adrianmoisey" target="_blank">@adrianmoisey</a>)</li>
+<li>Reduce VPA memory usage by stripping away unnecessary managed fields from informer cache (<a href="https://github.com/kubernetes/autoscaler/pull/9634" target="_blank">#9634</a>, <a href="https://github.com/adrianmoisey" target="_blank">@adrianmoisey</a>)</li>
+<li>Update flag in-place-skip-disruption-budget is now beta (<a href="https://github.com/kubernetes/autoscaler/pull/9655" target="_blank">#9655</a>, <a href="https://github.com/omerap12" target="_blank">@omerap12</a>)</li>
+<li>Improved VPA validation error messages now pinpoint exactly which fields are invalid, making it faster to diagnose and resolve configuration issues in your VerticalPodAutoscaler specs. (<a href="https://github.com/kubernetes/autoscaler/pull/9591" target="_blank">#9591</a>, <a href="https://github.com/adrianmoisey" target="_blank">@adrianmoisey</a>)</li>
+</ul>
+<br><h2>prometheus/prometheus</h2> <h3>Release notes for 3.12.0 / 2026-05-28</h3><h4>2026-05-28</h4><p>This release contains security fixes, new features (especially around PromQL and Service Discovery), performance improvements in TSDB, Start Timestamp improvements and numerous bug fixes.</p>
+
+<p>Thanks to all contributors!</p>
+
+<h2 id="key-highlights">Key Highlights</h2>
+
+<ul>
+<li><strong>Security</strong>: Two security vulnerabilities have been addressed: a denial of service in remote-write (snappy decompression limit) and a secret exposure leak in STACKIT service discovery.</li>
+<li><strong>PromQL &amp; Metadata</strong>: Several features and bug fixes related to the experimental &ldquo;start timestamps&rdquo; support, including updates to <code>rate()</code>, <code>irate()</code>, <code>increase()</code>, and <code>resets()</code>. New experimental functions <code>start()</code>, <code>end()</code>, <code>range()</code>, and <code>step()</code> are introduced.</li>
+<li><strong>TSDB Performance</strong>: Optimizations in head chunk lookup (constant time) and mmap operations to reduce CPU usage.</li>
+<li><strong>Service Discovery</strong>: Added support for DigitalOcean Managed Databases and Outscale VM, along with improvements to AWS SD (IPv6 support for EC2, external ID support).</li>
+<li><strong>UI</strong>: Added a web interface for deleting time series and cleaning tombstones.</li>
+</ul>
+
+<h2 id="changelog">Changelog</h2>
+
+<ul>
+<li>[SECURITY] Remote: Reject snappy-compressed received requests via Remote Write whose declared decoded length exceeds the 32MB. Thanks to @hibrian827 for reporting it. #18642</li>
+<li>[SECURITY] STACKIT SD: Fix secrets being exposed in plaintext via <code>/-/config</code> endpoint. Thanks to @August829 and @Phaxma for reporting. GHSA-39j6-789q-qxvh #18649</li>
+<li>[CHANGE] TSDB/Agent: Adds Start Timestamp field to all WAL Histogram samples in memory; used <code>st-storage</code> flag is enabled. #18221</li>
+<li>[FEATURE] API: Add <code>/api/v1/status/self_metrics</code> endpoint returning the current state of the Prometheus server&rsquo;s own metrics about itself as JSON. #18411</li>
+<li>[FEATURE] Discovery: Add DigitalOcean Managed Databases service discovery #18287</li>
+<li>[FEATURE] Prometheus: Add support for the aix/ppc64 compilation target #18321</li>
+<li>[FEATURE] Discovery: Add Outscale VM service discovery (<code>outscale_sd_configs</code>) for discovering scrape targets from the Outscale Cloud API. #18139</li>
+<li>[FEATURE] PromQL: Emit a warning when <code>sort</code>, <code>sort_by_label</code> or <code>sort_by_label_desc</code> is used within range (matrix) queries, as these functions do not have effect in that context. #18498</li>
+<li>[FEATURE] PromQL: Add <code>start()</code>, <code>end()</code>, <code>range()</code>, and <code>step()</code> experimental functions #17877</li>
+<li>[FEATURE] PromQL: Update <code>resets()</code> function to consider start timestamp resets. Hidden behind <code>use-start-timestamps</code> feature flag. #18627</li>
+<li>[FEATURE] Prometheus: Promote auto-reload-config as stable #18620</li>
+<li>[FEATURE] TSDB/Agent: Add <code>CheckpointFromInMemorySeries</code> option to <code>agent.DB</code> that enables checkpoint based on in-memory series. #17948</li>
+<li>[FEATURE] UI: Add a web interface for deleting time series and cleaning tombstones, accessible from the Status menu. #18390</li>
+<li>[FEATURE] PromQL: Use start timestamps for <code>rate()</code>, <code>irate()</code>, and <code>increase()</code> calculations, behind a feature flag <code>use-start-timestamps</code>. Doesn&rsquo;t work together with extended range selectors <code>anchored</code> and <code>smoothed</code>. #18344</li>
+<li>[FEATURE] Scrape: Added a feature flag <code>st-synthesis</code> which synthesizes unknown STs for scraped cumulative metrics. Useful when Remote Writing 2.0 with delta or Otel-based backends. #18279</li>
+<li>[FEATURE] promqltest: support <code>@st</code> annotation in <code>load</code> blocks to specify per-sample start timestamps. #18360</li>
+<li>[ENHANCEMENT] API: reject concurrent fgprof profiles. #18651</li>
+<li>[ENHANCEMENT] AWS SD: Add optional <code>external_id</code> field to ECS/MSK/RDS/Elasticache. #18579</li>
+<li>[ENHANCEMENT] AWS SD: Add optional <code>external_id</code> field. #17171</li>
+<li>[ENHANCEMENT] Discovery: Propagate SD target updates faster by introducing dynamic backoff interval instead of static 5s interval for throttling. #18187</li>
+<li>[ENHANCEMENT] Promtool: Add <code>--header</code> flag to <code>query instant</code> command, matching existing <code>query range</code> behaviour. #18418</li>
+<li>[ENHANCEMENT]: AWS SD: Allows EC2 service discovery to discover IPv6 addresses to communicate with target endpoints. The private IPv4 address remains the default when both IPv4 and IPv6 addresses are present. #16088</li>
+<li>[PERF] TSDB: Make head chunk lookup in range queries constant time instead of quadratic time #18302</li>
+<li>[PERF] TSDB: Skip entire stripes in mmapHeadChunks when no series need mmapping, reducing CPU utilization significantly at production-relevant scales. #18541</li>
+<li>[PERF] TSDB: Skip clean series during periodic head chunk mmap using cached head chunk count #18272</li>
+<li>[PERF] PromQL: Address FloatHistogram.KahanAdd performance regression on Go 1.26. #18568</li>
+<li>[BUGFIX] PromQL: Fix <code>info()</code> function incorrectly handling negated <code>__name__</code> matchers #17932</li>
+<li>[BUGFIX] API: Return duration expressions in <code>/parse_ast</code>. #18624</li>
+<li>[BUGFIX] API: correctly document formats accepted for duration query request parameters (step, timeout and lookback delta) in OpenAPI spec #18305</li>
+<li>[BUGFIX] Scrape: AppenderV2 now tracks staleness even when OOO/duplicate series errors happen similar to AppenderV1 #18567</li>
+<li>[BUGFIX] Config: Validate remote_write queue_config fields at load time to prevent runtime panic and silent misconfiguration. #18209</li>
+<li>[BUGFIX] Discovery/Consul: Add <code>health_filter</code> for Health API filtering, fixing breakage when using Catalog-only fields like <code>ServiceTags</code> in <code>filter</code>. #18479 #18499</li>
+<li>[BUGFIX] OTLP: limit decompressed body size for gzip-encoded OTLP write requests. #18408</li>
+<li>[BUGFIX] PromQL: Fix <code>smoothed</code> rate/increase returning zero instead of no result when all data falls strictly after the query range. #18523</li>
+<li>[BUGFIX] PromQL: Fix metric name not being dropped when last_over_time or first_over_time is applied to subqueries containing name-dropping functions like abs(). #18409</li>
+<li>[BUGFIX] PromQL: Fix missing warning when mixing exponential and custom-bucket histograms in stats queries. #18660</li>
+<li>[BUGFIX] PromQL: Fix parsing of <code>range()</code> keyword in duration expressions such as <code>foo[5m+range()]</code>. #18623</li>
+<li>[BUGFIX] PromQL: Fix smoothed vector selector returning no results in binary operations when the <code>@</code> modifier is used. #18531</li>
+<li>[BUGFIX] PromQL: Reject NaN, infinite, and out-of-range duration expressions instead of silently producing an out-of-range time.Duration. #18639</li>
+<li>[BUGFIX] Scrape: Fix panic when scraping malformed native histograms. #18414</li>
+<li>[BUGFIX] Scrape: fix panic when scraping a target exposing a summary with no quantiles via the protobuf format. #18382</li>
+<li>[BUGFIX] Scrape: fix scrape failure log file occasionally not applied after a configuration reload. #18421</li>
+<li>[BUGFIX] TSDB: Allow retention percentage with new data path. #18628</li>
+<li>[BUGFIX] TSDB: Preserve decimal precision in percentage-based retention #18374</li>
+<li>[BUGFIX] TSDB: fix prometheus_tsdb_head_chunks going negative after WAL replay #18401</li>
+<li>[BUGFIX] TSDB: panic with native histograms during query of overlapping chunks. #18692</li>
+<li>[BUGFIX] Tracing: fix startup failure for insecure OTLP HTTP tracing #18469</li>
+<li>[BUGFIX] UI: Escape label values offered by PromQL autocomplete. #18658</li>
+<li>[BUGFIX] UI: Improve Y-axis tick label precision for graph values over small ranges. #18682</li>
+<li>[BUGFIX] <code>prometheus_sd_refresh*</code> and <code>prometheus_sd_discovered_targets</code> metrics for specific scrape jobs are deleted when the scrape job is removed. #17614</li>
+<li>[BUGFIX] Remote: fixed validation for received RW2 requests when parsing metadata unit symbols. This fixes a case when request would cause (recovered) handler panic. #18641</li>
+<li>[BUGFIX] TSDB/Agent: fix race in agent appender where concurrent appends for the same label set could produce duplicate in-memory series and duplicate WAL records. #18292</li>
+<li>[BUGFIX] Config: Update <code>--enable-feature</code>  flag description and sort feature names. #18487</li>
+</ul>
+<br><h2>grpc/grpc</h2> <h3>Release notes for Release v1.81.0</h3><h4>2026-05-29</h4><p>This is release 1.81.0 (<a href="https://github.com/grpc/grpc/blob/master/doc/g_stands_for.md" target="_blank">graphic</a>) of gRPC Core.</p>
+
+<p>For gRPC documentation, see <a href="https://grpc.io/" target="_blank">grpc.io</a>. For previous releases, see <a href="https://github.com/grpc/grpc/releases" target="_blank">Releases</a>.</p>
+
+<p>This release contains refinements, improvements, and bug fixes, with highlights listed below.</p>
+
+<h2 id="core">Core</h2>
+
+<ul>
+<li>[EventEngine] Fix a potential use-after-free error on Windows. (<a href="https://github.com/grpc/grpc/pull/42078" target="_blank">#42078</a>)</li>
+<li>[ssl] Server side handshaker factory stores a map of key signers. (<a href="https://github.com/grpc/grpc/pull/42002" target="_blank">#42002</a>)</li>
+<li>[Core] Fix completion queue shutdown race on weak memory models (ARM). (<a href="https://github.com/grpc/grpc/pull/41510" target="_blank">#41510</a>)</li>
+<li>[EventEngine] Fix a Windows race that causes an assertion error. (<a href="https://github.com/grpc/grpc/pull/41563" target="_blank">#41563</a>)</li>
+<li>[grpc_error] enable error_flatten experiment in OSS. (<a href="https://github.com/grpc/grpc/pull/41471" target="_blank">#41471</a>)</li>
+<li>[Python] Trim Python2 backward compatiblity syntax - removed (object) inheritance. (<a href="https://github.com/grpc/grpc/pull/41708" target="_blank">#41708</a>)</li>
+</ul>
+
+<h2 id="objective-c">Objective-C</h2>
+
+<ul>
+<li>[ObjC] Add receiveNextMessage to GRPCUnaryProtoCall. (<a href="https://github.com/grpc/grpc/pull/42260" target="_blank">#42260</a>)</li>
+</ul>
+
+<h2 id="python">Python</h2>
+
+<ul>
+<li>[Python] Add typing_extensions dep to aio Bazel target. (<a href="https://github.com/grpc/grpc/pull/42001" target="_blank">#42001</a>)</li>
+<li>[Python] [Pyright] Part 1 - Pyright for src/python/grpcio/grpc/aio/_base_server.py. (<a href="https://github.com/grpc/grpc/pull/42240" target="_blank">#42240</a>)</li>
+<li>[Python] Drop 3.9. (<a href="https://github.com/grpc/grpc/pull/42145" target="_blank">#42145</a>)</li>
+<li>[Python] grpc-status: Relax protobuf dependency upper bound to allow 7.x. (<a href="https://github.com/grpc/grpc/pull/41948" target="_blank">#41948</a>)</li>
+<li>[Python] [Typeguard] Part 5 - Add Typeguard SYNC Stack in tests. (<a href="https://github.com/grpc/grpc/pull/40278" target="_blank">#40278</a>)</li>
+<li>[Python] Remove GIL from ReceiveMessageOperation.un_c method. (<a href="https://github.com/grpc/grpc/pull/41812" target="_blank">#41812</a>)</li>
+<li>[Python] Support observability in AsyncIO stack. (<a href="https://github.com/grpc/grpc/pull/41573" target="_blank">#41573</a>)</li>
+</ul>
+
+<h2 id="ruby">Ruby</h2>
+
+<ul>
+<li>[Ruby] Drop support for EOL Ruby 3.1 and clean up. (<a href="https://github.com/grpc/grpc/pull/41435" target="_blank">#41435</a>)</li>
+<li>[Ruby] Composed CallCredentials keep a reference to their source. (<a href="https://github.com/grpc/grpc/pull/41782" target="_blank">#41782</a>)</li>
+</ul>
+<br>
+</body>
+
+</html>
