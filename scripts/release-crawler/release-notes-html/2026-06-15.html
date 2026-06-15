@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Whats new in the last week</title>
+</head>
+
+<body>
+<h1>Latest Releases for the week 2026-06-08 - 2026-06-15</h1><h2>grpc/grpc</h2> <h3>Release notes for Release v1.82.0-pre1</h3><h4>2026-06-12</h4><p>This is a prerelease of gRPC Core 1.82.0 (glacier).</p>
+
+<p>For gRPC documentation, see <a href="https://grpc.io/" target="_blank">grpc.io</a>. For previous releases, see <a href="https://github.com/grpc/grpc/releases" target="_blank">Releases</a>.</p>
+
+<p>This prerelease contains refinements, improvements, and bug fixes.</p>
+<br><h3>Release notes for Release v1.81.1</h3><h4>2026-06-08</h4><p>This is release 1.81.0 (<a href="https://github.com/grpc/grpc/blob/master/doc/g_stands_for.md" target="_blank">graphic</a>) of gRPC Core.</p>
+
+<p>For gRPC documentation, see <a href="https://grpc.io/" target="_blank">grpc.io</a>. For previous releases, see <a href="https://github.com/grpc/grpc/releases" target="_blank">Releases</a>.</p>
+
+<p>This release contains refinements, improvements, and bug fixes, with highlights listed below.</p>
+
+<h2 id="core">Core</h2>
+
+<ul>
+<li>[EventEngine] Fix a potential use-after-free error on Windows. (<a href="https://github.com/grpc/grpc/pull/42078" target="_blank">#42078</a>)</li>
+<li>[ssl] Server side handshaker factory stores a map of key signers. (<a href="https://github.com/grpc/grpc/pull/42002" target="_blank">#42002</a>)</li>
+<li>[Core] Fix completion queue shutdown race on weak memory models (ARM). (<a href="https://github.com/grpc/grpc/pull/41510" target="_blank">#41510</a>)</li>
+<li>[EventEngine] Fix a Windows race that causes an assertion error. (<a href="https://github.com/grpc/grpc/pull/41563" target="_blank">#41563</a>)</li>
+<li>[grpc_error] enable error_flatten experiment in OSS. (<a href="https://github.com/grpc/grpc/pull/41471" target="_blank">#41471</a>)</li>
+<li>[Python] Trim Python2 backward compatiblity syntax - removed (object) inheritance. (<a href="https://github.com/grpc/grpc/pull/41708" target="_blank">#41708</a>)</li>
+</ul>
+
+<h2 id="objective-c">Objective-C</h2>
+
+<ul>
+<li>[ObjC] Add receiveNextMessage to GRPCUnaryProtoCall. (<a href="https://github.com/grpc/grpc/pull/42260" target="_blank">#42260</a>)</li>
+</ul>
+
+<h2 id="python">Python</h2>
+
+<ul>
+<li>[Python] Add typing_extensions dep to aio Bazel target. (<a href="https://github.com/grpc/grpc/pull/42001" target="_blank">#42001</a>)</li>
+<li>[Python] [Pyright] Part 1 - Pyright for src/python/grpcio/grpc/aio/_base_server.py. (<a href="https://github.com/grpc/grpc/pull/42240" target="_blank">#42240</a>)</li>
+<li>[Python] Drop 3.9. (<a href="https://github.com/grpc/grpc/pull/42145" target="_blank">#42145</a>)</li>
+<li>[Python] grpc-status: Relax protobuf dependency upper bound to allow 7.x. (<a href="https://github.com/grpc/grpc/pull/41948" target="_blank">#41948</a>)</li>
+<li>[Python] [Typeguard] Part 5 - Add Typeguard SYNC Stack in tests. (<a href="https://github.com/grpc/grpc/pull/40278" target="_blank">#40278</a>)</li>
+<li>[Python] Remove GIL from ReceiveMessageOperation.un_c method. (<a href="https://github.com/grpc/grpc/pull/41812" target="_blank">#41812</a>)</li>
+<li>[Python] Support observability in AsyncIO stack. (<a href="https://github.com/grpc/grpc/pull/41573" target="_blank">#41573</a>)</li>
+</ul>
+
+<h2 id="ruby">Ruby</h2>
+
+<ul>
+<li>[Ruby] Drop support for EOL Ruby 3.1 and clean up. (<a href="https://github.com/grpc/grpc/pull/41435" target="_blank">#41435</a>)</li>
+<li>[Ruby] Composed CallCredentials keep a reference to their source. (<a href="https://github.com/grpc/grpc/pull/41782" target="_blank">#41782</a>)</li>
+</ul>
+<br><h2>coredns/coredns</h2> <h3>Release notes for v1.14.4</h3><h4>2026-06-09</h4><p>This release improves transport security and operational flexibility, with
+enhancements for DoH3 and DoQ, improved DNSSEC signing behavior, and support for
+the loong64 architecture. It also adds configurable cache verification, hostname
+resolution for forward targets, incoming connection support for dnstap, fallthrough
+support in the secondary plugin, automatic zone reloads, and improved forwarding
+behavior for NODATA responses.</p>
+
+<h2 id="brought-to-you-by">Brought to You By</h2>
+
+<p>Cedric Wang
+Charlie Tonneslan
+Dmytro Alieksieiev
+Endre Szabo
+Immanuel Tikhonov
+Isolus
+James R T
+JUN YANG
+Jöran Malek
+Nicholas Amorim
+Syed Azeez
+Umut Polat
+Ville Vesilehto
+weiguozhang
+Yong Tang
+徐晓伟</p>
+
+<h2 id="noteworthy-changes">Noteworthy Changes</h2>
+
+<ul>
+<li>core: Add loong64 arch support (<a href="https://github.com/coredns/coredns/pull/8137" target="_blank">https://github.com/coredns/coredns/pull/8137</a>)</li>
+<li>core: Bound HTTP/3 request header size for DoH3 (<a href="https://github.com/coredns/coredns/pull/8135" target="_blank">https://github.com/coredns/coredns/pull/8135</a>)</li>
+<li>core: Expose TLS ConnectionState (SNI) for DoQ (<a href="https://github.com/coredns/coredns/pull/8129" target="_blank">https://github.com/coredns/coredns/pull/8129</a>)</li>
+<li>core: Remove duplicate cipher suites (<a href="https://github.com/coredns/coredns/pull/8118" target="_blank">https://github.com/coredns/coredns/pull/8118</a>)</li>
+<li>core: Use http.LocalAddrContextKey for DoH local address (<a href="https://github.com/coredns/coredns/pull/8149" target="_blank">https://github.com/coredns/coredns/pull/8149</a>)</li>
+<li>plgin/kubernetes: Remove debug fmt.Println from multicluster zone validation (<a href="https://github.com/coredns/coredns/pull/8131" target="_blank">https://github.com/coredns/coredns/pull/8131</a>)</li>
+<li>plugin/any: Reject invalid any and local config (<a href="https://github.com/coredns/coredns/pull/8133" target="_blank">https://github.com/coredns/coredns/pull/8133</a>)</li>
+<li>plugin/azure: Apply <code>access</code> mode to every zone in the same block (<a href="https://github.com/coredns/coredns/pull/8110" target="_blank">https://github.com/coredns/coredns/pull/8110</a>)</li>
+<li>plugin/cache: Add optional verify timeout to serve_stale (<a href="https://github.com/coredns/coredns/pull/8070" target="_blank">https://github.com/coredns/coredns/pull/8070</a>)</li>
+<li>plugin/cache: Allow cache TTLs above default 3600s (<a href="https://github.com/coredns/coredns/pull/8134" target="_blank">https://github.com/coredns/coredns/pull/8134</a>)</li>
+<li>plugin/cache: Prefer positive cache over SERVFAIL in ncache (<a href="https://github.com/coredns/coredns/pull/8003" target="_blank">https://github.com/coredns/coredns/pull/8003</a>)</li>
+<li>plugin/chaos: Reject unknown chaos block options (<a href="https://github.com/coredns/coredns/pull/8121" target="_blank">https://github.com/coredns/coredns/pull/8121</a>)</li>
+<li>plugin/dnssec: Sign each RRset with the zone that owns its name, not the query zone (<a href="https://github.com/coredns/coredns/pull/8138" target="_blank">https://github.com/coredns/coredns/pull/8138</a>)</li>
+<li>plugin/dnstap: Feature: Added incoming connection support (<a href="https://github.com/coredns/coredns/pull/8086" target="_blank">https://github.com/coredns/coredns/pull/8086</a>)</li>
+<li>plugin/file: Canonicalize escape form in owner names (<a href="https://github.com/coredns/coredns/pull/8109" target="_blank">https://github.com/coredns/coredns/pull/8109</a>)</li>
+<li>plugin/file: Trigger reload of zones based on mtime (<a href="https://github.com/coredns/coredns/pull/8085" target="_blank">https://github.com/coredns/coredns/pull/8085</a>)</li>
+<li>plugin/forward: Add hostname resolution support for TO endpoints (<a href="https://github.com/coredns/coredns/pull/5646" target="_blank">https://github.com/coredns/coredns/pull/5646</a>) (<a href="https://github.com/coredns/coredns/pull/7923" target="_blank">https://github.com/coredns/coredns/pull/7923</a>)</li>
+<li>plugin/forward: Forward NODATA responses to Next handler (<a href="https://github.com/coredns/coredns/pull/8065" target="_blank">https://github.com/coredns/coredns/pull/8065</a>)</li>
+<li>plugin/health: Use descriptive error for unknown block options in health and log plugins (<a href="https://github.com/coredns/coredns/pull/8128" target="_blank">https://github.com/coredns/coredns/pull/8128</a>)</li>
+<li>plugin/ready: Reject unknown ready plugin properties (<a href="https://github.com/coredns/coredns/pull/8119" target="_blank">https://github.com/coredns/coredns/pull/8119</a>)</li>
+<li>plugin/proxyproto: Prevent nil pointer dereference when dropping malformed PROXY packets (<a href="https://github.com/coredns/coredns/pull/8154" target="_blank">https://github.com/coredns/coredns/pull/8154</a>)</li>
+<li>plugin/secondary: Add fallthrough support (<a href="https://github.com/coredns/coredns/pull/8041" target="_blank">https://github.com/coredns/coredns/pull/8041</a>)</li>
+<li>plugin/trace: Reject unknown trace and dnstap block options (<a href="https://github.com/coredns/coredns/pull/8120" target="_blank">https://github.com/coredns/coredns/pull/8120</a>)</li>
+</ul>
+<br><h2>kubernetes/kops</h2> <h3>Release notes for v1.36.0-beta.1</h3><h4>2026-06-12</h4><h2 id="what-s-changed">What&rsquo;s Changed</h2>
+
+<ul>
+<li>scaletest: decouple client HTTP traffic for etcd events by @Jefftree in <a href="https://github.com/kubernetes/kops/pull/18415" target="_blank">https://github.com/kubernetes/kops/pull/18415</a></li>
+<li>Release notes for 1.36 (alpha) by @hakman in <a href="https://github.com/kubernetes/kops/pull/18414" target="_blank">https://github.com/kubernetes/kops/pull/18414</a></li>
+<li>chore: Add hashes for additional May releases by @hakman in <a href="https://github.com/kubernetes/kops/pull/18418" target="_blank">https://github.com/kubernetes/kops/pull/18418</a></li>
+<li>Add logs at v2 level to ensure we have slow pods data in logs by @hakuna-matatah in <a href="https://github.com/kubernetes/kops/pull/18420" target="_blank">https://github.com/kubernetes/kops/pull/18420</a></li>
+<li>chore: upgrade containerd to v2.3.1 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18422" target="_blank">https://github.com/kubernetes/kops/pull/18422</a></li>
+<li>Upgrade kube-router to v2.10.0 by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18421" target="_blank">https://github.com/kubernetes/kops/pull/18421</a></li>
+<li>aws: pin LBC selectors to fix in-place upgrades by @hakman in <a href="https://github.com/kubernetes/kops/pull/18426" target="_blank">https://github.com/kubernetes/kops/pull/18426</a></li>
+<li>cert-manager: upgrade to v1.19.5 and set AWS_REGION for Route53 dns-01 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18428" target="_blank">https://github.com/kubernetes/kops/pull/18428</a></li>
+<li>etcd: add ListenClientHTTPURLs field to EtcdManagerSpec by @Jefftree in <a href="https://github.com/kubernetes/kops/pull/18416" target="_blank">https://github.com/kubernetes/kops/pull/18416</a></li>
+<li>Default omitted authorization to RBAC instead of AlwaysAllow by @hakman in <a href="https://github.com/kubernetes/kops/pull/18431" target="_blank">https://github.com/kubernetes/kops/pull/18431</a></li>
+<li>cilium: allow disabling masquerade in ENI IPAM mode by @hakman in <a href="https://github.com/kubernetes/kops/pull/18432" target="_blank">https://github.com/kubernetes/kops/pull/18432</a></li>
+<li>channels: surface addon apply failures via a readiness probe by @hakman in <a href="https://github.com/kubernetes/kops/pull/18433" target="_blank">https://github.com/kubernetes/kops/pull/18433</a></li>
+<li>etcd-manager: upgrade etcd-manager and etcd to latest patches  by @hakman in <a href="https://github.com/kubernetes/kops/pull/18436" target="_blank">https://github.com/kubernetes/kops/pull/18436</a></li>
+<li>chore: downgrade containerd to v2.2.4 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18447" target="_blank">https://github.com/kubernetes/kops/pull/18447</a></li>
+<li>test: avoid kubeconfig access in golden tests by @hakman in <a href="https://github.com/kubernetes/kops/pull/18448" target="_blank">https://github.com/kubernetes/kops/pull/18448</a></li>
+<li>scaletest: Build only linux/amd64 in kubernetes scalability presubmits by @Jefftree in <a href="https://github.com/kubernetes/kops/pull/18446" target="_blank">https://github.com/kubernetes/kops/pull/18446</a></li>
+<li>scaletest: Allow feature gates to be set in scalability tests by @Jefftree in <a href="https://github.com/kubernetes/kops/pull/18449" target="_blank">https://github.com/kubernetes/kops/pull/18449</a></li>
+<li>feat: add gVisor RuntimeClass support for containerd by @ameukam in <a href="https://github.com/kubernetes/kops/pull/18406" target="_blank">https://github.com/kubernetes/kops/pull/18406</a></li>
+<li>build(deps): bump actions/checkout from 6.0.2 to 6.0.3 by @dependabot[bot] in <a href="https://github.com/kubernetes/kops/pull/18451" target="_blank">https://github.com/kubernetes/kops/pull/18451</a></li>
+<li>Calico: add NFTablesMode setting by @rifelpet in <a href="https://github.com/kubernetes/kops/pull/18452" target="_blank">https://github.com/kubernetes/kops/pull/18452</a></li>
+<li>etcd-manager: switch to go-runner-based distroless image by @hakman in <a href="https://github.com/kubernetes/kops/pull/18450" target="_blank">https://github.com/kubernetes/kops/pull/18450</a></li>
+<li>kube-proxy: assert buildPod command in unit test by @hakman in <a href="https://github.com/kubernetes/kops/pull/18455" target="_blank">https://github.com/kubernetes/kops/pull/18455</a></li>
+<li>gVisor: add HasGVisor() helper function by @hakman in <a href="https://github.com/kubernetes/kops/pull/18456" target="_blank">https://github.com/kubernetes/kops/pull/18456</a></li>
+<li>dump: add &ndash;node-dump-timeout flag for per-node dump timeout by @Jefftree in <a href="https://github.com/kubernetes/kops/pull/18443" target="_blank">https://github.com/kubernetes/kops/pull/18443</a></li>
+<li>scaltest: Default node dump timeout to 5m in scalability run-test.sh by @Jefftree in <a href="https://github.com/kubernetes/kops/pull/18457" target="_blank">https://github.com/kubernetes/kops/pull/18457</a></li>
+<li>Release 1.36.0-beta.1 by @hakman in <a href="https://github.com/kubernetes/kops/pull/18464" target="_blank">https://github.com/kubernetes/kops/pull/18464</a></li>
+</ul>
+
+<p><strong>Full Changelog</strong>: <a href="https://github.com/kubernetes/kops/compare/v1.36.0-alpha.1...v1.36.0-beta.1" target="_blank">https://github.com/kubernetes/kops/compare/v1.36.0-alpha.1&hellip;v1.36.0-beta.1</a></p>
+<br><h2>kubernetes/autoscaler</h2> <h3>Release notes for vertical-pod-autoscaler-chart-0.10.0</h3><h4>2026-06-14</h4><p>Automatically adjust resources for your workloads</p>
+<br>
+</body>
+
+</html>
