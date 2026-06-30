@@ -64,6 +64,12 @@ def is_deprecated(pr):
     text = (pr['title'] + " " + (note if note else "")).lower()
     return 'deprecated' in text or 'deprecation' in text
 
+def strip_html_comments(text):
+    if not text:
+        return ""
+    # Remove HTML comments (including multi-line ones)
+    return re.sub(r'<!--.*?-->', '', text, flags=re.DOTALL).strip()
+
 def format_line(text, url, author=None, kep_url=None):
     text = text.strip().rstrip('.')
     words = text.split()
@@ -140,10 +146,10 @@ def main():
         print(f"\n--- {pr['url']} by https://github.com/{author} ---")
         print(f"Title: {pr['title']}")
         if pr['body']:
-            # Show first few lines as "reading content"
-            content = pr['body'].strip()
-            snippet = content[:300].replace('\r\n', '\n')
-            print(f"Content Snippet:\n{snippet}{'...' if len(content) > 300 else ''}")
+            # Show first few lines as "reading content" (stripping HTML comments)
+            content = strip_html_comments(pr['body'])
+            snippet = content[:3000].replace('\r\n', '\n')
+            print(f"Content Snippet:\n{snippet}{'...' if len(content) > 3000 else ''}")
 
         if is_deprecated(pr):
             deprecated_prs.append((pr, author, kep_url))
