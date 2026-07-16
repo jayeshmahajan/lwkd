@@ -11,11 +11,11 @@ def print(*args, **kwargs):
     sep = kwargs.get('sep', ' ')
     end = kwargs.get('end', '\n')
     file = kwargs.get('file', sys.stdout)
-
+    
     if file in (sys.stdout, sys.stderr, None):
         msg = sep.join(str(arg) for arg in args) + end
         _print_buffer.append(msg)
-
+        
     builtins.print(*args, **kwargs)
 
 def get_last_week_range():
@@ -162,8 +162,8 @@ def main():
         if pr['body']:
             # Show first few lines as "reading content" (stripping HTML comments)
             content = strip_html_comments(pr['body'])
-            snippet = content[:3000].replace('\r\n', '\n')
-            print(f"Content Snippet:\n{snippet}{'...' if len(content) > 3000 else ''}")
+            snippet = content[:300].replace('\r\n', '\n')
+            print(f"Content Snippet:\n{snippet}{'...' if len(content) > 300 else ''}")
 
         if is_deprecated(pr):
             deprecated_prs.append((pr, author, kep_url))
@@ -196,49 +196,6 @@ def main():
                 note = extract_release_note(pr['body'])
                 text = note if note else pr['title']
                 f.write(format_line(text, pr['url'], author, kep_url) + "\n")
-
-    print("""
-========================================
-Based on above information find one or two PRs which are of special interest to our readers. This could include PRs that do any of the following:
-
-make significant changes to how Kubernetes is built or tested
-re-organize the Kubernetes code or docs in a way that affects many contributors
-introduce a brand-new, interesting feature
-advance an interesting/major feature to GA
-fix a difficult problem with Kubernetes that has been open for years
-fix a major security vulnerability, particularly if changes to APIs are involved
-introduce new and interesting tests or test suites
-Bug fixes, test-only changes, doc-only changes, moving features to beta, refactorings, and similar "minor" PRs are generally not interesting and should not be in the Featured PR section. This does mean that some weeks, particularly during Code Freeze, there will be no PRs to feature.
-
-The goal of the Featured PR section is to give readers in-depth coverage of one or two PRs, rather than trying to offer shallow coverage of all interesting PRs. Coverage of a featured PR should include:
-
-names of contributors who worked on it
-any KEPs it's linked to
-links to any additional discussions, docs, or related issues
-links to related (sub)projects and repositories
-mentions of how the change will affect contributors and/or users
-discussion of the history of the PR, if any
-This section is formatted as a major section with subsections:
-Write in 50 to 100 words in around 2 to 4 sentenaces
-
-Example below for reference and must be in .md file format
-```
-## Featured PR format
-
-### [139308: Introduce WatchListCompression (Beta)](https://github.com/kubernetes/kubernetes/pull/139308)
-
-In this pull request [p0lyn0mial](https://github.com/p0lyn0mial) introduced the new **WatchListCompression** feature gate, bringing gzip compression support to Kubernetes WatchList responses when clients advertise `Accept-Encoding: gzip`. Since many controllers and operators perform an initial LIST before transitioning to WATCH, this feature can significantly reduce network bandwidth and improve efficiency in large clusters. Regular WATCH requests remain unchanged, making the rollout low risk for existing clients. This feature is enabled by default in Beta and is an important improvement for API server scalability.
-
-### [139237: Evenly load balance admission webhook connections](https://github.com/kubernetes/kubernetes/pull/139237)
-
-[aojea](https://github.com/aojea) improved how the kube-apiserver communicates with admission webhooks when `--enable-aggregator-routing=true` is enabled. Previously, HTTP connection reuse could unintentionally direct most concurrent admission requests to a single webhook backend, creating uneven load across replicas. This PR introduces round-trip load balancing between webhook endpoints through the **WebhookRoundTripLoadBalancing** feature gate (Beta, enabled by default), improving availability and scalability for highly available webhook deployments.
-
-### [139282: Relaxed DNS Names reaches General Availability](https://github.com/kubernetes/kubernetes/pull/139282)
-
-In this pull request [adrianmoisey](https://github.com/adrianmoisey) advanced **Relaxed DNS Names** to **General Availability**, completing the feature's journey from Alpha through Beta to a stable Kubernetes API. The work is part of [KEP-5311](https://github.com/kubernetes/enhancements/issues/5311), which expands supported DNS naming rules while maintaining compatibility with existing workloads. Reaching GA signals that the feature is production-ready and no longer experimental, allowing users and downstream projects to rely on it without feature gate concerns.
-```
-
-""")
 
     print(f"\nSuccessfully processed {len(prs)} PRs.")
     print(f"Report saved to: {output_file}")
