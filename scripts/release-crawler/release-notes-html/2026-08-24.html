@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Whats new in the last week</title>
+</head>
+
+<body>
+<h1>Latest Releases for the week 2026-08-17 - 2026-08-24</h1><h2>coredns/coredns</h2> <h3>Release notes for v1.14.7</h3><h4>2026-08-19</h4><p>This release strengthens DNS caching, forwarding, and transport reliability, with
+improved stale-cache behavior, safer upstream handling, and tighter connection
+and overload controls. It also adds new capabilities for ACME-managed TLS,
+topology-aware Kubernetes services, HTTP/2 forwarding, DNS-over-QUIC, and
+secondary zone management, while delivering correctness and performance fixes
+across file serving, rewrites, ACLs, hosts, transfers, and Kubernetes handling.
+The release is built with Go 1.26.6 to include fixes for CVE-2026-56865,
+CVE-2026-56864, and CVE-2026-33818.</p>
+
+<h2 id="brought-to-you-by">Brought to You By</h2>
+
+<p>Baltasar Blanco
+houyuwushang
+Karan V
+liucongran
+llucas
+Manuel Rüger
+maximilize
+Mehrdad Biukian
+Michael Wolf
+Ncesam
+Nikolaus Schuetz
+Nitin Nizhawan
+Omkhar Arasaratnam
+Pujitha Paladugu
+rpb-ant
+Saleh
+Sueun Cho
+Ville Vesilehto
+Yash Singh
+Yong Tang</p>
+
+<h2 id="noteworthy-changes">Noteworthy Changes</h2>
+
+<p>core: Add connection-level concurrency limiting to DNS-over-QUIC (<a href="https://github.com/coredns/coredns/pull/8213" target="_blank">https://github.com/coredns/coredns/pull/8213</a>)
+core: Add max conn limit to https3 (<a href="https://github.com/coredns/coredns/pull/8187" target="_blank">https://github.com/coredns/coredns/pull/8187</a>)
+core: Document in-process embedding (<a href="https://github.com/coredns/coredns/pull/8436" target="_blank">https://github.com/coredns/coredns/pull/8436</a>)
+core: Make keylog path test portable (<a href="https://github.com/coredns/coredns/pull/8311" target="_blank">https://github.com/coredns/coredns/pull/8311</a>)
+core: Normalize server block zones (<a href="https://github.com/coredns/coredns/pull/8320" target="_blank">https://github.com/coredns/coredns/pull/8320</a>)
+core: Pin numeric uid/gid for the nonroot user (<a href="https://github.com/coredns/coredns/pull/8316" target="_blank">https://github.com/coredns/coredns/pull/8316</a>)
+plugin/acl: Fix autopath from bypassing acl checks (<a href="https://github.com/coredns/coredns/pull/8290" target="_blank">https://github.com/coredns/coredns/pull/8290</a>)
+plugin/acl: Fix blocked clients from receiving cached DNS answers (<a href="https://github.com/coredns/coredns/pull/8289" target="_blank">https://github.com/coredns/coredns/pull/8289</a>)
+plugin/auto: Fix inverted arguments in duplicate-origin warning (<a href="https://github.com/coredns/coredns/pull/8317" target="_blank">https://github.com/coredns/coredns/pull/8317</a>)
+plugin/cache: Add prefer_positive stale policy (<a href="https://github.com/coredns/coredns/pull/8378" target="_blank">https://github.com/coredns/coredns/pull/8378</a>)
+plugin/cache: Bind responses and entries to QCLASS (<a href="https://github.com/coredns/coredns/pull/8272" target="_blank">https://github.com/coredns/coredns/pull/8272</a>)
+plugin/cache: Configure stale TTL and failure recheck (<a href="https://github.com/coredns/coredns/pull/8411" target="_blank">https://github.com/coredns/coredns/pull/8411</a>)
+plugin/cache: Do not cache SOA-less NODATA responses (<a href="https://github.com/coredns/coredns/pull/8232" target="_blank">https://github.com/coredns/coredns/pull/8232</a>)
+plugin/cache: Fix cache stale verification metadata race (<a href="https://github.com/coredns/coredns/pull/8366" target="_blank">https://github.com/coredns/coredns/pull/8366</a>)
+plugin/cache: Preserve AD when storing cache entries (<a href="https://github.com/coredns/coredns/pull/8438" target="_blank">https://github.com/coredns/coredns/pull/8438</a>)
+plugin/cache: Preserve monotonic time for TTL expiry (<a href="https://github.com/coredns/coredns/pull/8346" target="_blank">https://github.com/coredns/coredns/pull/8346</a>)
+plugin/file: Do not expand wildcard across a closer empty non-terminal (<a href="https://github.com/coredns/coredns/pull/8223" target="_blank">https://github.com/coredns/coredns/pull/8223</a>)
+plugin/file: Fixes multi-primary AXFR zone contamination (<a href="https://github.com/coredns/coredns/pull/8367" target="_blank">https://github.com/coredns/coredns/pull/8367</a>)
+plugin/file: Fix panic on zero-valued SOA refresh (<a href="https://github.com/coredns/coredns/pull/8276" target="_blank">https://github.com/coredns/coredns/pull/8276</a>)
+plugin/file: Handle empty non-terminal wildcard sources (<a href="https://github.com/coredns/coredns/pull/8386" target="_blank">https://github.com/coredns/coredns/pull/8386</a>)
+plugin/file: Resolve each additional section target only once (<a href="https://github.com/coredns/coredns/pull/8286" target="_blank">https://github.com/coredns/coredns/pull/8286</a>)
+plugin/file: Return referrals after alias resolution (<a href="https://github.com/coredns/coredns/pull/8341" target="_blank">https://github.com/coredns/coredns/pull/8341</a>)
+plugin/file: Run additional processing for CNAME/DNAME answers (<a href="https://github.com/coredns/coredns/pull/8337" target="_blank">https://github.com/coredns/coredns/pull/8337</a>)
+plugin/file: Stop self-referential DNAME loops (<a href="https://github.com/coredns/coredns/pull/8418" target="_blank">https://github.com/coredns/coredns/pull/8418</a>)
+plugin/forward: Add http(2) host/authority header and TO server resolution (<a href="https://github.com/coredns/coredns/pull/8233" target="_blank">https://github.com/coredns/coredns/pull/8233</a>)
+plugin/forward: Cap default connect attempts (<a href="https://github.com/coredns/coredns/pull/8365" target="_blank">https://github.com/coredns/coredns/pull/8365</a>)
+plugin/forward: Fast-path string comparison in isAllowedDomain (<a href="https://github.com/coredns/coredns/pull/8385" target="_blank">https://github.com/coredns/coredns/pull/8385</a>)
+plugin/forward: Fix incorrect failover counter reset (<a href="https://github.com/coredns/coredns/pull/8277" target="_blank">https://github.com/coredns/coredns/pull/8277</a>)
+plugin/forward: Fix incorrect retry of local DNS message serialization failures (<a href="https://github.com/coredns/coredns/pull/8313" target="_blank">https://github.com/coredns/coredns/pull/8313</a>)
+plugin/forward: Fix issue in DoH health checks used a default TLS instead of the configured CA (<a href="https://github.com/coredns/coredns/pull/8279" target="_blank">https://github.com/coredns/coredns/pull/8279</a>)
+plugin/forward: Fix UDP forwarding so a malformed upstream datagram wont block valid ones later (<a href="https://github.com/coredns/coredns/pull/8287" target="_blank">https://github.com/coredns/coredns/pull/8287</a>)
+plugin/hosts: Make unsupported type fallthrough opt-in (<a href="https://github.com/coredns/coredns/pull/8282" target="_blank">https://github.com/coredns/coredns/pull/8282</a>)
+plugin/hosts: Pre-convert Origins to plugin.Zones in setup (<a href="https://github.com/coredns/coredns/pull/8383" target="_blank">https://github.com/coredns/coredns/pull/8383</a>)
+plugin/kubernetes: Add support for topology-aware headless services via &ldquo;az-pinned&rdquo; subdomains (<a href="https://github.com/coredns/coredns/pull/8388" target="_blank">https://github.com/coredns/coredns/pull/8388</a>)
+plugin/kubernetes: Add tests for endpoint/service-import equivalence checks (<a href="https://github.com/coredns/coredns/pull/8368" target="_blank">https://github.com/coredns/coredns/pull/8368</a>)
+plugin/kubernetes: Copy Labels in Pod.DeepCopyObject (<a href="https://github.com/coredns/coredns/pull/8415" target="_blank">https://github.com/coredns/coredns/pull/8415</a>)
+plugin/kubernetes: Pre-allocate search path slice capacity in AutoPath (<a href="https://github.com/coredns/coredns/pull/8381" target="_blank">https://github.com/coredns/coredns/pull/8381</a>)
+plugin/kubernetes: Preallocate slice capacities in controller query lookups (<a href="https://github.com/coredns/coredns/pull/8343" target="_blank">https://github.com/coredns/coredns/pull/8343</a>)
+plugin/kubernetes: Short-circuit matchPortAndProtocol and fast-path string match (<a href="https://github.com/coredns/coredns/pull/8344" target="_blank">https://github.com/coredns/coredns/pull/8344</a>)
+plugin/kubernetes: Skip zone serial bump on DNS neutral pod updates (<a href="https://github.com/coredns/coredns/pull/8338" target="_blank">https://github.com/coredns/coredns/pull/8338</a>)
+plugin/proxyproto: Apply an explicitly configured default policy evenwhen no allow list is present. (<a href="https://github.com/coredns/coredns/pull/8278" target="_blank">https://github.com/coredns/coredns/pull/8278</a>)
+plugin/rewrite: Normalize exact cname rewrite targets and preserve all records (<a href="https://github.com/coredns/coredns/pull/8285" target="_blank">https://github.com/coredns/coredns/pull/8285</a>)
+plugin/rewrite: Preserve original request during rewrites (<a href="https://github.com/coredns/coredns/pull/8235" target="_blank">https://github.com/coredns/coredns/pull/8235</a>)
+plugin/rewrite: Test EDNS0 revert with a record present and on the replace path (<a href="https://github.com/coredns/coredns/pull/8315" target="_blank">https://github.com/coredns/coredns/pull/8315</a>)
+plugin/secondary: Reset catalog members on ID change (<a href="https://github.com/coredns/coredns/pull/8281" target="_blank">https://github.com/coredns/coredns/pull/8281</a>)
+plugin/secondary: Support catalog migration and member scoping (<a href="https://github.com/coredns/coredns/pull/8288" target="_blank">https://github.com/coredns/coredns/pull/8288</a>)
+plugin/shed: Add UDP overload protection plugin (<a href="https://github.com/coredns/coredns/pull/8312" target="_blank">https://github.com/coredns/coredns/pull/8312</a>)
+plugin/timeouts: Add maxtcpqueries option to bound queries per TCP/TLS connection (<a href="https://github.com/coredns/coredns/pull/8376" target="_blank">https://github.com/coredns/coredns/pull/8376</a>)
+plugin/tls: Manage certificates with ACME DNS-01 (<a href="https://github.com/coredns/coredns/pull/8310" target="_blank">https://github.com/coredns/coredns/pull/8310</a>)
+plugin/trace: Support IPv6 service endpoints in trace plugin (<a href="https://github.com/coredns/coredns/pull/8410" target="_blank">https://github.com/coredns/coredns/pull/8410</a>)
+plugin/transfer: Collect all notify errors instead of shadowing (<a href="https://github.com/coredns/coredns/pull/8283" target="_blank">https://github.com/coredns/coredns/pull/8283</a>)</p>
+<br><h2>kubernetes-sigs/cluster-api-provider-vsphere</h2> <h3>Release notes for v1.17.0-rc.2</h3><h4>2026-08-17</h4><p>🚨 This is a RELEASE CANDIDATE. Use it only for testing purposes. If you find any bugs, file an <a href="https://github.com/kubernetes-sigs/cluster-api-provider-vsphere/issues/new" target="_blank">issue</a>.</p>
+
+<h2 id="highlights">Highlights</h2>
+
+<ul>
+<li>Cluster API provider VSphere is now using Golang 1.26, CR v0.24, CT v0.21, Cluster API v1.14</li>
+</ul>
+
+<p>Changes for CAPV Supervisor mode</p>
+
+<ul>
+<li>Introduce vm-operator v1alpha6 API - not ready for production - (#4020)</li>
+<li>Add control plane zone selection support (#4003)</li>
+<li>Add policies support to supervisor VSphereMachine (#3987)</li>
+<li>Support IPv6 and DualStack for NSX-VPC Network Provider (#4057)</li>
+<li>Support VLAN sub-interface configuration for supervisor VSphereMachine (#3956)</li>
+</ul>
+
+<p>Changes for CAPV govmomi mode</p>
+
+<ul>
+<li>Allow to configure crypto (#3749)</li>
+</ul>
+
+<p>Misc</p>
+
+<ul>
+<li>Introduce separate API module (#4054)</li>
+<li>Tune controller concurrency and cache timeout for scale (#3893)</li>
+<li>Split supervisor and govmomi feature gates, add support for gates depending on vm-operator-version (#4009)</li>
+<li>Add chained upgrade e2e test (#4014)</li>
+<li>Enable in-place updates e2e test (#4019)</li>
+<li>Add KCP adoption e2e test (#4023)</li>
+</ul>
+
+<h2 id="deprecation-warning">Deprecation Warning</h2>
+
+<p>Important:</p>
+
+<ul>
+<li>The v1beta1 API version is on track to be unserved in CAPV v1.21. All the consumers of this API version should migrate to v1beta2 ASAP.</li>
+</ul>
+
+<h2 id="changes-since-v1-17-0-rc-1">Changes since v1.17.0-rc.1</h2>
+
+<h2 id="chart-with-upwards-trend-overview">:chart_with_upwards_trend: Overview</h2>
+
+<ul>
+<li>6 new commits merged</li>
+<li>2 bugs fixed 🐛</li>
+</ul>
+
+<h2 id="bug-bug-fixes">:bug: Bug Fixes</h2>
+
+<ul>
+<li>Apply VM-wide static routes per-device in cloud-init metadata (#4133)</li>
+<li>Scope policies immutability CEL to VSphereMachine (#4146)</li>
+</ul>
+
+<h2 id="seedling-others">:seedling: Others</h2>
+
+<ul>
+<li>Bump gcb-docker-gcloud to a prod image (#4141)</li>
+<li>Bump to CAPI v1.14.0 (#4144)</li>
+<li>Bump to CPI v1.37.0-rc.0 (#4135)</li>
+<li>Start testing with Kubernetes v1.37.0-rc.0 (#4132)</li>
+</ul>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<h3 id="added">Added</h3>
+
+<p><em>Nothing has changed.</em></p>
+
+<h3 id="changed">Changed</h3>
+
+<ul>
+<li>sigs.k8s.io/cluster-api/api: v1.14.0-rc.1 → v1.14.0</li>
+<li>sigs.k8s.io/cluster-api: v1.14.0-rc.1 → v1.14.0</li>
+</ul>
+
+<h3 id="removed">Removed</h3>
+
+<p><em>Nothing has changed.</em></p>
+
+<dl>
+<dt><summary>More details about the release</summary></dt>
+</dl>
+
+<p>:warning: <strong>RELEASE CANDIDATE NOTES</strong> :warning:</p>
+
+<h2 id="highlights-1">Highlights</h2>
+
+<ul>
+<li>REPLACE ME</li>
+</ul>
+
+<h2 id="changes-since-v1-16-0">Changes since v1.16.0</h2>
+
+<h2 id="chart-with-upwards-trend-overview-1">:chart_with_upwards_trend: Overview</h2>
+
+<ul>
+<li>132 new commits merged</li>
+<li>1 breaking change :warning:</li>
+<li>15 feature additions ✨</li>
+<li>15 bugs fixed 🐛</li>
+</ul>
+
+<h2 id="warning-breaking-changes">:warning: Breaking Changes</h2>
+
+<ul>
+<li>Bump to CAPI main, Go 1.26, CR v0.24, CT v0.21 (#3992)</li>
+</ul>
+
+<h2 id="sparkles-new-features">:sparkles: New Features</h2>
+
+<ul>
+<li>Add control plane zone selection support (#4003)</li>
+<li>Add policies support to supervisor VSphereMachine (#3987)</li>
+<li>Add validation on control plane failure domain selector (#4022)</li>
+<li>Allow to configure crypto (#3749)</li>
+<li>Bump to CAPI main 18.06 (incl. new api Go module) (#4062)</li>
+<li>Bump to CAPI main 26.05.2026 &amp; enable store and fifo informer metrics (#4017)</li>
+<li>Bump vm-operator latest version to introducing v1alpha6 API (#3969)</li>
+<li>Enable in-place updates e2e test (#4019)</li>
+<li>Introduce separate API module (#4054)</li>
+<li>Introduce vm-operator v1alpha6 API (#4020)</li>
+<li>Omit apiVersion from PolicyRef (#4127)</li>
+<li>Remove YEAR from copyright header boilerplate (#4083)</li>
+<li>Support IPv6 and DualStack for NSX-VPC Network Provider (#4057)</li>
+<li>Support VLAN sub-interface configuration for supervisor VSphereMachine (#3956)</li>
+<li>Tune controller concurrency and cache timeout for scale (#3893)</li>
+</ul>
+
+<h2 id="bug-bug-fixes-1">:bug: Bug Fixes</h2>
+
+<ul>
+<li>Add conversion webhook wiring for VSphereClusterIdentity CRD (#4106)</li>
+<li>Align VM interface IPAMModes configuration with capability gating (#4085)</li>
+<li>Apply VM-wide static routes per-device in cloud-init metadata (#4133)</li>
+<li>Create VMG when VSphereMachine count greater than MD replicas (#3928)</li>
+<li>Fetch zone info from already-placed VM condition message (#3892)</li>
+<li>Fix CAPV e2e test pod CIDRs (#4073)</li>
+<li>Fix clusterctl upgrade resource version stable check (#4074)</li>
+<li>Fix duplicate prometheus port name in generated CSI cluster-template manifests (#4070)</li>
+<li>Fix image loading for KCP adoption e2e test (#4092)</li>
+<li>Fix immutability validation of VSphereMachineTemplate (#4041)</li>
+<li>Fix release notes for first pre-release (#4021)</li>
+<li>Fix vcsim VirtualMachine reconciler (#4116)</li>
+<li>Fixup e2e tests (#4071)</li>
+<li>Keep IPAddressClaim in the KCP infra adoption e2e test (#4075)</li>
+<li>Scope policies immutability CEL to VSphereMachine (#4146)</li>
+</ul>
+
+<h2 id="seedling-others-1">:seedling: Others</h2>
+
+<ul>
+<li>Add chained upgrade e2e test (#4014)</li>
+<li>Add finalizer only after we got owner/cluster (#4018)</li>
+<li>Add KCP adoption test (#4023)</li>
+<li>Bump actions for v1.16 (#3888)</li>
+<li>Bump actions for v1.17 (#4119)</li>
+<li>Bump autoscaler version used for testing (#4095)</li>
+<li>Bump CAPI to v1.13.0-beta.1 (#3911)</li>
+<li>Bump CAPI v1.13.0+ (#3957)</li>
+<li>Bump CAPI v1.13.0-rc.0 (#3924)</li>
+<li>Bump CAPI v1.13.0-rc.1 (#3945)</li>
+<li>Bump CAPI v1.13.1 (#3974)</li>
+<li>Bump CAPI v1.14.0-rc.0 (#4120)</li>
+<li>Bump CAPV to CAPI main (2026.05.05) (#3982)</li>
+<li>Bump CPI to v1.36.0 (#3965)</li>
+<li>Bump CPI to v1.36.0-beta.0 (#3903)</li>
+<li>Bump CPI to v1.36.0-rc.0 (#3938)</li>
+<li>Bump dependencies (#3943)</li>
+<li>Bump dependencies to fix CVEs (#4114)</li>
+<li>Bump envtest to v1.36.0 (#3993)</li>
+<li>Bump gcb-docker-gcloud to a prod image (#4141)</li>
+<li>Bump go v1.25.9 (#3920)</li>
+<li>Bump google.golang.org/grpc to fix CVE (#3899)</li>
+<li>Bump to CAPI main 15.05.2026 (#4007)</li>
+<li>Bump to CAPI v1.14.0 (#4144)</li>
+<li>Bump to CAPI v1.14.0-beta.0 (#4094)</li>
+<li>Bump to CAPI v1.14.0-beta.1 (#4101)</li>
+<li>Bump to CAPI v1.14.0-rc.1 (#4126)</li>
+<li>Bump to Cluster API v1.14.0-alpha.0 (#4068)</li>
+<li>Bump to CPI v1.37.0-beta.0 (#4103)</li>
+<li>Bump to CPI v1.37.0-rc.0 (#4135)</li>
+<li>Bump to Go 1.26.4 (#4044)</li>
+<li>Bump to Go v1.26.5 (#4089)</li>
+<li>Bump to kind v0.32.0 (#4032)</li>
+<li>Bump vm-operator to latest vc-9.1.0 (#3984)</li>
+<li>Cleanup unused hack/boilerplate.go.txt (#4086)</li>
+<li>Complete bump to CAPI v1.13.0-beta.1 (#3912)</li>
+<li>Declare contents: read permissions for pr-verify action (#4005)</li>
+<li>Drop local copy of topologyv1 (#4010)</li>
+<li>Fix CVE-2026-39883 (#3932)</li>
+<li>Fix link in cloudbuild.yaml&rsquo;s (#4048)</li>
+<li>Fix workflows (#4013)</li>
+<li>Improve image pre-loading via DaemonSet (#4058)</li>
+<li>Improve vm-operator versioning semantic (#3918)</li>
+<li>Make it possible to exclude CVEs with govulncheck (#3995)</li>
+<li>Migrate away from custom GitHub action approval workflow (#3917)</li>
+<li>Migrate from import boss to depguard (#4079)</li>
+<li>Only add finalizer after VSphereMachine has owner (#4008)</li>
+<li>Prepare main for 1.17 (#3979)</li>
+<li>Remove kube-rbac-proxy from vm-op 9.2 deployment (#4043)</li>
+<li>Revert &ldquo;Migrate away from custom GitHub action approval workflow&rdquo; (#4055)</li>
+<li>Set nodeDeletionTimeoutSeconds: 0 in cluster templates and e2e tests (#4077)</li>
+<li>Skip 9.2 e2e tests (#3986)</li>
+<li>Split supervisor and govmomi feature gates, add support for gates depending on vm-operator-version (#4009)</li>
+<li>Start testing against Kubernetes v1.37 (#3964)</li>
+<li>Start testing with Kubernetes v1.36.0 (#3959)</li>
+<li>Start testing with Kubernetes v1.36.0-beta.0 (#3904)</li>
+<li>Start testing with Kubernetes v1.36.0-rc.0 (#3929)</li>
+<li>Start testing with Kubernetes v1.36.0-rc.1 (#3947)</li>
+<li>Start testing with Kubernetes v1.37.0-beta.0 (#4111)</li>
+<li>Start testing with Kubernetes v1.37.0-rc.0 (#4132)</li>
+<li>Start using 1.36 OVA (#3970)</li>
+<li>Stop running make lint-api multiple times in GitHub action + align to CAPI (#4061)</li>
+<li>Stop using Cluster API v1beta1 APIs in test/ (#4056)</li>
+<li>Sync ci-e2e-lib.sh (#4037)</li>
+<li>Sync vm-op conversion code (#4052)</li>
+<li>Update naming template for CP / VSphereCluster / MD in supervisor e2e tests (#4069)</li>
+<li>Update readme for release-1.16 (#3968)</li>
+<li>Use pkgerrors as alias for github.com/pkg/errors &amp; no alias for errors (#4107)</li>
+<li>Use v1.13 release artifacts instead of staging (#3976)</li>
+<li>Validate supervisor endpoint host is IP in service discovery (#4024)</li>
+</ul>
+
+<p>:book: Additionally, there has been 1 contribution to our documentation and book. (#3953)</p>
+
+<h2 id="dependencies-1">Dependencies</h2>
+
+<h3 id="added-1">Added</h3>
+
+<ul>
+<li>github.com/clipperhouse/displaywidth: <a href="https://github.com/clipperhouse/displaywidth/tree/v0.10.0" target="_blank">v0.10.0</a></li>
+<li>github.com/clipperhouse/uax29/v2: <a href="https://github.com/clipperhouse/uax29/tree/v2.6.0" target="_blank">v2.6.0</a></li>
+<li>github.com/go-openapi/swag/cmdutils: <a href="https://github.com/go-openapi/swag/tree/cmdutils/v0.26.0" target="_blank">v0.26.0</a></li>
+<li>github.com/go-openapi/swag/conv: <a href="https://github.com/go-openapi/swag/tree/conv/v0.26.0" target="_blank">v0.26.0</a></li>
+<li>github.com/go-openapi/swag/fileutils: <a href="https://github.com/go-openapi/swag/tree/fileutils/v0.26.0" target="_blank">v0.26.0</a></li>
+<li>github.com/go-openapi/swag/jsonname: <a href="https://github.com/go-openapi/swag/tree/jsonname/v0.26.0" target="_blank">v0.26.0</a></li>
+<li>github.com/go-openapi/swag/jsonutils/fixtures_test: <a href="https://github.com/go-openapi/swag/tree/jsonutils/fixtures_test/v0.26.0" target="_blank">v0.26.0</a></li>
+<li>github.com/go-openapi/swag/jsonutils: <a href="https://github.com/go-openapi/swag/tree/jsonutils/v0.26.0" target="_blank">v0.26.0</a></li>
+<li>github.com/go-openapi/swag/loading: <a href="https://github.com/go-openapi/swag/tree/loading/v0.26.0" target="_blank">v0.26.0</a></li>
+<li>github.com/go-openapi/swag/mangling: <a href="https://github.com/go-openapi/swag/tree/mangling/v0.26.0" target="_blank">v0.26.0</a></li>
+<li>github.com/go-openapi/swag/netutils: <a href="https://github.com/go-openapi/swag/tree/netutils/v0.26.0" target="_blank">v0.26.0</a></li>
+<li>github.com/go-openapi/swag/stringutils: <a href="https://github.com/go-openapi/swag/tree/stringutils/v0.26.0" target="_blank">v0.26.0</a></li>
+<li>github.com/go-openapi/swag/typeutils: <a href="https://github.com/go-openapi/swag/tree/typeutils/v0.26.0" target="_blank">v0.26.0</a></li>
+<li>github.com/go-openapi/swag/yamlutils: <a href="https://github.com/go-openapi/swag/tree/yamlutils/v0.26.0" target="_blank">v0.26.0</a></li>
+<li>github.com/go-openapi/testify/enable/yaml/v2: <a href="https://github.com/go-openapi/testify/tree/enable/yaml/v2/v2.4.2" target="_blank">v2.4.2</a></li>
+<li>github.com/go-openapi/testify/v2: <a href="https://github.com/go-openapi/testify/tree/v2.4.2" target="_blank">v2.4.2</a></li>
+<li>github.com/vmware-tanzu/vm-operator/external/tanzu-topology: <a href="https://github.com/vmware-tanzu/vm-operator/tree/external/tanzu-topology/46d6f2c" target="_blank">46d6f2c</a></li>
+<li>k8s.io/streaming: v0.36.3</li>
+<li>sigs.k8s.io/cluster-api/api: v1.14.0</li>
+</ul>
+
+<h3 id="changed-1">Changed</h3>
+
+<ul>
+<li>github.com/GoogleCloudPlatform/opentelemetry-operations-go/detectors/gcp: <a href="https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/compare/detectors/gcp/v1.31.0...detectors/gcp/v1.32.0" target="_blank">v1.31.0 → v1.32.0</a></li>
+<li>github.com/alecthomas/units: <a href="https://github.com/alecthomas/units/compare/b94a6e3...0f3dac3" target="_blank">b94a6e3 → 0f3dac3</a></li>
+<li>github.com/antlr4-go/antlr/v4: <a href="https://github.com/antlr4-go/antlr/compare/v4.13.0...v4.13.1" target="_blank">v4.13.0 → v4.13.1</a></li>
+<li>github.com/cncf/xds/go: <a href="https://github.com/cncf/xds/compare/ee656c7...dba9d58" target="_blank">ee656c7 → dba9d58</a></li>
+<li>github.com/coredns/corefile-migration: <a href="https://github.com/coredns/corefile-migration/compare/v1.0.31...v1.0.34" target="_blank">v1.0.31 → v1.0.34</a></li>
+<li>github.com/coreos/go-oidc: <a href="https://github.com/coreos/go-oidc/compare/v2.3.0...v2.5.0" target="_blank">v2.3.0+incompatible → v2.5.0+incompatible</a></li>
+<li>github.com/coreos/go-systemd/v22: <a href="https://github.com/coreos/go-systemd/compare/v22.5.0...v22.7.0" target="_blank">v22.5.0 → v22.7.0</a></li>
+<li>github.com/envoyproxy/go-control-plane/envoy: <a href="https://github.com/envoyproxy/go-control-plane/compare/envoy/v1.36.0...envoy/v1.37.0" target="_blank">v1.36.0 → v1.37.0</a></li>
+<li>github.com/envoyproxy/protoc-gen-validate: <a href="https://github.com/envoyproxy/protoc-gen-validate/compare/v1.3.0...v1.3.3" target="_blank">v1.3.0 → v1.3.3</a></li>
+<li>github.com/fxamacker/cbor/v2: <a href="https://github.com/fxamacker/cbor/compare/v2.9.0...v2.9.1" target="_blank">v2.9.0 → v2.9.1</a></li>
+<li>github.com/go-jose/go-jose/v4: <a href="https://github.com/go-jose/go-jose/compare/v4.1.3...v4.1.4" target="_blank">v4.1.3 → v4.1.4</a></li>
+<li>github.com/go-logr/logr: <a href="https://github.com/go-logr/logr/compare/v1.4.3...v1.4.4" target="_blank">v1.4.3 → v1.4.4</a></li>
+<li>github.com/go-openapi/jsonpointer: <a href="https://github.com/go-openapi/jsonpointer/compare/v0.21.0...v0.23.1" target="_blank">v0.21.0 → v0.23.1</a></li>
+<li>github.com/go-openapi/jsonreference: <a href="https://github.com/go-openapi/jsonreference/compare/v0.20.2...v0.21.5" target="_blank">v0.20.2 → v0.21.5</a></li>
+<li>github.com/go-openapi/swag: <a href="https://github.com/go-openapi/swag/compare/v0.23.0...v0.26.0" target="_blank">v0.23.0 → v0.26.0</a></li>
+<li>github.com/golang-jwt/jwt/v5: <a href="https://github.com/golang-jwt/jwt/compare/v5.2.2...v5.3.0" target="_blank">v5.2.2 → v5.3.0</a></li>
+<li>github.com/google/cel-go: <a href="https://github.com/google/cel-go/compare/v0.26.0...v0.29.0" target="_blank">v0.26.0 → v0.29.0</a></li>
+<li>github.com/google/pprof: <a href="https://github.com/google/pprof/compare/294ebfa...545e8a4" target="_blank">294ebfa → 545e8a4</a></li>
+<li>github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus: <a href="https://github.com/grpc-ecosystem/go-grpc-middleware/compare/providers/prometheus/v1.0.1...providers/prometheus/v1.1.0" target="_blank">v1.0.1 → v1.1.0</a></li>
+<li>github.com/grpc-ecosystem/go-grpc-middleware/v2: <a href="https://github.com/grpc-ecosystem/go-grpc-middleware/compare/v2.3.0...v2.3.3" target="_blank">v2.3.0 → v2.3.3</a></li>
+<li>github.com/mattn/go-runewidth: <a href="https://github.com/mattn/go-runewidth/compare/v0.0.16...v0.0.19" target="_blank">v0.0.16 → v0.0.19</a></li>
+<li>github.com/olekukonko/errors: <a href="https://github.com/olekukonko/errors/compare/v1.1.0...v1.2.0" target="_blank">v1.1.0 → v1.2.0</a></li>
+<li>github.com/olekukonko/ll: <a href="https://github.com/olekukonko/ll/compare/v0.1.1...v0.1.6" target="_blank">v0.1.1 → v0.1.6</a></li>
+<li>github.com/olekukonko/tablewriter: <a href="https://github.com/olekukonko/tablewriter/compare/v1.0.9...v1.1.4" target="_blank">v1.0.9 → v1.1.4</a></li>
+<li>github.com/onsi/ginkgo/v2: <a href="https://github.com/onsi/ginkgo/compare/v2.28.1...v2.32.0" target="_blank">v2.28.1 → v2.32.0</a></li>
+<li>github.com/onsi/gomega: <a href="https://github.com/onsi/gomega/compare/v1.39.1...v1.42.1" target="_blank">v1.39.1 → v1.42.1</a></li>
+<li>github.com/prometheus/common: <a href="https://github.com/prometheus/common/compare/v0.66.1...v0.67.5" target="_blank">v0.66.1 → v0.67.5</a></li>
+<li>github.com/prometheus/procfs: <a href="https://github.com/prometheus/procfs/compare/v0.16.1...v0.20.1" target="_blank">v0.16.1 → v0.20.1</a></li>
+<li>github.com/vmware-tanzu/nsx-operator/pkg/apis: <a href="https://github.com/vmware-tanzu/nsx-operator/compare/pkg/apis/288a237...pkg/apis/a0f2f0b" target="_blank">288a237 → a0f2f0b</a></li>
+<li>github.com/vmware-tanzu/vm-operator/api: <a href="https://github.com/vmware-tanzu/vm-operator/compare/93918c5...46d6f2c" target="_blank">93918c5 → 46d6f2c</a></li>
+<li>github.com/vmware-tanzu/vm-operator/external/ncp: <a href="https://github.com/vmware-tanzu/vm-operator/compare/external/ncp/93918c5...external/ncp/46d6f2c" target="_blank">93918c5 → 46d6f2c</a></li>
+<li>github.com/vmware/govmomi: <a href="https://github.com/vmware/govmomi/compare/v0.53.0...v0.55.1" target="_blank">v0.53.0 → v0.55.1</a></li>
+<li>go.etcd.io/etcd/api/v3: v3.6.10 → v3.6.14</li>
+<li>go.etcd.io/etcd/client/pkg/v3: v3.6.10 → v3.6.14</li>
+<li>go.etcd.io/etcd/client/v3: v3.6.10 → v3.6.14</li>
+<li>go.etcd.io/etcd/pkg/v3: v3.6.5 → v3.6.8</li>
+<li>go.etcd.io/etcd/server/v3: v3.6.5 → v3.6.8</li>
+<li>go.opentelemetry.io/contrib/detectors/gcp: v1.39.0 → v1.43.0</li>
+<li>go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc: v0.60.0 → v0.65.0</li>
+<li>go.uber.org/zap: v1.27.1 → v1.28.0</li>
+<li>go.yaml.in/yaml/v2: v2.4.3 → v2.4.4</li>
+<li>golang.org/x/crypto: v0.50.0 → v0.54.0</li>
+<li>golang.org/x/exp: 8a7402a → 944ab1f</li>
+<li>golang.org/x/mod: v0.35.0 → v0.38.0</li>
+<li>golang.org/x/net: v0.53.0 → v0.57.0</li>
+<li>golang.org/x/sync: v0.20.0 → v0.22.0</li>
+<li>golang.org/x/sys: v0.43.0 → v0.47.0</li>
+<li>golang.org/x/telemetry: be6f6cb → 49f421f</li>
+<li>golang.org/x/term: v0.42.0 → v0.45.0</li>
+<li>golang.org/x/text: v0.36.0 → v0.40.0</li>
+<li>golang.org/x/time: v0.9.0 → v0.14.0</li>
+<li>golang.org/x/tools/go/expect: v0.1.0-deprecated → v0.1.1-deprecated</li>
+<li>golang.org/x/tools: v0.44.0 → v0.48.0</li>
+<li>google.golang.org/genproto/googleapis/api: 9d38bb4 → afd174a</li>
+<li>google.golang.org/genproto/googleapis/rpc: 9d38bb4 → afd174a</li>
+<li>google.golang.org/grpc: v1.80.0 → v1.82.1</li>
+<li>google.golang.org/protobuf: v1.36.11 → f2248ac</li>
+<li>k8s.io/api: v0.35.4 → v0.36.3</li>
+<li>k8s.io/apiextensions-apiserver: v0.35.4 → v0.36.3</li>
+<li>k8s.io/apimachinery: v0.35.4 → v0.36.3</li>
+<li>k8s.io/apiserver: v0.35.4 → v0.36.3</li>
+<li>k8s.io/client-go: v0.35.4 → v0.36.3</li>
+<li>k8s.io/cluster-bootstrap: v0.35.4 → v0.36.3</li>
+<li>k8s.io/code-generator: v0.35.4 → v0.36.3</li>
+<li>k8s.io/component-base: v0.35.4 → v0.36.3</li>
+<li>k8s.io/klog/v2: v2.130.1 → v2.140.0</li>
+<li>k8s.io/kms: v0.35.4 → v0.36.3</li>
+<li>k8s.io/kube-openapi: 589584f → 43fb72c</li>
+<li>k8s.io/utils: bc988d5 → b8788ab</li>
+<li>sigs.k8s.io/apiserver-network-proxy/konnectivity-client: v0.31.2 → v0.34.0</li>
+<li>sigs.k8s.io/cluster-api: v1.13.1 → v1.14.0</li>
+<li>sigs.k8s.io/controller-runtime: v0.23.3 → v0.24.1</li>
+<li>sigs.k8s.io/structured-merge-diff/v6: v6.4.0 → v6.4.2</li>
+</ul>
+
+<h3 id="removed-1">Removed</h3>
+
+<ul>
+<li>github.com/cenkalti/backoff/v4: <a href="https://github.com/cenkalti/backoff/tree/v4.3.0" target="_blank">v4.3.0</a></li>
+<li>github.com/creack/pty: <a href="https://github.com/creack/pty/tree/v1.1.9" target="_blank">v1.1.9</a></li>
+<li>github.com/gregjones/httpcache: <a href="https://github.com/gregjones/httpcache/tree/901d907" target="_blank">901d907</a></li>
+<li>github.com/grpc-ecosystem/go-grpc-prometheus: <a href="https://github.com/grpc-ecosystem/go-grpc-prometheus/tree/v1.2.0" target="_blank">v1.2.0</a></li>
+<li>github.com/kr/pty: <a href="https://github.com/kr/pty/tree/v1.1.1" target="_blank">v1.1.1</a></li>
+<li>github.com/rivo/uniseg: <a href="https://github.com/rivo/uniseg/tree/v0.4.7" target="_blank">v0.4.7</a></li>
+</ul>
+
+<p></details>
+<br/>
+<em>Thanks to all our contributors!</em> 😊</p>
+<br><h2>prometheus/prometheus</h2> <h3>Release notes for 3.14.0 / 2026-08-17</h3><h4>2026-08-18</h4><ul>
+<li>[CHANGE] API: Deprecate the <code>stats</code> query parameter of <code>/api/v1/query</code> and <code>/api/v1/query_range</code> for values other than <code>true</code> and <code>all</code>. Other values still enable basic statistics but now return a deprecation warning; they will be rejected in the next major release. #19124</li>
+<li>[CHANGE] API: <code>/api/v1/status/config</code> now correctly shows <code>separator: &quot;&quot;</code> and <code>replacement: &quot;&quot;</code> in relabel configs when explicitly set to empty, instead of omitting them. #18653</li>
+<li>[CHANGE] Discovery/Hetzner: Drop the <code>__meta_hetzner_datacenter</code> label for <code>hcloud</code> targets, following its removal from the Hetzner Cloud API. #19269</li>
+<li>[CHANGE] PromQL: Enable duration expressions by default. The <code>promql-duration-expr</code> feature flag is now a no-op. #19033</li>
+<li>[CHANGE] PromQL: Promote <code>first_over_time</code> to stable. It no longer requires the <code>promql-experimental-functions</code> feature flag. #19093</li>
+<li>[FEATURE] Discovery: Add Oracle Cloud Infrastructure compute service discovery (<code>oci_sd_configs</code>). #18919</li>
+<li>[FEATURE] PromQL: Add experimental <code>start_timestamp(instant-vector)</code> function returning the start timestamp of each sample in the given vector. Requires the <code>use-start-timestamps</code> feature flag. #19089</li>
+<li>[FEATURE] PromQL: Allow <code>rate()</code> and <code>increase()</code> to use start timestamps as an alternative for rate extrapolation. Hidden behind the <code>use-start-timestamps</code> feature flag. #18619</li>
+<li>[FEATURE] TSDB: Add experimental support for encoding start timestamps in histograms and float histograms. Hidden behind the <code>histograms-st-encoding</code> feature flag. #18609</li>
+<li>[ENHANCEMENT] OTLP: Emit a warning when OTLP attribute names collide into the same Prometheus label after sanitization (e.g. <code>k8s.pod.name</code> and <code>k8s_pod_name</code> both become <code>k8s_pod_name</code>), and expose the <code>prometheus_api_otlp_translation_warnings_total</code> counter labelled by <code>category</code> to track such warnings. #18957</li>
+<li>[ENHANCEMENT] Promtool: Add <code>--remote-write.path</code> flag to <code>push metrics</code> for backends that use a non-default remote-write endpoint. #19086</li>
+<li>[ENHANCEMENT] Remote write: Forward histogram start timestamps in the remote write V2 protocol. #18903</li>
+<li>[ENHANCEMENT] TSDB: Add <code>prometheus_tsdb_head_native_histogram_series</code> and <code>prometheus_tsdb_head_native_histogram_buckets</code> gauges tracking the number of native histogram series and buckets in the head. #19170</li>
+<li>[ENHANCEMENT] UI: Add syntax highlighting, autocompletion, and linting for PromQL duration expressions (<code>step()</code>, <code>range()</code>, <code>min_of()</code>, <code>max_of()</code>) in range selectors and subqueries. #18625</li>
+<li>[ENHANCEMENT] UI: Add copy button next to rule names on the Rules and Alerts pages. #18706</li>
+<li>[ENHANCEMENT] UI: Improve rule group title contrast on the Rules page. #19181</li>
+<li>[PERF] Speed up regex label matchers matching a set of literal values (e.g. <code>{job=~&quot;foo|bar|baz&quot;}</code>). #18833</li>
+<li>[PERF] Remote read: Improve remote read throughput by removing unnecessary per-write flushing. #18470</li>
+<li>[PERF] Scrape: Parse text and OpenMetrics formats without recursion, preventing stack overflow from deeply nested or malicious exposition input. #19143</li>
+<li>[PERF] Scrape: Reduce native histogram scrape parsing allocations by ~49%. #19282</li>
+<li>[PERF] TSDB: Speed up queries on series with many in-memory chunks. #18300</li>
+<li>[BUGFIX] Alerting: Fix 100% CPU usage on shutdown that could delay graceful shutdown and trigger timeout-based kills. #17859</li>
+<li>[BUGFIX] Discovery/AWS: Stop <code>promtool check config</code> from making AWS metadata service (IMDS) network calls when the <code>region</code> field is omitted in EC2, ECS, RDS, MSK, ElastiCache, and Lightsail service discovery configs. #19037</li>
+<li>[BUGFIX] Discovery/Docker: Set a request timeout for <code>docker_sd</code> and <code>dockerswarm_sd</code> on <code>unix</code>, <code>npipe</code>, and <code>tcp</code> hosts. Previously an unresponsive daemon could freeze discovery indefinitely, silently pinning targets to a stale snapshot. #19237</li>
+<li>[BUGFIX] Discovery/Docker: Fix panic in Docker Swarm service discovery when a service runs as a plugin or network-attachment. #19102</li>
+<li>[BUGFIX] Discovery/Docker: Fix discovery of IPv6-only containers. #18778</li>
+<li>[BUGFIX] PromQL: Fix case-insensitive regex label matchers silently dropping matching values. #19167</li>
+<li>[BUGFIX] PromQL: Fix <code>mad_over_time</code> returning 0 instead of <code>NaN</code> when the range contains a <code>NaN</code> sample. #19040</li>
+<li>[BUGFIX] Promtool: Accept <code>--enable-feature=promql-binop-fill-modifiers</code> in <code>check rules</code>, which previously rejected valid <code>fill()</code>/<code>fill_left()</code>/<code>fill_right()</code> expressions. #19153</li>
+<li>[BUGFIX] Remote write: Respect the <code>AZURE_FEDERATED_TOKEN_FILE</code> environment variable for workload identity authentication instead of hardcoding the token file path. #18973</li>
+<li>[BUGFIX] Rules: Clean up stale <code>rule_group_last_rule_duration_sum_seconds</code> and <code>rule_group_last_restore_duration_seconds</code> series when a rule group is removed or renamed on reload. Previously each reload leaked two series per dropped group, growing <code>/metrics</code> cardinality over time. #19107</li>
+<li>[BUGFIX] Scrape: Fix scrape manager spinning at 100% CPU on shutdown. #19149</li>
+<li>[BUGFIX] TSDB: Fix silent data loss and potential crash loop when <code>stale_series_compaction_threshold</code> is used in the config file. #19016</li>
+<li>[BUGFIX] TSDB: Fix potential data loss on restart when out-of-order ingestion is enabled and blocks are compacted. #19016</li>
+<li>[BUGFIX] TSDB: Fix <code>prometheus_tsdb_head_stale_series</code> over-counting and early eviction of series that change between float, integer histogram, and float histogram sample types. #19183</li>
+<li>[BUGFIX] TSDB: Fix goroutine and file handle leaks when Prometheus fails to open a corrupt TSDB. On Windows, the leaked directory handle also prevented TSDB directory removal. #18291</li>
+<li>[BUGFIX] TSDB: Fix out-of-order queries blocking compaction for hours, causing memory usage to grow. #19013</li>
+<li>[BUGFIX] TSDB: Fix deleted series causing missing samples and errors after restart. #19140</li>
+<li>[BUGFIX] TSDB: Fix native histogram data becoming incorrect after restart. #19202</li>
+<li>[BUGFIX] TSDB: Surface query errors that were previously silently discarded. #19120</li>
+<li>[BUGFIX] TSDB: Honour the configured float chunk encoding when compaction rewrites chunks; previously chunks encoded with <code>--enable-feature=xor2-encoding</code> could silently revert to XOR after compaction. #19145</li>
+<li>[BUGFIX] UI: Show the delete-series form on the TSDB Status page when <code>--web.enable-admin-api</code> is enabled. #19025</li>
+</ul>
+<br>
+</body>
+
+</html>
