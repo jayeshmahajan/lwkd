@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Whats new in the last week</title>
+</head>
+
+<body>
+<h1>Latest Releases for the week 2026-08-31 - 2026-09-07</h1><h2>grpc/grpc</h2> <h3>Release notes for Release v1.84.0-pre1</h3><h4>2026-09-01</h4><p>This is a prerelease of gRPC Core 1.84.0 (gimbal).</p>
+
+<p>For gRPC documentation, see <a href="https://grpc.io/" target="_blank">grpc.io</a>. For previous releases, see <a href="https://github.com/grpc/grpc/releases" target="_blank">Releases</a>.</p>
+
+<p>This prerelease contains refinements, improvements, and bug fixes.</p>
+<br><h2>containerd/containerd</h2> <h3>Release notes for containerd 2.3.5</h3><h4>2026-09-04</h4><p>Welcome to the v2.3.5 release of containerd!</p>
+
+<p>The fifth patch release for containerd 2.3 contains various fixes
+and updates including security patches.</p>
+
+<h3 id="security-updates">Security Updates</h3>
+
+<ul>
+<li><strong>containerd</strong>
+
+<ul>
+<li><a href="https://github.com/containerd/containerd/security/advisories/GHSA-7jxh-36q5-gcqv" target="_blank"><strong>CVE-2026-53495</strong></a></li>
+<li><a href="https://github.com/containerd/containerd/security/advisories/GHSA-rp3h-jf77-q9p4" target="_blank"><strong>GHSA-rp3h-jf77-q9p4</strong></a></li>
+</ul></li>
+</ul>
+
+<h3 id="highlights">Highlights</h3>
+
+<h4 id="image-distribution">Image Distribution</h4>
+
+<ul>
+<li>Apply hardening to strip sensitive authentication headers when fetching descriptor URLs (<a href="https://github.com/containerd/containerd/pull/14030" target="_blank">#14030</a>)</li>
+</ul>
+
+<h4 id="runtime">Runtime</h4>
+
+<ul>
+<li>Avoid hangs and data races when streaming container standard I/O in CRI (<a href="https://github.com/containerd/containerd/pull/14094" target="_blank">#14094</a>)</li>
+<li>Fix missing error messages in OpenTelemetry trace attributes (<a href="https://github.com/containerd/containerd/pull/14049" target="_blank">#14049</a>)</li>
+<li>Fix user and group lookup failures in container rootfs containing symlinked /etc/passwd or /etc/group (<a href="https://github.com/containerd/containerd/pull/13999" target="_blank">#13999</a>)</li>
+<li>Fix configuration loading error when drop-in configuration files have a higher version than the root configuration (<a href="https://github.com/containerd/containerd/pull/13995" target="_blank">#13995</a>)</li>
+<li>Avoid containerd startup hangs when loading shims (<a href="https://github.com/containerd/containerd/pull/13983" target="_blank">#13983</a>)</li>
+<li>Add context to error when shim delete times out (<a href="https://github.com/containerd/containerd/pull/13921" target="_blank">#13921</a>)</li>
+<li>Fix Windows Server 2022 container compatibility on host builds newer than the latest LTSC (<a href="https://github.com/containerd/platforms/pull/34" target="_blank">containerd/platforms#34</a>)</li>
+</ul>
+
+<h4 id="snapshotters">Snapshotters</h4>
+
+<ul>
+<li>Fix unpack failure for EROFS images containing the erofs OS feature (<a href="https://github.com/containerd/containerd/pull/14062" target="_blank">#14062</a>)</li>
+</ul>
+
+<p>Please try out the release binaries and report any issues at
+<a href="https://github.com/containerd/containerd/issues" target="_blank">https://github.com/containerd/containerd/issues</a>.</p>
+
+<h3 id="contributors">Contributors</h3>
+
+<ul>
+<li>Phil Estes</li>
+<li>Samuel Karp</li>
+<li>Derek McGowan</li>
+<li>Sebastiaan van Stijn</li>
+<li>Akhil Mohan</li>
+<li>Maksym Pavlenko</li>
+<li>Wei Fu</li>
+<li>Oleh Konko</li>
+<li>Austin Vazquez</li>
+<li>Jing Chen</li>
+<li>Martín Fernández</li>
+<li>Paco Xu</li>
+<li>XlabAI</li>
+<li>Yuanliang Zhang</li>
+</ul>
+
+<h3 id="changes">Changes</h3>
+
+<details><summary>33 commits</summary>
+<p>
+
+  * [`934efa5e0`](https://github.com/containerd/containerd/commit/934efa5e09193139c810bcab1fb5ca547dbb6b90) Prepare release notes for v2.3.5
+  * [`be419b070`](https://github.com/containerd/containerd/commit/be419b070c178548c8e384d8bc3c8fe0ad6f154a) Merge commit from fork
+  * [`9ec55f024`](https://github.com/containerd/containerd/commit/9ec55f024041d0641f6d79841e45c8781141ddaa) cri: cancel ExecSync IO drain on context cancellation
+  * [`84ea25bc1`](https://github.com/containerd/containerd/commit/84ea25bc1d7e9f71390ce9d647dbdec4408c05bc) Merge commit from fork
+  * [`c53577965`](https://github.com/containerd/containerd/commit/c535779652bc8d541328a36ba598088c09819b97) archive: skip redundant opaque whiteout walks
+* Fix data races and a deadlock in the byte stream helpers ([#14094](https://github.com/containerd/containerd/pull/14094))
+  * [`9f6be869c`](https://github.com/containerd/containerd/commit/9f6be869c8a6144dc66befde081d6e262b7c4c7d) Fix data races and a deadlock in the byte stream helpers
+* plugins: remove some stray logrus imports ([#14063](https://github.com/containerd/containerd/pull/14063))
+  * [`6c59399bf`](https://github.com/containerd/containerd/commit/6c59399bf07df45110770dbe28710e2e65c3e8c6) plugins: remove some stray logrus imports
+* snapshots/erofs: advertise the erofs OS feature from the snapshotter plugin ([#14062](https://github.com/containerd/containerd/pull/14062))
+  * [`f65732115`](https://github.com/containerd/containerd/commit/f65732115d1319a62fd35dc694d5fbe3045594f7) snapshots/erofs: test the advertised erofs feature platform
+  * [`5ffc2bbda`](https://github.com/containerd/containerd/commit/5ffc2bbda2a878f87b56ffa2496157f3b814fbc1) erofs: advertise the erofs OS feature platform from the snapshotter
+* update runc to v1.5.1 ([#14059](https://github.com/containerd/containerd/pull/14059))
+  * [`af445ea0a`](https://github.com/containerd/containerd/commit/af445ea0afd99c4925e5aa2c01a3210146675e2d) update runc to v1.5.1
+  * [`c077e43bd`](https://github.com/containerd/containerd/commit/c077e43bd7f2fe75284e10974cec0ff82d38024a) update runc to v1.5.0
+* vendor: github.com/containerd/platforms v1.0.0-rc.5 ([#14048](https://github.com/containerd/containerd/pull/14048))
+  * [`676a64cad`](https://github.com/containerd/containerd/commit/676a64cad58b76448d3978bc5c7c663c97f99656) vendor: github.com/containerd/platforms v1.0.0-rc.5
+* pkg/tracing: handle error and typed-nil Stringer attributes ([#14049](https://github.com/containerd/containerd/pull/14049))
+  * [`c7ffd8b00`](https://github.com/containerd/containerd/commit/c7ffd8b006b52ee329757d71430193e91b16b09d) pkg/tracing: handle error and typed-nil Stringer attributes
+* docker fetcher: strip sensitive headers on descriptor URLs ([#14030](https://github.com/containerd/containerd/pull/14030))
+  * [`58fb846d5`](https://github.com/containerd/containerd/commit/58fb846d53f212330dc6be8f0b13fdf550a741dd) core/remotes/docker: normalize descriptor URL origins
+  * [`c7625a1ff`](https://github.com/containerd/containerd/commit/c7625a1ff2826ee58fe5d8924f5612213aefa109) core/remotes/docker: strip sensitive headers on desc.urls fetch
+* update runhcs to v0.15.0-rc.4 ([#13990](https://github.com/containerd/containerd/pull/13990))
+  * [`6fbb92c33`](https://github.com/containerd/containerd/commit/6fbb92c33c58952735577e8943adc39a8528b888) update runhcs to v0.15.0-rc.4
+* pkg/oci: resolve rootfs symlinks for user lookup ([#13999](https://github.com/containerd/containerd/pull/13999))
+  * [`53bf030ea`](https://github.com/containerd/containerd/commit/53bf030ea230c8c6c7b2a74f49b4860950b1af93) pkg/oci: resolve rootfs symlinks for user lookup
+* Revert "add check on version of drop in configs" ([#13995](https://github.com/containerd/containerd/pull/13995))
+  * [`7790c4c21`](https://github.com/containerd/containerd/commit/7790c4c2108ff6667e6a222cb3c9a7a02bc459ec) ensure that the final config version is the higest in the config list
+  * [`1125b053f`](https://github.com/containerd/containerd/commit/1125b053f59ed3d4cacc07d1b6cb9e4da17d7fc7) Revert "add check on version of drop in configs"
+* fix(runtime): apply load timeout to load shim ([#13983](https://github.com/containerd/containerd/pull/13983))
+  * [`460c47b28`](https://github.com/containerd/containerd/commit/460c47b28dbc0f7ef463c94129489532fd708290) fix(runtime): bound shim loading with the load timeout
+* Add more context to the shim delete error ([#13921](https://github.com/containerd/containerd/pull/13921))
+  * [`7f97bc122`](https://github.com/containerd/containerd/commit/7f97bc1220b50dab542a88b39b09e7ac78ffda42) Add more context to the shim delete error
+</p>
+</details>
+
+<h3 id="changes-from-containerd-platforms">Changes from containerd/platforms</h3>
+
+<details><summary>2 commits</summary>
+<p>
+
+* Fix WS2022 compat on hosts past the latest LTSC ([containerd/platforms#34](https://github.com/containerd/platforms/pull/34))
+  * [`bacc690`](https://github.com/containerd/platforms/commit/bacc69061152115965f5b17fa59dc4e051ba8dc3) Fix WS2022 compat on hosts past the latest LTSC
+</p>
+</details>
+
+<h3 id="dependency-changes">Dependency Changes</h3>
+
+<ul>
+<li><strong>github.com/containerd/platforms</strong>  v1.0.0-rc.4 -&gt; v1.0.0-rc.5</li>
+</ul>
+
+<p>Previous release can be found at <a href="https://github.com/containerd/containerd/releases/tag/v2.3.4" target="_blank">v2.3.4</a></p>
+
+<h3 id="which-file-should-i-download">Which file should I download?</h3>
+
+<ul>
+<li><code>containerd-&lt;VERSION&gt;-&lt;OS&gt;-&lt;ARCH&gt;.tar.gz</code>:         ✅Recommended. Dynamically linked with glibc 2.35 (Ubuntu 22.04).</li>
+<li><code>containerd-static-&lt;VERSION&gt;-&lt;OS&gt;-&lt;ARCH&gt;.tar.gz</code>:  Statically linked. Expected to be used on Linux distributions that do not use glibc &gt;= 2.35. Not position-independent.</li>
+</ul>
+
+<p>In addition to containerd, typically you will have to install <a href="https://github.com/opencontainers/runc/releases" target="_blank">runc</a>
+and <a href="https://github.com/containernetworking/plugins/releases" target="_blank">CNI plugins</a> from their official sites too.</p>
+
+<p>See also the <a href="https://github.com/containerd/containerd/blob/main/docs/getting-started.md" target="_blank">Getting Started</a> documentation.</p>
+<br><h3>Release notes for containerd 2.2.8</h3><h4>2026-09-04</h4><p>Welcome to the v2.2.8 release of containerd!</p>
+
+<p>The eighth patch release for containerd 2.2 contains various fixes
+and updates including security patches.</p>
+
+<h3 id="security-updates">Security Updates</h3>
+
+<ul>
+<li><strong>containerd</strong>
+
+<ul>
+<li><a href="https://github.com/containerd/containerd/security/advisories/GHSA-7jxh-36q5-gcqv" target="_blank"><strong>CVE-2026-53495</strong></a></li>
+<li><a href="https://github.com/containerd/containerd/security/advisories/GHSA-rp3h-jf77-q9p4" target="_blank"><strong>GHSA-rp3h-jf77-q9p4</strong></a></li>
+</ul></li>
+</ul>
+
+<h3 id="highlights">Highlights</h3>
+
+<h4 id="image-distribution">Image Distribution</h4>
+
+<ul>
+<li>Apply hardening to strip sensitive authentication headers when fetching descriptor URLs (<a href="https://github.com/containerd/containerd/pull/14044" target="_blank">#14044</a>)</li>
+</ul>
+
+<h4 id="runtime">Runtime</h4>
+
+<ul>
+<li>Set SystemTemp environment variable on Windows so temp directory overrides work for SYSTEM services (<a href="https://github.com/containerd/containerd/pull/14102" target="_blank">#14102</a>)</li>
+<li>Fix user and group lookup failures in container rootfs containing symlinked /etc/passwd or /etc/group (<a href="https://github.com/containerd/containerd/pull/14005" target="_blank">#14005</a>)</li>
+</ul>
+
+<h4 id="snapshotters">Snapshotters</h4>
+
+<ul>
+<li>Fix EROFS snapshot creation failure caused by concurrent snapshot removal (<a href="https://github.com/containerd/containerd/pull/13950" target="_blank">#13950</a>)</li>
+</ul>
+
+<p>Please try out the release binaries and report any issues at
+<a href="https://github.com/containerd/containerd/issues" target="_blank">https://github.com/containerd/containerd/issues</a>.</p>
+
+<h3 id="contributors">Contributors</h3>
+
+<ul>
+<li>Samuel Karp</li>
+<li>Wei Fu</li>
+<li>Oleh Konko</li>
+<li>Chris Ayoub</li>
+<li>Maksim An</li>
+<li>XlabAI</li>
+</ul>
+
+<h3 id="changes">Changes</h3>
+
+<details><summary>14 commits</summary>
+<p>
+
+  * [`4864b1814`](https://github.com/containerd/containerd/commit/4864b18144ed746eda776112370bf83121348275) Prepare release notes for v2.2.8
+  * [`3458b7fd3`](https://github.com/containerd/containerd/commit/3458b7fd367be3981b57262c5f0c267bf0570a71) Merge commit from fork
+  * [`22ccf4314`](https://github.com/containerd/containerd/commit/22ccf4314d1fe0834f8e28f10d37d5305ef9880c) cri: cancel ExecSync IO drain on context cancellation
+  * [`2bf01ce17`](https://github.com/containerd/containerd/commit/2bf01ce17baa2cc3904f377f2cc9d815631ac704) Merge commit from fork
+  * [`45166eb82`](https://github.com/containerd/containerd/commit/45166eb828c9f8605db44299836a87b78bda701b) archive: skip redundant opaque whiteout walks
+* Set SystemTemp env var to config temp on Windows ([#14102](https://github.com/containerd/containerd/pull/14102))
+  * [`2c722ad04`](https://github.com/containerd/containerd/commit/2c722ad0418df21ff173c3f54dd3dd4713302cd8) Set SystemTemp env var to config temp on Windows
+* pkg/oci: resolve rootfs symlinks for user lookup ([#14005](https://github.com/containerd/containerd/pull/14005))
+  * [`196664bc0`](https://github.com/containerd/containerd/commit/196664bc020998bf20f3d96708edcaacc5c891d0) pkg/oci: resolve rootfs symlinks for user lookup
+* docker fetcher: strip sensitive headers on descriptor URLs ([#14044](https://github.com/containerd/containerd/pull/14044))
+  * [`6da9d9528`](https://github.com/containerd/containerd/commit/6da9d9528820212d3e0d357738acff1b34ee4188) core/remotes/docker: normalize descriptor URL origins
+  * [`4f7851699`](https://github.com/containerd/containerd/commit/4f7851699263c4b7fff39e80af3464ad07d5bdc1) core/remotes/docker: strip sensitive headers on desc.urls fetch
+* snapshots/erofs: protect snapshot staging from cleanup ([#13950](https://github.com/containerd/containerd/pull/13950))
+  * [`f7075a224`](https://github.com/containerd/containerd/commit/f7075a224aa2f17d5e4afcc3026a6ac644b5c93b) snapshots/erofs: protect snapshot staging from cleanup
+</p>
+</details>
+
+<h3 id="dependency-changes">Dependency Changes</h3>
+
+<p>This release has no dependency changes</p>
+
+<p>Previous release can be found at <a href="https://github.com/containerd/containerd/releases/tag/v2.2.7" target="_blank">v2.2.7</a></p>
+
+<h3 id="which-file-should-i-download">Which file should I download?</h3>
+
+<ul>
+<li><code>containerd-&lt;VERSION&gt;-&lt;OS&gt;-&lt;ARCH&gt;.tar.gz</code>:         ✅Recommended. Dynamically linked with glibc 2.35 (Ubuntu 22.04).</li>
+<li><code>containerd-static-&lt;VERSION&gt;-&lt;OS&gt;-&lt;ARCH&gt;.tar.gz</code>:  Statically linked. Expected to be used on Linux distributions that do not use glibc &gt;= 2.35. Not position-independent.</li>
+</ul>
+
+<p>In addition to containerd, typically you will have to install <a href="https://github.com/opencontainers/runc/releases" target="_blank">runc</a>
+and <a href="https://github.com/containernetworking/plugins/releases" target="_blank">CNI plugins</a> from their official sites too.</p>
+
+<p>See also the <a href="https://github.com/containerd/containerd/blob/main/docs/getting-started.md" target="_blank">Getting Started</a> documentation.</p>
+<br><h3>Release notes for containerd 2.0.12</h3><h4>2026-09-04</h4><p>Welcome to the v2.0.12 release of containerd!</p>
+
+<p>The twelfth patch release for containerd 2.0 contains various fixes
+and updates including security patches.</p>
+
+<h3 id="security-updates">Security Updates</h3>
+
+<ul>
+<li><strong>containerd</strong>
+
+<ul>
+<li><a href="https://github.com/containerd/containerd/security/advisories/GHSA-7jxh-36q5-gcqv" target="_blank"><strong>CVE-2026-53495</strong></a></li>
+<li><a href="https://github.com/containerd/containerd/security/advisories/GHSA-rp3h-jf77-q9p4" target="_blank"><strong>GHSA-rp3h-jf77-q9p4</strong></a></li>
+</ul></li>
+</ul>
+
+<h3 id="highlights">Highlights</h3>
+
+<h4 id="image-distribution">Image Distribution</h4>
+
+<ul>
+<li>Apply hardening to strip sensitive authentication headers when fetching descriptor URLs (<a href="https://github.com/containerd/containerd/pull/14045" target="_blank">#14045</a>)</li>
+<li>Surface OCI error bodies in registry 403 responses by falling back to GET requests (<a href="https://github.com/containerd/containerd/pull/13749" target="_blank">#13749</a>)</li>
+</ul>
+
+<h4 id="runtime">Runtime</h4>
+
+<ul>
+<li>Set SystemTemp environment variable on Windows so temp directory overrides work for SYSTEM services (<a href="https://github.com/containerd/containerd/pull/14100" target="_blank">#14100</a>)</li>
+<li>Enable log scrubbing by default on Windows (<a href="https://github.com/containerd/containerd/pull/13884" target="_blank">#13884</a>)</li>
+</ul>
+
+<p>Please try out the release binaries and report any issues at
+<a href="https://github.com/containerd/containerd/issues" target="_blank">https://github.com/containerd/containerd/issues</a>.</p>
+
+<h3 id="contributors">Contributors</h3>
+
+<ul>
+<li>Samuel Karp</li>
+<li>Maksym Pavlenko</li>
+<li>Oleh Konko</li>
+<li>Akihiro Suda</li>
+<li>Chris Henzie</li>
+<li>Maksim An</li>
+<li>Phil Estes</li>
+<li>Wei Fu</li>
+<li>XlabAI</li>
+<li>cshung</li>
+</ul>
+
+<h3 id="changes">Changes</h3>
+
+<details><summary>19 commits</summary>
+<p>
+
+  * [`d6a01e72a`](https://github.com/containerd/containerd/commit/d6a01e72ab3feb5ab9fa08413ded65981b780c1f) Prepare release notes for v2.0.12
+  * [`2e964db90`](https://github.com/containerd/containerd/commit/2e964db909676a0d16620d27b2ee6aaa67018cb2) Merge commit from fork
+  * [`eebea8c4c`](https://github.com/containerd/containerd/commit/eebea8c4c912f44b656c8295c9e6607a19b76650) cri: cancel ExecSync IO drain on context cancellation
+  * [`d93c158a6`](https://github.com/containerd/containerd/commit/d93c158a6d70b8bd5b0c7b67f7d01c92a5bb34bd) Merge commit from fork
+  * [`6c060c952`](https://github.com/containerd/containerd/commit/6c060c9525bd53ce91adc3e1736ab2017bcc689f) archive: skip redundant opaque whiteout walks
+* Set SystemTemp env var to config temp on Windows ([#14100](https://github.com/containerd/containerd/pull/14100))
+  * [`56058341c`](https://github.com/containerd/containerd/commit/56058341cb9f21ffe11b1d81099889d39c8e280e) Set SystemTemp env var to config temp on Windows
+* docker fetcher: strip sensitive headers on descriptor URLs ([#14045](https://github.com/containerd/containerd/pull/14045))
+  * [`88c95d56d`](https://github.com/containerd/containerd/commit/88c95d56da275becf89bab5b373fbfc080231e49) core/remotes/docker: normalize descriptor URL origins
+  * [`7711c3d21`](https://github.com/containerd/containerd/commit/7711c3d2188999822928251e154b8570ae9a078d) core/remotes/docker: strip sensitive headers on desc.urls fetch
+* Use ScrubLogs by default on Windows ([#13884](https://github.com/containerd/containerd/pull/13884))
+  * [`84c6caa67`](https://github.com/containerd/containerd/commit/84c6caa67d38df4e63af911679fd79b9e7e66de6) ctr: add --scrub-logs flag for Windows
+  * [`5fcdfaab2`](https://github.com/containerd/containerd/commit/5fcdfaab2222759804b2fe043dbf1f9a70a0857a) cri/config: use ScrubLogs by default on Windows
+* ci: bound Go fuzzing by execution count ([#13787](https://github.com/containerd/containerd/pull/13787))
+  * [`b452f2856`](https://github.com/containerd/containerd/commit/b452f285600b8b4827596eb9ff9dcdf46b20acbe) ci: bound Go fuzzing by execution count
+* CI: migrate Vagrant to Lima ([#13756](https://github.com/containerd/containerd/pull/13756))
+  * [`a15448870`](https://github.com/containerd/containerd/commit/a15448870588fc5f94b8aa6809d3e50b1305a396) CI: migrate Vagrant to Lima
+* remotes: surface OCI error body on HEAD 403 via GET fallback ([#13749](https://github.com/containerd/containerd/pull/13749))
+  * [`71a73c8a0`](https://github.com/containerd/containerd/commit/71a73c8a0f3818e30d873e645b0335e4aa7913ba) remotes: surface OCI error body on HEAD 403 via GET fallback
+</p>
+</details>
+
+<h3 id="dependency-changes">Dependency Changes</h3>
+
+<p>This release has no dependency changes</p>
+
+<p>Previous release can be found at <a href="https://github.com/containerd/containerd/releases/tag/v2.0.11" target="_blank">v2.0.11</a></p>
+
+<h3 id="which-file-should-i-download">Which file should I download?</h3>
+
+<ul>
+<li><code>containerd-&lt;VERSION&gt;-&lt;OS&gt;-&lt;ARCH&gt;.tar.gz</code>:         ✅Recommended. Dynamically linked with glibc 2.31 (Ubuntu 20.04).</li>
+<li><code>containerd-static-&lt;VERSION&gt;-&lt;OS&gt;-&lt;ARCH&gt;.tar.gz</code>:  Statically linked. Expected to be used on non-glibc Linux distributions. Not position-independent.</li>
+</ul>
+
+<p>In addition to containerd, typically you will have to install <a href="https://github.com/opencontainers/runc/releases" target="_blank">runc</a>
+and <a href="https://github.com/containernetworking/plugins/releases" target="_blank">CNI plugins</a> from their official sites too.</p>
+
+<p>See also the <a href="https://github.com/containerd/containerd/blob/main/docs/getting-started.md" target="_blank">Getting Started</a> documentation.</p>
+<br><h3>Release notes for containerd 1.7.35</h3><h4>2026-09-04</h4><p>Welcome to the v1.7.35 release of containerd!</p>
+
+<p>The thirty-fifth patch release for containerd 1.7 contains various fixes
+and updates including security patches.</p>
+
+<h3 id="security-updates">Security Updates</h3>
+
+<ul>
+<li><strong>containerd</strong>
+
+<ul>
+<li><a href="https://github.com/containerd/containerd/security/advisories/GHSA-7jxh-36q5-gcqv" target="_blank"><strong>CVE-2026-53495</strong></a></li>
+<li><a href="https://github.com/containerd/containerd/security/advisories/GHSA-rp3h-jf77-q9p4" target="_blank"><strong>GHSA-rp3h-jf77-q9p4</strong></a></li>
+</ul></li>
+</ul>
+
+<h3 id="highlights">Highlights</h3>
+
+<h4 id="image-distribution">Image Distribution</h4>
+
+<ul>
+<li>Apply hardening to strip sensitive authentication headers when fetching descriptor URLs (<a href="https://github.com/containerd/containerd/pull/14046" target="_blank">#14046</a>)</li>
+</ul>
+
+<h4 id="runtime">Runtime</h4>
+
+<ul>
+<li>Enable log scrubbing by default on Windows (<a href="https://github.com/containerd/containerd/pull/13889" target="_blank">#13889</a>)</li>
+</ul>
+
+<p>Please try out the release binaries and report any issues at
+<a href="https://github.com/containerd/containerd/issues" target="_blank">https://github.com/containerd/containerd/issues</a>.</p>
+
+<h3 id="contributors">Contributors</h3>
+
+<ul>
+<li>Samuel Karp</li>
+<li>Oleh Konko</li>
+<li>Chris Henzie</li>
+<li>Maksym Pavlenko</li>
+<li>Phil Estes</li>
+<li>XlabAI</li>
+</ul>
+
+<h3 id="changes">Changes</h3>
+
+<details><summary>13 commits</summary>
+<p>
+
+  * [`05aa78da3`](https://github.com/containerd/containerd/commit/05aa78da3d6bc6d9f9e056f3bb4b70347079e1c8) Prepare release notes for v1.7.35
+  * [`3bd79bb36`](https://github.com/containerd/containerd/commit/3bd79bb360ec97676c25d37c199fc5697bca368c) Merge commit from fork
+  * [`5a2a3a759`](https://github.com/containerd/containerd/commit/5a2a3a759b0d2ad8c821b33c3afc20890daf6d81) cri: cancel ExecSync IO drain on context cancellation
+  * [`323e148f2`](https://github.com/containerd/containerd/commit/323e148f23c7f9430863e7f9a0222e01f34416c0) Merge commit from fork
+  * [`9205b1903`](https://github.com/containerd/containerd/commit/9205b1903b1336d77864ee658a43b7989f56d13e) archive: skip redundant opaque whiteout walks
+* docker fetcher: strip sensitive headers on descriptor URLs ([#14046](https://github.com/containerd/containerd/pull/14046))
+  * [`b01d66349`](https://github.com/containerd/containerd/commit/b01d66349d39f72a9c56696741913bdc5f4332cd) core/remotes/docker: normalize descriptor URL origins
+  * [`b5d936dca`](https://github.com/containerd/containerd/commit/b5d936dca5e7c5980f2ed0f5114a388ad916a328) core/remotes/docker: strip sensitive headers on desc.urls fetch
+* Use ScrubLogs by default on Windows ([#13889](https://github.com/containerd/containerd/pull/13889))
+  * [`cff94ea40`](https://github.com/containerd/containerd/commit/cff94ea40f3959d5f77451b9d72365db44e8d153) ctr: add --scrub-logs flag for Windows
+  * [`544e4657d`](https://github.com/containerd/containerd/commit/544e4657dd07284323760fbed2b641b76a6374b7) cri/config: use ScrubLogs by default on Windows
+* ci: bound Go fuzzing by execution count ([#13788](https://github.com/containerd/containerd/pull/13788))
+  * [`71e00ba9c`](https://github.com/containerd/containerd/commit/71e00ba9c1fb2f39ed37b33dd122fe03b8482378) ci: bound Go fuzzing by execution count
+</p>
+</details>
+
+<h3 id="dependency-changes">Dependency Changes</h3>
+
+<p>This release has no dependency changes</p>
+
+<p>Previous release can be found at <a href="https://github.com/containerd/containerd/releases/tag/v1.7.34" target="_blank">v1.7.34</a></p>
+<br><h2>kubernetes/cloud-provider-aws</h2> <h3>Release notes for Release v1.37.0</h3><h4>2026-09-01</h4><h2 id="what-s-changed">What&rsquo;s Changed</h2>
+
+<ul>
+<li>cloudbuild: bump gcb-docker-gcloud to v20260205-38cfa9523f by @Ganiredi in <a href="https://github.com/kubernetes/cloud-provider-aws/pull/1399" target="_blank">https://github.com/kubernetes/cloud-provider-aws/pull/1399</a></li>
+<li>cloudbuild: bump timeout to 3600s by @Ganiredi in <a href="https://github.com/kubernetes/cloud-provider-aws/pull/1419" target="_blank">https://github.com/kubernetes/cloud-provider-aws/pull/1419</a></li>
+<li>cloudbuild: upgrade to E2_HIGHCPU_32 to fix session timeout by @Ganiredi in <a href="https://github.com/kubernetes/cloud-provider-aws/pull/1421" target="_blank">https://github.com/kubernetes/cloud-provider-aws/pull/1421</a></li>
+<li>add InvalidID error handling for tagging controller by @joshuakguo in <a href="https://github.com/kubernetes/cloud-provider-aws/pull/1387" target="_blank">https://github.com/kubernetes/cloud-provider-aws/pull/1387</a></li>
+<li>feat: Add BYO security group support for NLB by @mfbonfigli in <a href="https://github.com/kubernetes/cloud-provider-aws/pull/1379" target="_blank">https://github.com/kubernetes/cloud-provider-aws/pull/1379</a></li>
+<li>fix: Update golang.org/x/net to v0.55.0 by @mtulio in <a href="https://github.com/kubernetes/cloud-provider-aws/pull/1451" target="_blank">https://github.com/kubernetes/cloud-provider-aws/pull/1451</a></li>
+<li>build(deps): bump golang/govulncheck-action from 31f7c5463448f83528bd771c2d978d940080c9fd to 3fa7bd9cee2cfdf3499a8803b226e43de7b7cdb4 by @dependabot[bot] in <a href="https://github.com/kubernetes/cloud-provider-aws/pull/1453" target="_blank">https://github.com/kubernetes/cloud-provider-aws/pull/1453</a></li>
+<li>feat: expose service account annotations by @adolsalamanca in <a href="https://github.com/kubernetes/cloud-provider-aws/pull/1449" target="_blank">https://github.com/kubernetes/cloud-provider-aws/pull/1449</a></li>
+<li>Fix route-controller by fanning out getInstancesByIDs through the batcher by @babyhuey in <a href="https://github.com/kubernetes/cloud-provider-aws/pull/1388" target="_blank">https://github.com/kubernetes/cloud-provider-aws/pull/1388</a></li>
+<li>Narrow CLB BYO-SG cleanup revoke to the matching UserIdGroupPair by @snarkychef in <a href="https://github.com/kubernetes/cloud-provider-aws/pull/1473" target="_blank">https://github.com/kubernetes/cloud-provider-aws/pull/1473</a></li>
+<li>1.37-beta.0 dependencies bump by @joshuakguo in <a href="https://github.com/kubernetes/cloud-provider-aws/pull/1476" target="_blank">https://github.com/kubernetes/cloud-provider-aws/pull/1476</a></li>
+<li>fix: invalid/deleted instance handling hardening by @joshuakguo in <a href="https://github.com/kubernetes/cloud-provider-aws/pull/1474" target="_blank">https://github.com/kubernetes/cloud-provider-aws/pull/1474</a></li>
+<li>e2e: increase BYO SG deletion timeout from 2 to 6 minutes by @mfbonfigli in <a href="https://github.com/kubernetes/cloud-provider-aws/pull/1478" target="_blank">https://github.com/kubernetes/cloud-provider-aws/pull/1478</a></li>
+<li>docs: add external load balancer management documentation by @hugolevino in <a href="https://github.com/kubernetes/cloud-provider-aws/pull/1460" target="_blank">https://github.com/kubernetes/cloud-provider-aws/pull/1460</a></li>
+<li>Add terminal AWS API error metric (count per logical call, not per attempt) by @snarkychef in <a href="https://github.com/kubernetes/cloud-provider-aws/pull/1479" target="_blank">https://github.com/kubernetes/cloud-provider-aws/pull/1479</a></li>
+<li>1.37 GA dependencies bump by @joshuakguo in <a href="https://github.com/kubernetes/cloud-provider-aws/pull/1482" target="_blank">https://github.com/kubernetes/cloud-provider-aws/pull/1482</a></li>
+<li>Release 1.37.0 by @kmala in <a href="https://github.com/kubernetes/cloud-provider-aws/pull/1483" target="_blank">https://github.com/kubernetes/cloud-provider-aws/pull/1483</a></li>
+</ul>
+
+<h2 id="new-contributors">New Contributors</h2>
+
+<ul>
+<li>@mfbonfigli made their first contribution in <a href="https://github.com/kubernetes/cloud-provider-aws/pull/1379" target="_blank">https://github.com/kubernetes/cloud-provider-aws/pull/1379</a></li>
+<li>@adolsalamanca made their first contribution in <a href="https://github.com/kubernetes/cloud-provider-aws/pull/1449" target="_blank">https://github.com/kubernetes/cloud-provider-aws/pull/1449</a></li>
+<li>@babyhuey made their first contribution in <a href="https://github.com/kubernetes/cloud-provider-aws/pull/1388" target="_blank">https://github.com/kubernetes/cloud-provider-aws/pull/1388</a></li>
+<li>@hugolevino made their first contribution in <a href="https://github.com/kubernetes/cloud-provider-aws/pull/1460" target="_blank">https://github.com/kubernetes/cloud-provider-aws/pull/1460</a></li>
+</ul>
+
+<p><strong>Full Changelog</strong>: <a href="https://github.com/kubernetes/cloud-provider-aws/compare/v1.36.1...v1.37.0" target="_blank">https://github.com/kubernetes/cloud-provider-aws/compare/v1.36.1&hellip;v1.37.0</a></p>
+<br><h2>kubernetes/cloud-provider-openstack</h2> <h3>Release notes for openstack-cinder-csi-2.36.3</h3><h4>2026-09-05</h4><p>Cinder CSI Chart for OpenStack</p>
+<br><h2>kubernetes/cloud-provider-vsphere</h2> <h3>Release notes for vsphere-cpi-chart-1.37.0</h3><h4>2026-08-31</h4><p>A Helm chart for vSphere Cloud Provider Interface Manager (CPI)</p>
+<br><h2>kubernetes/minikube</h2> <h3>Release notes for v1.39.0</h3><h4>2026-09-02</h4><p>📣😀 <strong>Please fill out our <a href="https://forms.gle/Gg3hG5ZySw8c1C24A" target="_blank">fast 5-question survey</a></strong> so that we can learn how &amp; why you use minikube, and what improvements we should make. Thank you! 💃🎉</p>
+
+<h2 id="release-notes">Release Notes</h2>
+
+<h2 id="version-1-39-0-2026-09-01">Version 1.39.0 - 2026-09-01</h2>
+
+<h3 id="highlights">Highlights</h3>
+
+<ul>
+<li>Add support for Kubernetes v1.36 and v1.37 (default: v1.37.0)</li>
+<li>Default container runtime is now containerd</li>
+<li>Add Traefik Helm-based ingress addon</li>
+<li>VirtualBox driver now supports Apple Silicon (VirtualBox 7.1+)</li>
+</ul>
+
+<h3 id="features">Features</h3>
+
+<ul>
+<li>Add support for Kubernetes v1.36 and v1.37 (default: v1.37.0) (<a href="https://github.com/kubernetes/minikube/pull/23567" target="_blank">#23567</a>, <a href="https://github.com/kubernetes/minikube/pull/23596" target="_blank">#23596</a>)</li>
+<li>Add Traefik Helm-based addon (<a href="https://github.com/kubernetes/minikube/pull/23225" target="_blank">#23225</a>)</li>
+<li>Add Helm to minikube ISO (<a href="https://github.com/kubernetes/minikube/pull/23420" target="_blank">#23420</a>)</li>
+<li>Upgrade default guest Helm client to Helm 4 (<a href="https://github.com/kubernetes/minikube/pull/23383" target="_blank">#23383</a>)</li>
+<li>Add configurable DNS servers for VM drivers (<a href="https://github.com/kubernetes/minikube/pull/23069" target="_blank">#23069</a>)</li>
+<li>Add <code>--mdns</code> flag to enable mDNS on every VM start (<a href="https://github.com/kubernetes/minikube/pull/22964" target="_blank">#22964</a>, <a href="https://github.com/kubernetes/minikube/pull/23208" target="_blank">#23208</a>)</li>
+<li>drivers: Use deterministic MAC addresses (<a href="https://github.com/kubernetes/minikube/pull/23172" target="_blank">#23172</a>)</li>
+<li>vfkit: Auto-select vmnet-shared network when available (<a href="https://github.com/kubernetes/minikube/pull/23040" target="_blank">#23040</a>)</li>
+<li>virtualbox: Support darwin/arm64 with VirtualBox 7.1+ (<a href="https://github.com/kubernetes/minikube/pull/22861" target="_blank">#22861</a>)</li>
+<li>ISO: Add systemd-coredump for crash stack traces (<a href="https://github.com/kubernetes/minikube/pull/23064" target="_blank">#23064</a>)</li>
+<li>ISO: Enable kernel nftables (CONFIG_NF_TABLES) for knftables consumers (<a href="https://github.com/kubernetes/minikube/pull/23518" target="_blank">#23518</a>)</li>
+<li>ISO: Enable securityfs for Calico 3.32.2 (<a href="https://github.com/kubernetes/minikube/pull/23592" target="_blank">#23592</a>)</li>
+<li>ISO: Include openvswitch kernel module for aarch64 (<a href="https://github.com/kubernetes/minikube/pull/23151" target="_blank">#23151</a>)</li>
+<li>ISO: Enable CONFIG_TASK_IO_ACCOUNTING and related kernel options (<a href="https://github.com/kubernetes/minikube/pull/23271" target="_blank">#23271</a>)</li>
+<li>infra: Download preloads from GitHub as default and GCS as failover (<a href="https://github.com/kubernetes/minikube/pull/23087" target="_blank">#23087</a>)</li>
+</ul>
+
+<h3 id="performance">Performance</h3>
+
+<ul>
+<li>drivers: Start VM drivers in parallel (<a href="https://github.com/kubernetes/minikube/pull/23112" target="_blank">#23112</a>)</li>
+<li>Add <code>--vmnet-offloading</code> start flag for krunkit driver (<a href="https://github.com/kubernetes/minikube/pull/22962" target="_blank">#22962</a>)</li>
+<li>ssh: Prefer AES-GCM ciphers for external SSH client (<a href="https://github.com/kubernetes/minikube/pull/23125" target="_blank">#23125</a>)</li>
+<li>ssh: Avoid unneeded sleep when waiting for SSH server (<a href="https://github.com/kubernetes/minikube/pull/23001" target="_blank">#23001</a>)</li>
+</ul>
+
+<h3 id="bug-fixes">Bug fixes</h3>
+
+<ul>
+<li>addons: Fix Helm verification failure inside guest VMs (<a href="https://github.com/kubernetes/minikube/pull/23253" target="_blank">#23253</a>, <a href="https://github.com/kubernetes/minikube/pull/23329" target="_blank">#23329</a>)</li>
+<li>Fix kubectl exec with cri-dockerd on Kubernetes v1.36+ by disabling ExtendWebSocketsToKubelet (<a href="https://github.com/kubernetes/minikube/pull/22921" target="_blank">#22921</a>)</li>
+<li>Fix <code>--extra-config=etcd.*</code> producing invalid kubeadm config (<a href="https://github.com/kubernetes/minikube/pull/23051" target="_blank">#23051</a>)</li>
+<li>Fix logic for multi-node CNI warning. (<a href="https://github.com/kubernetes/minikube/pull/22779" target="_blank">#22779</a>)</li>
+<li>Fix SSHRunner ExitCode always returning 0 for SSH commands (<a href="https://github.com/kubernetes/minikube/pull/23364" target="_blank">#23364</a>)</li>
+<li>Fix usage string for minikube node commands. (<a href="https://github.com/kubernetes/minikube/pull/22775" target="_blank">#22775</a>)</li>
+<li>kvm: Check libvirt group membership before running virsh (<a href="https://github.com/kubernetes/minikube/pull/23369" target="_blank">#23369</a>)</li>
+<li>Fix preserve tag for registry refs with a port (<a href="https://github.com/kubernetes/minikube/pull/23228" target="_blank">#23228</a>)</li>
+<li>Use buffered channels to prevent goroutine leak on status timeout (<a href="https://github.com/kubernetes/minikube/pull/23215" target="_blank">#23215</a>)</li>
+<li>Fix warning against virtualbox only when the flag is explicit (<a href="https://github.com/kubernetes/minikube/pull/22960" target="_blank">#22960</a>)</li>
+<li>image load: Fix silent failure when loading an image used by a container (<a href="https://github.com/kubernetes/minikube/pull/23034" target="_blank">#23034</a>)</li>
+<li>node add: Use suggestMemoryAllocation instead of hardcoded 2200MB (<a href="https://github.com/kubernetes/minikube/pull/23305" target="_blank">#23305</a>)</li>
+<li>proxy: Walk RoundTripper wrappers to strip proxy on inner *http.Transport (<a href="https://github.com/kubernetes/minikube/pull/22910" target="_blank">#22910</a>)</li>
+<li>vmnet: Fix brew install path on Intel Macs and support brew bin path (<a href="https://github.com/kubernetes/minikube/pull/23039" target="_blank">#23039</a>)</li>
+<li>mount: Clarify need for bidirectional firewall rules (<a href="https://github.com/kubernetes/minikube/pull/20442" target="_blank">#20442</a>)</li>
+<li>drivers: Deduplicate DHCP lease handling on macOS (<a href="https://github.com/kubernetes/minikube/pull/23084" target="_blank">#23084</a>)</li>
+<li>hack/update: Track registry addon on the major tag (<a href="https://github.com/kubernetes/minikube/pull/23586" target="_blank">#23586</a>)</li>
+<li>hack/update: Update kong image tag to 3 (<a href="https://github.com/kubernetes/minikube/pull/23585" target="_blank">#23585</a>)</li>
+<li>ISO: Replace spaces with tabs in nerdctl-bin Buildroot package files (<a href="https://github.com/kubernetes/minikube/pull/23438" target="_blank">#23438</a>)</li>
+<li>ISO: Attempt to fix ISO build failures (<a href="https://github.com/kubernetes/minikube/pull/22879" target="_blank">#22879</a>)</li>
+<li>ISO: Fix ISO build script reliability and error handling (<a href="https://github.com/kubernetes/minikube/pull/23218" target="_blank">#23218</a>)</li>
+<li>ISO: Support building the arm64 ISO on an arm64 host (<a href="https://github.com/kubernetes/minikube/pull/22862" target="_blank">#22862</a>)</li>
+<li>ISO: Use binaries for docker buildx instead of build from source (<a href="https://github.com/kubernetes/minikube/pull/22942" target="_blank">#22942</a>)</li>
+</ul>
+
+<h3 id="breaking-changes">Breaking changes</h3>
+
+<ul>
+<li>Change default container runtime to containerd (<a href="https://github.com/kubernetes/minikube/pull/23562" target="_blank">#23562</a>)</li>
+<li>ISO/KIC: Limit support for cri-dockerd to x86 &amp; arm64 and migrate cri-dockerd to pre-compiled GitHub binaries (<a href="https://github.com/kubernetes/minikube/pull/22922" target="_blank">#22922</a>)</li>
+</ul>
+
+<h3 id="addons">Addons</h3>
+
+<ul>
+<li>Addon Headlamp: Update from v0.40.0 to v0.45.0</li>
+<li>Addon Volcano: Update from v1.14.1 to v1.15.1</li>
+<li>Addon cloud-spanner: Update from 1.5.49 to 1.5.56</li>
+<li>Addon ingress: Update from v1.14.3 to v1.15.1</li>
+<li>Addon ingress: Update kube-webhook-certgen image from v1.6.7 to v1.6.9</li>
+<li>Addon inspektor-gadget: Update from v0.49.1 to v0.55.1</li>
+<li>Addon kong: Update kong image from 3.9.1 to 3.9.3</li>
+<li>Addon kong: Update kong/kubernetes-ingress-controller image from 3.5.3 to 3.5.13</li>
+<li>Addon kubevirt: Update from v1.7.0 to v1.9.0</li>
+<li>Addon metrics-server: Update from v0.8.1 to v0.9.0</li>
+<li>Addon nvidia-device-plugin: Update from v0.18.2 to v0.20.0</li>
+<li>Addon registry: Update from 3.0.0 to 3.1.1</li>
+<li>Addon yakd: Update from 0.0.8 to 0.0.9</li>
+<li>HA (multi-control plane): Update kube-vip from v1.0.4 to v1.2.3</li>
+</ul>
+
+<h3 id="base-images">Base images</h3>
+
+<ul>
+<li>ISO: Update Buildroot to 2025.02.16</li>
+<li>ISO: Update docker-buildx from v0.33.0 to v0.36.1</li>
+<li>ISO: Update kernel from 6.6.95 to 6.6.152</li>
+<li>Kicbase/ISO: Update buildkit from v0.26.3 to v0.32.2</li>
+<li>Kicbase/ISO: Update cni-plugins from v1.9.0 to v1.9.1</li>
+<li>Kicbase/ISO: Update containerd from 2.2.1 to 2.3.4</li>
+<li>Kicbase/ISO: Update cri-dockerd from v0.4.1 to v0.4.3</li>
+<li>Kicbase/ISO: Update crun from 1.26 to 1.29.1</li>
+<li>Kicbase/ISO: Update go from 1.26.2 to 1.26.4</li>
+<li>Kicbase/ISO: Update nerdctl from 2.2.1 to 2.3.5</li>
+<li>Kicbase/ISO: Update runc from v1.4.0 to v1.5.1</li>
+<li>Kicbase: Bump debian:bookworm from 20260202 to 20260713</li>
+</ul>
+
+<h3 id="cni">CNI</h3>
+
+<ul>
+<li>CNI: Update calico from v3.31.3 to v3.32.2</li>
+<li>CNI: Update cilium from v1.19.0 to v1.20.1</li>
+<li>CNI: Update flannel from v0.28.1 to v0.28.9</li>
+<li>CNI: Update kindnetd from v20260213-ea8e5717 to v20260820-69b56db7</li>
+</ul>
+
+<h3 id="localization">Localization</h3>
+
+<ul>
+<li>Add Brazilian Portuguese language through LANGUAGE=pt-BR (<a href="https://github.com/kubernetes/minikube/pull/23062" target="_blank">#23062</a>, <a href="https://github.com/kubernetes/minikube/pull/23580" target="_blank">#23580</a>)</li>
+</ul>
+
+<h3 id="site">Site</h3>
+
+<ul>
+<li>docs: Add tutorial for running minikube on AWS EC2 (<a href="https://github.com/kubernetes/minikube/pull/23017" target="_blank">#23017</a>)</li>
+<li>docs: Fix tunnel desc link (<a href="https://github.com/kubernetes/minikube/pull/22389" target="_blank">#22389</a>)</li>
+<li>Fix ai-playground.md request limits to use the devic.es/dri (<a href="https://github.com/kubernetes/minikube/pull/23152" target="_blank">#23152</a>)</li>
+<li>Fix typos in vmnet-helper documentation (<a href="https://github.com/kubernetes/minikube/pull/22655" target="_blank">#22655</a>)</li>
+<li>Remove unnecessary comma in dashboard.md (<a href="https://github.com/kubernetes/minikube/pull/23101" target="_blank">#23101</a>)</li>
+<li>Fix copy button and code block overlap (<a href="https://github.com/kubernetes/minikube/pull/23443" target="_blank">#23443</a>)</li>
+<li>Update deployment image tag from v10 to v11 (<a href="https://github.com/kubernetes/minikube/pull/23060" target="_blank">#23060</a>)</li>
+<li>Update hyperkit to note deprecation, note Apple Silicon hypervisor alternatives (<a href="https://github.com/kubernetes/minikube/pull/23027" target="_blank">#23027</a>)</li>
+<li>Update roadmap with minikube-machine removed (<a href="https://github.com/kubernetes/minikube/pull/22763" target="_blank">#22763</a>)</li>
+</ul>
+
+<h3 id="owners">Owners</h3>
+
+<ul>
+<li>Add nirs to minikube approvers (<a href="https://github.com/kubernetes/minikube/pull/22936" target="_blank">#22936</a>)</li>
+<li>Move spowelljr from emeritus_approvers to reviewers (<a href="https://github.com/kubernetes/minikube/pull/23555" target="_blank">#23555</a>)</li>
+</ul>
+
+<h3 id="testing">Testing</h3>
+
+<ul>
+<li>Add etcd-extra-args.yaml to template generation (<a href="https://github.com/kubernetes/minikube/pull/23556" target="_blank">#23556</a>)</li>
+<li>containerd: Skip TestPreload user-image check (<a href="https://github.com/kubernetes/minikube/pull/23036" target="_blank">#23036</a>)</li>
+<li>Fix flaky TestHelmInstall: use minimum version floor (<a href="https://github.com/kubernetes/minikube/pull/23326" target="_blank">#23326</a>)</li>
+<li>helm: Improve error handling, type safety, and test clarity (<a href="https://github.com/kubernetes/minikube/pull/23348" target="_blank">#23348</a>)</li>
+<li>Fix golangci-lint v2.12.2 update &amp; verify exact checksums (<a href="https://github.com/kubernetes/minikube/pull/23009" target="_blank">#23009</a>)</li>
+<li>golangci-lint: Fix all lint errors with latest version (<a href="https://github.com/kubernetes/minikube/pull/23058" target="_blank">#23058</a>)</li>
+<li>hack/prow: Update cri-dockerd to v0.4.3 for the none-driver integration script (<a href="https://github.com/kubernetes/minikube/pull/22992" target="_blank">#22992</a>)</li>
+<li>lint: Change lint level from min to default (<a href="https://github.com/kubernetes/minikube/pull/23011" target="_blank">#23011</a>)</li>
+<li>lint: Tighten golangci-lint rules and modernize Go concurrency, sorting, and error handling (<a href="https://github.com/kubernetes/minikube/pull/23015" target="_blank">#23015</a>)</li>
+<li>Skip flaky integration tests to unblock CI (<a href="https://github.com/kubernetes/minikube/pull/23137" target="_blank">#23137</a>)</li>
+<li>Skip TestAddons/parallel/Registry to unblock development (<a href="https://github.com/kubernetes/minikube/pull/23049" target="_blank">#23049</a>)</li>
+<li>Skip unrelated workflows for site-only changes (<a href="https://github.com/kubernetes/minikube/pull/23133" target="_blank">#23133</a>)</li>
+<li>tests: Fix TestISOImage memory and HelmVersion path (<a href="https://github.com/kubernetes/minikube/pull/23527" target="_blank">#23527</a>)</li>
+<li>virtiofs: Build and test the package only on darwin (<a href="https://github.com/kubernetes/minikube/pull/23504" target="_blank">#23504</a>)</li>
+</ul>
+
+<h3 id="build">Build</h3>
+
+<ul>
+<li>infra: Add auto-pause-hook image build &amp; push target for registry.k8s.io in prow (<a href="https://github.com/kubernetes/minikube/pull/23021" target="_blank">#23021</a>)</li>
+<li>infra: Add storage provisioner image targets for building in staging registry.k8s.io (<a href="https://github.com/kubernetes/minikube/pull/22970" target="_blank">#22970</a>)</li>
+<li>infra: Isolate <code>gsutil</code> state directory to prevent resumable upload conflicts (<a href="https://github.com/kubernetes/minikube/pull/23020" target="_blank">#23020</a>)</li>
+<li>infra: Modularize prow image targets to its own makefile (<a href="https://github.com/kubernetes/minikube/pull/23019" target="_blank">#23019</a>)</li>
+<li>infra: Fix gh cli installation in prow kic image (<a href="https://github.com/kubernetes/minikube/pull/22978" target="_blank">#22978</a>)</li>
+<li>infra: Fix kic image build in staging registry.k8s.io (<a href="https://github.com/kubernetes/minikube/pull/22973" target="_blank">#22973</a>)</li>
+<li>hack/release_notes: Export GITHUB_TOKEN for changelog.go (<a href="https://github.com/kubernetes/minikube/pull/23602" target="_blank">#23602</a>)</li>
+</ul>
+
+<h3 id="refactoring">Refactoring</h3>
+
+<ul>
+<li>refactor: Add NodeProvisioner interface with linuxNodeProvisioner (<a href="https://github.com/kubernetes/minikube/pull/23319" target="_blank">#23319</a>)</li>
+<li>refactor: Replace Split in loops with more efficient SplitSeq (<a href="https://github.com/kubernetes/minikube/pull/23033" target="_blank">#23033</a>)</li>
+<li>refactor: Use slices.Contains to simplify code (<a href="https://github.com/kubernetes/minikube/pull/23221" target="_blank">#23221</a>)</li>
+<li>refactor: Use the built-in max/min to simplify the code (<a href="https://github.com/kubernetes/minikube/pull/23384" target="_blank">#23384</a>)</li>
+<li>Remove redundant variable declarations in for loops (<a href="https://github.com/kubernetes/minikube/pull/23113" target="_blank">#23113</a>)</li>
+</ul>
+
+<h3 id="thank-you">Thank you</h3>
+
+<p>Thank you to our contributors for this release!</p>
+
+<ul>
+<li>Abdul Rehman</li>
+<li>Abedegno</li>
+<li>Anders F Björklund</li>
+<li>Bob Sira</li>
+<li>Dean Chen</li>
+<li>Edward Vielmetti</li>
+<li>Felipe Soler</li>
+<li>Hemanth_JS</li>
+<li>Jathavedhan M</li>
+<li>Jonathan Krefting</li>
+<li>Krypt0n123</li>
+<li>Kubernetes Prow Robot</li>
+<li>Masaru Nomura</li>
+<li>Matthew Cengia</li>
+<li>Medya Ghazizadeh</li>
+<li>Nir Soffer</li>
+<li>Nitish Agarwal</li>
+<li>Noam Cohen</li>
+<li>Patrick Hagan</li>
+<li>Rafael Moura Friederick</li>
+<li>Roslaan001</li>
+<li>Ross Alexander</li>
+<li>Samrridh</li>
+<li>Santhosh Bheeman</li>
+<li>Sathvik</li>
+<li>Shriamrut V</li>
+<li>Steven Powell</li>
+<li>Swastik Baranwal</li>
+<li>Todd Liebenschutz-Jones</li>
+<li>Vladyslav Tkachenko</li>
+<li>adisivaprasad</li>
+<li>baohuy1303</li>
+<li>caltechustc</li>
+<li>coderrick</li>
+<li>daixihegu</li>
+<li>dependabot[bot]</li>
+<li>kubernetes-prow[bot]</li>
+<li>minikube-bot</li>
+<li>no</li>
+<li>pengqima</li>
+<li>pli01</li>
+<li>priya11-2</li>
+<li>solunolab</li>
+<li>tanikush</li>
+<li>thc1006</li>
+<li>tim-alt-delete</li>
+<li>wasimat404</li>
+<li>yash2006kr</li>
+<li>zjuzhongwen</li>
+<li>zxuhan7</li>
+</ul>
+
+<p>Thank you to our PR reviewers for this release!</p>
+
+<ul>
+<li>nirs (537 comments)</li>
+<li>Roslaan001 (75 comments)</li>
+<li>Copilot (57 comments)</li>
+<li>afbjorklund (32 comments)</li>
+<li>medyagh (17 comments)</li>
+<li>bobsira (8 comments)</li>
+<li>nitishagar (4 comments)</li>
+<li>obnoxxx (3 comments)</li>
+<li>abedegno (2 comments)</li>
+<li>HarnageaGabriel (1 comments)</li>
+</ul>
+
+<p>Thank you to our triage members for this release!</p>
+
+<ul>
+<li>nirs (95 comments)</li>
+<li>afbjorklund (40 comments)</li>
+<li>Roslaan001 (21 comments)</li>
+<li>OchukoWH (14 comments)</li>
+<li>bhavyaBeliever (9 comments)</li>
+</ul>
+
+<h3 id="more-info">More info</h3>
+
+<ul>
+<li><a href="https://github.com/kubernetes/minikube/compare/v1.38.1...v1.39.0" target="_blank">Commits since v1.38.1</a></li>
+<li><a href="https://minikube.sigs.k8s.io/docs/contrib/leaderboard/v1.39.0/" target="_blank">Contributions leaderboard</a></li>
+</ul>
+
+<h2 id="installation">Installation</h2>
+
+<p>See <a href="https://minikube.sigs.k8s.io/docs/start/" target="_blank">Getting Started</a></p>
+
+<h2 id="binary-checksums">Binary Checksums</h2>
+
+<p>darwin-amd64: <code>12247c653b6f1b58ac7bb634f6d1e31a1d33f7c63a6f99cbdaef160de15d2175</code>
+darwin-arm64: <code>78ad8f2f3b35a81e9c2501b1a65961c1521aa4c76fbbe1b5409053db49e29bcd</code>
+linux-amd64: <code>b738496da01be06bbaf80c688f57ce25acd3849fbb518155f3a88e03ef555aa4</code>
+linux-arm64: <code>202f331cb677761c5aec81c58472d16d65707358b9f66226210be3fe3275b1c3</code>
+linux-ppc64le: <code>4ec38cf4b985e1733b3847972228d9114c61e2ec07e3c779f433a06fd614e2aa</code>
+linux-s390x: <code>4a0f4a6d74391ea783f8c5f970347133455b2554baca1e84299855eec376b0d4</code>
+windows-amd64.exe: <code>776386465ded2cf610ae397fe302de32c44d12134b5ce7ce98ab05bd7713b360</code></p>
+
+<h2 id="iso-checksums">ISO Checksums</h2>
+
+<p>amd64: <code>e034d26e27e03e37aab43cd3560c40f955a3476cc994e8964585523a1ba86b6a</code><br>
+arm64: <code>eda54e212256fe54220a09a8fa50a43a3a314d927252df872d1c67a3773798bd</code></p>
+<br><h2>kubernetes/autoscaler</h2> <h3>Release notes for vertical-pod-autoscaler-chart-0.12.0</h3><h4>2026-09-05</h4><p>Automatically adjust resources for your workloads</p>
+<br><h2>cri-o/cri-o</h2> <h3>Release notes for v1.36.5</h3><h4>2026-09-02</h4><ul>
+<li><a href="#cri-o-v1365">CRI-O v1.36.5</a>
+
+<ul>
+<li><a href="#downloads">Downloads</a></li>
+<li><a href="#changelog-since-v1364">Changelog since v1.36.4</a>
+
+<ul>
+<li><a href="#changes-by-kind">Changes by Kind</a>
+
+<ul>
+<li><a href="#bug-or-regression">Bug or Regression</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#dependencies">Dependencies</a>
+
+<ul>
+<li><a href="#added">Added</a></li>
+<li><a href="#changed">Changed</a></li>
+<li><a href="#removed">Removed</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h1 id="cri-o-v1-36-5">CRI-O v1.36.5</h1>
+
+<p>The release notes have been generated for the commit range
+<a href="https://github.com/cri-o/cri-o/compare/v1.36.4...v1.36.5" target="_blank">v1.36.4&hellip;v1.36.5</a> on Wed, 02 Sep 2026 08:47:31 UTC.</p>
+
+<h2 id="downloads">Downloads</h2>
+
+<p>Download one of our static release bundles via our Google Cloud Bucket:</p>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.36.5.tar.gz" target="_blank">cri-o.amd64.v1.36.5.tar.gz</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.36.5.tar.gz.sha256sum" target="_blank">cri-o.amd64.v1.36.5.tar.gz.sha256sum</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.36.5.tar.gz.bundle" target="_blank">cri-o.amd64.v1.36.5.tar.gz.bundle</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.36.5.tar.gz.spdx" target="_blank">cri-o.amd64.v1.36.5.tar.gz.spdx</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.36.5.tar.gz.spdx.bundle" target="_blank">cri-o.amd64.v1.36.5.tar.gz.spdx.bundle</a></li>
+</ul></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.36.5.tar.gz" target="_blank">cri-o.arm64.v1.36.5.tar.gz</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.36.5.tar.gz.sha256sum" target="_blank">cri-o.arm64.v1.36.5.tar.gz.sha256sum</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.36.5.tar.gz.bundle" target="_blank">cri-o.arm64.v1.36.5.tar.gz.bundle</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.36.5.tar.gz.spdx" target="_blank">cri-o.arm64.v1.36.5.tar.gz.spdx</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.36.5.tar.gz.spdx.bundle" target="_blank">cri-o.arm64.v1.36.5.tar.gz.spdx.bundle</a></li>
+</ul></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.36.5.tar.gz" target="_blank">cri-o.ppc64le.v1.36.5.tar.gz</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.36.5.tar.gz.sha256sum" target="_blank">cri-o.ppc64le.v1.36.5.tar.gz.sha256sum</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.36.5.tar.gz.bundle" target="_blank">cri-o.ppc64le.v1.36.5.tar.gz.bundle</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.36.5.tar.gz.spdx" target="_blank">cri-o.ppc64le.v1.36.5.tar.gz.spdx</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.36.5.tar.gz.spdx.bundle" target="_blank">cri-o.ppc64le.v1.36.5.tar.gz.spdx.bundle</a></li>
+</ul></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.36.5.tar.gz" target="_blank">cri-o.s390x.v1.36.5.tar.gz</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.36.5.tar.gz.sha256sum" target="_blank">cri-o.s390x.v1.36.5.tar.gz.sha256sum</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.36.5.tar.gz.bundle" target="_blank">cri-o.s390x.v1.36.5.tar.gz.bundle</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.36.5.tar.gz.spdx" target="_blank">cri-o.s390x.v1.36.5.tar.gz.spdx</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.36.5.tar.gz.spdx.bundle" target="_blank">cri-o.s390x.v1.36.5.tar.gz.spdx.bundle</a></li>
+</ul></li>
+</ul>
+
+<p>The <a href="https://openvex.dev" target="_blank">OpenVEX</a> report for this release is available at:</p>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.v1.36.5.openvex.json" target="_blank">cri-o.v1.36.5.openvex.json</a></li>
+</ul>
+
+<p>The <a href="https://slsa.dev" target="_blank">SLSA</a> provenance attestation for this release is available at:</p>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.v1.36.5.provenance.json" target="_blank">cri-o.v1.36.5.provenance.json</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.v1.36.5.provenance.json.bundle" target="_blank">cri-o.v1.36.5.provenance.json.bundle</a></li>
+</ul></li>
+</ul>
+
+<p>All release artifacts (bundles, SBOMs, VEX, and provenance) are also available as signed <a href="https://github.com/opencontainers/image-spec/blob/main/manifest.md" target="_blank">OCI artifacts</a> at <code>ghcr.io/cri-o/bundle:v1.36.5</code>.</p>
+
+<p>To verify the artifact signatures via <a href="https://github.com/sigstore/cosign" target="_blank">cosign</a>, run:</p>
+
+<pre><code class="language-console">&gt; export COSIGN_EXPERIMENTAL=1
+&gt; cosign verify-blob cri-o.amd64.v1.36.5.tar.gz \
+    --certificate-identity https://github.com/cri-o/packaging/.github/workflows/obs.yml@refs/heads/main \
+    --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+    --certificate-github-workflow-repository cri-o/packaging \
+    --certificate-github-workflow-ref refs/heads/main \
+    --bundle cri-o.amd64.v1.36.5.tar.gz.bundle
+</code></pre>
+
+<p>To verify the bill of materials (SBOM) in <a href="https://spdx.org" target="_blank">SPDX</a> format using the <a href="https://sigs.k8s.io/bom" target="_blank">bom</a> tool, run:</p>
+
+<pre><code class="language-console">&gt; tar xfz cri-o.amd64.v1.36.5.tar.gz
+&gt; bom validate -e cri-o.amd64.v1.36.5.tar.gz.spdx -d cri-o
+</code></pre>
+
+<p>To verify the <a href="https://openvex.dev" target="_blank">OpenVEX</a> vulnerability report, run:</p>
+
+<pre><code class="language-console">&gt; cosign verify-blob cri-o.v1.36.5.openvex.json \
+    --certificate-identity https://github.com/cri-o/packaging/.github/workflows/obs.yml@refs/heads/main \
+    --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+    --certificate-github-workflow-repository cri-o/packaging \
+    --certificate-github-workflow-ref refs/heads/main \
+    --bundle cri-o.v1.36.5.openvex.json.bundle
+</code></pre>
+
+<p>To verify the <a href="https://slsa.dev" target="_blank">SLSA</a> provenance attestation, run:</p>
+
+<pre><code class="language-console">&gt; cosign verify-blob cri-o.v1.36.5.provenance.json \
+    --certificate-identity https://github.com/cri-o/packaging/.github/workflows/obs.yml@refs/heads/main \
+    --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+    --certificate-github-workflow-repository cri-o/packaging \
+    --certificate-github-workflow-ref refs/heads/main \
+    --bundle cri-o.v1.36.5.provenance.json.bundle
+</code></pre>
+
+<h2 id="changelog-since-v1-36-4">Changelog since v1.36.4</h2>
+
+<h3 id="changes-by-kind">Changes by Kind</h3>
+
+<h4 id="bug-or-regression">Bug or Regression</h4>
+
+<ul>
+<li>Deduplicate concurrent image volume MountImage calls to avoid containers/storage lock serialization when many pods mount the same image volume simultaneously. (#10255, @openshift-cherrypick-robot)</li>
+<li>Fix a bug in high performance hooks where an init container would continue to hold a cpuset that could be used by a regular container in the same pod. (#10236, @openshift-cherrypick-robot)</li>
+</ul>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<h3 id="added">Added</h3>
+
+<p><em>Nothing has changed.</em></p>
+
+<h3 id="changed">Changed</h3>
+
+<p><em>Nothing has changed.</em></p>
+
+<h3 id="removed">Removed</h3>
+
+<p><em>Nothing has changed.</em></p>
+<br><h3>Release notes for v1.35.8</h3><h4>2026-09-02</h4><ul>
+<li><a href="#cri-o-v1358">CRI-O v1.35.8</a>
+
+<ul>
+<li><a href="#downloads">Downloads</a></li>
+<li><a href="#changelog-since-v1357">Changelog since v1.35.7</a></li>
+<li><a href="#dependencies">Dependencies</a>
+
+<ul>
+<li><a href="#added">Added</a></li>
+<li><a href="#changed">Changed</a></li>
+<li><a href="#removed">Removed</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h1 id="cri-o-v1-35-8">CRI-O v1.35.8</h1>
+
+<p>The release notes have been generated for the commit range
+<a href="https://github.com/cri-o/cri-o/compare/v1.35.7...v1.35.8" target="_blank">v1.35.7&hellip;v1.35.8</a> on Wed, 02 Sep 2026 08:47:36 UTC.</p>
+
+<h2 id="downloads">Downloads</h2>
+
+<p>Download one of our static release bundles via our Google Cloud Bucket:</p>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.35.8.tar.gz" target="_blank">cri-o.amd64.v1.35.8.tar.gz</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.35.8.tar.gz.sha256sum" target="_blank">cri-o.amd64.v1.35.8.tar.gz.sha256sum</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.35.8.tar.gz.bundle" target="_blank">cri-o.amd64.v1.35.8.tar.gz.bundle</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.35.8.tar.gz.spdx" target="_blank">cri-o.amd64.v1.35.8.tar.gz.spdx</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.35.8.tar.gz.spdx.bundle" target="_blank">cri-o.amd64.v1.35.8.tar.gz.spdx.bundle</a></li>
+</ul></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.35.8.tar.gz" target="_blank">cri-o.arm64.v1.35.8.tar.gz</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.35.8.tar.gz.sha256sum" target="_blank">cri-o.arm64.v1.35.8.tar.gz.sha256sum</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.35.8.tar.gz.bundle" target="_blank">cri-o.arm64.v1.35.8.tar.gz.bundle</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.35.8.tar.gz.spdx" target="_blank">cri-o.arm64.v1.35.8.tar.gz.spdx</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.35.8.tar.gz.spdx.bundle" target="_blank">cri-o.arm64.v1.35.8.tar.gz.spdx.bundle</a></li>
+</ul></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.35.8.tar.gz" target="_blank">cri-o.ppc64le.v1.35.8.tar.gz</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.35.8.tar.gz.sha256sum" target="_blank">cri-o.ppc64le.v1.35.8.tar.gz.sha256sum</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.35.8.tar.gz.bundle" target="_blank">cri-o.ppc64le.v1.35.8.tar.gz.bundle</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.35.8.tar.gz.spdx" target="_blank">cri-o.ppc64le.v1.35.8.tar.gz.spdx</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.35.8.tar.gz.spdx.bundle" target="_blank">cri-o.ppc64le.v1.35.8.tar.gz.spdx.bundle</a></li>
+</ul></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.35.8.tar.gz" target="_blank">cri-o.s390x.v1.35.8.tar.gz</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.35.8.tar.gz.sha256sum" target="_blank">cri-o.s390x.v1.35.8.tar.gz.sha256sum</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.35.8.tar.gz.bundle" target="_blank">cri-o.s390x.v1.35.8.tar.gz.bundle</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.35.8.tar.gz.spdx" target="_blank">cri-o.s390x.v1.35.8.tar.gz.spdx</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.35.8.tar.gz.spdx.bundle" target="_blank">cri-o.s390x.v1.35.8.tar.gz.spdx.bundle</a></li>
+</ul></li>
+</ul>
+
+<p>To verify the artifact signatures via <a href="https://github.com/sigstore/cosign" target="_blank">cosign</a>, run:</p>
+
+<pre><code class="language-console">&gt; export COSIGN_EXPERIMENTAL=1
+&gt; cosign verify-blob cri-o.amd64.v1.35.8.tar.gz \
+    --certificate-identity https://github.com/cri-o/packaging/.github/workflows/obs.yml@refs/heads/main \
+    --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+    --certificate-github-workflow-repository cri-o/packaging \
+    --certificate-github-workflow-ref refs/heads/main \
+    --bundle cri-o.amd64.v1.35.8.tar.gz.bundle
+</code></pre>
+
+<p>To verify the bill of materials (SBOM) in <a href="https://spdx.org" target="_blank">SPDX</a> format using the <a href="https://sigs.k8s.io/bom" target="_blank">bom</a> tool, run:</p>
+
+<pre><code class="language-console">&gt; tar xfz cri-o.amd64.v1.35.8.tar.gz
+&gt; bom validate -e cri-o.amd64.v1.35.8.tar.gz.spdx -d cri-o
+</code></pre>
+
+<h2 id="changelog-since-v1-35-7">Changelog since v1.35.7</h2>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<h3 id="added">Added</h3>
+
+<p><em>Nothing has changed.</em></p>
+
+<h3 id="changed">Changed</h3>
+
+<p><em>Nothing has changed.</em></p>
+
+<h3 id="removed">Removed</h3>
+
+<p><em>Nothing has changed.</em></p>
+<br><h3>Release notes for v1.34.13</h3><h4>2026-09-02</h4><ul>
+<li><a href="#cri-o-v13413">CRI-O v1.34.13</a>
+
+<ul>
+<li><a href="#downloads">Downloads</a></li>
+<li><a href="#changelog-since-v13412">Changelog since v1.34.12</a></li>
+<li><a href="#dependencies">Dependencies</a>
+
+<ul>
+<li><a href="#added">Added</a></li>
+<li><a href="#changed">Changed</a></li>
+<li><a href="#removed">Removed</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h1 id="cri-o-v1-34-13">CRI-O v1.34.13</h1>
+
+<p>The release notes have been generated for the commit range
+<a href="https://github.com/cri-o/cri-o/compare/v1.34.12...v1.34.13" target="_blank">v1.34.12&hellip;v1.34.13</a> on Wed, 02 Sep 2026 08:47:42 UTC.</p>
+
+<h2 id="downloads">Downloads</h2>
+
+<p>Download one of our static release bundles via our Google Cloud Bucket:</p>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.34.13.tar.gz" target="_blank">cri-o.amd64.v1.34.13.tar.gz</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.34.13.tar.gz.sha256sum" target="_blank">cri-o.amd64.v1.34.13.tar.gz.sha256sum</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.34.13.tar.gz.bundle" target="_blank">cri-o.amd64.v1.34.13.tar.gz.bundle</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.34.13.tar.gz.spdx" target="_blank">cri-o.amd64.v1.34.13.tar.gz.spdx</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.34.13.tar.gz.spdx.bundle" target="_blank">cri-o.amd64.v1.34.13.tar.gz.spdx.bundle</a></li>
+</ul></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.34.13.tar.gz" target="_blank">cri-o.arm64.v1.34.13.tar.gz</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.34.13.tar.gz.sha256sum" target="_blank">cri-o.arm64.v1.34.13.tar.gz.sha256sum</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.34.13.tar.gz.bundle" target="_blank">cri-o.arm64.v1.34.13.tar.gz.bundle</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.34.13.tar.gz.spdx" target="_blank">cri-o.arm64.v1.34.13.tar.gz.spdx</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.34.13.tar.gz.spdx.bundle" target="_blank">cri-o.arm64.v1.34.13.tar.gz.spdx.bundle</a></li>
+</ul></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.34.13.tar.gz" target="_blank">cri-o.ppc64le.v1.34.13.tar.gz</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.34.13.tar.gz.sha256sum" target="_blank">cri-o.ppc64le.v1.34.13.tar.gz.sha256sum</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.34.13.tar.gz.bundle" target="_blank">cri-o.ppc64le.v1.34.13.tar.gz.bundle</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.34.13.tar.gz.spdx" target="_blank">cri-o.ppc64le.v1.34.13.tar.gz.spdx</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.34.13.tar.gz.spdx.bundle" target="_blank">cri-o.ppc64le.v1.34.13.tar.gz.spdx.bundle</a></li>
+</ul></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.34.13.tar.gz" target="_blank">cri-o.s390x.v1.34.13.tar.gz</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.34.13.tar.gz.sha256sum" target="_blank">cri-o.s390x.v1.34.13.tar.gz.sha256sum</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.34.13.tar.gz.bundle" target="_blank">cri-o.s390x.v1.34.13.tar.gz.bundle</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.34.13.tar.gz.spdx" target="_blank">cri-o.s390x.v1.34.13.tar.gz.spdx</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.34.13.tar.gz.spdx.bundle" target="_blank">cri-o.s390x.v1.34.13.tar.gz.spdx.bundle</a></li>
+</ul></li>
+</ul>
+
+<p>To verify the artifact signatures via <a href="https://github.com/sigstore/cosign" target="_blank">cosign</a>, run:</p>
+
+<pre><code class="language-console">&gt; export COSIGN_EXPERIMENTAL=1
+&gt; cosign verify-blob cri-o.amd64.v1.34.13.tar.gz \
+    --certificate-identity https://github.com/cri-o/packaging/.github/workflows/obs.yml@refs/heads/main \
+    --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+    --certificate-github-workflow-repository cri-o/packaging \
+    --certificate-github-workflow-ref refs/heads/main \
+    --bundle cri-o.amd64.v1.34.13.tar.gz.bundle
+</code></pre>
+
+<p>To verify the bill of materials (SBOM) in <a href="https://spdx.org" target="_blank">SPDX</a> format using the <a href="https://sigs.k8s.io/bom" target="_blank">bom</a> tool, run:</p>
+
+<pre><code class="language-console">&gt; tar xfz cri-o.amd64.v1.34.13.tar.gz
+&gt; bom validate -e cri-o.amd64.v1.34.13.tar.gz.spdx -d cri-o
+</code></pre>
+
+<h2 id="changelog-since-v1-34-12">Changelog since v1.34.12</h2>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<h3 id="added">Added</h3>
+
+<p><em>Nothing has changed.</em></p>
+
+<h3 id="changed">Changed</h3>
+
+<p><em>Nothing has changed.</em></p>
+
+<h3 id="removed">Removed</h3>
+
+<p><em>Nothing has changed.</em></p>
+<br><h2>kubernetes-sigs/cluster-api</h2> <h3>Release notes for v1.14.1</h3><h4>2026-09-01</h4><h2 id="kubernetes-version-support">👌 Kubernetes version support</h2>
+
+<ul>
+<li>Management Cluster: v1.33.x -&gt; v1.37.x</li>
+<li>Workload Cluster: v1.31.x -&gt; v1.37.x</li>
+</ul>
+
+<p><a href="https://cluster-api.sigs.k8s.io/reference/versions.html" target="_blank">More information about version support can be found here</a></p>
+
+<h2 id="changes-since-v1-14-0">Changes since v1.14.0</h2>
+
+<h2 id="chart-with-upwards-trend-overview">:chart_with_upwards_trend: Overview</h2>
+
+<ul>
+<li>22 new commits merged</li>
+<li>5 bugs fixed 🐛</li>
+</ul>
+
+<h2 id="bug-bug-fixes">:bug: Bug Fixes</h2>
+
+<ul>
+<li>API: Don&rsquo;t use cache with CRD migrator (#14120)</li>
+<li>Bootstrap: Execute /etc/kubeadm.sh via /bin/bash for /etc noexec compatibility (#14136)</li>
+<li>Bootstrap: Fix ParseSecretName round-trip for purposes containing hyphens (#14135)</li>
+<li>ClusterCache: Apply Options.ClusterFilter in SetupWithManager (#14124)</li>
+<li>Conditions: Fix deprecate condition utils (#14132)</li>
+</ul>
+
+<h2 id="seedling-others">:seedling: Others</h2>
+
+<ul>
+<li>CI: Bump gcb-docker-gcloud to a prod image (#14061)</li>
+<li>Dependency: Bump corefile-migration to v1.0.35 (#14117)</li>
+<li>Dependency: Bump Go Version to 1.26.6 (#14098)</li>
+<li>e2e: Bump kind to v0.33.0 (#14152)</li>
+<li>e2e: Bump Kubernetes 1.37.0-rc.0 (#14066)</li>
+<li>e2e: Bump to Kubernetes v1.37.0 (#14142)</li>
+<li>e2e: Bump to Kubernetes v1.37.0-rc.1 (#14107)</li>
+<li>Misc: Standardize cache package imports (#14131)</li>
+<li>Testing: Bump envtest to v1.37.0 (#14148)</li>
+<li>Testing: Consider restart policy in containerHasTerminated (#14071)</li>
+<li>Testing: Start testing against Kubernetes v1.38 (#14151)</li>
+</ul>
+
+<p>:book: Additionally, there have been 6 contributions to our documentation and book. (#14060, #14073, #14074, #14112, #14150, #14153)</p>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<h3 id="added">Added</h3>
+
+<p><em>Nothing has changed.</em></p>
+
+<h3 id="changed">Changed</h3>
+
+<ul>
+<li>github.com/coredns/corefile-migration: <a href="https://github.com/coredns/corefile-migration/compare/v1.0.34...v1.0.35" target="_blank">v1.0.34 → v1.0.35</a></li>
+</ul>
+
+<h3 id="removed">Removed</h3>
+
+<p><em>Nothing has changed.</em></p>
+
+<p><em>Thanks to all our contributors!</em> 😊</p>
+<br><h2>kubernetes-sigs/cluster-api-provider-vsphere</h2> <h3>Release notes for v1.17.0</h3><h4>2026-09-02</h4><h2 id="highlights">Highlights</h2>
+
+<ul>
+<li>Cluster API provider VSphere is now using Golang 1.26, CR v0.24, CT v0.21, Cluster API v1.14</li>
+</ul>
+
+<p>Changes for CAPV Supervisor mode</p>
+
+<ul>
+<li>Introduce vm-operator v1alpha6 API - not ready for production - (#4020)</li>
+<li>Add control plane zone selection support (#4003)</li>
+<li>Add policies support to supervisor VSphereMachine (#3987)</li>
+<li>Support IPv6 and DualStack for NSX-VPC Network Provider (#4057)</li>
+<li>Support VLAN sub-interface configuration for supervisor VSphereMachine (#3956)</li>
+</ul>
+
+<p>Changes for CAPV govmomi mode</p>
+
+<ul>
+<li>Allow to configure crypto (#3749)</li>
+</ul>
+
+<p>Misc</p>
+
+<ul>
+<li>Introduce separate API module (#4054)</li>
+<li>Tune controller concurrency and cache timeout for scale (#3893)</li>
+<li>Split supervisor and govmomi feature gates, add support for gates depending on vm-operator-version (#4009)</li>
+<li>Add chained upgrade e2e test (#4014)</li>
+<li>Enable in-place updates e2e test (#4019)</li>
+<li>Add KCP adoption e2e test (#4023)</li>
+</ul>
+
+<h2 id="deprecation-warning">Deprecation Warning</h2>
+
+<p>Important:</p>
+
+<ul>
+<li>The v1beta1 API version is on track to be unserved in CAPV v1.21. All the consumers of this API version should migrate to v1beta2 ASAP.</li>
+</ul>
+
+<h2 id="changes-since-v1-16-0">Changes since v1.16.0</h2>
+
+<h2 id="chart-with-upwards-trend-overview">:chart_with_upwards_trend: Overview</h2>
+
+<ul>
+<li>144 new commits merged</li>
+<li>1 breaking change :warning:</li>
+<li>15 feature additions ✨</li>
+<li>17 bugs fixed 🐛</li>
+</ul>
+
+<h2 id="warning-breaking-changes">:warning: Breaking Changes</h2>
+
+<ul>
+<li>Bump to CAPI main, Go 1.26, CR v0.24, CT v0.21 (#3992)</li>
+</ul>
+
+<h2 id="sparkles-new-features">:sparkles: New Features</h2>
+
+<ul>
+<li>Add control plane zone selection support (#4003)</li>
+<li>Add policies support to supervisor VSphereMachine (#3987)</li>
+<li>Add validation on control plane failure domain selector (#4022)</li>
+<li>Allow to configure crypto (#3749)</li>
+<li>Bump to CAPI main 18.06 (incl. new api Go module) (#4062)</li>
+<li>Bump to CAPI main 26.05.2026 &amp; enable store and fifo informer metrics (#4017)</li>
+<li>Bump vm-operator latest version to introducing v1alpha6 API (#3969)</li>
+<li>Enable in-place updates e2e test (#4019)</li>
+<li>Introduce separate API module (#4054)</li>
+<li>Introduce vm-operator v1alpha6 API (#4020)</li>
+<li>Omit apiVersion from PolicyRef (#4127)</li>
+<li>Remove YEAR from copyright header boilerplate (#4083)</li>
+<li>Support IPv6 and DualStack for NSX-VPC Network Provider (#4057)</li>
+<li>Support VLAN sub-interface configuration for supervisor VSphereMachine (#3956)</li>
+<li>Tune controller concurrency and cache timeout for scale (#3893)</li>
+</ul>
+
+<h2 id="bug-bug-fixes">:bug: Bug Fixes</h2>
+
+<ul>
+<li>Add conversion webhook wiring for VSphereClusterIdentity CRD (#4106)</li>
+<li>Align VM interface IPAMModes configuration with capability gating (#4085)</li>
+<li>Apply VM-wide static routes per-device in cloud-init metadata (#4133)</li>
+<li>Create VMG when VSphereMachine count greater than MD replicas (#3928)</li>
+<li>Default value for graceful shutdown timeout (#4160)</li>
+<li>Don&rsquo;t use cache with CRD migrator (#4161)</li>
+<li>Fetch zone info from already-placed VM condition message (#3892)</li>
+<li>Fix CAPV e2e test pod CIDRs (#4073)</li>
+<li>Fix clusterctl upgrade resource version stable check (#4074)</li>
+<li>Fix duplicate prometheus port name in generated CSI cluster-template manifests (#4070)</li>
+<li>Fix image loading for KCP adoption e2e test (#4092)</li>
+<li>Fix immutability validation of VSphereMachineTemplate (#4041)</li>
+<li>Fix release notes for first pre-release (#4021)</li>
+<li>Fix vcsim VirtualMachine reconciler (#4116)</li>
+<li>Fixup e2e tests (#4071)</li>
+<li>Keep IPAddressClaim in the KCP infra adoption e2e test (#4075)</li>
+<li>Scope policies immutability CEL to VSphereMachine (#4146)</li>
+</ul>
+
+<h2 id="seedling-others">:seedling: Others</h2>
+
+<ul>
+<li>Add chained upgrade e2e test (#4014)</li>
+<li>Add finalizer only after we got owner/cluster (#4018)</li>
+<li>Add KCP adoption test (#4023)</li>
+<li>Bump actions for v1.16 (#3888)</li>
+<li>Bump actions for v1.17 (#4119)</li>
+<li>Bump autoscaler version used for testing (#4095)</li>
+<li>Bump CAPI to v1.13.0-beta.1 (#3911)</li>
+<li>Bump CAPI v1.13.0+ (#3957)</li>
+<li>Bump CAPI v1.13.0-rc.0 (#3924)</li>
+<li>Bump CAPI v1.13.0-rc.1 (#3945)</li>
+<li>Bump CAPI v1.13.1 (#3974)</li>
+<li>Bump CAPI v1.14.0-rc.0 (#4120)</li>
+<li>Bump CAPI v1.14.1 (#4190)</li>
+<li>Bump CAPV to CAPI main (2026.05.05) (#3982)</li>
+<li>Bump CPI to v1.36.0 (#3965)</li>
+<li>Bump CPI to v1.36.0-beta.0 (#3903)</li>
+<li>Bump CPI to v1.36.0-rc.0 (#3938)</li>
+<li>Bump CPI to v1.37.0 (#4180)</li>
+<li>Bump dependencies (#3943)</li>
+<li>Bump dependencies to fix CVEs (#4114)</li>
+<li>Bump envtest to v1.36.0 (#3993)</li>
+<li>Bump envtest to v1.37.0 (#4179)</li>
+<li>Bump gcb-docker-gcloud to a prod image (#4141)</li>
+<li>Bump go v1.25.9 (#3920)</li>
+<li>Bump google.golang.org/grpc to fix CVE (#3899)</li>
+<li>Bump KUBERNETES_VERSION_MANAGEMENT_LATEST_CI to v1.38, avoid conflicts in vsphere.yaml (#4183)</li>
+<li>Bump to CAPI main 15.05.2026 (#4007)</li>
+<li>Bump to CAPI v1.14.0 (#4144)</li>
+<li>Bump to CAPI v1.14.0-beta.0 (#4094)</li>
+<li>Bump to CAPI v1.14.0-beta.1 (#4101)</li>
+<li>Bump to CAPI v1.14.0-rc.1 (#4126)</li>
+<li>Bump to Cluster API v1.14.0-alpha.0 (#4068)</li>
+<li>Bump to CPI v1.37.0-beta.0 (#4103)</li>
+<li>Bump to CPI v1.37.0-rc.0 (#4135)</li>
+<li>Bump to Go 1.26.4 (#4044)</li>
+<li>Bump to Go 1.26.6 (#4150)</li>
+<li>Bump to Go v1.26.5 (#4089)</li>
+<li>Bump to kind v0.32.0 (#4032)</li>
+<li>Bump to Kubernetes v1.37.0 (#4168)</li>
+<li>Bump to Kubernetes v1.37.0-rc.1 (#4155)</li>
+<li>Bump vm-operator to latest vc-9.1.0 (#3984)</li>
+<li>Cleanup unused hack/boilerplate.go.txt (#4086)</li>
+<li>Complete bump to CAPI v1.13.0-beta.1 (#3912)</li>
+<li>Declare contents: read permissions for pr-verify action (#4005)</li>
+<li>Drop local copy of topologyv1 (#4010)</li>
+<li>Fix CVE-2026-39883 (#3932)</li>
+<li>Fix link in cloudbuild.yaml&rsquo;s (#4048)</li>
+<li>Fix workflows (#4013)</li>
+<li>Improve image pre-loading via DaemonSet (#4058)</li>
+<li>Improve vm-operator versioning semantic (#3918)</li>
+<li>Make it possible to exclude CVEs with govulncheck (#3995)</li>
+<li>Migrate away from custom GitHub action approval workflow (#3917)</li>
+<li>Migrate from import boss to depguard (#4079)</li>
+<li>Only add finalizer after VSphereMachine has owner (#4008)</li>
+<li>Prepare main for 1.17 (#3979)</li>
+<li>Remove kube-rbac-proxy from vm-op 9.2 deployment (#4043)</li>
+<li>Revert &ldquo;Migrate away from custom GitHub action approval workflow&rdquo; (#4055)</li>
+<li>Set nodeDeletionTimeoutSeconds: 0 in cluster templates and e2e tests (#4077)</li>
+<li>Skip 9.2 e2e tests (#3986)</li>
+<li>Split supervisor and govmomi feature gates, add support for gates depending on vm-operator-version (#4009)</li>
+<li>Start testing against Kubernetes v1.37 (#3964)</li>
+<li>Start testing Kubernetes v1.38 (#4181)</li>
+<li>Start testing with Kubernetes v1.36.0 (#3959)</li>
+<li>Start testing with Kubernetes v1.36.0-beta.0 (#3904)</li>
+<li>Start testing with Kubernetes v1.36.0-rc.0 (#3929)</li>
+<li>Start testing with Kubernetes v1.36.0-rc.1 (#3947)</li>
+<li>Start testing with Kubernetes v1.37.0-beta.0 (#4111)</li>
+<li>Start testing with Kubernetes v1.37.0-rc.0 (#4132)</li>
+<li>Start using 1.36 OVA (#3970)</li>
+<li>Stop running make lint-api multiple times in GitHub action + align to CAPI (#4061)</li>
+<li>Stop using Cluster API v1beta1 APIs in test/ (#4056)</li>
+<li>Sync ci-e2e-lib.sh (#4037)</li>
+<li>Sync vm-op conversion code (#4052)</li>
+<li>Update naming template for CP / VSphereCluster / MD in supervisor e2e tests (#4069)</li>
+<li>Update readme for release-1.16 (#3968)</li>
+<li>Use 1.37 OVA (#4176)</li>
+<li>Use pkgerrors as alias for github.com/pkg/errors &amp; no alias for errors (#4107)</li>
+<li>Use v1.13 release artifacts instead of staging (#3976)</li>
+<li>Validate supervisor endpoint host is IP in service discovery (#4024)</li>
+</ul>
+
+<p>:book: Additionally, there have been 2 contributions to our documentation and book. (#3953, #4191)</p>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<h3 id="added">Added</h3>
+
+<ul>
+<li>github.com/clipperhouse/displaywidth: <a href="https://github.com/clipperhouse/displaywidth/tree/v0.10.0" target="_blank">v0.10.0</a></li>
+<li>github.com/clipperhouse/uax29/v2: <a href="https://github.com/clipperhouse/uax29/tree/v2.6.0" target="_blank">v2.6.0</a></li>
+<li>github.com/go-openapi/swag/cmdutils: <a href="https://github.com/go-openapi/swag/tree/cmdutils/v0.26.0" target="_blank">v0.26.0</a></li>
+<li>github.com/go-openapi/swag/conv: <a href="https://github.com/go-openapi/swag/tree/conv/v0.26.0" target="_blank">v0.26.0</a></li>
+<li>github.com/go-openapi/swag/fileutils: <a href="https://github.com/go-openapi/swag/tree/fileutils/v0.26.0" target="_blank">v0.26.0</a></li>
+<li>github.com/go-openapi/swag/jsonname: <a href="https://github.com/go-openapi/swag/tree/jsonname/v0.26.0" target="_blank">v0.26.0</a></li>
+<li>github.com/go-openapi/swag/jsonutils/fixtures_test: <a href="https://github.com/go-openapi/swag/tree/jsonutils/fixtures_test/v0.26.0" target="_blank">v0.26.0</a></li>
+<li>github.com/go-openapi/swag/jsonutils: <a href="https://github.com/go-openapi/swag/tree/jsonutils/v0.26.0" target="_blank">v0.26.0</a></li>
+<li>github.com/go-openapi/swag/loading: <a href="https://github.com/go-openapi/swag/tree/loading/v0.26.0" target="_blank">v0.26.0</a></li>
+<li>github.com/go-openapi/swag/mangling: <a href="https://github.com/go-openapi/swag/tree/mangling/v0.26.0" target="_blank">v0.26.0</a></li>
+<li>github.com/go-openapi/swag/netutils: <a href="https://github.com/go-openapi/swag/tree/netutils/v0.26.0" target="_blank">v0.26.0</a></li>
+<li>github.com/go-openapi/swag/stringutils: <a href="https://github.com/go-openapi/swag/tree/stringutils/v0.26.0" target="_blank">v0.26.0</a></li>
+<li>github.com/go-openapi/swag/typeutils: <a href="https://github.com/go-openapi/swag/tree/typeutils/v0.26.0" target="_blank">v0.26.0</a></li>
+<li>github.com/go-openapi/swag/yamlutils: <a href="https://github.com/go-openapi/swag/tree/yamlutils/v0.26.0" target="_blank">v0.26.0</a></li>
+<li>github.com/go-openapi/testify/enable/yaml/v2: <a href="https://github.com/go-openapi/testify/tree/enable/yaml/v2/v2.4.2" target="_blank">v2.4.2</a></li>
+<li>github.com/go-openapi/testify/v2: <a href="https://github.com/go-openapi/testify/tree/v2.4.2" target="_blank">v2.4.2</a></li>
+<li>github.com/vmware-tanzu/vm-operator/external/tanzu-topology: <a href="https://github.com/vmware-tanzu/vm-operator/tree/external/tanzu-topology/46d6f2c" target="_blank">46d6f2c</a></li>
+<li>k8s.io/streaming: v0.36.3</li>
+<li>sigs.k8s.io/cluster-api/api: v1.14.1</li>
+</ul>
+
+<h3 id="changed">Changed</h3>
+
+<ul>
+<li>github.com/GoogleCloudPlatform/opentelemetry-operations-go/detectors/gcp: <a href="https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/compare/detectors/gcp/v1.31.0...detectors/gcp/v1.32.0" target="_blank">v1.31.0 → v1.32.0</a></li>
+<li>github.com/alecthomas/units: <a href="https://github.com/alecthomas/units/compare/b94a6e3...0f3dac3" target="_blank">b94a6e3 → 0f3dac3</a></li>
+<li>github.com/antlr4-go/antlr/v4: <a href="https://github.com/antlr4-go/antlr/compare/v4.13.0...v4.13.1" target="_blank">v4.13.0 → v4.13.1</a></li>
+<li>github.com/cncf/xds/go: <a href="https://github.com/cncf/xds/compare/ee656c7...dba9d58" target="_blank">ee656c7 → dba9d58</a></li>
+<li>github.com/coredns/corefile-migration: <a href="https://github.com/coredns/corefile-migration/compare/v1.0.31...v1.0.35" target="_blank">v1.0.31 → v1.0.35</a></li>
+<li>github.com/coreos/go-oidc: <a href="https://github.com/coreos/go-oidc/compare/v2.3.0...v2.5.0" target="_blank">v2.3.0+incompatible → v2.5.0+incompatible</a></li>
+<li>github.com/coreos/go-systemd/v22: <a href="https://github.com/coreos/go-systemd/compare/v22.5.0...v22.7.0" target="_blank">v22.5.0 → v22.7.0</a></li>
+<li>github.com/envoyproxy/go-control-plane/envoy: <a href="https://github.com/envoyproxy/go-control-plane/compare/envoy/v1.36.0...envoy/v1.37.0" target="_blank">v1.36.0 → v1.37.0</a></li>
+<li>github.com/envoyproxy/protoc-gen-validate: <a href="https://github.com/envoyproxy/protoc-gen-validate/compare/v1.3.0...v1.3.3" target="_blank">v1.3.0 → v1.3.3</a></li>
+<li>github.com/fxamacker/cbor/v2: <a href="https://github.com/fxamacker/cbor/compare/v2.9.0...v2.9.1" target="_blank">v2.9.0 → v2.9.1</a></li>
+<li>github.com/go-jose/go-jose/v4: <a href="https://github.com/go-jose/go-jose/compare/v4.1.3...v4.1.4" target="_blank">v4.1.3 → v4.1.4</a></li>
+<li>github.com/go-logr/logr: <a href="https://github.com/go-logr/logr/compare/v1.4.3...v1.4.4" target="_blank">v1.4.3 → v1.4.4</a></li>
+<li>github.com/go-openapi/jsonpointer: <a href="https://github.com/go-openapi/jsonpointer/compare/v0.21.0...v0.23.1" target="_blank">v0.21.0 → v0.23.1</a></li>
+<li>github.com/go-openapi/jsonreference: <a href="https://github.com/go-openapi/jsonreference/compare/v0.20.2...v0.21.5" target="_blank">v0.20.2 → v0.21.5</a></li>
+<li>github.com/go-openapi/swag: <a href="https://github.com/go-openapi/swag/compare/v0.23.0...v0.26.0" target="_blank">v0.23.0 → v0.26.0</a></li>
+<li>github.com/golang-jwt/jwt/v5: <a href="https://github.com/golang-jwt/jwt/compare/v5.2.2...v5.3.0" target="_blank">v5.2.2 → v5.3.0</a></li>
+<li>github.com/google/cel-go: <a href="https://github.com/google/cel-go/compare/v0.26.0...v0.29.0" target="_blank">v0.26.0 → v0.29.0</a></li>
+<li>github.com/google/pprof: <a href="https://github.com/google/pprof/compare/294ebfa...545e8a4" target="_blank">294ebfa → 545e8a4</a></li>
+<li>github.com/grpc-ecosystem/go-grpc-middleware/providers/prometheus: <a href="https://github.com/grpc-ecosystem/go-grpc-middleware/compare/providers/prometheus/v1.0.1...providers/prometheus/v1.1.0" target="_blank">v1.0.1 → v1.1.0</a></li>
+<li>github.com/grpc-ecosystem/go-grpc-middleware/v2: <a href="https://github.com/grpc-ecosystem/go-grpc-middleware/compare/v2.3.0...v2.3.3" target="_blank">v2.3.0 → v2.3.3</a></li>
+<li>github.com/mattn/go-runewidth: <a href="https://github.com/mattn/go-runewidth/compare/v0.0.16...v0.0.19" target="_blank">v0.0.16 → v0.0.19</a></li>
+<li>github.com/olekukonko/errors: <a href="https://github.com/olekukonko/errors/compare/v1.1.0...v1.2.0" target="_blank">v1.1.0 → v1.2.0</a></li>
+<li>github.com/olekukonko/ll: <a href="https://github.com/olekukonko/ll/compare/v0.1.1...v0.1.6" target="_blank">v0.1.1 → v0.1.6</a></li>
+<li>github.com/olekukonko/tablewriter: <a href="https://github.com/olekukonko/tablewriter/compare/v1.0.9...v1.1.4" target="_blank">v1.0.9 → v1.1.4</a></li>
+<li>github.com/onsi/ginkgo/v2: <a href="https://github.com/onsi/ginkgo/compare/v2.28.1...v2.32.0" target="_blank">v2.28.1 → v2.32.0</a></li>
+<li>github.com/onsi/gomega: <a href="https://github.com/onsi/gomega/compare/v1.39.1...v1.42.1" target="_blank">v1.39.1 → v1.42.1</a></li>
+<li>github.com/prometheus/common: <a href="https://github.com/prometheus/common/compare/v0.66.1...v0.67.5" target="_blank">v0.66.1 → v0.67.5</a></li>
+<li>github.com/prometheus/procfs: <a href="https://github.com/prometheus/procfs/compare/v0.16.1...v0.20.1" target="_blank">v0.16.1 → v0.20.1</a></li>
+<li>github.com/vmware-tanzu/nsx-operator/pkg/apis: <a href="https://github.com/vmware-tanzu/nsx-operator/compare/pkg/apis/288a237...pkg/apis/a0f2f0b" target="_blank">288a237 → a0f2f0b</a></li>
+<li>github.com/vmware-tanzu/vm-operator/api: <a href="https://github.com/vmware-tanzu/vm-operator/compare/93918c5...46d6f2c" target="_blank">93918c5 → 46d6f2c</a></li>
+<li>github.com/vmware-tanzu/vm-operator/external/ncp: <a href="https://github.com/vmware-tanzu/vm-operator/compare/external/ncp/93918c5...external/ncp/46d6f2c" target="_blank">93918c5 → 46d6f2c</a></li>
+<li>github.com/vmware/govmomi: <a href="https://github.com/vmware/govmomi/compare/v0.53.0...v0.55.1" target="_blank">v0.53.0 → v0.55.1</a></li>
+<li>go.etcd.io/etcd/api/v3: v3.6.10 → v3.6.14</li>
+<li>go.etcd.io/etcd/client/pkg/v3: v3.6.10 → v3.6.14</li>
+<li>go.etcd.io/etcd/client/v3: v3.6.10 → v3.6.14</li>
+<li>go.etcd.io/etcd/pkg/v3: v3.6.5 → v3.6.8</li>
+<li>go.etcd.io/etcd/server/v3: v3.6.5 → v3.6.8</li>
+<li>go.opentelemetry.io/contrib/detectors/gcp: v1.39.0 → v1.43.0</li>
+<li>go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc: v0.60.0 → v0.65.0</li>
+<li>go.uber.org/zap: v1.27.1 → v1.28.0</li>
+<li>go.yaml.in/yaml/v2: v2.4.3 → v2.4.4</li>
+<li>golang.org/x/crypto: v0.50.0 → v0.54.0</li>
+<li>golang.org/x/exp: 8a7402a → 944ab1f</li>
+<li>golang.org/x/mod: v0.35.0 → v0.38.0</li>
+<li>golang.org/x/net: v0.53.0 → v0.57.0</li>
+<li>golang.org/x/sync: v0.20.0 → v0.22.0</li>
+<li>golang.org/x/sys: v0.43.0 → v0.47.0</li>
+<li>golang.org/x/telemetry: be6f6cb → 49f421f</li>
+<li>golang.org/x/term: v0.42.0 → v0.45.0</li>
+<li>golang.org/x/text: v0.36.0 → v0.40.0</li>
+<li>golang.org/x/time: v0.9.0 → v0.14.0</li>
+<li>golang.org/x/tools/go/expect: v0.1.0-deprecated → v0.1.1-deprecated</li>
+<li>golang.org/x/tools: v0.44.0 → v0.48.0</li>
+<li>google.golang.org/genproto/googleapis/api: 9d38bb4 → afd174a</li>
+<li>google.golang.org/genproto/googleapis/rpc: 9d38bb4 → afd174a</li>
+<li>google.golang.org/grpc: v1.80.0 → v1.82.1</li>
+<li>google.golang.org/protobuf: v1.36.11 → f2248ac</li>
+<li>k8s.io/api: v0.35.4 → v0.36.3</li>
+<li>k8s.io/apiextensions-apiserver: v0.35.4 → v0.36.3</li>
+<li>k8s.io/apimachinery: v0.35.4 → v0.36.3</li>
+<li>k8s.io/apiserver: v0.35.4 → v0.36.3</li>
+<li>k8s.io/client-go: v0.35.4 → v0.36.3</li>
+<li>k8s.io/cluster-bootstrap: v0.35.4 → v0.36.3</li>
+<li>k8s.io/code-generator: v0.35.4 → v0.36.3</li>
+<li>k8s.io/component-base: v0.35.4 → v0.36.3</li>
+<li>k8s.io/klog/v2: v2.130.1 → v2.140.0</li>
+<li>k8s.io/kms: v0.35.4 → v0.36.3</li>
+<li>k8s.io/kube-openapi: 589584f → 43fb72c</li>
+<li>k8s.io/utils: bc988d5 → b8788ab</li>
+<li>sigs.k8s.io/apiserver-network-proxy/konnectivity-client: v0.31.2 → v0.34.0</li>
+<li>sigs.k8s.io/cluster-api: v1.13.1 → v1.14.1</li>
+<li>sigs.k8s.io/controller-runtime: v0.23.3 → v0.24.1</li>
+<li>sigs.k8s.io/structured-merge-diff/v6: v6.4.0 → v6.4.2</li>
+</ul>
+
+<h3 id="removed">Removed</h3>
+
+<ul>
+<li>github.com/cenkalti/backoff/v4: <a href="https://github.com/cenkalti/backoff/tree/v4.3.0" target="_blank">v4.3.0</a></li>
+<li>github.com/creack/pty: <a href="https://github.com/creack/pty/tree/v1.1.9" target="_blank">v1.1.9</a></li>
+<li>github.com/gregjones/httpcache: <a href="https://github.com/gregjones/httpcache/tree/901d907" target="_blank">901d907</a></li>
+<li>github.com/grpc-ecosystem/go-grpc-prometheus: <a href="https://github.com/grpc-ecosystem/go-grpc-prometheus/tree/v1.2.0" target="_blank">v1.2.0</a></li>
+<li>github.com/kr/pty: <a href="https://github.com/kr/pty/tree/v1.1.1" target="_blank">v1.1.1</a></li>
+<li>github.com/rivo/uniseg: <a href="https://github.com/rivo/uniseg/tree/v0.4.7" target="_blank">v0.4.7</a></li>
+</ul>
+
+<p><em>Thanks to all our contributors!</em> 😊</p>
+<br><h2>containernetworking/cni</h2> <h3>Release notes for v1.3.1</h3><h4>2026-09-03</h4><h2 id="what-s-changed">What&rsquo;s Changed</h2>
+
+<ul>
+<li>SPEC: Clarify some language around <code>DEL</code> and <code>prevResult</code> by @bleggett in <a href="https://github.com/containernetworking/cni/pull/1156" target="_blank">https://github.com/containernetworking/cni/pull/1156</a></li>
+<li>update MAINTAINERS by @squeed in <a href="https://github.com/containernetworking/cni/pull/1157" target="_blank">https://github.com/containernetworking/cni/pull/1157</a></li>
+<li>Update my email by @bleggett in <a href="https://github.com/containernetworking/cni/pull/1161" target="_blank">https://github.com/containernetworking/cni/pull/1161</a></li>
+<li>docs: remove archived 3rd party plugins by @xmulligan in <a href="https://github.com/containernetworking/cni/pull/1153" target="_blank">https://github.com/containernetworking/cni/pull/1153</a></li>
+<li>Add error codes for STATUS verb to <code>types.go</code> and <code>SPEC.md</code> by @architkulkarni in <a href="https://github.com/containernetworking/cni/pull/1152" target="_blank">https://github.com/containernetworking/cni/pull/1152</a></li>
+<li>Add exec error when stderr is present by @mlguerrero12 in <a href="https://github.com/containernetworking/cni/pull/1163" target="_blank">https://github.com/containernetworking/cni/pull/1163</a></li>
+<li>refactor: cni-tool with cobra by @Xunzhuo in <a href="https://github.com/containernetworking/cni/pull/1160" target="_blank">https://github.com/containernetworking/cni/pull/1160</a></li>
+<li>Fix golangci and ci lint error by @s1061123 in <a href="https://github.com/containernetworking/cni/pull/1169" target="_blank">https://github.com/containernetworking/cni/pull/1169</a></li>
+<li>moving meeting to bi-weekly by @squeed in <a href="https://github.com/containernetworking/cni/pull/1168" target="_blank">https://github.com/containernetworking/cni/pull/1168</a></li>
+<li>Tolerate invalid cni cache for DelNetwork by @scpeters in <a href="https://github.com/containernetworking/cni/pull/1171" target="_blank">https://github.com/containernetworking/cni/pull/1171</a></li>
+<li>README: change meeting to 10:00 US/East. by @squeed in <a href="https://github.com/containernetworking/cni/pull/1172" target="_blank">https://github.com/containernetworking/cni/pull/1172</a></li>
+<li>spec: update number of specifically defined terms by @Faaizz in <a href="https://github.com/containernetworking/cni/pull/1170" target="_blank">https://github.com/containernetworking/cni/pull/1170</a></li>
+<li>docs: Fix broken link to &ldquo;Version considerations&rdquo; in SPEC.md by @Abhigyan-Shekhar in <a href="https://github.com/containernetworking/cni/pull/1177" target="_blank">https://github.com/containernetworking/cni/pull/1177</a></li>
+<li>libcni: add OpenTelemetry trace context propagation by @jipperinbham in <a href="https://github.com/containernetworking/cni/pull/1173" target="_blank">https://github.com/containernetworking/cni/pull/1173</a></li>
+</ul>
+
+<h2 id="new-contributors">New Contributors</h2>
+
+<ul>
+<li>@xmulligan made their first contribution in <a href="https://github.com/containernetworking/cni/pull/1153" target="_blank">https://github.com/containernetworking/cni/pull/1153</a></li>
+<li>@architkulkarni made their first contribution in <a href="https://github.com/containernetworking/cni/pull/1152" target="_blank">https://github.com/containernetworking/cni/pull/1152</a></li>
+<li>@mlguerrero12 made their first contribution in <a href="https://github.com/containernetworking/cni/pull/1163" target="_blank">https://github.com/containernetworking/cni/pull/1163</a></li>
+<li>@Xunzhuo made their first contribution in <a href="https://github.com/containernetworking/cni/pull/1160" target="_blank">https://github.com/containernetworking/cni/pull/1160</a></li>
+<li>@scpeters made their first contribution in <a href="https://github.com/containernetworking/cni/pull/1171" target="_blank">https://github.com/containernetworking/cni/pull/1171</a></li>
+<li>@Faaizz made their first contribution in <a href="https://github.com/containernetworking/cni/pull/1170" target="_blank">https://github.com/containernetworking/cni/pull/1170</a></li>
+<li>@Abhigyan-Shekhar made their first contribution in <a href="https://github.com/containernetworking/cni/pull/1177" target="_blank">https://github.com/containernetworking/cni/pull/1177</a></li>
+<li>@jipperinbham made their first contribution in <a href="https://github.com/containernetworking/cni/pull/1173" target="_blank">https://github.com/containernetworking/cni/pull/1173</a></li>
+</ul>
+
+<p><strong>Full Changelog</strong>: <a href="https://github.com/containernetworking/cni/compare/v1.3.0...v1.3.1" target="_blank">https://github.com/containernetworking/cni/compare/v1.3.0&hellip;v1.3.1</a></p>
+<br>
+</body>
+
+</html>
