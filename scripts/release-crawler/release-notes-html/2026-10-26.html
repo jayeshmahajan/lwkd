@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Whats new in the last week</title>
+</head>
+
+<body>
+<h1>Latest Releases for the week 2026-10-19 - 2026-10-26</h1><h2>kubernetes-sigs/vsphere-csi-driver</h2> <h3>Release notes for v3.8.0</h3><h4>2026-10-20</h4><h3 id="what-s-new"><strong>What&rsquo;s New</strong></h3>
+
+<p>Support for Kubernetes version 1.36(<a href="https://github.com/kubernetes-sigs/vsphere-csi-driver/commit/6e2c3586fb2164c7c3e68ce71a7e1896c25cfe50" target="_blank">https://github.com/kubernetes-sigs/vsphere-csi-driver/commit/6e2c3586fb2164c7c3e68ce71a7e1896c25cfe50</a>)
+Upgrade csi-proxy dependecy to v2.0.0-alpha.2(<a href="https://github.com/kubernetes-sigs/vsphere-csi-driver/commit/55c2d7affd68e6fa69c5a267ef0c821e02317be9" target="_blank">https://github.com/kubernetes-sigs/vsphere-csi-driver/commit/55c2d7affd68e6fa69c5a267ef0c821e02317be9</a>)
+Bump up Go dependencies &amp; address CVEs (<a href="https://github.com/kubernetes-sigs/vsphere-csi-driver/commit/c8b77a53f12c3e8cd09941c84926feceaf76bc37" target="_blank">https://github.com/kubernetes-sigs/vsphere-csi-driver/commit/c8b77a53f12c3e8cd09941c84926feceaf76bc37</a>)</p>
+
+<h3 id="deployment-files"><strong>Deployment Files</strong></h3>
+
+<p><a href="https://github.com/kubernetes-sigs/vsphere-csi-driver/tree/v3.8.0/manifests/vanilla" target="_blank">https://github.com/kubernetes-sigs/vsphere-csi-driver/tree/v3.8.0/manifests/vanilla</a></p>
+
+<h3 id="recommended-kubernetes-versions"><strong>Recommended Kubernetes Versions</strong></h3>
+
+<p>Minimum: 1.34, Maximum: 1.36</p>
+
+<h3 id="supported-sidecar-container-versions"><strong>Supported Sidecar Container Versions</strong></h3>
+
+<p>csi-provisioner: v4.0.1
+csi-attacher: v4.10.0
+csi-resizer: v2.0.0
+livenessprobe: v2.17.0
+csi-node-driver-registrar: v2.14.0
+csi-snapshotter: v8.4.0</p>
+<br><h2>prometheus/prometheus</h2> <h3>Release notes for 3.15.1 / 2026-10-21</h3><h4>2026-10-21</h4><ul>
+<li>[SECURITY] Container images: Update CA certificates to distrust &ldquo;emSign ECC Root CA - G3&rdquo; and &ldquo;Comodo AAA Services root&rdquo; following the compromise of eMudhra intermediate CA private keys.</li>
+<li>[SECURITY] Build with Go 1.27.3 to fix vulnerabilities in <code>net/http</code>, <code>net/textproto</code>, <code>crypto/tls</code> and <code>html/template</code>.</li>
+<li>[SECURITY] Bump golang.org/x/net to v0.60.0 to fix HTTP/2 vulnerabilities (GO-2026-6603, GO-2026-6610, GO-2026-6611, GO-2026-6612, GO-2026-6617).</li>
+</ul>
+<br><h3>Release notes for 3.13.5 / 2026-10-21</h3><h4>2026-10-21</h4><ul>
+<li>[SECURITY] Container images: Update CA certificates to distrust &ldquo;emSign ECC Root CA - G3&rdquo; and &ldquo;Comodo AAA Services root&rdquo; following the compromise of eMudhra intermediate CA private keys.</li>
+<li>[SECURITY] Build with Go 1.26.10 to fix vulnerabilities in <code>net/http</code>, <code>net/textproto</code>, <code>crypto/tls</code> and <code>html/template</code>.</li>
+<li>[SECURITY] Bump golang.org/x/net to v0.60.0 to fix HTTP/2 vulnerabilities (GO-2026-6603, GO-2026-6610, GO-2026-6611, GO-2026-6612, GO-2026-6617).</li>
+<li>[SECURITY] Bump OpenTelemetry to v1.45.0 to fix exporter endpoint URLs leaking into info logs (GO-2026-6505).</li>
+<li>[CHANGE] Building Prometheus now requires Go 1.26 or later.</li>
+</ul>
+<br><h2>grpc/grpc</h2> <h3>Release notes for Release v1.84.1</h3><h4>2026-10-22</h4><p>This is release gRPC Core 1.84.1 (gimbal).</p>
+
+<p>For gRPC documentation, see <a href="https://grpc.io/" target="_blank">grpc.io</a>. For previous releases, see <a href="https://github.com/grpc/grpc/releases" target="_blank">Releases</a>.</p>
+
+<p>This release contains refinements, improvements, and bug fixes, with highlights listed below.</p>
+
+<h2 id="core">Core</h2>
+
+<ul>
+<li>[Backport][v1.84.x][security] Update gRPC repo roots. (<a href="https://github.com/grpc/grpc/pull/43700" target="_blank">#43700</a>)</li>
+</ul>
+<br><h2>coredns/coredns</h2> <h3>Release notes for v1.15.0</h3><h4>2026-10-21</h4><p>This release improves DNS caching, forwarding, and transport reliability,
+with fixes for stale-cache handling, upstream connections, crashes/race fixes,
+as well as enhancemence from quite a few plugins.</p>
+
+<p>Forwarding now supports DNS-over-QUIC upstreams. Additional new features include
+optional JSON query logging, authenticated RFC 2136 dynamic DNS updates, SIIT support,
+expr-lang templates, and PROXY protocol v2 metadata.</p>
+
+<p>The release is built with Go 1.27.3, covering CVE-2026-56865, CVE-2026-56864,
+CVE-2026-33818, CVE-2026-97032, CVE-2026-78659, CVE-2026-97031, and CVE-2026-111943, along with
+other security fixes.</p>
+
+<h2 id="brought-to-you-by">Brought to You By</h2>
+
+<p>Ahmad Mehrabi
+Amila Senadheera
+Andri Yngvason
+Aradhya Jain
+Arunesh Dwivedi
+Baltasar Blanco
+Ben Kochie
+Choudhry Shehryar
+Christian Menges
+houyuwushang
+Ilya Kulakov
+jxj
+llucas
+Manuel Rüger
+Michée lengronne
+MohibShaikh
+myohannes
+Paco Cartones
+Pujitha Paladugu
+Sakıp Han Dursun
+Saleh
+sam lockart
+ump45nose
+Yash Singh
+Yong Tang
+Zhao Jianing</p>
+
+<h2 id="noteworthy-changes">Noteworthy Changes</h2>
+
+<p>core: Add opt-in JSON logging with structured DNS query fields (<a href="https://github.com/coredns/coredns/pull/8553" target="_blank">https://github.com/coredns/coredns/pull/8553</a>)
+core: Add opt-in opcode admission (<a href="https://github.com/coredns/coredns/pull/8469" target="_blank">https://github.com/coredns/coredns/pull/8469</a>)
+core: Cancel only the stalled DoQ stream, not the whole DoQ connection (<a href="https://github.com/coredns/coredns/pull/8567" target="_blank">https://github.com/coredns/coredns/pull/8567</a>)
+core: Fix DataDog library dependency issue (<a href="https://github.com/coredns/coredns/pull/8541" target="_blank">https://github.com/coredns/coredns/pull/8541</a>)
+core: Make TsigSecret public (<a href="https://github.com/coredns/coredns/pull/8434" target="_blank">https://github.com/coredns/coredns/pull/8434</a>)
+core: Reject conflicting TLS policies on shared listeners. (<a href="https://github.com/coredns/coredns/pull/8565" target="_blank">https://github.com/coredns/coredns/pull/8565</a>)
+core: Stop echoing unhandled EDNS options (<a href="https://github.com/coredns/coredns/pull/8514" target="_blank">https://github.com/coredns/coredns/pull/8514</a>)
+core: Support explicit registration for embedded hosts (<a href="https://github.com/coredns/coredns/pull/8525" target="_blank">https://github.com/coredns/coredns/pull/8525</a>)
+core: Use Zones.Contains when any match suffices (<a href="https://github.com/coredns/coredns/pull/8505" target="_blank">https://github.com/coredns/coredns/pull/8505</a>)
+plugin/autopath: Fixes a nil pointer dereference panic in autopath during search path walk (<a href="https://github.com/coredns/coredns/pull/8517" target="_blank">https://github.com/coredns/coredns/pull/8517</a>)
+plugin/azure: Add refresh directive (<a href="https://github.com/coredns/coredns/pull/8614" target="_blank">https://github.com/coredns/coredns/pull/8614</a>)
+plugin/azure: Allow startup with unavailable zones (<a href="https://github.com/coredns/coredns/pull/8524" target="_blank">https://github.com/coredns/coredns/pull/8524</a>)
+plugin/cache: Cache SERVFAIL when the resolver fails without a response (<a href="https://github.com/coredns/coredns/pull/8629" target="_blank">https://github.com/coredns/coredns/pull/8629</a>)
+plugin/cache: Clarify stale verify behavior (<a href="https://github.com/coredns/coredns/pull/8579" target="_blank">https://github.com/coredns/coredns/pull/8579</a>)
+plugin/cache: Don&rsquo;t cache or panic on responses with no question (<a href="https://github.com/coredns/coredns/pull/8467" target="_blank">https://github.com/coredns/coredns/pull/8467</a>)
+plugin/cache: Fix timed stale caused refreshes (<a href="https://github.com/coredns/coredns/pull/8587" target="_blank">https://github.com/coredns/coredns/pull/8587</a>)
+plugin/cache: Prevents a nil pointer dereference panic in the cache prefetch (<a href="https://github.com/coredns/coredns/pull/8512" target="_blank">https://github.com/coredns/coredns/pull/8512</a>)
+plugin/cache: Stop setting AA on answers served from cache (<a href="https://github.com/coredns/coredns/pull/8419" target="_blank">https://github.com/coredns/coredns/pull/8419</a>)
+plugin/clouddns: Add endpoint directive (<a href="https://github.com/coredns/coredns/pull/8618" target="_blank">https://github.com/coredns/coredns/pull/8618</a>)
+plugin/clouddns: Add refresh directive (<a href="https://github.com/coredns/coredns/pull/8616" target="_blank">https://github.com/coredns/coredns/pull/8616</a>)
+plugin/dns64: Fixes a nil pointer dereference panic in dns64 during response (<a href="https://github.com/coredns/coredns/pull/8511" target="_blank">https://github.com/coredns/coredns/pull/8511</a>)
+plugin/dns64: Preserve A fallback response codes (<a href="https://github.com/coredns/coredns/pull/8619" target="_blank">https://github.com/coredns/coredns/pull/8619</a>)
+plugin/dns64: Reject unsupported prefix lengths (<a href="https://github.com/coredns/coredns/pull/8611" target="_blank">https://github.com/coredns/coredns/pull/8611</a>)
+plugin/dnstap: Tap deferred error responses (<a href="https://github.com/coredns/coredns/pull/8549" target="_blank">https://github.com/coredns/coredns/pull/8549</a>)
+plugin/dynupdate: Add durable authenticated RFC 2136 updates (<a href="https://github.com/coredns/coredns/pull/8520" target="_blank">https://github.com/coredns/coredns/pull/8520</a>)
+plugin/etcd: Allow disabling legacy apex fallback (<a href="https://github.com/coredns/coredns/pull/8468" target="_blank">https://github.com/coredns/coredns/pull/8468</a>)
+plugin/etcd: Avoid apex fallback on backend errors (<a href="https://github.com/coredns/coredns/pull/8465" target="_blank">https://github.com/coredns/coredns/pull/8465</a>)
+plugin/etcd: Fix etcd library update issue (<a href="https://github.com/coredns/coredns/pull/8542" target="_blank">https://github.com/coredns/coredns/pull/8542</a>)
+plugin/etcd: Stop target stripping at the end of a name (<a href="https://github.com/coredns/coredns/pull/8584" target="_blank">https://github.com/coredns/coredns/pull/8584</a>)
+plugin/file: Fix less is not up to RFC 1034 and 4034 (<a href="https://github.com/coredns/coredns/pull/8503" target="_blank">https://github.com/coredns/coredns/pull/8503</a>)
+plugin/file: Fix race condition in file plugin closer (<a href="https://github.com/coredns/coredns/pull/8583" target="_blank">https://github.com/coredns/coredns/pull/8583</a>)
+plugin/file: Reject SOA owners that do not match the zone (<a href="https://github.com/coredns/coredns/pull/8555" target="_blank">https://github.com/coredns/coredns/pull/8555</a>)
+plugin/file: Return SERVFAIL on self-referential CNAME loops (<a href="https://github.com/coredns/coredns/pull/8475" target="_blank">https://github.com/coredns/coredns/pull/8475</a>)
+plugin/file: Test that out-of-zone CNAME targets keep NOERROR (<a href="https://github.com/coredns/coredns/pull/8569" target="_blank">https://github.com/coredns/coredns/pull/8569</a>)
+plugin/file: Track zone mtime for reload_by_mtime (<a href="https://github.com/coredns/coredns/pull/8556" target="_blank">https://github.com/coredns/coredns/pull/8556</a>)
+plugin/forward: Bound DoT connection setup for retries (<a href="https://github.com/coredns/coredns/pull/8543" target="_blank">https://github.com/coredns/coredns/pull/8543</a>)
+plugin/forward: Ensure forward sets the DoH host (<a href="https://github.com/coredns/coredns/pull/8470" target="_blank">https://github.com/coredns/coredns/pull/8470</a>)
+plugin/forward: Set IP_RECVERR on upstream UDP sockets (<a href="https://github.com/coredns/coredns/pull/8628" target="_blank">https://github.com/coredns/coredns/pull/8628</a>)
+plugin/forward: Support DNS-over-QUIC upstreams (<a href="https://github.com/coredns/coredns/pull/8474" target="_blank">https://github.com/coredns/coredns/pull/8474</a>)
+plugin/forward: Treat forward upstream hostnames as absolute FQDNs to avoid search-domain resolution. (<a href="https://github.com/coredns/coredns/pull/8563" target="_blank">https://github.com/coredns/coredns/pull/8563</a>)
+plugin/grpc: Close clients on shutdown (<a href="https://github.com/coredns/coredns/pull/8582" target="_blank">https://github.com/coredns/coredns/pull/8582</a>)
+plugin/grpc_server: Both limits accept zero, not only positive integers (<a href="https://github.com/coredns/coredns/pull/8660" target="_blank">https://github.com/coredns/coredns/pull/8660</a>)
+plugin/hosts: Don&rsquo;t drop entries after an over-long line (<a href="https://github.com/coredns/coredns/pull/8496" target="_blank">https://github.com/coredns/coredns/pull/8496</a>)
+plugin/hosts: Don&rsquo;t drop over-long fields silently (<a href="https://github.com/coredns/coredns/pull/8551" target="_blank">https://github.com/coredns/coredns/pull/8551</a>)
+plugin/hosts: Parse hosts files with bufio.Reader (<a href="https://github.com/coredns/coredns/pull/8516" target="_blank">https://github.com/coredns/coredns/pull/8516</a>)
+plugin/https: Add max_streams to limit HTTP/2 concurrent streams (<a href="https://github.com/coredns/coredns/pull/8522" target="_blank">https://github.com/coredns/coredns/pull/8522</a>)
+plugin/k8s_external: Correct the SOA example in the docs (<a href="https://github.com/coredns/coredns/pull/8666" target="_blank">https://github.com/coredns/coredns/pull/8666</a>)
+plugin/k8s_external: Fixes a nil pointer dereference panic when upstream lookup returns no response (<a href="https://github.com/coredns/coredns/pull/8518" target="_blank">https://github.com/coredns/coredns/pull/8518</a>)
+plugin/kubernetes: Include structured key/value context in client-go logs (<a href="https://github.com/coredns/coredns/pull/8490" target="_blank">https://github.com/coredns/coredns/pull/8490</a>)
+plugin/kubernetes: Isolate NS address test fixtures (<a href="https://github.com/coredns/coredns/pull/8513" target="_blank">https://github.com/coredns/coredns/pull/8513</a>)
+plugin/kubernetes: Support pods with multiple IPs (<a href="https://github.com/coredns/coredns/pull/8635" target="_blank">https://github.com/coredns/coredns/pull/8635</a>)
+plugin/loadbalance: Reduce roundRobin allocations for homogeneous address sets (<a href="https://github.com/coredns/coredns/pull/8375" target="_blank">https://github.com/coredns/coredns/pull/8375</a>)
+plugin/loadbalance: Validate the response before dereferencing it in WriteMsg (<a href="https://github.com/coredns/coredns/pull/8523" target="_blank">https://github.com/coredns/coredns/pull/8523</a>)
+plugin/metrics: Drop the nonexistent type label from request_duration_seconds (<a href="https://github.com/coredns/coredns/pull/8650" target="_blank">https://github.com/coredns/coredns/pull/8650</a>)
+plugin/metrics: Release listener on TLS startup failure (<a href="https://github.com/coredns/coredns/pull/8527" target="_blank">https://github.com/coredns/coredns/pull/8527</a>)
+plugin/minimal: Fixes a nil pointer dereference panic in minimal prefetch response processing (<a href="https://github.com/coredns/coredns/pull/8506" target="_blank">https://github.com/coredns/coredns/pull/8506</a>)
+plugin/proxyproto: Expose PPv2 TLVs to downstream plugins as metadata (<a href="https://github.com/coredns/coredns/pull/8641" target="_blank">https://github.com/coredns/coredns/pull/8641</a>)
+plugin/proxyproto: Preserve the UDP peer for LOCAL (<a href="https://github.com/coredns/coredns/pull/8581" target="_blank">https://github.com/coredns/coredns/pull/8581</a>)
+plugin/quic: Add max_connections directive (<a href="https://github.com/coredns/coredns/pull/8610" target="_blank">https://github.com/coredns/coredns/pull/8610</a>)
+plugin/ready: Release lock before server shutdown (<a href="https://github.com/coredns/coredns/pull/8526" target="_blank">https://github.com/coredns/coredns/pull/8526</a>)
+plugin/reload: Broadcast shutdown signal (<a href="https://github.com/coredns/coredns/pull/8504" target="_blank">https://github.com/coredns/coredns/pull/8504</a>)
+plugin/rewrite: Drop the per-record dot-prefixed temporary in remapStringRewriter (<a href="https://github.com/coredns/coredns/pull/8382" target="_blank">https://github.com/coredns/coredns/pull/8382</a>)
+plugin/rewrite: Fixes a nil pointer dereference panic in ResponseReverter.WriteMsg (<a href="https://github.com/coredns/coredns/pull/8519" target="_blank">https://github.com/coredns/coredns/pull/8519</a>)
+plugin/rewrite: Limit rewrite cname recursion (<a href="https://github.com/coredns/coredns/pull/8570" target="_blank">https://github.com/coredns/coredns/pull/8570</a>)
+plugin/rewrite: Point to config instead of copying for CNAME rewrites (<a href="https://github.com/coredns/coredns/pull/8568" target="_blank">https://github.com/coredns/coredns/pull/8568</a>)
+plugin/rewrite: Support opt-in metadata in regex name replacements (<a href="https://github.com/coredns/coredns/pull/8665" target="_blank">https://github.com/coredns/coredns/pull/8665</a>)
+plugin/route53: Don&rsquo;t hold zMu across zone Lookup (<a href="https://github.com/coredns/coredns/pull/8601" target="_blank">https://github.com/coredns/coredns/pull/8601</a>)
+plugin/route53: Fix &lsquo;crentials&rsquo; typo in README and generated man page (<a href="https://github.com/coredns/coredns/pull/8655" target="_blank">https://github.com/coredns/coredns/pull/8655</a>)
+plugin/siit: Add initial SIIT implementation (<a href="https://github.com/coredns/coredns/pull/8188" target="_blank">https://github.com/coredns/coredns/pull/8188</a>)
+plugin/template: Add expr-lang support to templates (<a href="https://github.com/coredns/coredns/pull/8450" target="_blank">https://github.com/coredns/coredns/pull/8450</a>)
+plugin/tls: Document that dig supports DoT (<a href="https://github.com/coredns/coredns/pull/8539" target="_blank">https://github.com/coredns/coredns/pull/8539</a>)
+plugin/trace: Recognize Zipkin URL schemes by prefix (<a href="https://github.com/coredns/coredns/pull/8625" target="_blank">https://github.com/coredns/coredns/pull/8625</a>)
+plugin/trace: Return error from Zipkin NewEndpoint in trace setup (<a href="https://github.com/coredns/coredns/pull/8577" target="_blank">https://github.com/coredns/coredns/pull/8577</a>)
+plugin/tsig: Expose validated TSIG key identity (<a href="https://github.com/coredns/coredns/pull/8471" target="_blank">https://github.com/coredns/coredns/pull/8471</a>)
+plugin/tsig: Reject non-final TSIG records (<a href="https://github.com/coredns/coredns/pull/8585" target="_blank">https://github.com/coredns/coredns/pull/8585</a>)
+plugin/view: Drop a stray closing brace from the split-DNS example (<a href="https://github.com/coredns/coredns/pull/8643" target="_blank">https://github.com/coredns/coredns/pull/8643</a>)</p>
+<br><h2>kubernetes-csi/csi-driver-nfs</h2> <h3>Release notes for v4.13.6 release</h3><h4>2026-10-23</h4><h2 id="what-s-changed">What&rsquo;s Changed</h2>
+
+<ul>
+<li>[release-4.13] fix: CVE-2026-78659 by @andyzhangx in <a href="https://github.com/kubernetes-csi/csi-driver-nfs/pull/1288" target="_blank">https://github.com/kubernetes-csi/csi-driver-nfs/pull/1288</a></li>
+<li>chore: update release-tools via subtree pull by @andyzhangx in <a href="https://github.com/kubernetes-csi/csi-driver-nfs/pull/1291" target="_blank">https://github.com/kubernetes-csi/csi-driver-nfs/pull/1291</a></li>
+<li>[release-4.13] charts: make fsGroupPolicy configurable by @andyzhangx in <a href="https://github.com/kubernetes-csi/csi-driver-nfs/pull/1295" target="_blank">https://github.com/kubernetes-csi/csi-driver-nfs/pull/1295</a></li>
+<li>[release-4.13] upgrade to go 1.26.10 to fix CVE-2026-111943 by @andyzhangx in <a href="https://github.com/kubernetes-csi/csi-driver-nfs/pull/1301" target="_blank">https://github.com/kubernetes-csi/csi-driver-nfs/pull/1301</a></li>
+<li>doc: cut v4.13.6 release by @andyzhangx in <a href="https://github.com/kubernetes-csi/csi-driver-nfs/pull/1302" target="_blank">https://github.com/kubernetes-csi/csi-driver-nfs/pull/1302</a></li>
+</ul>
+
+<p><strong>Full Changelog</strong>: <a href="https://github.com/kubernetes-csi/csi-driver-nfs/compare/v4.13.5...v4.13.6" target="_blank">https://github.com/kubernetes-csi/csi-driver-nfs/compare/v4.13.5&hellip;v4.13.6</a></p>
+<br><h2>kubernetes-csi/csi-driver-host-path</h2> <h3>Release notes for v1.19.0</h3><h4>2026-10-21</h4><h1 id="container">Container</h1>
+
+<p>docker pull registry.k8s.io/sig-storage/hostpathplugin:v1.19.0</p>
+
+<h1 id="full-changelog">Full Changelog</h1>
+
+<p><a href="https://github.com/kubernetes-csi/csi-driver-host-path/blob/v1.19.0/CHANGELOG/CHANGELOG-1.19.md" target="_blank">https://github.com/kubernetes-csi/csi-driver-host-path/blob/v1.19.0/CHANGELOG/CHANGELOG-1.19.md</a></p>
+<br><h2>kubernetes-csi/csi-driver-smb</h2> <h3>Release notes for v1.20.4 release</h3><h4>2026-10-23</h4><h2 id="what-s-changed">What&rsquo;s Changed</h2>
+
+<ul>
+<li>[release-1.20] chore: bump Go version to 1.25.12 in trivy workflow by @k8s-infra-cherrypick-robot in <a href="https://github.com/kubernetes-csi/csi-driver-smb/pull/1149" target="_blank">https://github.com/kubernetes-csi/csi-driver-smb/pull/1149</a></li>
+<li>[release-1.20] fix: CVE-2026-24051 by @andyzhangx in <a href="https://github.com/kubernetes-csi/csi-driver-smb/pull/1153" target="_blank">https://github.com/kubernetes-csi/csi-driver-smb/pull/1153</a></li>
+<li>[release-1.20] fix: GHSA-hrxh-6v49-42gf by @andyzhangx in <a href="https://github.com/kubernetes-csi/csi-driver-smb/pull/1161" target="_blank">https://github.com/kubernetes-csi/csi-driver-smb/pull/1161</a></li>
+<li>[release-1.20] fix: prevent goroutine leak on Windows mount timeout by @k8s-infra-cherrypick-robot in <a href="https://github.com/kubernetes-csi/csi-driver-smb/pull/1166" target="_blank">https://github.com/kubernetes-csi/csi-driver-smb/pull/1166</a></li>
+<li>[release-1.20] feat: add krb5AutoConfig option for automatic Kerberos ccache setup by @andyzhangx in <a href="https://github.com/kubernetes-csi/csi-driver-smb/pull/1168" target="_blank">https://github.com/kubernetes-csi/csi-driver-smb/pull/1168</a></li>
+<li>[release-1.20] chore: remove xfsprogs from smbplugin image by @k8s-infra-cherrypick-robot in <a href="https://github.com/kubernetes-csi/csi-driver-smb/pull/1186" target="_blank">https://github.com/kubernetes-csi/csi-driver-smb/pull/1186</a></li>
+<li>[release-1.20] chore: bump csi-resizer to v2.2.1 (cherry-pick #1184) by @andyzhangx in <a href="https://github.com/kubernetes-csi/csi-driver-smb/pull/1185" target="_blank">https://github.com/kubernetes-csi/csi-driver-smb/pull/1185</a></li>
+<li>[release-1.20] fix: update Go version from 1.26.4 to 1.26.5 to fix CVEs by @andyzhangx in <a href="https://github.com/kubernetes-csi/csi-driver-smb/pull/1190" target="_blank">https://github.com/kubernetes-csi/csi-driver-smb/pull/1190</a></li>
+<li>[release-1.20] chore: remove e2fsprogs from smbplugin image by @k8s-infra-cherrypick-robot in <a href="https://github.com/kubernetes-csi/csi-driver-smb/pull/1191" target="_blank">https://github.com/kubernetes-csi/csi-driver-smb/pull/1191</a></li>
+<li>[release-1.20] chore: bump Go to 1.26.6 by @k8s-infra-cherrypick-robot in <a href="https://github.com/kubernetes-csi/csi-driver-smb/pull/1193" target="_blank">https://github.com/kubernetes-csi/csi-driver-smb/pull/1193</a></li>
+<li>[release-1.20] cleanup: demote empty GRPC response log to V(6) by @k8s-infra-cherrypick-robot in <a href="https://github.com/kubernetes-csi/csi-driver-smb/pull/1200" target="_blank">https://github.com/kubernetes-csi/csi-driver-smb/pull/1200</a></li>
+<li>[release-1.20] fix: CVE-2026-56854 by @andyzhangx in <a href="https://github.com/kubernetes-csi/csi-driver-smb/pull/1205" target="_blank">https://github.com/kubernetes-csi/csi-driver-smb/pull/1205</a></li>
+<li>cherry-pick #1209 to release-1.20: add &ndash;require-privacy-for-global-mapping flag on Windows nodes by @andyzhangx in <a href="https://github.com/kubernetes-csi/csi-driver-smb/pull/1210" target="_blank">https://github.com/kubernetes-csi/csi-driver-smb/pull/1210</a></li>
+<li>[release-1.20] fix: CVE-2026-84304 by @andyzhangx in <a href="https://github.com/kubernetes-csi/csi-driver-smb/pull/1212" target="_blank">https://github.com/kubernetes-csi/csi-driver-smb/pull/1212</a></li>
+<li>[release-1.20] fix: CVE-2026-56855 by @andyzhangx in <a href="https://github.com/kubernetes-csi/csi-driver-smb/pull/1214" target="_blank">https://github.com/kubernetes-csi/csi-driver-smb/pull/1214</a></li>
+<li>[release-1.20] fix: recover stale SMB mappings in hostprocess remount by @k8s-infra-cherrypick-robot in <a href="https://github.com/kubernetes-csi/csi-driver-smb/pull/1220" target="_blank">https://github.com/kubernetes-csi/csi-driver-smb/pull/1220</a></li>
+<li>[release-1.20] fix: CVE-2026-81870 by @andyzhangx in <a href="https://github.com/kubernetes-csi/csi-driver-smb/pull/1223" target="_blank">https://github.com/kubernetes-csi/csi-driver-smb/pull/1223</a></li>
+<li>[release-1.20] fix: reject block volumes in NodePublishVolume by @k8s-infra-cherrypick-robot in <a href="https://github.com/kubernetes-csi/csi-driver-smb/pull/1228" target="_blank">https://github.com/kubernetes-csi/csi-driver-smb/pull/1228</a></li>
+<li>[release-1.20] fix: CVE-2026-78659 by @andyzhangx in <a href="https://github.com/kubernetes-csi/csi-driver-smb/pull/1233" target="_blank">https://github.com/kubernetes-csi/csi-driver-smb/pull/1233</a></li>
+<li>chore: update release-tools via subtree pull by @andyzhangx in <a href="https://github.com/kubernetes-csi/csi-driver-smb/pull/1234" target="_blank">https://github.com/kubernetes-csi/csi-driver-smb/pull/1234</a></li>
+<li>[release-1.20] upgrade to go 1.26.10 to fix CVE-2026-111943 by @andyzhangx in <a href="https://github.com/kubernetes-csi/csi-driver-smb/pull/1242" target="_blank">https://github.com/kubernetes-csi/csi-driver-smb/pull/1242</a></li>
+<li>doc: cut v1.20.4 release by @andyzhangx in <a href="https://github.com/kubernetes-csi/csi-driver-smb/pull/1243" target="_blank">https://github.com/kubernetes-csi/csi-driver-smb/pull/1243</a></li>
+</ul>
+
+<p><strong>Full Changelog</strong>: <a href="https://github.com/kubernetes-csi/csi-driver-smb/compare/v1.20.3...v1.20.4" target="_blank">https://github.com/kubernetes-csi/csi-driver-smb/compare/v1.20.3&hellip;v1.20.4</a></p>
+<br><h2>kubernetes/autoscaler</h2> <h3>Release notes for vertical-pod-autoscaler-chart-0.15.0</h3><h4>2026-10-21</h4><p>Automatically adjust resources for your workloads</p>
+<br><h3>Release notes for vertical-pod-autoscaler-1.8.1</h3><h4>2026-10-21</h4><h2 id="changes-by-kind">Changes by Kind</h2>
+
+<h3 id="dependency">Dependency</h3>
+
+<ul>
+<li>Bump Go to 1.26.10 (<a href="https://github.com/kubernetes/autoscaler/pull/10454" target="_blank">#10454</a>, <a href="https://github.com/adrianmoisey" target="_blank">@adrianmoisey</a>)</li>
+</ul>
+
+<h3 id="bug-or-regression">Bug or Regression</h3>
+
+<ul>
+<li>Fix VPA updater treating a days-old lastState OOM as a fresh quick OOM under InPlace (<a href="https://github.com/kubernetes/autoscaler/pull/10385" target="_blank">#10385</a>, <a href="https://github.com/locker95" target="_blank">@locker95</a>)</li>
+<li>Fixed VPA updater logic to determine DaemonSet replica count from DaemonSet.Status.DesiredNumberScheduled instead of DaemonSet.Status.NumberReady (<a href="https://github.com/kubernetes/autoscaler/pull/10373" target="_blank">#10373</a>, <a href="https://github.com/dippynark" target="_blank">@dippynark</a>)</li>
+</ul>
+
+<h3 id="other-cleanup-or-flake">Other (Cleanup or Flake)</h3>
+
+<ul>
+<li>Bump VPA to 1.8.1 (<a href="https://github.com/kubernetes/autoscaler/pull/10359" target="_blank">#10359</a>, <a href="https://github.com/adrianmoisey" target="_blank">@adrianmoisey</a>)</li>
+</ul>
+<br><h3>Release notes for vertical-pod-autoscaler-1.7.3</h3><h4>2026-10-21</h4><h2 id="changes-by-kind">Changes by Kind</h2>
+
+<h3 id="dependency">Dependency</h3>
+
+<ul>
+<li>Bump Go to 1.26.10 (<a href="https://github.com/kubernetes/autoscaler/pull/10456" target="_blank">#10456</a>, <a href="https://github.com/adrianmoisey" target="_blank">@adrianmoisey</a>)</li>
+</ul>
+
+<h3 id="bug-or-regression">Bug or Regression</h3>
+
+<ul>
+<li>Fix VPA updater treating a days-old lastState OOM as a fresh quick OOM under InPlace (<a href="https://github.com/kubernetes/autoscaler/pull/10386" target="_blank">#10386</a>, <a href="https://github.com/adrianmoisey" target="_blank">@adrianmoisey</a>)</li>
+<li>Fixed VPA updater logic to determine DaemonSet replica count from DaemonSet.Status.DesiredNumberScheduled instead of DaemonSet.Status.NumberReady (<a href="https://github.com/kubernetes/autoscaler/pull/10372" target="_blank">#10372</a>, <a href="https://github.com/dippynark" target="_blank">@dippynark</a>)</li>
+</ul>
+
+<h3 id="other-cleanup-or-flake">Other (Cleanup or Flake)</h3>
+
+<ul>
+<li>Bump VPA to 1.7.3 (<a href="https://github.com/kubernetes/autoscaler/pull/10360" target="_blank">#10360</a>, <a href="https://github.com/adrianmoisey" target="_blank">@adrianmoisey</a>)</li>
+</ul>
+<br><h2>etcd-io/etcd</h2> <h3>Release notes for v3.7.3</h3><h4>2026-10-22</h4><p>Please check out <a href="https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.7.md" target="_blank">CHANGELOG</a> for a full list of changes. And make sure to read <a href="https://etcd.io/docs/v3.7/upgrades/upgrade_3_7/" target="_blank">upgrade guide</a> before upgrading etcd (there may be breaking changes).</p>
+
+<p>For installation guides, please check out <a href="http://play.etcd.io" target="_blank">play.etcd.io</a> and <a href="https://etcd.io/docs/v3.7/op-guide/" target="_blank">operating etcd</a>. Latest support status for common architectures and operating systems can be found at <a href="https://etcd.io/docs/v3.7/op-guide/supported-platform/" target="_blank">supported platforms</a>.</p>
+
+<h6 id="linux">Linux</h6>
+
+<pre><code class="language-sh">ETCD_VER=v3.7.3
+
+# choose either URL
+GOOGLE_URL=https://storage.googleapis.com/etcd
+GITHUB_URL=https://github.com/etcd-io/etcd/releases/download
+DOWNLOAD_URL=${GOOGLE_URL}
+
+rm -f /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+rm -rf /tmp/etcd-download-test &amp;&amp; mkdir -p /tmp/etcd-download-test
+
+curl -L ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-linux-amd64.tar.gz -o /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+tar xzvf /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz -C /tmp/etcd-download-test --strip-components=1 --no-same-owner
+rm -f /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+
+/tmp/etcd-download-test/etcd --version
+/tmp/etcd-download-test/etcdctl version
+/tmp/etcd-download-test/etcdutl version
+
+# start a local etcd server
+/tmp/etcd-download-test/etcd
+
+# write,read to etcd
+/tmp/etcd-download-test/etcdctl --endpoints=localhost:2379 put foo bar
+/tmp/etcd-download-test/etcdctl --endpoints=localhost:2379 get foo
+</code></pre>
+
+<h6 id="macos-darwin">macOS (Darwin)</h6>
+
+<pre><code class="language-sh">ETCD_VER=v3.7.3
+
+# choose either URL
+GOOGLE_URL=https://storage.googleapis.com/etcd
+GITHUB_URL=https://github.com/etcd-io/etcd/releases/download
+DOWNLOAD_URL=${GOOGLE_URL}
+
+rm -f /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
+rm -rf /tmp/etcd-download-test &amp;&amp; mkdir -p /tmp/etcd-download-test
+
+curl -L ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-darwin-amd64.zip -o /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
+unzip /tmp/etcd-${ETCD_VER}-darwin-amd64.zip -d /tmp &amp;&amp; rm -f /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
+mv /tmp/etcd-${ETCD_VER}-darwin-amd64/* /tmp/etcd-download-test &amp;&amp; rm -rf mv /tmp/etcd-${ETCD_VER}-darwin-amd64
+
+/tmp/etcd-download-test/etcd --version
+/tmp/etcd-download-test/etcdctl version
+/tmp/etcd-download-test/etcdutl version
+</code></pre>
+
+<h6 id="docker">Docker</h6>
+
+<p>etcd uses <a href="https://gcr.io/etcd-development/etcd" target="_blank"><code>gcr.io/etcd-development/etcd</code></a> as a primary container registry, and <a href="https://quay.io/coreos/etcd" target="_blank"><code>quay.io/coreos/etcd</code></a> as secondary.</p>
+
+<pre><code class="language-sh">ETCD_VER=v3.7.3
+
+rm -rf /tmp/etcd-data.tmp &amp;&amp; mkdir -p /tmp/etcd-data.tmp &amp;&amp; \
+  docker rmi gcr.io/etcd-development/etcd:${ETCD_VER} || true &amp;&amp; \
+  docker run \
+  -p 2379:2379 \
+  -p 2380:2380 \
+  --mount type=bind,source=/tmp/etcd-data.tmp,destination=/etcd-data \
+  --name etcd-gcr-${ETCD_VER} \
+  gcr.io/etcd-development/etcd:${ETCD_VER} \
+  /usr/local/bin/etcd \
+  --name s1 \
+  --data-dir /etcd-data \
+  --listen-client-urls http://0.0.0.0:2379 \
+  --advertise-client-urls http://0.0.0.0:2379 \
+  --listen-peer-urls http://0.0.0.0:2380 \
+  --initial-advertise-peer-urls http://0.0.0.0:2380 \
+  --initial-cluster s1=http://0.0.0.0:2380 \
+  --initial-cluster-token tkn \
+  --initial-cluster-state new \
+  --log-level info \
+  --logger zap \
+  --log-outputs stderr
+
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcd --version
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl version
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdutl version
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl endpoint health
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl put foo bar
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl get foo
+</code></pre>
+<br><h3>Release notes for v3.6.16</h3><h4>2026-10-22</h4><p>Please check out <a href="https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.6.md" target="_blank">CHANGELOG</a> for a full list of changes. And make sure to read <a href="https://etcd.io/docs/v3.6/upgrades/upgrade_3_6/" target="_blank">upgrade guide</a> before upgrading etcd (there may be breaking changes).</p>
+
+<p>For installation guides, please check out <a href="http://play.etcd.io" target="_blank">play.etcd.io</a> and <a href="https://etcd.io/docs/v3.6/op-guide/" target="_blank">operating etcd</a>. Latest support status for common architectures and operating systems can be found at <a href="https://etcd.io/docs/v3.6/op-guide/supported-platform/" target="_blank">supported platforms</a>.</p>
+
+<h6 id="linux">Linux</h6>
+
+<pre><code class="language-sh">ETCD_VER=v3.6.16
+
+# choose either URL
+GOOGLE_URL=https://storage.googleapis.com/etcd
+GITHUB_URL=https://github.com/etcd-io/etcd/releases/download
+DOWNLOAD_URL=${GOOGLE_URL}
+
+rm -f /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+rm -rf /tmp/etcd-download-test &amp;&amp; mkdir -p /tmp/etcd-download-test
+
+curl -L ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-linux-amd64.tar.gz -o /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+tar xzvf /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz -C /tmp/etcd-download-test --strip-components=1 --no-same-owner
+rm -f /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+
+/tmp/etcd-download-test/etcd --version
+/tmp/etcd-download-test/etcdctl version
+/tmp/etcd-download-test/etcdutl version
+
+# start a local etcd server
+/tmp/etcd-download-test/etcd
+
+# write,read to etcd
+/tmp/etcd-download-test/etcdctl --endpoints=localhost:2379 put foo bar
+/tmp/etcd-download-test/etcdctl --endpoints=localhost:2379 get foo
+</code></pre>
+
+<h6 id="macos-darwin">macOS (Darwin)</h6>
+
+<pre><code class="language-sh">ETCD_VER=v3.6.16
+
+# choose either URL
+GOOGLE_URL=https://storage.googleapis.com/etcd
+GITHUB_URL=https://github.com/etcd-io/etcd/releases/download
+DOWNLOAD_URL=${GOOGLE_URL}
+
+rm -f /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
+rm -rf /tmp/etcd-download-test &amp;&amp; mkdir -p /tmp/etcd-download-test
+
+curl -L ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-darwin-amd64.zip -o /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
+unzip /tmp/etcd-${ETCD_VER}-darwin-amd64.zip -d /tmp &amp;&amp; rm -f /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
+mv /tmp/etcd-${ETCD_VER}-darwin-amd64/* /tmp/etcd-download-test &amp;&amp; rm -rf mv /tmp/etcd-${ETCD_VER}-darwin-amd64
+
+/tmp/etcd-download-test/etcd --version
+/tmp/etcd-download-test/etcdctl version
+/tmp/etcd-download-test/etcdutl version
+</code></pre>
+
+<h6 id="docker">Docker</h6>
+
+<p>etcd uses <a href="https://gcr.io/etcd-development/etcd" target="_blank"><code>gcr.io/etcd-development/etcd</code></a> as a primary container registry, and <a href="https://quay.io/coreos/etcd" target="_blank"><code>quay.io/coreos/etcd</code></a> as secondary.</p>
+
+<pre><code class="language-sh">ETCD_VER=v3.6.16
+
+rm -rf /tmp/etcd-data.tmp &amp;&amp; mkdir -p /tmp/etcd-data.tmp &amp;&amp; \
+  docker rmi gcr.io/etcd-development/etcd:${ETCD_VER} || true &amp;&amp; \
+  docker run \
+  -p 2379:2379 \
+  -p 2380:2380 \
+  --mount type=bind,source=/tmp/etcd-data.tmp,destination=/etcd-data \
+  --name etcd-gcr-${ETCD_VER} \
+  gcr.io/etcd-development/etcd:${ETCD_VER} \
+  /usr/local/bin/etcd \
+  --name s1 \
+  --data-dir /etcd-data \
+  --listen-client-urls http://0.0.0.0:2379 \
+  --advertise-client-urls http://0.0.0.0:2379 \
+  --listen-peer-urls http://0.0.0.0:2380 \
+  --initial-advertise-peer-urls http://0.0.0.0:2380 \
+  --initial-cluster s1=http://0.0.0.0:2380 \
+  --initial-cluster-token tkn \
+  --initial-cluster-state new \
+  --log-level info \
+  --logger zap \
+  --log-outputs stderr
+
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcd --version
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl version
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdutl version
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl endpoint health
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl put foo bar
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl get foo
+</code></pre>
+<br><h3>Release notes for v3.5.35</h3><h4>2026-10-22</h4><p>Please check out <a href="https://github.com/etcd-io/etcd/blob/main/CHANGELOG/CHANGELOG-3.5.md" target="_blank">CHANGELOG</a> for a full list of changes. And make sure to read <a href="https://etcd.io/docs/v3.5/upgrades/upgrade_3_5/" target="_blank">upgrade guide</a> before upgrading etcd (there may be breaking changes).</p>
+
+<p>For installation guides, please check out <a href="http://play.etcd.io" target="_blank">play.etcd.io</a> and <a href="https://etcd.io/docs/v3.5/op-guide/" target="_blank">operating etcd</a>. Latest support status for common architectures and operating systems can be found at <a href="https://etcd.io/docs/v3.5/op-guide/supported-platform/" target="_blank">supported platforms</a>.</p>
+
+<h6 id="linux">Linux</h6>
+
+<pre><code class="language-sh">ETCD_VER=v3.5.35
+
+# choose either URL
+GOOGLE_URL=https://storage.googleapis.com/etcd
+GITHUB_URL=https://github.com/etcd-io/etcd/releases/download
+DOWNLOAD_URL=${GOOGLE_URL}
+
+rm -f /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+rm -rf /tmp/etcd-download-test &amp;&amp; mkdir -p /tmp/etcd-download-test
+
+curl -L ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-linux-amd64.tar.gz -o /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+tar xzvf /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz -C /tmp/etcd-download-test --strip-components=1 --no-same-owner
+rm -f /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+
+/tmp/etcd-download-test/etcd --version
+/tmp/etcd-download-test/etcdctl version
+/tmp/etcd-download-test/etcdutl version
+
+# start a local etcd server
+/tmp/etcd-download-test/etcd
+
+# write,read to etcd
+/tmp/etcd-download-test/etcdctl --endpoints=localhost:2379 put foo bar
+/tmp/etcd-download-test/etcdctl --endpoints=localhost:2379 get foo
+</code></pre>
+
+<h6 id="macos-darwin">macOS (Darwin)</h6>
+
+<pre><code class="language-sh">ETCD_VER=v3.5.35
+
+# choose either URL
+GOOGLE_URL=https://storage.googleapis.com/etcd
+GITHUB_URL=https://github.com/etcd-io/etcd/releases/download
+DOWNLOAD_URL=${GOOGLE_URL}
+
+rm -f /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
+rm -rf /tmp/etcd-download-test &amp;&amp; mkdir -p /tmp/etcd-download-test
+
+curl -L ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-darwin-amd64.zip -o /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
+unzip /tmp/etcd-${ETCD_VER}-darwin-amd64.zip -d /tmp &amp;&amp; rm -f /tmp/etcd-${ETCD_VER}-darwin-amd64.zip
+mv /tmp/etcd-${ETCD_VER}-darwin-amd64/* /tmp/etcd-download-test &amp;&amp; rm -rf mv /tmp/etcd-${ETCD_VER}-darwin-amd64
+
+/tmp/etcd-download-test/etcd --version
+/tmp/etcd-download-test/etcdctl version
+/tmp/etcd-download-test/etcdutl version
+</code></pre>
+
+<h6 id="docker">Docker</h6>
+
+<p>etcd uses <a href="https://gcr.io/etcd-development/etcd" target="_blank"><code>gcr.io/etcd-development/etcd</code></a> as a primary container registry, and <a href="https://quay.io/coreos/etcd" target="_blank"><code>quay.io/coreos/etcd</code></a> as secondary.</p>
+
+<pre><code class="language-sh">ETCD_VER=v3.5.35
+
+rm -rf /tmp/etcd-data.tmp &amp;&amp; mkdir -p /tmp/etcd-data.tmp &amp;&amp; \
+  docker rmi gcr.io/etcd-development/etcd:${ETCD_VER} || true &amp;&amp; \
+  docker run \
+  -p 2379:2379 \
+  -p 2380:2380 \
+  --mount type=bind,source=/tmp/etcd-data.tmp,destination=/etcd-data \
+  --name etcd-gcr-${ETCD_VER} \
+  gcr.io/etcd-development/etcd:${ETCD_VER} \
+  /usr/local/bin/etcd \
+  --name s1 \
+  --data-dir /etcd-data \
+  --listen-client-urls http://0.0.0.0:2379 \
+  --advertise-client-urls http://0.0.0.0:2379 \
+  --listen-peer-urls http://0.0.0.0:2380 \
+  --initial-advertise-peer-urls http://0.0.0.0:2380 \
+  --initial-cluster s1=http://0.0.0.0:2380 \
+  --initial-cluster-token tkn \
+  --initial-cluster-state new \
+  --log-level info \
+  --logger zap \
+  --log-outputs stderr
+
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcd --version
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl version
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdutl version
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl endpoint health
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl put foo bar
+docker exec etcd-gcr-${ETCD_VER} /usr/local/bin/etcdctl get foo
+</code></pre>
+<br>
+</body>
+
+</html>
