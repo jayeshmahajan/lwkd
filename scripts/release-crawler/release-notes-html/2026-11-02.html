@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Whats new in the last week</title>
+</head>
+
+<body>
+<h1>Latest Releases for the week 2026-10-26 - 2026-11-02</h1><h2>containerd/nerdctl</h2> <h3>Release notes for v2.4.2</h3><h4>2026-10-30</h4><h2 id="changes">Changes</h2>
+
+<ul>
+<li><code>nerdctl container</code>:
+
+<ul>
+<li>Add <code>--device-cgroup-rule</code> to <code>nerdctl run</code> and <code>nerdctl create</code> (<a href="https://github.com/containerd/nerdctl/pull/5258" target="_blank">#5258</a>, thanks to @takumi12311123)</li>
+<li>Add <code>--timeout</code> to <code>nerdctl commit</code> for configuring the lease timeout, which was hard-coded to 1h (<a href="https://github.com/containerd/nerdctl/pull/5253" target="_blank">#5253</a>, thanks to @Luckydog691)</li>
+<li>Fix <code>--volumes-from</code> to inherit only user mounts, so that the target container&rsquo;s own <code>/dev/shm</code> configuration is not replaced (<a href="https://github.com/containerd/nerdctl/pull/5250" target="_blank">#5250</a>, thanks to @git-jxj)</li>
+<li>Exit with status 1 when detaching from <code>nerdctl attach</code>, as Docker does (<a href="https://github.com/containerd/nerdctl/pull/5281" target="_blank">#5281</a>, thanks to @cvas22)</li>
+</ul></li>
+<li>Healthcheck:
+
+<ul>
+<li>Support <code>--health-start-interval</code> for <code>nerdctl run</code> and <code>nerdctl create</code>, <code>healthcheck.start_interval</code> in Compose, and <code>HEALTHCHECK --start-interval</code> in images (<a href="https://github.com/containerd/nerdctl/pull/5229" target="_blank">#5229</a>, thanks to @akashchamp)</li>
+</ul></li>
+<li><code>nerdctl image</code>:
+
+<ul>
+<li>Fix <code>nerdctl image prune --filter until=</code> (empty value) dropping the filter and removing every unused image (<a href="https://github.com/containerd/nerdctl/pull/5304" target="_blank">#5304</a>, thanks to @ogulcanaydogan)</li>
+<li>Fix <code>nerdctl rmi -f</code> failing with <code>image &quot;:&quot;: already exists</code> when force-removing more than one image used by running containers (<a href="https://github.com/containerd/nerdctl/pull/5191" target="_blank">#5191</a>, thanks to @ogulcanaydogan)</li>
+<li>Enable the image verifier of stargz-snapshotter v0.19, so that images with faked DiffIDs are detected (<a href="https://github.com/containerd/nerdctl/pull/5264" target="_blank">#5264</a>, thanks to @ktock)</li>
+</ul></li>
+<li><code>nerdctl network</code>:
+
+<ul>
+<li>Reject invalid <code>nerdctl network ls</code> filters (<a href="https://github.com/containerd/nerdctl/pull/5226" target="_blank">#5226</a>, thanks to @immanuwell)</li>
+</ul></li>
+<li><code>nerdctl volume</code>:
+
+<ul>
+<li>Reject invalid <code>nerdctl volume ls</code> filters (<a href="https://github.com/containerd/nerdctl/pull/5252" target="_blank">#5252</a>, thanks to @immanuwell)</li>
+</ul></li>
+<li><code>nerdctl compose</code>:
+
+<ul>
+<li>Support <code>device_cgroup_rules</code> (<a href="https://github.com/containerd/nerdctl/pull/5258" target="_blank">#5258</a>, thanks to @takumi12311123)</li>
+<li>Fix <code>nerdctl compose images</code> to report the pinned image after retagging (<a href="https://github.com/containerd/nerdctl/pull/5251" target="_blank">#5251</a>, thanks to @git-jxj)</li>
+<li>Fix <code>nerdctl compose up</code> on Windows by not defaulting <code>--hostname</code> to the service name (<a href="https://github.com/containerd/nerdctl/pull/5267" target="_blank">#5267</a>, thanks to @0x000NULL)</li>
+</ul></li>
+<li><code>nerdctl logs</code>:
+
+<ul>
+<li>Fix log rotation failing on Windows while <code>nerdctl logs -f</code> is running (<a href="https://github.com/containerd/nerdctl/pull/5266" target="_blank">#5266</a>, thanks to @0x000NULL)</li>
+</ul></li>
+<li><code>go.mod</code>:
+
+<ul>
+<li>Update containerd library to <a href="https://github.com/containerd/containerd/releases/tag/v2.4.2" target="_blank">v2.4.2</a> (<a href="https://github.com/containerd/nerdctl/pull/5278" target="_blank">#5278</a>)</li>
+</ul></li>
+<li><code>nerdctl-full</code>:
+
+<ul>
+<li>Update containerd (2.4.2), BuildKit (0.34.1), RootlessKit (3.3.0), stargz-snapshotter (0.19.1) (<a href="https://github.com/containerd/nerdctl/pull/5298" target="_blank">#5298</a>, <a href="https://github.com/containerd/nerdctl/pull/5264" target="_blank">#5264</a>, thanks to @ktock)
+
+<ul>
+<li>containerd v2.4.2 fixes <a href="https://github.com/containerd/containerd/security/advisories/GHSA-vwhp-8p66-mq4f" target="_blank">CVE-2026-95839</a>, <a href="https://github.com/containerd/containerd/security/advisories/GHSA-8647-2jxj-p2rc" target="_blank">GHSA-8647-2jxj-p2rc</a>, <a href="https://github.com/containerd/containerd/security/advisories/GHSA-hc94-p972-ch66" target="_blank">GHSA-hc94-p972-ch66</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>Full changes: <a href="https://github.com/containerd/nerdctl/milestone/70?closed=1" target="_blank">https://github.com/containerd/nerdctl/milestone/70?closed=1</a>
+Thanks to @0x000NULL @Luckydog691 @akashchamp @cvas22 @git-jxj @immanuwell @ktock @mainguyen0112 @ogulcanaydogan @sarankumar1325 @takumi12311123</p>
+
+<blockquote>
+<p>[!NOTE]
+Claude was used for drafting this release note</p>
+</blockquote>
+
+<h2 id="compatible-containerd-versions">Compatible containerd versions</h2>
+
+<p>This release of nerdctl is expected to be used with containerd v1.7 or later.
+Some features may not work with other releases of containerd.</p>
+
+<h2 id="about-the-binaries">About the binaries</h2>
+
+<ul>
+<li>Minimal (<code>nerdctl-2.4.2-linux-amd64.tar.gz</code>): nerdctl only</li>
+<li>Full (<code>nerdctl-full-2.4.2-linux-amd64.tar.gz</code>):    Includes dependencies such as containerd, runc, and CNI</li>
+</ul>
+
+<h3 id="minimal">Minimal</h3>
+
+<p>Extract the archive to a path like <code>/usr/local/bin</code> or <code>~/bin</code> .
+<details><summary>tar Cxzvvf /usr/local/bin nerdctl-2.4.2-linux-amd64.tar.gz</summary>
+<p></p>
+
+<pre><code>-rwxr-xr-x root/root  32600226 2026-10-30 11:43 nerdctl
+-rwxr-xr-x root/root     23390 2026-10-30 11:42 containerd-rootless-setuptool.sh
+-rwxr-xr-x root/root      9555 2026-10-30 11:42 containerd-rootless.sh
+</code></pre>
+
+<p></p>
+</details></p>
+
+<h3 id="full">Full</h3>
+
+<p>Extract the archive to a path like <code>/usr/local</code> or <code>~/.local</code> .</p>
+
+<details><summary>tar Cxzvvf /usr/local nerdctl-full-2.4.2-linux-amd64.tar.gz</summary>
+<p>
+
+```
+drwxr-xr-x 0/0               0 2026-10-30 11:53 bin/
+-rwxr-xr-x 0/0        34819330 2026-10-07 19:18 bin/buildctl
+-rwxr-xr-x 0/0        29909144 2025-05-12 13:10 bin/buildg
+lrwxrwxrwx 0/0               0 2026-10-30 11:52 bin/buildkit-cni-bandwidth -> ../libexec/cni/bandwidth
+lrwxrwxrwx 0/0               0 2026-10-30 11:52 bin/buildkit-cni-bridge -> ../libexec/cni/bridge
+lrwxrwxrwx 0/0               0 2026-10-30 11:52 bin/buildkit-cni-dhcp -> ../libexec/cni/dhcp
+lrwxrwxrwx 0/0               0 2026-10-30 11:52 bin/buildkit-cni-dummy -> ../libexec/cni/dummy
+lrwxrwxrwx 0/0               0 2026-10-30 11:52 bin/buildkit-cni-firewall -> ../libexec/cni/firewall
+lrwxrwxrwx 0/0               0 2026-10-30 11:52 bin/buildkit-cni-host-device -> ../libexec/cni/host-device
+lrwxrwxrwx 0/0               0 2026-10-30 11:52 bin/buildkit-cni-host-local -> ../libexec/cni/host-local
+lrwxrwxrwx 0/0               0 2026-10-30 11:52 bin/buildkit-cni-ipvlan -> ../libexec/cni/ipvlan
+lrwxrwxrwx 0/0               0 2026-10-30 11:52 bin/buildkit-cni-loopback -> ../libexec/cni/loopback
+lrwxrwxrwx 0/0               0 2026-10-30 11:52 bin/buildkit-cni-macvlan -> ../libexec/cni/macvlan
+lrwxrwxrwx 0/0               0 2026-10-30 11:52 bin/buildkit-cni-portmap -> ../libexec/cni/portmap
+lrwxrwxrwx 0/0               0 2026-10-30 11:52 bin/buildkit-cni-ptp -> ../libexec/cni/ptp
+lrwxrwxrwx 0/0               0 2026-10-30 11:52 bin/buildkit-cni-sbr -> ../libexec/cni/sbr
+lrwxrwxrwx 0/0               0 2026-10-30 11:52 bin/buildkit-cni-static -> ../libexec/cni/static
+lrwxrwxrwx 0/0               0 2026-10-30 11:52 bin/buildkit-cni-tap -> ../libexec/cni/tap
+lrwxrwxrwx 0/0               0 2026-10-30 11:52 bin/buildkit-cni-tuning -> ../libexec/cni/tuning
+lrwxrwxrwx 0/0               0 2026-10-30 11:52 bin/buildkit-cni-vlan -> ../libexec/cni/vlan
+lrwxrwxrwx 0/0               0 2026-10-30 11:52 bin/buildkit-cni-vrf -> ../libexec/cni/vrf
+-rwxr-xr-x 0/0        80918593 2026-10-07 19:18 bin/buildkitd
+-rwxr-xr-x 0/0        16866288 2026-10-30 11:51 bin/bypass4netns
+-rwxr-xr-x 0/0         6615202 2026-10-30 11:51 bin/bypass4netnsd
+-rwxr-xr-x 0/0        40525840 2026-10-30 11:52 bin/containerd
+-rwxr-xr-x 0/0        12079288 2025-11-06 01:44 bin/containerd-fuse-overlayfs-grpc
+-rwxr-xr-x 0/0           23390 2026-10-30 11:53 bin/containerd-rootless-setuptool.sh
+-rwxr-xr-x 0/0            9555 2026-10-30 11:53 bin/containerd-rootless.sh
+-rwxr-xr-x 0/0         8138914 2026-10-30 11:52 bin/containerd-shim-runc-v2
+-rwxr-xr-x 0/0        60186784 2026-10-27 07:32 bin/containerd-stargz-grpc
+-rwxr-xr-x 0/0        24848782 2026-10-30 11:52 bin/ctd-decoder
+-rwxr-xr-x 0/0        23195810 2026-10-30 11:51 bin/ctr
+-rwxr-xr-x 0/0        34420106 2026-10-30 11:52 bin/ctr-enc
+-rwxr-xr-x 0/0        25022624 2026-10-27 07:32 bin/ctr-remote
+-rwxr-xr-x 0/0         1695520 2026-10-30 11:52 bin/fuse-overlayfs
+-rwxr-xr-x 0/0        11153570 2026-10-30 11:51 bin/gomodjail
+-rwxr-xr-x 0/0        32563362 2026-10-30 11:53 bin/nerdctl
+-rwxr-xr-x 0/0        43725693 2026-10-30 11:53 bin/nerdctl.gomodjail
+-rwxr-xr-x 0/0        12482633 2026-10-14 01:49 bin/rootlessctl
+-rwxr-xr-x 0/0        23959613 2026-10-14 01:49 bin/rootlesskit
+-rwxr-xr-x 0/0        14131248 2026-10-30 11:51 bin/runc
+-rwxr-xr-x 0/0        59388064 2026-10-27 07:32 bin/stargz-fuse-manager
+-rwxr-xr-x 0/0        11448480 2026-10-27 07:32 bin/stargz-store-helper
+-rwxr-xr-x 0/0          870496 2026-10-30 11:52 bin/tini
+drwxr-xr-x 0/0               0 2026-10-30 11:52 lib/
+drwxr-xr-x 0/0               0 2026-10-30 11:52 lib/systemd/
+drwxr-xr-x 0/0               0 2026-10-30 11:52 lib/systemd/system/
+-rw-r--r-- 0/0            1309 2026-10-30 11:52 lib/systemd/system/buildkit.service
+-rw-r--r-- 0/0            1248 2026-10-30 11:50 lib/systemd/system/containerd.service
+-rw-r--r-- 0/0             312 2026-10-30 11:52 lib/systemd/system/stargz-snapshotter.service
+drwxr-xr-x 0/0               0 2026-10-30 11:52 libexec/
+drwxr-xr-x 0/0               0 2026-03-16 14:18 libexec/cni/
+-rw-r--r-- 0/0           11357 2026-03-16 14:18 libexec/cni/LICENSE
+-rw-r--r-- 0/0            2343 2026-03-16 14:18 libexec/cni/README.md
+-rwxr-xr-x 0/0         5042926 2026-03-16 14:18 libexec/cni/bandwidth
+-rwxr-xr-x 0/0         5698763 2026-03-16 14:18 libexec/cni/bridge
+-rwxr-xr-x 0/0        13725422 2026-03-16 14:18 libexec/cni/dhcp
+-rwxr-xr-x 0/0         5251069 2026-03-16 14:18 libexec/cni/dummy
+-rwxr-xr-x 0/0         5702145 2026-03-16 14:18 libexec/cni/firewall
+-rwxr-xr-x 0/0         5159967 2026-03-16 14:18 libexec/cni/host-device
+-rwxr-xr-x 0/0         4350778 2026-03-16 14:18 libexec/cni/host-local
+-rwxr-xr-x 0/0         5274322 2026-03-16 14:18 libexec/cni/ipvlan
+-rwxr-xr-x 0/0         4302030 2026-03-16 14:18 libexec/cni/loopback
+-rwxr-xr-x 0/0         5307111 2026-03-16 14:18 libexec/cni/macvlan
+-rwxr-xr-x 0/0         5108385 2026-03-16 14:18 libexec/cni/portmap
+-rwxr-xr-x 0/0         5475470 2026-03-16 14:18 libexec/cni/ptp
+-rwxr-xr-x 0/0         4525826 2026-03-16 14:18 libexec/cni/sbr
+-rwxr-xr-x 0/0         3776708 2026-03-16 14:18 libexec/cni/static
+-rwxr-xr-x 0/0         5453308 2026-03-16 14:18 libexec/cni/tap
+-rwxr-xr-x 0/0         4389084 2026-03-16 14:18 libexec/cni/tuning
+-rwxr-xr-x 0/0         5267679 2026-03-16 14:18 libexec/cni/vlan
+-rwxr-xr-x 0/0         4685012 2026-03-16 14:18 libexec/cni/vrf
+drwxr-xr-x 0/0               0 2026-10-30 11:50 share/
+drwxr-xr-x 0/0               0 2026-10-30 11:53 share/doc/
+drwxr-xr-x 0/0               0 2026-10-30 11:53 share/doc/nerdctl/
+-rw-r--r-- 0/0           12380 2026-10-30 11:42 share/doc/nerdctl/README.md
+drwxr-xr-x 0/0               0 2026-10-30 11:42 share/doc/nerdctl/docs/
+-rw-r--r-- 0/0            3953 2026-10-30 11:42 share/doc/nerdctl/docs/build.md
+-rw-r--r-- 0/0            2570 2026-10-30 11:42 share/doc/nerdctl/docs/builder-debug.md
+-rw-r--r-- 0/0            4779 2026-10-30 11:42 share/doc/nerdctl/docs/cni.md
+-rw-r--r-- 0/0           97982 2026-10-30 11:42 share/doc/nerdctl/docs/command-reference.md
+-rw-r--r-- 0/0            1895 2026-10-30 11:42 share/doc/nerdctl/docs/compose.md
+-rw-r--r-- 0/0            7903 2026-10-30 11:42 share/doc/nerdctl/docs/config.md
+-rw-r--r-- 0/0            9138 2026-10-30 11:42 share/doc/nerdctl/docs/cosign.md
+-rw-r--r-- 0/0            5652 2026-10-30 11:42 share/doc/nerdctl/docs/cvmfs.md
+drwxr-xr-x 0/0               0 2026-10-30 11:42 share/doc/nerdctl/docs/dev/
+-rw-r--r-- 0/0           12701 2026-10-30 11:42 share/doc/nerdctl/docs/dev/auditing_dockerfile.md
+-rw-r--r-- 0/0            8587 2026-10-30 11:42 share/doc/nerdctl/docs/dev/store.md
+-rw-r--r-- 0/0            3148 2026-10-30 11:42 share/doc/nerdctl/docs/dir.md
+-rw-r--r-- 0/0            1826 2026-10-30 11:42 share/doc/nerdctl/docs/erofs.md
+-rw-r--r-- 0/0             906 2026-10-30 11:42 share/doc/nerdctl/docs/experimental.md
+-rw-r--r-- 0/0           14763 2026-10-30 11:42 share/doc/nerdctl/docs/faq.md
+-rw-r--r-- 0/0             884 2026-10-30 11:42 share/doc/nerdctl/docs/freebsd.md
+-rw-r--r-- 0/0            5585 2026-10-30 11:42 share/doc/nerdctl/docs/gpu.md
+-rw-r--r-- 0/0            3919 2026-10-30 11:42 share/doc/nerdctl/docs/healthchecks.md
+drwxr-xr-x 0/0               0 2026-10-30 11:42 share/doc/nerdctl/docs/images/
+-rw-r--r-- 0/0            1540 2026-10-30 11:42 share/doc/nerdctl/docs/images/nerdctl-white.svg
+-rw-r--r-- 0/0            1462 2026-10-30 11:42 share/doc/nerdctl/docs/images/nerdctl.svg
+-rw-r--r-- 0/0          684421 2026-10-30 11:42 share/doc/nerdctl/docs/images/rootlessKit-network-design.png
+-rw-r--r-- 0/0           14462 2026-10-30 11:42 share/doc/nerdctl/docs/ipfs.md
+-rw-r--r-- 0/0            2426 2026-10-30 11:42 share/doc/nerdctl/docs/multi-platform.md
+-rw-r--r-- 0/0            2960 2026-10-30 11:42 share/doc/nerdctl/docs/notation.md
+-rw-r--r-- 0/0            2806 2026-10-30 11:42 share/doc/nerdctl/docs/nydus.md
+-rw-r--r-- 0/0            3277 2026-10-30 11:42 share/doc/nerdctl/docs/ocicrypt.md
+-rw-r--r-- 0/0            2215 2026-10-30 11:42 share/doc/nerdctl/docs/overlaybd.md
+-rw-r--r-- 0/0           15616 2026-10-30 11:42 share/doc/nerdctl/docs/registry.md
+-rw-r--r-- 0/0           10065 2026-10-30 11:42 share/doc/nerdctl/docs/rootless.md
+-rw-r--r-- 0/0            4126 2026-10-30 11:42 share/doc/nerdctl/docs/soci.md
+-rw-r--r-- 0/0           11912 2026-10-30 11:42 share/doc/nerdctl/docs/stargz.md
+drwxr-xr-x 0/0               0 2026-10-30 11:42 share/doc/nerdctl/docs/testing/
+-rw-r--r-- 0/0            6352 2026-10-30 11:42 share/doc/nerdctl/docs/testing/README.md
+-rw-r--r-- 0/0            6527 2026-10-30 11:42 share/doc/nerdctl/docs/testing/flaky.md
+-rw-r--r-- 0/0           16694 2026-10-30 11:42 share/doc/nerdctl/docs/testing/tools.md
+drwxr-xr-x 0/0               0 2026-10-30 11:53 share/doc/nerdctl-full/
+-rw-r--r-- 0/0             904 2026-10-30 11:52 share/doc/nerdctl-full/README.md
+-rw-r--r-- 0/0            9539 2026-10-30 11:53 share/doc/nerdctl-full/SHA256SUMS
+```
+</p>
+</details>
+
+<details><summary>Included components</summary>
+<p>
+
+See `share/doc/nerdctl-full/README.md`:
+```markdown
+# nerdctl (full distribution)
+- nerdctl: v2.4.2
+- containerd: v2.4.2
+- runc: v1.5.2
+- CNI plugins: v1.9.1
+- BuildKit: v0.34.1
+- Stargz Snapshotter: v0.19.1
+- imgcrypt: v2.0.3
+- bypass4netns: v0.4.2
+- fuse-overlayfs: v1.18
+- containerd-fuse-overlayfs: v2.1.7
+- Tini: v0.19.0
+- buildg: v0.5.3
+- RootlessKit: v3.3.0
+- gomodjail: v2.0.1@5924a4079d0f70459a10973f715238dc336478ea
+
+## License
+- bin/fuse-overlayfs: [GNU GENERAL PUBLIC LICENSE, Version 2](https://github.com/containers/fuse-overlayfs/blob/v1.18/COPYING)
+- bin/{runc,bypass4netns,bypass4netnsd}: Apache License 2.0, statically linked with libseccomp ([LGPL 2.1](https://github.com/seccomp/libseccomp/blob/main/LICENSE), source code available at https://github.com/seccomp/libseccomp/)
+- bin/tini: [MIT License](https://github.com/krallin/tini/blob/v0.19.0/LICENSE)
+- Other files: [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)
+```
+</p>
+</details>
+
+<h2 id="quick-start">Quick start</h2>
+
+<h3 id="rootful">Rootful</h3>
+
+<pre><code class="language-console">$ sudo systemctl enable --now containerd
+$ sudo nerdctl run -d --name nginx -p 80:80 nginx:alpine
+</code></pre>
+
+<h3 id="rootless">Rootless</h3>
+
+<pre><code class="language-console">$ containerd-rootless-setuptool.sh install
+$ nerdctl run -d --name nginx -p 8080:80 nginx:alpine
+</code></pre>
+
+<p>Enabling cgroup v2 is highly recommended for rootless mode, see <a href="https://rootlesscontaine.rs/getting-started/common/cgroup2/" target="_blank">https://rootlesscontaine.rs/getting-started/common/cgroup2/</a> .</p>
+
+<hr>
+
+<p>The binaries were built automatically on GitHub Actions.
+The build log is available for 90 days: <a href="https://github.com/containerd/nerdctl/actions/runs/41049983950" target="_blank">https://github.com/containerd/nerdctl/actions/runs/41049983950</a></p>
+
+<p>The sha256sum of the SHA256SUMS file itself is <code>f84df0149caa9f2917c14b8431b0413d3d6b445e4739ff1b479ea533b7075cb7</code> .</p>
+
+<hr>
+
+<p>Release manager: @AkihiroSuda</p>
+<br><h2>prometheus/prometheus</h2> <h3>Release notes for 3.16.0-rc.2 / 2026-10-27</h3><h4>2026-10-28</h4><ul>
+<li>[CHANGE] API: The experimental search endpoints now clamp <code>batch_size</code> to 1000. (#19731, @roidelapluie)</li>
+<li>[CHANGE] Configuration: Default &ndash;web.external-url to https when &ndash;web.config.file enables TLS. (#19241, @hexonal)</li>
+<li>[CHANGE] PromQL: Subquery samples are now included in the query TotalSamples and TotalSamplesPerStep statistics, and SamplesRead now counts reads from subqueries with an @ modifier in range queries. (#19165, @DanCech)</li>
+<li>[CHANGE] Remote write: Stop exposing the deprecated <code>prometheus_remote_storage_metadata_total</code>, <code>prometheus_remote_storage_metadata_failed_total</code>, <code>prometheus_remote_storage_metadata_retried_total</code>, and <code>prometheus_remote_storage_metadata_bytes_total</code> metrics for Remote Write 2.0 queues. (#20080, @shilohlee98)</li>
+<li>[CHANGE] Remote write receiver: Count Remote Write 2.x samples and histograms ingested without metadata in <code>prometheus_api_remote_write_without_metadata_appended_samples_total</code> even when <code>metadata-wal-records</code> is disabled. (#19812, @bwplotka)</li>
+<li>[CHANGE] TSDB: Reject exemplars whose label names are not unique, instead of storing them and serving a duplicate JSON key from <code>/api/v1/query_exemplars</code>. (#19896, @Ramya-9353)</li>
+<li>[FEATURE] API: Allow overriding PromQL Start Timestamp processing on a per-query basis using the <code>X-Prometheus-Use-Start-Timestamps</code> HTTP header. (#19066, @69iqqq)</li>
+<li>[FEATURE] Agent: Support metadata-wal-records in Prometheus Agent mode. (#19684, @bwplotka)</li>
+<li>[FEATURE] PromQL: Add experimental <code>integral()</code> function for computing integral-over-time of range vectors behind the <code>--enable-feature=promql-experimental-functions</code> flag. (#14440, @jjo)</li>
+<li>[FEATURE] PromQL: Add experimental query cost estimation, actual cost reporting, and configurable execution limits, enabled with <code>--enable-feature=query-cost</code>. (#20028, @roidelapluie)</li>
+<li>[FEATURE] PromQL: Smoothed and Anchored vector selectors are now stable and always-on. (#19697, @roidelapluie)</li>
+<li>[FEATURE] PromQL: Use start timestamps to detect counter resets when float timeseries are queried using extended range selector modifiers (<code>anchored</code>, <code>smoothed</code>). This feature is hidden behind <code>use-start-timestamps</code> feature flag. (#18966, @vpranckaitis)</li>
+<li>[FEATURE] Promtool: print test filename during promtool tests (#18271, @dnwe)</li>
+<li>[FEATURE] PromQL: Allow unquoted Unicode letters and dots behind a feature flag (#20162, @roidelapluie)</li>
+<li>[ENHANCEMENT] Search API: Warn when participating remote-read storage does not support search. (#19992, @aknuds1)</li>
+<li>[ENHANCEMENT] Remote Read: Add native histogram prometheus_remote_read_handler_gate_wait_duration_seconds to measure concurrency-gate wait duration, including requests canceled while waiting. (#18355, @ogulcanaydogan)</li>
+<li>[ENHANCEMENT] Remote Write: Add experimental flag <code>convert_nhcb_to_classic</code> to convert NHCB to classic histograms for external systems that dont support NHCBs. (#17205, @Naman-B-Parlecha)</li>
+<li>[ENHANCEMENT] promtool: Add <code>--allow-incompatible-block-duration</code> so users can specify any max-block-duration instead of being restricted to the default Prometheus block durations. (#19363, @sarthaksarthak9)</li>
+<li>[PERF] Remote write: Cache repeated OTLP histogram metric names. (#19717, @perfloop-agent)</li>
+<li>[PERF] OpenMetrics 2.0 parser: Reuse classic histogram and summary expansion buffers across scrapes. (#19907, @bwplotka)</li>
+<li>[PERF] PromQL: Decode only histogram sum/count (not buckets) for timestamp(), start_timestamp() and absent(). (#19738, @linasm)</li>
+<li>[PERF] PromQL: Only select the fixed window for subqueries with an <code>@</code> modifier. (#19863, @roidelapluie)</li>
+<li>[PERF] Remote write / TSDB: Deduplicate per-series metadata structs in memory with <code>unique.Handle</code>. (#20040, @bwplotka)</li>
+<li>[PERF] Scrape: Avoid some copies of scrape response bodies. (#19394, @shubhgupta2104)</li>
+<li>[PERF] TSDB: Improve XOR2 compression and append performance by selecting value windows based on encoding cost. (#19962, @roidelapluie)</li>
+<li>[PERF] TSDB: Reduce memory used writing and reading checkpoint metadata records. (#19712, @kgeckhart)</li>
+<li>[PERF] Scrape: Convert classic histograms to NHCB directly in the OpenMetrics 2.0 parser without wrapping in <code>NHCBParser</code>. (#19880, @bwplotka)</li>
+<li>[PERF] Scrape: Reduce OpenMetrics 2.0 parser allocations and CPU overhead by lazily constructing composite series and exemplar labels. (#19895, @bwplotka)</li>
+<li>[BUGFIX] Remote read: Abort failed streaming responses without writing duplicate headers or appending plain-text errors to the protobuf stream (#19749, @aknuds1)</li>
+<li>[BUGFIX] TSDB: Fix loss of out-of-order samples when a WAL checkpoint drops a series record that the out-of-order write-behind log still needs (#19737, @replay)</li>
+<li>[BUGFIX] TSDB: Fix queries that seek within a head chunk returning samples committed after the query started (#19854, @aknuds1)</li>
+<li>[BUGFIX] TSDB: Preserve mapped chunks when WAL replay merges multiple references for the same series, preventing missing out-of-order samples and duplicate in-order chunks after restart (#19805, @dmatth1)</li>
+<li>[BUGFIX] Fix auto-reload logic to reload after reverting a failed configuration change (#19838, @eholzbach)</li>
+<li>[BUGFIX] API: Do not match metric family metadata for doubled _total and _info suffixes in experimental search API. (#19910, @tcp13equals2)</li>
+<li>[BUGFIX] API: Reject <code>timeout</code> and <code>lookback_delta</code> values that overflow int64 instead of turning them into a negative duration (#19658, @youdie006)</li>
+<li>[BUGFIX] API: Resolve metric family metadata for suffixed metric names in search results, in experimental search API. (#19824, @roidelapluie)</li>
+<li>[BUGFIX] AWS SD: Describe each ElastiCache cluster once instead of twice for clusters that are not replication group members. (#19434, @ekalinin)</li>
+<li>[BUGFIX] Build: Allow installing promtool with version-suffixed go install commands (#19754, @aknuds1)</li>
+<li>[BUGFIX] Discovery: Fix a panic in Azure service discovery when a VM tag has a null value. (#19755, @shoemoney)</li>
+<li>[BUGFIX] Federation: fix corruption of float native histograms. (#19679, @MichaHoffmann)</li>
+<li>[BUGFIX] Fix ts_of_last_over_time for samples before the Unix epoch. (#19828, @fallintoplace)</li>
+<li>[BUGFIX] Histograms: Fix ConvertNHCBToClassic inflating classic bucket counts for integer native histograms whose spans have gaps. (#19659, @youdie006)</li>
+<li>[BUGFIX] Logging: Preserve rule and TSDB block values in JSON logs. (#19572, @shilohlee98)</li>
+<li>[BUGFIX] OTLP receiver: Drop exemplars with timestamps more than 10 minutes in the future instead of storing them and blocking subsequent exemplars for that series. (#19812, @bwplotka)</li>
+<li>[BUGFIX] OTLP: Count only out-of-order exemplars in <code>prometheus_api_otlp_out_of_order_exemplars_total</code>, not every rejected exemplar. (#20030, @aknuds1)</li>
+<li>[BUGFIX] OTLP: Do not drop exemplars that have a <code>trace_id</code> or <code>span_id</code> filtered attribute in addition to a trace or span ID. The trace context now takes precedence over the colliding attribute, as required by the OpenTelemetry specification. (#20004, @krajorama)</li>
+<li>[BUGFIX] OTLP: Do not emit <code>le=&quot;+Inf&quot;</code> twice when a histogram&rsquo;s explicit bounds end at <code>+Inf</code>, and warn about the bound. (#19425, @serhiy-bzhezytskyy)</li>
+<li>[BUGFIX] OTLP: Stop dropping exemplars that arrive out of timestamp order within a data point. (#20029, @aknuds1)</li>
+<li>[BUGFIX] OpenMetrics 2.0: Attach histogram exemplars to matching classic <code>_bucket</code> series and preserve them when scraping both native and classic histograms. (#20020, @dashpole)</li>
+<li>[BUGFIX] PromQL: Avoid intermediate overflow in <code>rad()</code> and <code>deg()</code> conversions. (#19901, @fallintoplace)</li>
+<li>[BUGFIX] PromQL: Consistently ignore and drop <code>__type__</code> and <code>__unit__</code> labels in <code>without</code> aggregations, <code>absent()</code>, <code>info()</code>, and binary operator fill matching. (#19986, @dashpole)</li>
+<li>[BUGFIX] PromQL: Do not panic when printing the partial AST returned alongside a parse error. (#19797, @zenador)</li>
+<li>[BUGFIX] PromQL: Drop <strong>type</strong> and <strong>unit</strong> in binary operations so they are transparent to users, similar to how <strong>name</strong> is handled. (#18680, @iam-prane-eth)</li>
+<li>[BUGFIX] PromQL: Fix <code>==</code>, <code>!=</code>, <code>changes()</code> and <code>count_values</code> on native histograms giving wrong results inside <code>histogram_count()</code>, <code>histogram_sum()</code> and <code>histogram_avg()</code>. (#20024, @linasm)</li>
+<li>[BUGFIX] PromQL: Fix histogram_fraction returning wrong results for native histograms with custom buckets when a bucket boundary is exactly 0. (#19657, @youdie006)</li>
+<li>[BUGFIX] PromQL: Fix histogram_quantile and histogram_quantiles interpolating within the wrong bucket for native histograms whose sum is NaN. (#19973, @bhabishnu)</li>
+<li>[BUGFIX] PromQL: Fix lexing of subqueries whose range is a duration keyword expression, e.g. <code>foo[range():1s]</code>. (#19729, @roidelapluie)</li>
+<li>[BUGFIX] PromQL: Fix warning and error locations for duration expressions <code>min_of</code> and <code>max_of</code>. (#19742, @roidelapluie)</li>
+<li>[BUGFIX] PromQL: Ignore NaN classic histogram bucket boundaries in <code>histogram_quantile</code>, <code>histogram_quantiles</code> and <code>histogram_fraction</code> and return correct value instead of NaN if there are normal buckets. (#20057, @fallintoplace)</li>
+<li>[BUGFIX] PromQL: Preserve infinite values at exact quantile ranks. (#19899, @fallintoplace)</li>
+<li>[BUGFIX] PromQL: Preserve original operand sides for experimental fill modifiers with group_right matching. (#19939, @inanna-malick)</li>
+<li>[BUGFIX] PromQL: Preserve subquery step expressions when printing queries after preprocessing. (#19743, @roidelapluie)</li>
+<li>[BUGFIX] PromQL: Range vector functions no longer raise a spurious &ldquo;vector cannot contain metrics with the same labelset&rdquo; error when series have different metric names but the same remaining labels, as long as their timestamps do not overlap within the evaluated range window (#18631, @kasharkzy)</li>
+<li>[BUGFIX] PromQL: do not count subquery materialized samples in total samples statistics (#19873, @roidelapluie)</li>
+<li>[BUGFIX] Remote write: Prevent future-dated exemplars from scaling shards down to the minimum. (#19866, @thampiotr)</li>
+<li>[BUGFIX] Agent: Prevent future sent timestamps from advancing WAL truncation beyond the minimum retention window. (#19866, @thampiotr)</li>
+<li>[BUGFIX] Rules: Restore firing alerts with for durations shorter than &ndash;rules.alert.for-grace-period after a restart. (#19882, @ajaykr0905)</li>
+<li>[BUGFIX] Scrape: fix failing scrape when float histogram is emitted over protobuf with count, zero count and buckets all zero, for example a result of recording <code>rate(x[1m])</code> over constant histogram. (#19682, @MichaHoffmann)</li>
+<li>[BUGFIX] Search API: Return the lexically smallest label values when <code>limit</code> is set on <code>/api/v1/search/label_values</code>, instead of an arbitrary subset (#19694, @tcp13equals2)</li>
+<li>[BUGFIX] TSDB: Fix WAL watcher permanently skipping checkpoint series garbage collection when lagging behind head truncation. (#20041, @bwplotka)</li>
+<li>[BUGFIX] Search API: Avoid panics when the requested time range has no participating storage. (#19992, @aknuds1)</li>
+<li>[BUGFIX] TSDB: Fix a race in selected-series and stale-series compaction where a sample committed after the block was written but before the series was evicted from the head could be silently lost. The fix no longer depends on isolation being enabled. (#19666, @duricanikolic)</li>
+<li>[BUGFIX] TSDB: Fix a rare case where a sample could be lost during selected-series or stale-series compaction if an unrelated write to the same series ran cleanup that erased the evidence needed to protect it. (#19672, @duricanikolic)</li>
+<li>[BUGFIX] TSDB: Fix spurious &ldquo;unknown series references&rdquo; warnings during WAL replay after a restart, when the only blocks on disk were produced by selected-series or stale-series compaction. (#19734, @duricanikolic)</li>
+<li>[BUGFIX] TSDB: Increment <code>prometheus_tsdb_wal_corruptions_total</code> when WAL corruption is detected during checkpoint creation, so the metric reflects corruption found at compaction time rather than only after a restart-triggered repair. (#19858, @mstinsky)</li>
+<li>[BUGFIX] TSDB: Preserve series identities needed to recover exemplars after compaction and restart. (#19940, @duricanikolic)</li>
+<li>[BUGFIX] TSDB: Reject native histograms whose span offsets overflow the int32 bucket index instead of storing them with corrupted buckets. (#20034, @Ramya-9353)</li>
+<li>[BUGFIX] TSDB: fix no passing metadata-wal-records to TSDB from main feature flag. (#19678, @krajorama)</li>
+<li>[BUGFIX] Templates: Preserve IPv6 addresses with dotted zone identifiers in <code>stripDomain</code>. (#19908, @ItsRoy69)</li>
+<li>[BUGFIX] UI: Don&rsquo;t automatically open an autocomplete dropdown after closing a function call body or aggregation operator with a closing parenthesis. (#19825, @juliusv)</li>
+<li>[BUGFIX] Web: Fix HTTP/2 negotiation silently falling back to HTTP/1.1 under Go 1.27+ when TLS is enabled with <code>http2: true</code>. The server now correctly advertises <code>h2</code> via ALPN and multiplexes concurrent requests over a single connection. (#19848, @dongjiang1989)</li>
+<li>[BUGFIX] mixin: Fix double-counting of failed samples in the <code>PrometheusRemoteStorageFailures</code> alert denominator. (#19877, @nikhilsaxena04)</li>
+<li>[BUGFIX] promtool: Honor <code>--enable-feature</code> when evaluating rules in <code>test rules</code>. (#20046, @dennisme)</li>
+<li>[BUGFIX] Scrape: Ensure UTF-8 works with the experimental OpenMetrics 2.0 (#19902, @bwplotka)</li>
+<li>[BUGFIX] Scrape: Reject sum-only classic histograms during NHCB conversion (#19315, @shubhgupta2104)</li>
+</ul>
+<br><h2>grpc/grpc</h2> <h3>Release notes for Release v1.85.1</h3><h4>2026-10-30</h4><p>This is release gRPC Core 1.85.1 (googol).</p>
+
+<p>For gRPC documentation, see <a href="https://grpc.io/" target="_blank">grpc.io</a>. For previous releases, see <a href="https://github.com/grpc/grpc/releases" target="_blank">Releases</a>.</p>
+
+<p>This release contains refinements, improvements, and bug fixes.</p>
+
+<h3 id="python">Python</h3>
+
+<hr>
+
+<ul>
+<li>Fixes Denial of service in Health Watch RPC (<a href="https://github.com/grpc/grpc/pull/43783" target="_blank">#43783</a>)</li>
+<li>Fixes Memory leak in AsyncIO client-streaming calls with interceptors (<a href="https://github.com/grpc/grpc/pull/43783" target="_blank">#43783</a>)</li>
+</ul>
+
+<h3 id="core">Core</h3>
+
+<hr>
+
+<ul>
+<li>host/:authority handling in the HPACK parser (<a href="https://github.com/grpc/grpc/pull/43797" target="_blank">#43797</a>)</li>
+</ul>
+<br><h3>Release notes for Release v1.84.2</h3><h4>2026-10-30</h4><p>This is release gRPC Core 1.84.2 (gimbal).</p>
+
+<p>For gRPC documentation, see <a href="https://grpc.io/" target="_blank">grpc.io</a>. For previous releases, see <a href="https://github.com/grpc/grpc/releases" target="_blank">Releases</a>.</p>
+
+<p>This release contains refinements, improvements, and bug fixes.</p>
+
+<h3 id="python">Python</h3>
+
+<ul>
+<li>Fixes Denial of service in Health Watch RPC (<a href="https://github.com/grpc/grpc/pull/43784" target="_blank">#43784</a>)</li>
+<li>Fixes Memory leak in AsyncIO client-streaming calls with interceptors (<a href="https://github.com/grpc/grpc/pull/43784" target="_blank">#43784</a>)</li>
+</ul>
+
+<h3 id="core">Core</h3>
+
+<ul>
+<li>host/:authority handling: consistent authority in xDS routing/RBAC, HPACK host-&gt;:authority mapping, enable map_host_header_to_authority (<a href="https://github.com/grpc/grpc/pull/43798" target="_blank">#43798</a>)</li>
+</ul>
+<br><h3>Release notes for Release v1.85.0</h3><h4>2026-10-26</h4><p>This is release 1.85.0 (<a href="https://github.com/grpc/grpc/blob/master/doc/g_stands_for.md" target="_blank">googol</a>) of gRPC Core.</p>
+
+<p>For gRPC documentation, see <a href="https://grpc.io/" target="_blank">grpc.io</a>. For previous releases, see <a href="https://github.com/grpc/grpc/releases" target="_blank">Releases</a>.</p>
+
+<p>This release contains refinements, improvements, and bug fixes, with highlights listed below.</p>
+
+<h2 id="core">Core</h2>
+
+<ul>
+<li>[security] Update gRPC repo roots. (<a href="https://github.com/grpc/grpc/pull/43717" target="_blank">#43717</a>)</li>
+<li>[experiments] Add map_host_header_to_authority experiment. (<a href="https://github.com/grpc/grpc/pull/43561" target="_blank">#43561</a>)</li>
+<li>[Security] Add MLKEM1024 as a key exchange option. (<a href="https://github.com/grpc/grpc/pull/43514" target="_blank">#43514</a>)</li>
+<li>Remove OpenSSL1.0.2 Support. (<a href="https://github.com/grpc/grpc/pull/43466" target="_blank">#43466</a>)</li>
+<li>[Autosharding-LB][Part-1] Implementing A119. (<a href="https://github.com/grpc/grpc/pull/43406" target="_blank">#43406</a>)</li>
+<li>[OpenSSL] Add support for OpenSSL 4. (<a href="https://github.com/grpc/grpc/pull/41932" target="_blank">#41932</a>)</li>
+<li>[A110] Add child channel options. (<a href="https://github.com/grpc/grpc/pull/43314" target="_blank">#43314</a>)</li>
+</ul>
+
+<h2 id="c">C#</h2>
+
+<ul>
+<li>[Build] Disambiguate protobuf_version in templates. (<a href="https://github.com/grpc/grpc/pull/43433" target="_blank">#43433</a>)</li>
+</ul>
+
+<h2 id="python">Python</h2>
+
+<ul>
+<li>[Python][AIO] Fixed data race in PollerCompletionQueue. (<a href="https://github.com/grpc/grpc/pull/43429" target="_blank">#43429</a>)</li>
+<li>[Python] Fix SyncServicerContext abort not raising exception. (<a href="https://github.com/grpc/grpc/pull/43126" target="_blank">#43126</a>)</li>
+<li>[Python] Fixed channelz module leak. (<a href="https://github.com/grpc/grpc/pull/43196" target="_blank">#43196</a>)</li>
+<li>[Python] Fixed CSDS memory leak. (<a href="https://github.com/grpc/grpc/pull/43202" target="_blank">#43202</a>)</li>
+<li>[Python] Unpin Cython dependency for source builds. (<a href="https://github.com/grpc/grpc/pull/43378" target="_blank">#43378</a>)</li>
+</ul>
+<br>
+</body>
+
+</html>
