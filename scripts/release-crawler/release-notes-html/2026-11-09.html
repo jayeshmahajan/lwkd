@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Whats new in the last week</title>
+</head>
+
+<body>
+<h1>Latest Releases for the week 2026-11-02 - 2026-11-09</h1><h2>cri-o/cri-o</h2> <h3>Release notes for v1.37.3</h3><h4>2026-11-03</h4><h1 id="cri-o-v1-37-3">CRI-O v1.37.3</h1>
+
+<p>The release notes have been generated for the commit range
+<a href="https://github.com/cri-o/cri-o/compare/v1.37.2...v1.37.3" target="_blank">v1.37.2&hellip;v1.37.3</a> on Tue, 03 Nov 2026 00:21:41 UTC.</p>
+
+<h2 id="downloads">Downloads</h2>
+
+<h3 id="release-bundles">Release Bundles</h3>
+
+<p>Download one of our static release bundles via our Google Cloud Bucket.
+Each bundle includes a SHA-256 checksum, a <a href="https://github.com/sigstore/cosign" target="_blank">cosign</a> signature (<code>.bundle</code>), and a <a href="https://spdx.org" target="_blank">SPDX 3</a> bill of materials (<code>.spdx.json</code>) with its own signature:</p>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.37.3.tar.gz" target="_blank">cri-o.amd64.v1.37.3.tar.gz</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.37.3.tar.gz.sha256sum" target="_blank">cri-o.amd64.v1.37.3.tar.gz.sha256sum</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.37.3.tar.gz.bundle" target="_blank">cri-o.amd64.v1.37.3.tar.gz.bundle</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.37.3.tar.gz.spdx.json" target="_blank">cri-o.amd64.v1.37.3.tar.gz.spdx.json</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.37.3.tar.gz.spdx.json.bundle" target="_blank">cri-o.amd64.v1.37.3.tar.gz.spdx.json.bundle</a></li>
+</ul></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.37.3.tar.gz" target="_blank">cri-o.arm64.v1.37.3.tar.gz</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.37.3.tar.gz.sha256sum" target="_blank">cri-o.arm64.v1.37.3.tar.gz.sha256sum</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.37.3.tar.gz.bundle" target="_blank">cri-o.arm64.v1.37.3.tar.gz.bundle</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.37.3.tar.gz.spdx.json" target="_blank">cri-o.arm64.v1.37.3.tar.gz.spdx.json</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.37.3.tar.gz.spdx.json.bundle" target="_blank">cri-o.arm64.v1.37.3.tar.gz.spdx.json.bundle</a></li>
+</ul></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.37.3.tar.gz" target="_blank">cri-o.ppc64le.v1.37.3.tar.gz</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.37.3.tar.gz.sha256sum" target="_blank">cri-o.ppc64le.v1.37.3.tar.gz.sha256sum</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.37.3.tar.gz.bundle" target="_blank">cri-o.ppc64le.v1.37.3.tar.gz.bundle</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.37.3.tar.gz.spdx.json" target="_blank">cri-o.ppc64le.v1.37.3.tar.gz.spdx.json</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.37.3.tar.gz.spdx.json.bundle" target="_blank">cri-o.ppc64le.v1.37.3.tar.gz.spdx.json.bundle</a></li>
+</ul></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.37.3.tar.gz" target="_blank">cri-o.s390x.v1.37.3.tar.gz</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.37.3.tar.gz.sha256sum" target="_blank">cri-o.s390x.v1.37.3.tar.gz.sha256sum</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.37.3.tar.gz.bundle" target="_blank">cri-o.s390x.v1.37.3.tar.gz.bundle</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.37.3.tar.gz.spdx.json" target="_blank">cri-o.s390x.v1.37.3.tar.gz.spdx.json</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.37.3.tar.gz.spdx.json.bundle" target="_blank">cri-o.s390x.v1.37.3.tar.gz.spdx.json.bundle</a></li>
+</ul></li>
+</ul>
+
+<h3 id="supply-chain-artifacts">Supply Chain Artifacts</h3>
+
+<p>The <a href="https://openvex.dev" target="_blank">OpenVEX</a> vulnerability report:</p>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.v1.37.3.openvex.json" target="_blank">cri-o.v1.37.3.openvex.json</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.v1.37.3.openvex.json.bundle" target="_blank">cri-o.v1.37.3.openvex.json.bundle</a></li>
+</ul></li>
+</ul>
+
+<p>The <a href="https://slsa.dev" target="_blank">SLSA</a> provenance attestation:</p>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.v1.37.3.provenance.json" target="_blank">cri-o.v1.37.3.provenance.json</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.v1.37.3.provenance.json.bundle" target="_blank">cri-o.v1.37.3.provenance.json.bundle</a></li>
+</ul></li>
+</ul>
+
+<h3 id="oci-distribution">OCI Distribution</h3>
+
+<p>All release artifacts are also available as signed <a href="https://github.com/opencontainers/image-spec/blob/main/manifest.md" target="_blank">OCI artifacts</a> at <code>ghcr.io/cri-o/bundle:v1.37.3</code>.</p>
+
+<h3 id="verification">Verification</h3>
+
+<p>To verify the artifact signatures via <a href="https://github.com/sigstore/cosign" target="_blank">cosign</a>, run:</p>
+
+<pre><code class="language-console">&gt; export COSIGN_EXPERIMENTAL=1
+&gt; cosign verify-blob cri-o.amd64.v1.37.3.tar.gz \
+    --certificate-identity https://github.com/cri-o/packaging/.github/workflows/obs.yml@refs/heads/main \
+    --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+    --certificate-github-workflow-repository cri-o/packaging \
+    --certificate-github-workflow-ref refs/heads/main \
+    --bundle cri-o.amd64.v1.37.3.tar.gz.bundle
+</code></pre>
+
+<p>To verify the bill of materials (SBOM) in <a href="https://spdx.org" target="_blank">SPDX</a> format using the <a href="https://sigs.k8s.io/bom" target="_blank">bom</a> tool (v0.8.0 or later), run:</p>
+
+<pre><code class="language-console">&gt; tar xfz cri-o.amd64.v1.37.3.tar.gz
+&gt; bom validate -e cri-o.amd64.v1.37.3.tar.gz.spdx.json -d cri-o
+</code></pre>
+
+<p>To verify the <a href="https://openvex.dev" target="_blank">OpenVEX</a> vulnerability report, run:</p>
+
+<pre><code class="language-console">&gt; cosign verify-blob cri-o.v1.37.3.openvex.json \
+    --certificate-identity https://github.com/cri-o/packaging/.github/workflows/obs.yml@refs/heads/main \
+    --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+    --certificate-github-workflow-repository cri-o/packaging \
+    --certificate-github-workflow-ref refs/heads/main \
+    --bundle cri-o.v1.37.3.openvex.json.bundle
+</code></pre>
+
+<p>To verify the <a href="https://slsa.dev" target="_blank">SLSA</a> provenance attestation, run:</p>
+
+<pre><code class="language-console">&gt; cosign verify-blob cri-o.v1.37.3.provenance.json \
+    --certificate-identity https://github.com/cri-o/packaging/.github/workflows/obs.yml@refs/heads/main \
+    --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+    --certificate-github-workflow-repository cri-o/packaging \
+    --certificate-github-workflow-ref refs/heads/main \
+    --bundle cri-o.v1.37.3.provenance.json.bundle
+</code></pre>
+
+<h2 id="changelog-since-v1-37-2">Changelog since v1.37.2</h2>
+
+<h3 id="changes-by-kind">Changes by Kind</h3>
+
+<h4 id="ci">Ci</h4>
+
+<ul>
+<li>Fixed exclusive CPU cleanup when cgroups disappear during container cleanup. (#10468, @bitoku)</li>
+</ul>
+
+<h4 id="dependency-change">Dependency-Change</h4>
+
+<ul>
+<li>With <code>stream_websockets</code> and conmon-rs v1.2.0 or later, conmon-rs also serves port forwarding and its streaming sessions end after <code>stream_idle_timeout</code> of inactivity. Older conmon-rs versions disable <code>stream_websockets</code>, and pods started by them keep using the CRI-O streaming server. A conmon-rs server which does not exit on pod removal gets killed. A negative <code>stream_idle_timeout</code> fails the config validation. With conmon-rs, <code>log_to_journald</code> also logs containers to the journal, and exec syncs which conmon-rs could not start fail instead of returning exit code -2 or -3. (#10481, @openshift-cherrypick-robot)</li>
+</ul>
+
+<h4 id="bug-or-regression">Bug or Regression</h4>
+
+<ul>
+<li>Attaching to stdin once containers with conmon-rs no longer loses the output after the client closes its stdin. conmon-rs now gets the same environment as conmon (<code>monitor_env</code>) instead of the whole CRI-O environment, so variables set only on the CRI-O service (for example <code>OTEL_*</code> or proxy settings) no longer reach conmon-rs and the OCI runtime unless they are added to <code>monitor_env</code>. Attaching to a stdin once container through the conmon-rs streaming server now closes the container stdin when the client closes its stdin. (#10445, @openshift-cherrypick-robot)</li>
+<li>Fix userns-mode when combined with a Kubelet supporting user namespaces. (#10429, @openshift-cherrypick-robot)</li>
+<li>Fixed a possible crash and a panic of CRI-O with the pod runtime type (conmon-rs), and a leaked conmon-rs server after removing a pod with pod events enabled. (#10505, @openshift-cherrypick-robot)</li>
+<li>When crio.service is restarted while containers are being created, an in-flight conmon process can still be killed and its crio-conmon-*.scope unit can still enter a failed state. That scope is now automatically garbage collected by systemd instead of persisting in <code>systemctl --failed</code> indefinitely. (#10451, @openshift-cherrypick-robot)</li>
+</ul>
+
+<h4 id="uncategorized">Uncategorized</h4>
+
+<ul>
+<li>Fixed CRI-O crash loops and stuck-Terminating pods caused by dead kata shims. (#10422, @openshift-cherrypick-robot)</li>
+<li>Fixed a leak of the seccomp notifier file descriptor into the container monitor,
+which left the kernel&rsquo;s seccomp notify listener attached with no reader after a CRI-O restart,
+causing process creation inside seccomp-notifier-armed containers to block indefinitely. (#10462, @openshift-cherrypick-robot)</li>
+</ul>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<h3 id="added">Added</h3>
+
+<p><em>Nothing has changed.</em></p>
+
+<h3 id="changed">Changed</h3>
+
+<ul>
+<li>github.com/containers/conmon-rs: <a href="https://github.com/containers/conmon-rs/compare/v1.0.1...v1.2.1" target="_blank">v1.0.1 → v1.2.1</a></li>
+<li>github.com/mrunalp/fileutils: <a href="https://github.com/mrunalp/fileutils/compare/v0.5.1..." target="_blank">v0.5.1 → v0.5.0</a></li>
+<li>github.com/opencontainers/runc: <a href="https://github.com/opencontainers/runc/compare/v1.5.1...v1.2.0" target="_blank">v1.5.1 → v1.2.0</a></li>
+<li>github.com/urfave/cli: <a href="https://github.com/urfave/cli/compare/v1.22.17...v1.22.16" target="_blank">v1.22.17 → v1.22.16</a></li>
+<li>golang.org/x/mod: <a href="https://go.googlesource.com/mod/+/792ac169a90372d88fb14e712cb793061ba0c104^1..13be9020bbbfae457b59b82c999f8c309cb21ffc/" target="_blank">v0.38.0 → v0.39.0</a></li>
+<li>golang.org/x/telemetry: <a href="https://go.googlesource.com/telemetry/+/49f421fb7959f5475f89d7fad7ab48c06f744096^1..a038080d80e514ad9acfb478661f1d1b0cb14385/" target="_blank">49f421f → a038080</a></li>
+<li>golang.org/x/tools: <a href="https://go.googlesource.com/tools/+/05f9cb5d358503005bd6f82b17916d226ca7b210^1..18332fec72972efbb8ab9881984fec2d8cfc2b58/" target="_blank">v0.48.0 → v0.49.0</a></li>
+</ul>
+
+<h3 id="removed">Removed</h3>
+
+<p><em>Nothing has changed.</em></p>
+<br><h3>Release notes for v1.36.8</h3><h4>2026-11-03</h4><ul>
+<li><a href="#cri-o-v1368">CRI-O v1.36.8</a>
+
+<ul>
+<li><a href="#downloads">Downloads</a></li>
+<li><a href="#changelog-since-v1367">Changelog since v1.36.7</a>
+
+<ul>
+<li><a href="#changes-by-kind">Changes by Kind</a>
+
+<ul>
+<li><a href="#ci">Ci</a></li>
+<li><a href="#bug-or-regression">Bug or Regression</a></li>
+<li><a href="#other-cleanup-or-flake">Other (Cleanup or Flake)</a></li>
+<li><a href="#uncategorized">Uncategorized</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#dependencies">Dependencies</a>
+
+<ul>
+<li><a href="#added">Added</a></li>
+<li><a href="#changed">Changed</a></li>
+<li><a href="#removed">Removed</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h1 id="cri-o-v1-36-8">CRI-O v1.36.8</h1>
+
+<p>The release notes have been generated for the commit range
+<a href="https://github.com/cri-o/cri-o/compare/v1.36.7...v1.36.8" target="_blank">v1.36.7&hellip;v1.36.8</a> on Tue, 03 Nov 2026 00:21:45 UTC.</p>
+
+<h2 id="downloads">Downloads</h2>
+
+<p>Download one of our static release bundles via our Google Cloud Bucket:</p>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.36.8.tar.gz" target="_blank">cri-o.amd64.v1.36.8.tar.gz</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.36.8.tar.gz.sha256sum" target="_blank">cri-o.amd64.v1.36.8.tar.gz.sha256sum</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.36.8.tar.gz.bundle" target="_blank">cri-o.amd64.v1.36.8.tar.gz.bundle</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.36.8.tar.gz.spdx.json" target="_blank">cri-o.amd64.v1.36.8.tar.gz.spdx.json</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.36.8.tar.gz.spdx.json.bundle" target="_blank">cri-o.amd64.v1.36.8.tar.gz.spdx.json.bundle</a></li>
+</ul></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.36.8.tar.gz" target="_blank">cri-o.arm64.v1.36.8.tar.gz</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.36.8.tar.gz.sha256sum" target="_blank">cri-o.arm64.v1.36.8.tar.gz.sha256sum</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.36.8.tar.gz.bundle" target="_blank">cri-o.arm64.v1.36.8.tar.gz.bundle</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.36.8.tar.gz.spdx.json" target="_blank">cri-o.arm64.v1.36.8.tar.gz.spdx.json</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.36.8.tar.gz.spdx.json.bundle" target="_blank">cri-o.arm64.v1.36.8.tar.gz.spdx.json.bundle</a></li>
+</ul></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.36.8.tar.gz" target="_blank">cri-o.ppc64le.v1.36.8.tar.gz</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.36.8.tar.gz.sha256sum" target="_blank">cri-o.ppc64le.v1.36.8.tar.gz.sha256sum</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.36.8.tar.gz.bundle" target="_blank">cri-o.ppc64le.v1.36.8.tar.gz.bundle</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.36.8.tar.gz.spdx.json" target="_blank">cri-o.ppc64le.v1.36.8.tar.gz.spdx.json</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.36.8.tar.gz.spdx.json.bundle" target="_blank">cri-o.ppc64le.v1.36.8.tar.gz.spdx.json.bundle</a></li>
+</ul></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.36.8.tar.gz" target="_blank">cri-o.s390x.v1.36.8.tar.gz</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.36.8.tar.gz.sha256sum" target="_blank">cri-o.s390x.v1.36.8.tar.gz.sha256sum</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.36.8.tar.gz.bundle" target="_blank">cri-o.s390x.v1.36.8.tar.gz.bundle</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.36.8.tar.gz.spdx.json" target="_blank">cri-o.s390x.v1.36.8.tar.gz.spdx.json</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.36.8.tar.gz.spdx.json.bundle" target="_blank">cri-o.s390x.v1.36.8.tar.gz.spdx.json.bundle</a></li>
+</ul></li>
+</ul>
+
+<p>The <a href="https://openvex.dev" target="_blank">OpenVEX</a> report for this release is available at:</p>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.v1.36.8.openvex.json" target="_blank">cri-o.v1.36.8.openvex.json</a></li>
+</ul>
+
+<p>The <a href="https://slsa.dev" target="_blank">SLSA</a> provenance attestation for this release is available at:</p>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.v1.36.8.provenance.json" target="_blank">cri-o.v1.36.8.provenance.json</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.v1.36.8.provenance.json.bundle" target="_blank">cri-o.v1.36.8.provenance.json.bundle</a></li>
+</ul></li>
+</ul>
+
+<p>All release artifacts (bundles, SBOMs, VEX, and provenance) are also available as signed <a href="https://github.com/opencontainers/image-spec/blob/main/manifest.md" target="_blank">OCI artifacts</a> at <code>ghcr.io/cri-o/bundle:v1.36.8</code>.</p>
+
+<p>To verify the artifact signatures via <a href="https://github.com/sigstore/cosign" target="_blank">cosign</a>, run:</p>
+
+<pre><code class="language-console">&gt; export COSIGN_EXPERIMENTAL=1
+&gt; cosign verify-blob cri-o.amd64.v1.36.8.tar.gz \
+    --certificate-identity https://github.com/cri-o/packaging/.github/workflows/obs.yml@refs/heads/main \
+    --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+    --certificate-github-workflow-repository cri-o/packaging \
+    --certificate-github-workflow-ref refs/heads/main \
+    --bundle cri-o.amd64.v1.36.8.tar.gz.bundle
+</code></pre>
+
+<p>To verify the bill of materials (SBOM) in <a href="https://spdx.org" target="_blank">SPDX</a> format using the <a href="https://sigs.k8s.io/bom" target="_blank">bom</a> tool (v0.8.0 or later), run:</p>
+
+<pre><code class="language-console">&gt; tar xfz cri-o.amd64.v1.36.8.tar.gz
+&gt; bom validate -e cri-o.amd64.v1.36.8.tar.gz.spdx.json -d cri-o
+</code></pre>
+
+<p>To verify the <a href="https://openvex.dev" target="_blank">OpenVEX</a> vulnerability report, run:</p>
+
+<pre><code class="language-console">&gt; cosign verify-blob cri-o.v1.36.8.openvex.json \
+    --certificate-identity https://github.com/cri-o/packaging/.github/workflows/obs.yml@refs/heads/main \
+    --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+    --certificate-github-workflow-repository cri-o/packaging \
+    --certificate-github-workflow-ref refs/heads/main \
+    --bundle cri-o.v1.36.8.openvex.json.bundle
+</code></pre>
+
+<p>To verify the <a href="https://slsa.dev" target="_blank">SLSA</a> provenance attestation, run:</p>
+
+<pre><code class="language-console">&gt; cosign verify-blob cri-o.v1.36.8.provenance.json \
+    --certificate-identity https://github.com/cri-o/packaging/.github/workflows/obs.yml@refs/heads/main \
+    --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+    --certificate-github-workflow-repository cri-o/packaging \
+    --certificate-github-workflow-ref refs/heads/main \
+    --bundle cri-o.v1.36.8.provenance.json.bundle
+</code></pre>
+
+<h2 id="changelog-since-v1-36-7">Changelog since v1.36.7</h2>
+
+<h3 id="changes-by-kind">Changes by Kind</h3>
+
+<h4 id="ci">Ci</h4>
+
+<ul>
+<li>Fixed exclusive CPU cleanup when cgroups disappear during container cleanup. (#10469, @bitoku)</li>
+</ul>
+
+<h4 id="bug-or-regression">Bug or Regression</h4>
+
+<ul>
+<li>Fix userns-mode when combined with a Kubelet supporting user namespaces. (#10433, @openshift-cherrypick-robot)</li>
+<li>When crio.service is restarted while containers are being created, an in-flight conmon process can still be killed and its crio-conmon-*.scope unit can still enter a failed state. That scope is now automatically garbage collected by systemd instead of persisting in <code>systemctl --failed</code> indefinitely. (#10476, @openshift-cherrypick-robot)</li>
+</ul>
+
+<h4 id="other-cleanup-or-flake">Other (Cleanup or Flake)</h4>
+
+<ul>
+<li>The release bundle SBOMs are now SPDX 3.0.1 JSON-LD files suffixed with <code>.spdx.json</code> instead of SPDX 2.3 tag-value <code>.spdx</code> files. Validating them with <code>bom</code> requires v0.8.0 or later. (#10396, @saschagrunert)</li>
+</ul>
+
+<h4 id="uncategorized">Uncategorized</h4>
+
+<ul>
+<li>Fix SELinux labeling so systemd/init containers receive container_init_t again instead of remaining container_t and failing to create cgroups. (#10457, @aksjadha)</li>
+<li>Fixed CRI-O crash loops and stuck-Terminating pods caused by dead kata shims. (#10423, @openshift-cherrypick-robot)</li>
+</ul>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<h3 id="added">Added</h3>
+
+<p><em>Nothing has changed.</em></p>
+
+<h3 id="changed">Changed</h3>
+
+<p><em>Nothing has changed.</em></p>
+
+<h3 id="removed">Removed</h3>
+
+<p><em>Nothing has changed.</em></p>
+<br><h3>Release notes for v1.35.11</h3><h4>2026-11-03</h4><ul>
+<li><a href="#cri-o-v13511">CRI-O v1.35.11</a>
+
+<ul>
+<li><a href="#downloads">Downloads</a></li>
+<li><a href="#changelog-since-v13510">Changelog since v1.35.10</a>
+
+<ul>
+<li><a href="#changes-by-kind">Changes by Kind</a>
+
+<ul>
+<li><a href="#ci">Ci</a></li>
+<li><a href="#bug-or-regression">Bug or Regression</a></li>
+<li><a href="#other-cleanup-or-flake">Other (Cleanup or Flake)</a></li>
+<li><a href="#uncategorized">Uncategorized</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#dependencies">Dependencies</a>
+
+<ul>
+<li><a href="#added">Added</a></li>
+<li><a href="#changed">Changed</a></li>
+<li><a href="#removed">Removed</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h1 id="cri-o-v1-35-11">CRI-O v1.35.11</h1>
+
+<p>The release notes have been generated for the commit range
+<a href="https://github.com/cri-o/cri-o/compare/v1.35.10...v1.35.11" target="_blank">v1.35.10&hellip;v1.35.11</a> on Tue, 03 Nov 2026 00:21:58 UTC.</p>
+
+<h2 id="downloads">Downloads</h2>
+
+<p>Download one of our static release bundles via our Google Cloud Bucket:</p>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.35.11.tar.gz" target="_blank">cri-o.amd64.v1.35.11.tar.gz</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.35.11.tar.gz.sha256sum" target="_blank">cri-o.amd64.v1.35.11.tar.gz.sha256sum</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.35.11.tar.gz.bundle" target="_blank">cri-o.amd64.v1.35.11.tar.gz.bundle</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.35.11.tar.gz.spdx.json" target="_blank">cri-o.amd64.v1.35.11.tar.gz.spdx.json</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.amd64.v1.35.11.tar.gz.spdx.json.bundle" target="_blank">cri-o.amd64.v1.35.11.tar.gz.spdx.json.bundle</a></li>
+</ul></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.35.11.tar.gz" target="_blank">cri-o.arm64.v1.35.11.tar.gz</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.35.11.tar.gz.sha256sum" target="_blank">cri-o.arm64.v1.35.11.tar.gz.sha256sum</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.35.11.tar.gz.bundle" target="_blank">cri-o.arm64.v1.35.11.tar.gz.bundle</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.35.11.tar.gz.spdx.json" target="_blank">cri-o.arm64.v1.35.11.tar.gz.spdx.json</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.arm64.v1.35.11.tar.gz.spdx.json.bundle" target="_blank">cri-o.arm64.v1.35.11.tar.gz.spdx.json.bundle</a></li>
+</ul></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.35.11.tar.gz" target="_blank">cri-o.ppc64le.v1.35.11.tar.gz</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.35.11.tar.gz.sha256sum" target="_blank">cri-o.ppc64le.v1.35.11.tar.gz.sha256sum</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.35.11.tar.gz.bundle" target="_blank">cri-o.ppc64le.v1.35.11.tar.gz.bundle</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.35.11.tar.gz.spdx.json" target="_blank">cri-o.ppc64le.v1.35.11.tar.gz.spdx.json</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.ppc64le.v1.35.11.tar.gz.spdx.json.bundle" target="_blank">cri-o.ppc64le.v1.35.11.tar.gz.spdx.json.bundle</a></li>
+</ul></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.35.11.tar.gz" target="_blank">cri-o.s390x.v1.35.11.tar.gz</a>
+
+<ul>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.35.11.tar.gz.sha256sum" target="_blank">cri-o.s390x.v1.35.11.tar.gz.sha256sum</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.35.11.tar.gz.bundle" target="_blank">cri-o.s390x.v1.35.11.tar.gz.bundle</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.35.11.tar.gz.spdx.json" target="_blank">cri-o.s390x.v1.35.11.tar.gz.spdx.json</a></li>
+<li><a href="https://storage.googleapis.com/cri-o/artifacts/cri-o.s390x.v1.35.11.tar.gz.spdx.json.bundle" target="_blank">cri-o.s390x.v1.35.11.tar.gz.spdx.json.bundle</a></li>
+</ul></li>
+</ul>
+
+<p>To verify the artifact signatures via <a href="https://github.com/sigstore/cosign" target="_blank">cosign</a>, run:</p>
+
+<pre><code class="language-console">&gt; export COSIGN_EXPERIMENTAL=1
+&gt; cosign verify-blob cri-o.amd64.v1.35.11.tar.gz \
+    --certificate-identity https://github.com/cri-o/packaging/.github/workflows/obs.yml@refs/heads/main \
+    --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+    --certificate-github-workflow-repository cri-o/packaging \
+    --certificate-github-workflow-ref refs/heads/main \
+    --bundle cri-o.amd64.v1.35.11.tar.gz.bundle
+</code></pre>
+
+<p>To verify the bill of materials (SBOM) in <a href="https://spdx.org" target="_blank">SPDX</a> format using the <a href="https://sigs.k8s.io/bom" target="_blank">bom</a> tool (v0.8.0 or later), run:</p>
+
+<pre><code class="language-console">&gt; tar xfz cri-o.amd64.v1.35.11.tar.gz
+&gt; bom validate -e cri-o.amd64.v1.35.11.tar.gz.spdx.json -d cri-o
+</code></pre>
+
+<h2 id="changelog-since-v1-35-10">Changelog since v1.35.10</h2>
+
+<h3 id="changes-by-kind">Changes by Kind</h3>
+
+<h4 id="ci">Ci</h4>
+
+<ul>
+<li>Fixed exclusive CPU cleanup when cgroups disappear during container cleanup. (#10470, @bitoku)</li>
+</ul>
+
+<h4 id="bug-or-regression">Bug or Regression</h4>
+
+<ul>
+<li>Fix userns-mode when combined with a Kubelet supporting user namespaces. (#10442, @openshift-cherrypick-robot)</li>
+<li>When crio.service is restarted while containers are being created, an in-flight conmon process can still be killed and its crio-conmon-*.scope unit can still enter a failed state. That scope is now automatically garbage collected by systemd instead of persisting in <code>systemctl --failed</code> indefinitely. (#10343, @amritansh1502)</li>
+</ul>
+
+<h4 id="other-cleanup-or-flake">Other (Cleanup or Flake)</h4>
+
+<ul>
+<li>The release bundle SBOMs are now SPDX 3.0.1 JSON-LD files suffixed with <code>.spdx.json</code> instead of SPDX 2.3 tag-value <code>.spdx</code> files. Validating them with <code>bom</code> requires v0.8.0 or later. (#10395, @saschagrunert)</li>
+</ul>
+
+<h4 id="uncategorized">Uncategorized</h4>
+
+<ul>
+<li>Fixed CRI-O crash loops and stuck-Terminating pods caused by dead kata shims. (#10424, @openshift-cherrypick-robot)</li>
+</ul>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<h3 id="added">Added</h3>
+
+<p><em>Nothing has changed.</em></p>
+
+<h3 id="changed">Changed</h3>
+
+<p><em>Nothing has changed.</em></p>
+
+<h3 id="removed">Removed</h3>
+
+<p><em>Nothing has changed.</em></p>
+<br><h2>kubernetes/autoscaler</h2> <h3>Release notes for vertical-pod-autoscaler-chart-0.16.0</h3><h4>2026-11-08</h4><p>Automatically adjust resources for your workloads</p>
+<br><h3>Release notes for cluster-autoscaler-1.36.2</h3><h4>2026-11-06</h4><h2 id="security">Security</h2>
+
+<p>The release images were rebuilt with Go 1.26.10, which includes the <code>crypto/x509</code> mitigation for <a href="https://pkg.go.dev/vuln/GO-2026-6809" target="_blank">CVE-2026-111943 / GO-2026-6809</a>. The refreshed Distroless trust bundle excludes <code>emSign ECC Root CA - G3</code> and <code>AAA Certificate Services</code>, addressing the image rebuild request in <a href="https://github.com/kubernetes/autoscaler/issues/10621" target="_blank">#10621</a>.</p>
+
+<h2 id="changes-by-kind">Changes by Kind</h2>
+
+<h3 id="bug-or-regression">Bug or Regression</h3>
+
+<ul>
+<li>Exclude GPU-labeled unmanaged nodes with unavailable GPU capacity from GPU quota usage, logging a warning instead of blocking cluster-wide scale-up. (<a href="https://github.com/kubernetes/autoscaler/pull/10407" target="_blank">#10407</a>, <a href="https://github.com/MaximilianoUribe" target="_blank">@MaximilianoUribe</a>)</li>
+<li>AWS: correctly extract placeholder instance names when an Auto Scaling Group name contains <code>/</code>. (<a href="https://github.com/kubernetes/autoscaler/pull/10352" target="_blank">#10352</a>, <a href="https://github.com/ketanjani21" target="_blank">@ketanjani21</a>)</li>
+<li>AWS: fix integer overflow in memory calculations for ASGs using attribute-based <code>InstanceRequirements</code> without instance-type overrides. A <code>MemoryMiB.Min</code> of 2048 or greater could produce a zero-memory template node and prevent scale-up. (<a href="https://github.com/kubernetes/autoscaler/pull/10272" target="_blank">#10272</a>, <a href="https://github.com/pujitha24" target="_blank">@pujitha24</a>)</li>
+<li>Azure: fix VMSS instance deletion when <code>disableAzureStackCloud</code> is enabled. (<a href="https://github.com/kubernetes/autoscaler/pull/10086" target="_blank">#10086</a>, <a href="https://github.com/tallaxes" target="_blank">@tallaxes</a>)</li>
+<li>Cluster API: allow scale-down of MachinePool-backed node groups when no per-node Machine can be resolved, after verifying that the node belongs to the MachinePool, by decrementing the pool&rsquo;s replica count. (<a href="https://github.com/kubernetes/autoscaler/pull/10387" target="_blank">#10387</a>, <a href="https://github.com/mnaissiou" target="_blank">@mnaissiou</a>)</li>
+<li>OCI: recover node pools when failed node creation leaves a node without an instance ID. (<a href="https://github.com/kubernetes/autoscaler/pull/10109" target="_blank">#10109</a>, <a href="https://github.com/jlamillan" target="_blank">@jlamillan</a>)</li>
+<li>OCI: treat instances from node pools outside the configured autoscaler scope as existing unmanaged instances instead of returning node-pool lookup errors. (<a href="https://github.com/kubernetes/autoscaler/pull/10335" target="_blank">#10335</a>, <a href="https://github.com/shreyshj" target="_blank">@shreyshj</a>)</li>
+<li>OCI: use registered nodes&rsquo; actual ephemeral-storage capacity and allocatable values in existing node-pool templates, preserving configured template values if lookup fails. (<a href="https://github.com/kubernetes/autoscaler/pull/10513" target="_blank">#10513</a>, <a href="https://github.com/Debasish-87" target="_blank">@Debasish-87</a>)</li>
+</ul>
+
+<h3 id="other-cleanup-or-flake">Other (Cleanup or Flake)</h3>
+
+<ul>
+<li>Update Kubernetes dependencies to v1.36.6. (<a href="https://github.com/kubernetes/autoscaler/pull/10614" target="_blank">#10614</a>, <a href="https://github.com/jackfrancis" target="_blank">@jackfrancis</a>)</li>
+<li>Change the default staging build/push destination to <code>us-central1-docker.pkg.dev/k8s-staging-images/autoscaling</code>. Production image URLs remain under <code>registry.k8s.io/autoscaling</code>. (<a href="https://github.com/kubernetes/autoscaler/pull/10601" target="_blank">#10601</a>, <a href="https://github.com/maxsxu" target="_blank">@maxsxu</a>)</li>
+</ul>
+
+<h1 id="images">Images</h1>
+
+<ul>
+<li><code>registry.k8s.io/autoscaling/cluster-autoscaler:v1.36.2</code></li>
+<li><code>registry.k8s.io/autoscaling/cluster-autoscaler-amd64:v1.36.2</code></li>
+<li><code>registry.k8s.io/autoscaling/cluster-autoscaler-arm64:v1.36.2</code></li>
+<li><code>registry.k8s.io/autoscaling/cluster-autoscaler-s390x:v1.36.2</code></li>
+</ul>
+
+<p><strong>Full Changelog:</strong> <a href="https://github.com/kubernetes/autoscaler/compare/cluster-autoscaler-1.36.1...cluster-autoscaler-1.36.2" target="_blank">cluster-autoscaler-1.36.1&hellip;cluster-autoscaler-1.36.2</a></p>
+<br><h3>Release notes for cluster-autoscaler-1.35.3</h3><h4>2026-11-06</h4><h2 id="security">Security</h2>
+
+<p>The release images were rebuilt with Go 1.26.10, which includes the <code>crypto/x509</code> mitigation for <a href="https://pkg.go.dev/vuln/GO-2026-6809" target="_blank">CVE-2026-111943 / GO-2026-6809</a>. The refreshed Distroless trust bundle excludes <code>emSign ECC Root CA - G3</code> and <code>AAA Certificate Services</code>, addressing the image rebuild request in <a href="https://github.com/kubernetes/autoscaler/issues/10621" target="_blank">#10621</a>.</p>
+
+<h2 id="changes-by-kind">Changes by Kind</h2>
+
+<h3 id="bug-or-regression">Bug or Regression</h3>
+
+<ul>
+<li>Exclude GPU-labeled unmanaged nodes with unavailable GPU capacity from GPU quota usage, logging a warning instead of blocking cluster-wide scale-up. (<a href="https://github.com/kubernetes/autoscaler/pull/10408" target="_blank">#10408</a>, <a href="https://github.com/MaximilianoUribe" target="_blank">@MaximilianoUribe</a>)</li>
+<li>AWS: correctly extract placeholder instance names when an Auto Scaling Group name contains <code>/</code>. (<a href="https://github.com/kubernetes/autoscaler/pull/10351" target="_blank">#10351</a>, <a href="https://github.com/ketanjani21" target="_blank">@ketanjani21</a>)</li>
+<li>AWS: fix integer overflow in memory calculations for ASGs using attribute-based <code>InstanceRequirements</code> without instance-type overrides. A <code>MemoryMiB.Min</code> of 2048 or greater could produce a zero-memory template node and prevent scale-up. (<a href="https://github.com/kubernetes/autoscaler/pull/10271" target="_blank">#10271</a>, <a href="https://github.com/pujitha24" target="_blank">@pujitha24</a>)</li>
+<li>Azure: fix VMSS instance deletion when <code>disableAzureStackCloud</code> is enabled. (<a href="https://github.com/kubernetes/autoscaler/pull/10085" target="_blank">#10085</a>, <a href="https://github.com/tallaxes" target="_blank">@tallaxes</a>)</li>
+<li>Cluster API: allow scale-down of MachinePool-backed node groups when no per-node Machine can be resolved, after verifying that the node belongs to the MachinePool, by decrementing the pool&rsquo;s replica count. (<a href="https://github.com/kubernetes/autoscaler/pull/10485" target="_blank">#10485</a>, <a href="https://github.com/iamjanr" target="_blank">@iamjanr</a>)</li>
+<li>OCI instance pools: align <code>HasInstance</code> and <code>NodeGroupForNode</code> instance mappings, compare pool states case-insensitively, and improve diagnostic logging. (<a href="https://github.com/kubernetes/autoscaler/pull/9385" target="_blank">#9385</a>, <a href="https://github.com/jlamillan" target="_blank">@jlamillan</a>)</li>
+<li>OCI: include the fault-domain label on node-pool templates so pods with fault-domain scheduling constraints can select zero-size pools. (<a href="https://github.com/kubernetes/autoscaler/pull/10049" target="_blank">#10049</a>, <a href="https://github.com/jlamillan" target="_blank">@jlamillan</a>)</li>
+<li>OCI: recover node pools when failed node creation leaves a node without an instance ID. (<a href="https://github.com/kubernetes/autoscaler/pull/10118" target="_blank">#10118</a>, <a href="https://github.com/jlamillan" target="_blank">@jlamillan</a>)</li>
+<li>Pass build-tag and linker flags to Docker image builds so <code>BUILD_TAGS</code> and <code>LDFLAGS</code> are honored, including provider-specific builds that avoid compiling unused cloud providers. (<a href="https://github.com/kubernetes/autoscaler/pull/10623" target="_blank">#10623</a>, <a href="https://github.com/Choraden" target="_blank">@Choraden</a>)</li>
+</ul>
+
+<h3 id="other-cleanup-or-flake">Other (Cleanup or Flake)</h3>
+
+<ul>
+<li>Update Kubernetes dependencies to v1.35.10. (<a href="https://github.com/kubernetes/autoscaler/pull/10613" target="_blank">#10613</a>, <a href="https://github.com/jackfrancis" target="_blank">@jackfrancis</a>)</li>
+<li>Move the release-image builder to Go 1.26. (<a href="https://github.com/kubernetes/autoscaler/pull/10581" target="_blank">#10581</a>, <a href="https://github.com/GaneshBannur" target="_blank">@GaneshBannur</a>)</li>
+<li>Change the default staging build/push destination to <code>us-central1-docker.pkg.dev/k8s-staging-images/autoscaling</code>. Production image URLs remain under <code>registry.k8s.io/autoscaling</code>. (<a href="https://github.com/kubernetes/autoscaler/pull/10600" target="_blank">#10600</a>, <a href="https://github.com/maxsxu" target="_blank">@maxsxu</a>)</li>
+</ul>
+
+<h1 id="images">Images</h1>
+
+<ul>
+<li><code>registry.k8s.io/autoscaling/cluster-autoscaler:v1.35.3</code></li>
+<li><code>registry.k8s.io/autoscaling/cluster-autoscaler-amd64:v1.35.3</code></li>
+<li><code>registry.k8s.io/autoscaling/cluster-autoscaler-arm64:v1.35.3</code></li>
+<li><code>registry.k8s.io/autoscaling/cluster-autoscaler-s390x:v1.35.3</code></li>
+</ul>
+
+<p><strong>Full Changelog:</strong> <a href="https://github.com/kubernetes/autoscaler/compare/cluster-autoscaler-1.35.2...cluster-autoscaler-1.35.3" target="_blank">cluster-autoscaler-1.35.2&hellip;cluster-autoscaler-1.35.3</a></p>
+<br><h3>Release notes for cluster-autoscaler-1.34.6</h3><h4>2026-11-06</h4><h2 id="security">Security</h2>
+
+<p>The release images were rebuilt with Go 1.26.10, which includes the <code>crypto/x509</code> mitigation for <a href="https://pkg.go.dev/vuln/GO-2026-6809" target="_blank">CVE-2026-111943 / GO-2026-6809</a>. The refreshed Distroless trust bundle excludes <code>emSign ECC Root CA - G3</code> and <code>AAA Certificate Services</code>, addressing the image rebuild request in <a href="https://github.com/kubernetes/autoscaler/issues/10621" target="_blank">#10621</a>.</p>
+
+<h2 id="changes-by-kind">Changes by Kind</h2>
+
+<h3 id="bug-or-regression">Bug or Regression</h3>
+
+<ul>
+<li>Exclude GPU-labeled unmanaged nodes with unavailable GPU capacity from GPU quota usage, logging a warning instead of blocking cluster-wide scale-up. (<a href="https://github.com/kubernetes/autoscaler/pull/10409" target="_blank">#10409</a>, <a href="https://github.com/MaximilianoUribe" target="_blank">@MaximilianoUribe</a>)</li>
+<li>AWS: correctly extract placeholder instance names when an Auto Scaling Group name contains <code>/</code>. (<a href="https://github.com/kubernetes/autoscaler/pull/10350" target="_blank">#10350</a>, <a href="https://github.com/ketanjani21" target="_blank">@ketanjani21</a>)</li>
+<li>OCI instance pools: align <code>HasInstance</code> and <code>NodeGroupForNode</code> instance mappings, compare pool states case-insensitively, and improve diagnostic logging. (<a href="https://github.com/kubernetes/autoscaler/pull/9383" target="_blank">#9383</a>, <a href="https://github.com/jlamillan" target="_blank">@jlamillan</a>)</li>
+<li>OCI: include the fault-domain label on node-pool templates so pods with fault-domain scheduling constraints can select zero-size pools. (<a href="https://github.com/kubernetes/autoscaler/pull/10048" target="_blank">#10048</a>, <a href="https://github.com/jlamillan" target="_blank">@jlamillan</a>)</li>
+</ul>
+
+<h3 id="other-cleanup-or-flake">Other (Cleanup or Flake)</h3>
+
+<ul>
+<li>Update Kubernetes dependencies to v1.34.13. The Go module&rsquo;s minimum version increases from 1.24 to 1.25; the published release images use Go 1.26.10 as noted above. (<a href="https://github.com/kubernetes/autoscaler/pull/10612" target="_blank">#10612</a>, <a href="https://github.com/jackfrancis" target="_blank">@jackfrancis</a>)</li>
+<li>Move the release-image builder to Go 1.26. (<a href="https://github.com/kubernetes/autoscaler/pull/10582" target="_blank">#10582</a>, <a href="https://github.com/GaneshBannur" target="_blank">@GaneshBannur</a>)</li>
+<li>Change the default staging build/push destination to <code>us-central1-docker.pkg.dev/k8s-staging-images/autoscaling</code>. Production image URLs remain under <code>registry.k8s.io/autoscaling</code>. (<a href="https://github.com/kubernetes/autoscaler/pull/10599" target="_blank">#10599</a>, <a href="https://github.com/maxsxu" target="_blank">@maxsxu</a>)</li>
+</ul>
+
+<h1 id="images">Images</h1>
+
+<ul>
+<li><code>registry.k8s.io/autoscaling/cluster-autoscaler:v1.34.6</code></li>
+<li><code>registry.k8s.io/autoscaling/cluster-autoscaler-amd64:v1.34.6</code></li>
+<li><code>registry.k8s.io/autoscaling/cluster-autoscaler-arm64:v1.34.6</code></li>
+<li><code>registry.k8s.io/autoscaling/cluster-autoscaler-s390x:v1.34.6</code></li>
+</ul>
+
+<p><strong>Full Changelog:</strong> <a href="https://github.com/kubernetes/autoscaler/compare/cluster-autoscaler-1.34.5...cluster-autoscaler-1.34.6" target="_blank">cluster-autoscaler-1.34.5&hellip;cluster-autoscaler-1.34.6</a></p>
+<br><h3>Release notes for cluster-autoscaler-chart-9.60.0</h3><h4>2026-11-03</h4><p>Scales Kubernetes worker nodes within autoscaling groups.</p>
+<br><h2>kubernetes-sigs/cluster-api</h2> <h3>Release notes for v1.15.0-beta.0</h3><h4>2026-11-03</h4><dl>
+<dt><summary>More details about the release</summary></dt>
+</dl>
+
+<p>:warning: <strong>BETA RELEASE NOTES</strong> :warning:</p>
+
+<h2 id="changes-since-v1-14-0">Changes since v1.14.0</h2>
+
+<h2 id="chart-with-upwards-trend-overview">:chart_with_upwards_trend: Overview</h2>
+
+<ul>
+<li>251 new commits merged</li>
+<li>2 breaking changes :warning:</li>
+<li>22 feature additions ✨</li>
+<li>41 bugs fixed 🐛</li>
+</ul>
+
+<h2 id="memo-proposals">:memo: Proposals</h2>
+
+<ul>
+<li>ClusterClass: Add proposal for worker version pinning in Cluster API managed topologies (#13892)</li>
+</ul>
+
+<h2 id="warning-breaking-changes">:warning: Breaking Changes</h2>
+
+<ul>
+<li>CAPD: Remove Docker resources (#14000)</li>
+<li>Dependency: Bump to controller-runtime v0.25 / controller-tools v0.22 (#14188)</li>
+</ul>
+
+<h2 id="sparkles-new-features">:sparkles: New Features</h2>
+
+<ul>
+<li>CABPK: Add cloud-init write_files defer support (#14182)</li>
+<li>CAPD: Add CAPD_DOCKER_NETWORK environment variable (#14041)</li>
+<li>CAPD: Implement v1beta2 contract for devmachinepool (#14099)</li>
+<li>CAPD: Refactor CAPD folder structure (#14069)</li>
+<li>CI: OmitToolVersion (#14376)</li>
+<li>ClusterClass: ClusterClass without template objects (#14092)</li>
+<li>ClusterClass: Validate apiVersion for reliant CRDs (#13954)</li>
+<li>clusterctl: Add cluster-api-provider-exoscale to the built-in infrastructure provider list (#14306)</li>
+<li>clusterctl: Add cluster-api-provider-kairos to the built-in bootstrap and control plane provider list (#14045)</li>
+<li>clusterctl: Add cluster-api-provider-kairos-fleet to the built-in infrastructure provider list (#14046)</li>
+<li>KCP: Implement AffectsAvailability for KCP in-place updates (#14200)</li>
+<li>KCP: Implement allowedOperations for KCP CanUpdateMachine hook (#14367)</li>
+<li>KCP: Implement RetryAfterSeconds for CanUpdateMachine (#14350)</li>
+<li>Machine/KCP/MachinePool/MachineSet: Introduce DynamicCache, BootstrapConfig/InfraMachine API types &amp; dynamic KCP cache config (#13803)</li>
+<li>Machine: Add updateStatus to UpdateMachine hook (#14385)</li>
+<li>Machine: Promote MachineTaintPropagation feature gate to beta and enable it per default (#14395)</li>
+<li>MachineDeployment: Clarify MachineDeployment spec.paused docs and surface paused rollouts (#14347)</li>
+<li>MachineDeployment: Implement AffectsAvailability for MD in-place updates (#14195)</li>
+<li>MachineDeployment: Implement allowedOperations for MD CanUpdateMachineSet hook (#14378)</li>
+<li>MachineHealthCheck: Extend MHC to introduce CEL-based health evaluation (#14297)</li>
+<li>MachinePool: Add MachinesUpToDate condition to MachinePool (#13929)</li>
+<li>Security: Add &ndash;tls-curve-preferences flag to manager options (#14157)</li>
+</ul>
+
+<h2 id="bug-bug-fixes">:bug: Bug Fixes</h2>
+
+<ul>
+<li>API: Don&rsquo;t use cache with CRD migrator (#14116)</li>
+<li>Bootstrap: Allow worker join with a cluster CA Secret that has only tls.crt (#14389)</li>
+<li>Bootstrap: Execute /etc/kubeadm.sh via /bin/bash for /etc noexec compatibility (#13970)</li>
+<li>Bootstrap: Fix ParseSecretName round-trip for purposes containing hyphens (#14040)</li>
+<li>CABPK: Make CABPK bootstrap token generate reentrant (#14101)</li>
+<li>CI: Bump machine to <code>highcpu-32</code> (#14214)</li>
+<li>CI: Bump timeout to 1hr (#14191)</li>
+<li>CI: Bump timeout to 2hr (#14209)</li>
+<li>Cluster: Also set cluster-name label even if BeforeClusterCreate hook is blocking (#14323)</li>
+<li>Cluster: Also set cluster-name label on Clusters without ClusterClass (#14308)</li>
+<li>Cluster: Fix ControlPlaneInitialized reason when the control plane does not exist (#14431)</li>
+<li>ClusterCache: Apply Options.ClusterFilter in SetupWithManager (#14119)</li>
+<li>ClusterClass: Fix CEL validation of top-level array variables in ClusterClass (#14396)</li>
+<li>ClusterClass: Fix Machine taint propagation in the Cluster topology controller for the v1beta1 contract (#13984)</li>
+<li>ClusterClass: Lifecycle hooks fix (#14171)</li>
+<li>clusterctl/Security: Point the huawei provider to its relocated repository (#14239)</li>
+<li>clusterctl: Convert CAPI resources in generic Lists (#14090)</li>
+<li>ClusterResourceSet: Ignore NotFound when deleting ClusterResourceSetBinding (#14177)</li>
+<li>ClusterResourceSet: Patch increased memory consumption (#14031)</li>
+<li>Conditions: Fix deprecate condition utils (#14130)</li>
+<li>Devtools: Fix Grafana deployment (#13997)</li>
+<li>Devtools: Fix parallel build of binaries in Tiltfile (#13989)</li>
+<li>e2e: Fix the source links in e2e config to be allowed and kept as they are (#14372)</li>
+<li>KCP: Avoid deleting learners after Node registration (#14199)</li>
+<li>KCP: Deduplicate KCP preflightchecks (#14170)</li>
+<li>KCP: Fix KCP rollout issue after upgrade from CAPI v1.11 (#14167)</li>
+<li>KCP: Fix race in KCP proxy DialContext (#14266)</li>
+<li>KCP: KCP should not remediate machines unhealthy since before MinHealthyPeriod expires (#14331)</li>
+<li>KCP: Support KCP in-place updates when coredns and kube-proxy phases are skipped (#14362)</li>
+<li>KCP: Try to match etcd member to machine being deleted by KCP (#14258)</li>
+<li>Machine/MachineSet: Gracefully handle not-found when resolving owner references (#13510)</li>
+<li>Machine: Requeue Machines waiting for their Node before the control plane is initialized (#14303)</li>
+<li>Machine: Stop checking kubelet version against an empty version (#14375)</li>
+<li>MachineHealthCheck: Fix MHC expression (#14450)</li>
+<li>MachinePool: Conditionally delegate taint removal (#14053)</li>
+<li>MachinePool: Fix inverted nil guards when a MachinePool records a failure (#14234)</li>
+<li>MachineSet: Fix retry to remove finalizer in MS topology reconciler (#13987)</li>
+<li>Misc: Implement support for multiNamespaceInformer in controller util consistency store (#14283)</li>
+<li>Release: Ignore cherry-picked PR suffixes in release notes (#14330)</li>
+<li>Testing: Resolve data race in inmemory proxy Conn deadline setters (#14248)</li>
+<li>util: Return an error from RegenerateSecret if the cluster is missing from the kubeconfig (#14444)</li>
+</ul>
+
+<h2 id="seedling-others">:seedling: Others</h2>
+
+<ul>
+<li>API: Optimize memory usage of conversion by only setting required fields in annotation (#14075)</li>
+<li>CABPK: Stop handling Kubernetes &lt;= v1.30 in CABPK (#14083)</li>
+<li>CI: Bump gcb-docker-gcloud to a prod image (#14037)</li>
+<li>CI: Drop Docker golangci-lint excludes (#14077)</li>
+<li>CI: Fallback to alternate locations for Trivy DB (#14409)</li>
+<li>CI: Improve dependabot workflow (#14273)</li>
+<li>CI: Improve Kubernetes version resolution (#14270)</li>
+<li>CI: Remove the deleted Hivelocity infrastructure provider (#14051)</li>
+<li>CI: Stop trying to bump sigs.k8s.io/kubebuilder/docs/book/utils with dependabot (#14111)</li>
+<li>CI: Update matrix to drop release-1.12 (#14094)</li>
+<li>CI: Update matrix to include release 1.14 (#14018)</li>
+<li>ClusterCache: Reject file-based credentials in kubeconfigs (#14432)</li>
+<li>ClusterClass/MachineSet/MachineDeployment: Merge topology MachineDeployment and MachineSet controllers into the regular controllers (#14394)</li>
+<li>ClusterClass: Extract Cluster topology version validation into entry points (#14241)</li>
+<li>ClusterClass: Increase MD/MS topology reconciler concurrency to 25 (#14002)</li>
+<li>clusterctl: Bump cert-manager to v1.21.1 (#14010)</li>
+<li>clusterctl: Bump cert-manager to v1.21.2 (#14233)</li>
+<li>clusterctl: Bump cert-manager to v1.21.3 (#14428)</li>
+<li>clusterctl: Reset global viper state in viperReader Set test (#14284)</li>
+<li>ClusterResourceSet: Remove CRB clusterName migration logic (#14082)</li>
+<li>Conditions: Make condition message lists consistent (#14363)</li>
+<li>Dependency/clusterctl: Upgrade google/go-github to v92 (#14125)</li>
+<li>Dependency: Bump corefile-migration to v1.0.35 (#14115)</li>
+<li>Dependency: Bump corefile-migration to v1.0.36 (#14415)</li>
+<li>Dependency: Bump Go Version to 1.26.6 (#14096)</li>
+<li>Dependency: Bump google.golang.org/grpc + golang.org/x/crypto to fix CVEs (#14204)</li>
+<li>Dependency: Bump to CR main &amp; k8s.io/* v0.37.0 (#14138)</li>
+<li>Dependency: Update Otel Version to v1.45.0 (#14313)</li>
+<li>Devtools: Add verify for downloaded binaries (#14272)</li>
+<li>Devtools: Bump Parca to v0.29.1 (#14265)</li>
+<li>Devtools: Use smaller image for tilt (#14249)</li>
+<li>e2e: Bump kind to v0.33.0 (#14141)</li>
+<li>e2e: Bump Kubernetes 1.37.0-rc.0 (#14058)</li>
+<li>e2e: Bump to Kubernetes v1.37.0 (#14139)</li>
+<li>e2e: Bump to Kubernetes v1.37.0-rc.1 (#14105)</li>
+<li>e2e: Check for duplicate informers in e2e tests (#14137)</li>
+<li>e2e: Drop syncer from in-memory server (#13986)</li>
+<li>e2e: Extend e2e tests to detect double rollouts (#14268)</li>
+<li>e2e: Fix debug endpoint for in-memory server (#13990)</li>
+<li>e2e: Increase clusterctl and e2e test dry-run cluster-template timeouts (#14013)</li>
+<li>e2e: Increase e2e test concurrency (#13898)</li>
+<li>e2e: Install the minimum required kind version for e2e test (#14176)</li>
+<li>e2e: Make e2e fail on controller pod restarts (#14289)</li>
+<li>e2e: Pin kind binary version and download exact version (#14337)</li>
+<li>e2e: Prepare main branch for v1.15 (#14005)</li>
+<li>e2e: Start testing against Kubernetes v1.38 (#14146)</li>
+<li>e2e: Store pod resources of management cluster into artifacts (#14293)</li>
+<li>e2e: Surface <code>ContainerProvisioned</code> condition when container creation fails (#14342)</li>
+<li>KCP/MachineDeployment: Handle extension errors the same way in KCP, MD &amp; Machine controllers (#14402)</li>
+<li>KCP/MachineSet/MachineDeployment/MachineHealthCheck: Standardize usage of reconcileStartTime (#14403)</li>
+<li>KCP/MachineSet: Avoid unnecessary memory allocation in ssa.Patch after cache hit (#14085)</li>
+<li>KCP: Cluster-admins CRB in KCP (#14081)</li>
+<li>KCP: Fix race conditions in KCP unit tests (#14221)</li>
+<li>KCP: Further optimize KCP cache config (#14084)</li>
+<li>KCP: Improve KCP remediation annotation handling (#14215)</li>
+<li>KCP: Reset MaxRetry when the unhealthy machine is outdated (#14369)</li>
+<li>Logging: Add Log rate limiting (#14422)</li>
+<li>Logging: Drop namespace from log messages (#14413)</li>
+<li>Logging: Improve diff logs (#14445)</li>
+<li>Logging: More log improvements (#14420)</li>
+<li>Logging: More log improvements (#14425)</li>
+<li>Logging: More log improvements (#14438)</li>
+<li>Machine: Get correct RV in Machine controller in-place update live get call (#14134)</li>
+<li>Machine: Improve logs machine lifecycle (#14405)</li>
+<li>Machine: Refactor UpdateMachine hook (#14382)</li>
+<li>Machine: Remove deprecated MachineWaitForVolumeDetachConsiderVolumeAttachments fg (#14078)</li>
+<li>MachineDeployment: Fix max-surge check-in rollout-planner (#13983)</li>
+<li>MachineDeployment: Handle rollout edge cases (#14312)</li>
+<li>MachineDeployment: Improve rollout planner golden files (#14201)</li>
+<li>MachineDeployment: Improve rollout sequence test (#14226)</li>
+<li>MachineDeployment: Log reconciled object name in Rollout planner sequence (#14257)</li>
+<li>MachineDeployment: Remove duplicated code between MachineSet controller and rollout planner (#14260)</li>
+<li>MachinePool: Add support for &ldquo;initialization completed&rdquo; to machine pools (#14030)</li>
+<li>MachinePool: Fixup MP unit tests after revert (#14286)</li>
+<li>Misc: Adding AI Disclosure to PR Template (#14334)</li>
+<li>Misc: Promote PriorityQueue and ReconcilerRateLimiting feature gates to GA (#14079)</li>
+<li>Misc: Standardize cache package imports (#14126)</li>
+<li>Misc: Update Kubernetes bump issue template (#14155)</li>
+<li>Release: Removing deprecated code (#14368)</li>
+<li>Release: Update kpromo version to v4.7.1 (#14329)</li>
+<li>Release: Update release issue template (#14017)</li>
+<li>Release: Updating v1.15 release team (#14222)</li>
+<li>Release: V1.15 release Team (#14091)</li>
+<li>Runtime SDK: Improve discovery (#14259)</li>
+<li>Security: Bump go to 1.26.10 (#14392)</li>
+<li>Security: Bump go to 1.26.9 and deps for security (#14356)</li>
+<li>Security: Fix typo in trivy DB mirror (#14447)</li>
+<li>Testing: Add contract labels to kubeadm CRDs in envtest (#14181)</li>
+<li>Testing: Bump envtest to v1.37.0 (#14145)</li>
+<li>Testing: Consider restart policy in containerHasTerminated (#14042)</li>
+<li>Testing: Fix flaky TestReconcileControlPlane by reading the Cluster with the API reader (#14295)</li>
+<li>Testing: Fix kubeconfig tests mutating shared validSecret fixture (#14285)</li>
+<li>Testing: Restore apiVersionGetter after unit tests (#14189)</li>
+<li>Testing: Use installed CRD refs in patch helper test fixtures (#14190)</li>
+<li>util: Add ClusterToControlPlaneMapFunc helper to util and remove ClusterToKubeadmControlPlane (#14274)</li>
+<li>util: Avoid DeepCopy in contract.GetGKMetadata (#14076)</li>
+<li>util: Remove deprecated types from remote/ packages (#13952)</li>
+<li>util: Remove deprecated util/record package (#13996)</li>
+<li>util: Use a random serial number for self-signed CA certificates (#14442)</li>
+</ul>
+
+<p>:book: Additionally, there have been 57 contributions to our documentation and book. (#13964, #13965, #13975, #13994, #14006, #14022, #14028, #14038, #14047, #14048, #14049, #14050, #14057, #14068, #14070, #14072, #14080, #14095, #14102, #14104, #14106, #14113, #14127, #14129, #14140, #14144, #14147, #14161, #14162, #14179, #14202, #14213, #14223, #14227, #14230, #14231, #14232, #14244, #14246, #14281, #14282, #14287, #14292, #14294, #14298, #14302, #14304, #14305, #14332, #14333, #14335, #14343, #14371, #14397, #14406, #14407, #14410)</p>
+
+<h2 id="question-sort-these-by-hand">:question: Sort these by hand</h2>
+
+<ul>
+<li>clusterctl: Fix clusterctl listing of resources whose kind ends in List (#14348)</li>
+</ul>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<h3 id="added">Added</h3>
+
+<ul>
+<li>cloud.google.com/go/auth: v0.18.2</li>
+<li>github.com/go-openapi/swag/cmdutils: <a href="https://github.com/go-openapi/swag/tree/cmdutils/v0.29.1" target="_blank">v0.29.1</a></li>
+<li>github.com/go-openapi/swag/conv: <a href="https://github.com/go-openapi/swag/tree/conv/v0.29.1" target="_blank">v0.29.1</a></li>
+<li>github.com/go-openapi/swag/fileutils: <a href="https://github.com/go-openapi/swag/tree/fileutils/v0.29.1" target="_blank">v0.29.1</a></li>
+<li>github.com/go-openapi/swag/jsonutils/fixtures_test: <a href="https://github.com/go-openapi/swag/tree/jsonutils/fixtures_test/v0.29.1" target="_blank">v0.29.1</a></li>
+<li>github.com/go-openapi/swag/jsonutils: <a href="https://github.com/go-openapi/swag/tree/jsonutils/v0.29.1" target="_blank">v0.29.1</a></li>
+<li>github.com/go-openapi/swag/loading: <a href="https://github.com/go-openapi/swag/tree/loading/v0.29.1" target="_blank">v0.29.1</a></li>
+<li>github.com/go-openapi/swag/mangling: <a href="https://github.com/go-openapi/swag/tree/mangling/v0.29.1" target="_blank">v0.29.1</a></li>
+<li>github.com/go-openapi/swag/netutils: <a href="https://github.com/go-openapi/swag/tree/netutils/v0.29.1" target="_blank">v0.29.1</a></li>
+<li>github.com/go-openapi/swag/pools: <a href="https://github.com/go-openapi/swag/tree/pools/v0.29.1" target="_blank">v0.29.1</a></li>
+<li>github.com/go-openapi/swag/stringutils: <a href="https://github.com/go-openapi/swag/tree/stringutils/v0.29.1" target="_blank">v0.29.1</a></li>
+<li>github.com/go-openapi/swag/typeutils: <a href="https://github.com/go-openapi/swag/tree/typeutils/v0.29.1" target="_blank">v0.29.1</a></li>
+<li>github.com/go-openapi/swag/yamlutils: <a href="https://github.com/go-openapi/swag/tree/yamlutils/v0.29.1" target="_blank">v0.29.1</a></li>
+<li>github.com/go-openapi/testify/enable/yaml/v2: v2.6.1</li>
+<li>github.com/go-openapi/testify/v2: <a href="https://github.com/go-openapi/testify/tree/v2.6.1" target="_blank">v2.6.1</a></li>
+<li>github.com/google/go-github/v92: <a href="https://github.com/google/go-github/tree/v92.0.0" target="_blank">v92.0.0</a></li>
+<li>github.com/google/s2a-go: <a href="https://github.com/google/s2a-go/tree/v0.1.9" target="_blank">v0.1.9</a></li>
+<li>github.com/googleapis/enterprise-certificate-proxy: <a href="https://github.com/googleapis/enterprise-certificate-proxy/tree/v0.3.11" target="_blank">v0.3.11</a></li>
+</ul>
+
+<h3 id="changed">Changed</h3>
+
+<ul>
+<li>cel.dev/expr: v0.25.1 → v0.25.2</li>
+<li>github.com/Azure/go-ansiterm: <a href="https://github.com/Azure/go-ansiterm/compare/306776e...faa5f7b" target="_blank">306776e → faa5f7b</a></li>
+<li>github.com/GoogleCloudPlatform/opentelemetry-operations-go/detectors/gcp: <a href="https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/compare/detectors/gcp/v1.32.0...detectors/gcp/v1.33.0" target="_blank">v1.32.0 → v1.33.0</a></li>
+<li>github.com/coredns/corefile-migration: <a href="https://github.com/coredns/corefile-migration/compare/v1.0.34...v1.0.36" target="_blank">v1.0.34 → v1.0.36</a></li>
+<li>github.com/emicklei/go-restful/v3: <a href="https://github.com/emicklei/go-restful/compare/v3.13.0...v3.14.0" target="_blank">v3.13.0 → v3.14.0</a></li>
+<li>github.com/fsnotify/fsnotify: <a href="https://github.com/fsnotify/fsnotify/compare/v1.9.0...v1.10.1" target="_blank">v1.9.0 → v1.10.1</a></li>
+<li>github.com/fxamacker/cbor/v2: <a href="https://github.com/fxamacker/cbor/compare/v2.9.0...v2.9.3" target="_blank">v2.9.0 → v2.9.3</a></li>
+<li>github.com/go-openapi/jsonpointer: <a href="https://github.com/go-openapi/jsonpointer/compare/v0.21.0...v1.0.0" target="_blank">v0.21.0 → v1.0.0</a></li>
+<li>github.com/go-openapi/jsonreference: <a href="https://github.com/go-openapi/jsonreference/compare/v0.20.2...v1.0.1" target="_blank">v0.20.2 → v1.0.1</a></li>
+<li>github.com/go-openapi/swag: <a href="https://github.com/go-openapi/swag/compare/v0.23.0...v0.29.1" target="_blank">v0.23.0 → v0.29.1</a></li>
+<li>github.com/golang-jwt/jwt/v5: <a href="https://github.com/golang-jwt/jwt/compare/v5.3.0...v5.3.1" target="_blank">v5.3.0 → v5.3.1</a></li>
+<li>github.com/google/cel-go: <a href="https://github.com/google/cel-go/compare/v0.29.0...v0.30.0" target="_blank">v0.29.0 → v0.30.0</a></li>
+<li>github.com/google/gnostic-models: <a href="https://github.com/google/gnostic-models/compare/v0.7.0...v0.7.1" target="_blank">v0.7.0 → v0.7.1</a></li>
+<li>github.com/googleapis/gax-go/v2: <a href="https://github.com/googleapis/gax-go/compare/v2.0.5...v2.17.0" target="_blank">v2.0.5 → v2.17.0</a></li>
+<li>github.com/grpc-ecosystem/grpc-gateway/v2: <a href="https://github.com/grpc-ecosystem/grpc-gateway/compare/v2.28.0...v2.29.0" target="_blank">v2.28.0 → v2.29.0</a></li>
+<li>github.com/klauspost/compress: <a href="https://github.com/klauspost/compress/compare/v1.18.0...v1.19.1" target="_blank">v1.18.0 → v1.19.1</a></li>
+<li>github.com/moby/term: <a href="https://github.com/moby/term/compare/v0.5.0...v0.5.2" target="_blank">v0.5.0 → v0.5.2</a></li>
+<li>github.com/olekukonko/tablewriter: <a href="https://github.com/olekukonko/tablewriter/compare/v1.1.4...v1.1.5" target="_blank">v1.1.4 → v1.1.5</a></li>
+<li>github.com/onsi/ginkgo/v2: <a href="https://github.com/onsi/ginkgo/compare/v2.32.0...v2.33.1" target="_blank">v2.32.0 → v2.33.1</a></li>
+<li>github.com/onsi/gomega: <a href="https://github.com/onsi/gomega/compare/v1.42.1...v1.44.0" target="_blank">v1.42.1 → v1.44.0</a></li>
+<li>github.com/prometheus/client_golang: <a href="https://github.com/prometheus/client_golang/compare/v1.23.2...v1.24.1" target="_blank">v1.23.2 → v1.24.1</a></li>
+<li>github.com/prometheus/client_model: <a href="https://github.com/prometheus/client_model/compare/v0.6.2...v0.6.3" target="_blank">v0.6.2 → v0.6.3</a></li>
+<li>github.com/prometheus/common: <a href="https://github.com/prometheus/common/compare/v0.67.5...v0.70.1" target="_blank">v0.67.5 → v0.70.1</a></li>
+<li>github.com/prometheus/procfs: <a href="https://github.com/prometheus/procfs/compare/v0.19.2...v0.21.1" target="_blank">v0.19.2 → v0.21.1</a></li>
+<li>github.com/sirupsen/logrus: <a href="https://github.com/sirupsen/logrus/compare/v1.9.3...v1.9.4" target="_blank">v1.9.3 → v1.9.4</a></li>
+<li>github.com/spiffe/go-spiffe/v2: <a href="https://github.com/spiffe/go-spiffe/compare/v2.6.0...v2.7.0" target="_blank">v2.6.0 → v2.7.0</a></li>
+<li>github.com/stretchr/objx: <a href="https://github.com/stretchr/objx/compare/v0.5.2...v0.5.3" target="_blank">v0.5.2 → v0.5.3</a></li>
+<li>github.com/stretchr/testify: <a href="https://github.com/stretchr/testify/compare/v1.11.1...v1.12.1" target="_blank">v1.11.1 → v1.12.1</a></li>
+<li>go.etcd.io/bbolt: v1.4.3 → v1.5.0</li>
+<li>go.etcd.io/etcd/api/v3: v3.6.14 → v3.7.3</li>
+<li>go.etcd.io/etcd/client/pkg/v3: v3.6.14 → v3.7.3</li>
+<li>go.etcd.io/etcd/client/v3: v3.6.14 → v3.7.3</li>
+<li>go.etcd.io/etcd/pkg/v3: v3.6.8 → v3.7.0</li>
+<li>go.etcd.io/etcd/server/v3: v3.6.8 → v3.7.0</li>
+<li>go.etcd.io/raft/v3: v3.6.0 → v3.7.0</li>
+<li>go.opentelemetry.io/contrib/detectors/gcp: v1.43.0 → v1.44.0</li>
+<li>go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc: v0.65.0 → v0.68.0</li>
+<li>go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp: v0.65.0 → v0.69.0</li>
+<li>go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc: v1.43.0 → v1.45.0</li>
+<li>go.opentelemetry.io/otel/exporters/otlp/otlptrace: v1.43.0 → v1.45.0</li>
+<li>go.opentelemetry.io/otel/metric: v1.43.0 → v1.45.0</li>
+<li>go.opentelemetry.io/otel/sdk/metric: v1.43.0 → v1.45.0</li>
+<li>go.opentelemetry.io/otel/sdk: v1.43.0 → v1.45.0</li>
+<li>go.opentelemetry.io/otel/trace: v1.43.0 → v1.45.0</li>
+<li>go.opentelemetry.io/otel: v1.43.0 → v1.45.0</li>
+<li>go.opentelemetry.io/proto/otlp: v1.10.0 → v1.11.0</li>
+<li>go.yaml.in/yaml/v2: v2.4.3 → v2.4.4</li>
+<li>go.yaml.in/yaml/v3: v3.0.4 → v3.0.5</li>
+<li>golang.org/x/crypto: v0.53.0 → v0.58.0</li>
+<li>golang.org/x/exp: 944ab1f → 746e56f</li>
+<li>golang.org/x/mod: v0.37.0 → v0.41.0</li>
+<li>golang.org/x/net: v0.56.0 → v0.61.0</li>
+<li>golang.org/x/oauth2: v0.36.0 → v0.37.0</li>
+<li>golang.org/x/sync: v0.22.0 → v0.24.0</li>
+<li>golang.org/x/sys: v0.46.0 → v0.49.0</li>
+<li>golang.org/x/telemetry: 59b4966 → ed294f9</li>
+<li>golang.org/x/term: v0.44.0 → v0.47.0</li>
+<li>golang.org/x/text: v0.40.0 → v0.43.0</li>
+<li>golang.org/x/time: v0.14.0 → v0.15.0</li>
+<li>golang.org/x/tools: v0.47.0 → v0.51.0</li>
+<li>golang.org/x/xerrors: 5ec99f8 → 9bdfabe</li>
+<li>google.golang.org/genproto/googleapis/api: afd174a → 6ac0973</li>
+<li>google.golang.org/genproto/googleapis/rpc: afd174a → 6ac0973</li>
+<li>google.golang.org/grpc: v1.82.1 → v1.83.2</li>
+<li>google.golang.org/protobuf: f2248ac → v1.36.12</li>
+<li>k8s.io/api: v0.36.3 → v0.37.2</li>
+<li>k8s.io/apiextensions-apiserver: v0.36.3 → v0.37.2</li>
+<li>k8s.io/apimachinery: v0.36.3 → v0.37.2</li>
+<li>k8s.io/apiserver: v0.36.3 → v0.37.2</li>
+<li>k8s.io/client-go: v0.36.3 → v0.37.2</li>
+<li>k8s.io/cluster-bootstrap: v0.36.3 → v0.37.2</li>
+<li>k8s.io/code-generator: v0.36.3 → v0.37.2</li>
+<li>k8s.io/component-base: v0.36.3 → v0.37.2</li>
+<li>k8s.io/gengo/v2: ec3ebc5 → 25e2208</li>
+<li>k8s.io/kms: v0.36.3 → v0.37.2</li>
+<li>k8s.io/kube-openapi: 43fb72c → be32def</li>
+<li>k8s.io/streaming: v0.36.3 → v0.37.2</li>
+<li>k8s.io/utils: b8788ab → cf1189d</li>
+<li>sigs.k8s.io/apiserver-network-proxy/konnectivity-client: v0.34.0 → v0.36.0</li>
+<li>sigs.k8s.io/controller-runtime: v0.24.1 → v0.25.2</li>
+</ul>
+
+<h3 id="removed">Removed</h3>
+
+<ul>
+<li>github.com/creack/pty: <a href="https://github.com/creack/pty/tree/v1.1.9" target="_blank">v1.1.9</a></li>
+<li>github.com/gogo/protobuf: <a href="https://github.com/gogo/protobuf/tree/v1.3.2" target="_blank">v1.3.2</a></li>
+<li>github.com/google/go-github/v82: <a href="https://github.com/google/go-github/tree/v82.0.0" target="_blank">v82.0.0</a></li>
+<li>github.com/josharian/intern: <a href="https://github.com/josharian/intern/tree/v1.0.0" target="_blank">v1.0.0</a></li>
+<li>github.com/kisielk/errcheck: <a href="https://github.com/kisielk/errcheck/tree/v1.5.0" target="_blank">v1.5.0</a></li>
+<li>github.com/mailru/easyjson: <a href="https://github.com/mailru/easyjson/tree/v0.7.7" target="_blank">v0.7.7</a></li>
+<li>github.com/matttproud/golang_protobuf_extensions: <a href="https://github.com/matttproud/golang_protobuf_extensions/tree/v1.0.1" target="_blank">v1.0.1</a></li>
+<li>github.com/stoewer/go-strcase: <a href="https://github.com/stoewer/go-strcase/tree/v1.3.0" target="_blank">v1.3.0</a></li>
+</ul>
+
+<p></details>
+<br/>
+<em>Thanks to all our contributors!</em> 😊</p>
+<br><h3>Release notes for v1.14.4</h3><h4>2026-11-03</h4><h2 id="kubernetes-version-support">👌 Kubernetes version support</h2>
+
+<ul>
+<li>Management Cluster: v1.33.x -&gt; v1.37.x</li>
+<li>Workload Cluster: v1.31.x -&gt; v1.37.x</li>
+</ul>
+
+<p><a href="https://cluster-api.sigs.k8s.io/reference/versions.html" target="_blank">More information about version support can be found here</a></p>
+
+<h2 id="changes-since-v1-14-3">Changes since v1.14.3</h2>
+
+<h2 id="chart-with-upwards-trend-overview">:chart_with_upwards_trend: Overview</h2>
+
+<ul>
+<li>13 new commits merged</li>
+<li>5 bugs fixed 🐛</li>
+</ul>
+
+<h2 id="bug-bug-fixes">:bug: Bug Fixes</h2>
+
+<ul>
+<li>Cluster: Also set cluster-name label even if BeforeClusterCreate hook is blocking (#14326)</li>
+<li>Cluster: Fix ControlPlaneInitialized reason when the control plane does not exist (#14437)</li>
+<li>clusterctl: Fix clusterctl listing of resources whose kind ends in List (#14358)</li>
+<li>KCP: Support KCP in-place updates when coredns and kube-proxy phases are skipped (#14364)</li>
+<li>Machine: Stop checking kubelet version against an empty version (#14414)</li>
+</ul>
+
+<h2 id="seedling-others">:seedling: Others</h2>
+
+<ul>
+<li>CI: Fallback to alternate locations for Trivy DB (#14411)</li>
+<li>ClusterCache: Reject file-based credentials in kubeconfigs (#14434)</li>
+<li>clusterctl: Bump cert-manager to v1.21.3 (#14440)</li>
+<li>Dependency: Bump corefile-migration to v1.0.36 (#14418)</li>
+<li>Dependency: Bump go to 1.26.10 (#14393)</li>
+<li>e2e: Pin kind binary version and download exact version (#14338)</li>
+<li>Security: Bump go to 1.26.9 and dependencies for security (#14361)</li>
+<li>Security: Fix typo in trivy DB mirror (#14448)</li>
+</ul>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<h3 id="added">Added</h3>
+
+<p><em>Nothing has changed.</em></p>
+
+<h3 id="changed">Changed</h3>
+
+<ul>
+<li>github.com/coredns/corefile-migration: <a href="https://github.com/coredns/corefile-migration/compare/v1.0.35...v1.0.36" target="_blank">v1.0.35 → v1.0.36</a></li>
+<li>golang.org/x/crypto: v0.56.0 → v0.57.0</li>
+<li>golang.org/x/mod: v0.38.0 → v0.41.0</li>
+<li>golang.org/x/net: v0.58.0 → v0.60.0</li>
+<li>golang.org/x/sync: v0.22.0 → v0.23.0</li>
+<li>golang.org/x/sys: v0.47.0 → v0.48.0</li>
+<li>golang.org/x/telemetry: 49f421f → a038080</li>
+<li>golang.org/x/term: v0.45.0 → v0.46.0</li>
+<li>golang.org/x/text: v0.41.0 → v0.42.0</li>
+<li>golang.org/x/tools: v0.48.0 → v0.49.0</li>
+</ul>
+
+<h3 id="removed">Removed</h3>
+
+<p><em>Nothing has changed.</em></p>
+
+<p><em>Thanks to all our contributors!</em> 😊</p>
+<br><h3>Release notes for v1.13.8</h3><h4>2026-11-03</h4><h2 id="kubernetes-version-support">👌 Kubernetes version support</h2>
+
+<ul>
+<li>Management Cluster: v1.32.x -&gt; v1.36.x</li>
+<li>Workload Cluster: v1.30.x -&gt; v1.36.x</li>
+</ul>
+
+<p><a href="https://cluster-api.sigs.k8s.io/reference/versions.html" target="_blank">More information about version support can be found here</a></p>
+
+<h2 id="changes-since-v1-13-7">Changes since v1.13.7</h2>
+
+<h2 id="chart-with-upwards-trend-overview">:chart_with_upwards_trend: Overview</h2>
+
+<ul>
+<li>11 new commits merged</li>
+<li>3 bugs fixed 🐛</li>
+</ul>
+
+<h2 id="bug-bug-fixes">:bug: Bug Fixes</h2>
+
+<ul>
+<li>Bootstrap: Execute /etc/kubeadm.sh via /bin/bash for /etc noexec compatibility (#14386)</li>
+<li>Cluster: Also set cluster-name label even if BeforeClusterCreate hook is blocking (#14327)</li>
+<li>Cluster: Fix ControlPlaneInitialized reason when the control plane does not exist (#14436)</li>
+</ul>
+
+<h2 id="seedling-others">:seedling: Others</h2>
+
+<ul>
+<li>CI: Bump go to 1.26.10 (#14408)</li>
+<li>CI: Fallback to alternate locations for Trivy DB (#14412)</li>
+<li>ClusterCache: Block exec/auth providers and file-based credentials in kubeconfigs (#14441)</li>
+<li>Dependency: Bump corefile-migration to v1.0.36 (#14417)</li>
+<li>e2e: Pin kind binary version and download exact version (#14340)</li>
+<li>Security: Bump go to 1.26.9 and ignore golang.org/x/net advisories (#14365)</li>
+<li>Security: Fix typo in trivy DB mirror (#14449)</li>
+<li>Security: Ignore x/net trivy findings (#14391)</li>
+</ul>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<h3 id="added">Added</h3>
+
+<p><em>Nothing has changed.</em></p>
+
+<h3 id="changed">Changed</h3>
+
+<ul>
+<li>github.com/coredns/corefile-migration: <a href="https://github.com/coredns/corefile-migration/compare/v1.0.35...v1.0.36" target="_blank">v1.0.35 → v1.0.36</a></li>
+</ul>
+
+<h3 id="removed">Removed</h3>
+
+<p><em>Nothing has changed.</em></p>
+
+<p><em>Thanks to all our contributors!</em> 😊</p>
+<br><h2>kubernetes-sigs/cluster-api-provider-vsphere</h2> <h3>Release notes for v1.18.0-beta.0</h3><h4>2026-11-04</h4><dl>
+<dt><summary>More details about the release</summary></dt>
+</dl>
+
+<p>:warning: <strong>BETA RELEASE NOTES</strong> :warning:</p>
+
+<h2 id="highlights">Highlights</h2>
+
+<ul>
+<li>REPLACE ME</li>
+</ul>
+
+<h2 id="changes-since-v1-17-0">Changes since v1.17.0</h2>
+
+<h2 id="chart-with-upwards-trend-overview">:chart_with_upwards_trend: Overview</h2>
+
+<ul>
+<li>92 new commits merged</li>
+<li>1 breaking change :warning:</li>
+<li>6 feature additions ✨</li>
+<li>7 bugs fixed 🐛</li>
+</ul>
+
+<h2 id="warning-breaking-changes">:warning: Breaking Changes</h2>
+
+<ul>
+<li>Bump to CAPI main + CR v0.25 / CT v0.22 (#4195)</li>
+</ul>
+
+<h2 id="sparkles-new-features">:sparkles: New Features</h2>
+
+<ul>
+<li>Add per-cluster network provider support (#4072)</li>
+<li>Add strict anti-affinity support for Supervisor worker VSphereMachine (#4254)</li>
+<li>Bump to controller-gen v0.23 and enable crd:omitToolVersion (#4257)</li>
+<li>Expose all vm-operator volume parameters in VSphereMachine spec.volumes (#4248)</li>
+<li>Omit apiVersion from PolicyRef (#4124)</li>
+<li>Support Externally Managed Network Provider (#4096)</li>
+</ul>
+
+<h2 id="bug-bug-fixes">:bug: Bug Fixes</h2>
+
+<ul>
+<li>Apply VM-wide static routes per-device in cloud-init metadata (#4118)</li>
+<li>Default value for graceful shutdown timeout (#4158)</li>
+<li>Do not leak VMs whose datastore is inaccessible on delete (#4261)</li>
+<li>Don&rsquo;t use cache with CRD migrator (#4159)</li>
+<li>Fix typo in trivy DB mirror (#4295)</li>
+<li>Retry cluster module removal instead of dropping it from spec (#4225)</li>
+<li>Scope policies immutability CEL to VSphereMachine (#4145)</li>
+</ul>
+
+<h2 id="seedling-others">:seedling: Others</h2>
+
+<ul>
+<li>Add janitor allowed prefix (#4208)</li>
+<li>Add testctl util (#4122)</li>
+<li>Add tool to cleanup scale env (#4147)</li>
+<li>Add verify for downloaded binaries (#4210)</li>
+<li>Avoid global locking during session creation (#4266)</li>
+<li>Avoid shared template across go routines (#4207)</li>
+<li>Bump boskosctl image (#4239)</li>
+<li>Bump CAPI v1.14.1 (#4187)</li>
+<li>Bump capi v1.15.0-beta.0 (#4300)</li>
+<li>Bump CPI to v1.37.0 (#4172)</li>
+<li>Bump envtest to v1.37.0 (#4173)</li>
+<li>Bump gcb-docker-gcloud to a prod image (#4137)</li>
+<li>Bump go 1.26.10 (#4274)</li>
+<li>Bump go, fix vulnerabilities (#4258)</li>
+<li>Bump google.golang.org/grpc to fix CVEs (#4200)</li>
+<li>Bump google.golang.org/grpc to v1.83.2 to fix CVEs (#4213)</li>
+<li>Bump in-cluster IPAM provider (#4121)</li>
+<li>Bump kpromo to 4.7.1 (#4249)</li>
+<li>Bump KUBERNETES_VERSION_MANAGEMENT_LATEST_CI to v1.38, avoid conflicts in vsphere.yaml (#4182)</li>
+<li>Bump otel to v1.45 to fix CVEs (#4250)</li>
+<li>Bump test extension ExtensionConfig to v1beta2 (#4184)</li>
+<li>Bump to CAPI v1.14.0 (#4138)</li>
+<li>Bump to CAPI v1.14.0-rc.1 (#4125)</li>
+<li>Bump to CPI v1.37.0-rc.0 (#4134)</li>
+<li>Bump to Go 1.26.6 (#4148)</li>
+<li>Bump to Kubernetes v1.37.0 (#4167)</li>
+<li>Bump to Kubernetes v1.37.0-rc.1 (#4153)</li>
+<li>Check device unit numbers to avoid panics (#4287)</li>
+<li>Cleanup conformance test YAMLs + exclude failing Secret tests (#4292)</li>
+<li>Drop release-1.15 tests (#4192)</li>
+<li>E2e: stream logs for CPI and CSI to artifacts (#4109)</li>
+<li>Enforce tls thumbprint must be set in NewVSphereClients (#4240)</li>
+<li>Fallback to alternate locations for Trivy DB (#4275)</li>
+<li>Improve artifact cleanup (#4211)</li>
+<li>Improve dependabot workflow (#4205)</li>
+<li>Improve Kubernetes version resolution (#4212)</li>
+<li>Include thumbprint in the session cache key (#4288)</li>
+<li>Limit size of names generated from templates (#4204)</li>
+<li>Map v1alpha6 to 9.1.3, and add .0 suffix to 8.0 &amp; 9.1, Bump 9.1.3 to ca004a72d870 (#4282)</li>
+<li>Move healthCheck config in scale e2e test flavor from Cluster to ClusterClass (#4223)</li>
+<li>Only delete owned Secrets during VSphereCluster deletion (#4269)</li>
+<li>Only delete owned Secrets during VSphereClusterIdentity deletion (#4270)</li>
+<li>OWNERS file maintenance (#4281)</li>
+<li>Pin boskosctl image (#4216)</li>
+<li>Pin kube-vip image to sha (#4265)</li>
+<li>Prepare main branch for v1.18 (#4193)</li>
+<li>Promote PriorityQueue and ReconcilerRatelimiting to GA (#4262)</li>
+<li>Reduce logs verbosity (#4263)</li>
+<li>Remove credentials file watch (#4289)</li>
+<li>Sanitize COREOS_CUSTOM_HOSTNAME (#4226)</li>
+<li>Shell quote janitor output (#4209)</li>
+<li>Start testing Kubernetes v1.38 (#4174)</li>
+<li>Start testing with Kubernetes v1.37.0-rc.0 (#4130)</li>
+<li>Stop spinning indefinitely in edge cases during encode (#4271)</li>
+<li>Use 1.37 OVA (#4171)</li>
+</ul>
+
+<p>:book: Additionally, there have been 5 contributions to our documentation and book. (#4110, #4170, #4175, #4188, #4196)</p>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<h3 id="added">Added</h3>
+
+<ul>
+<li>cloud.google.com/go/auth: v0.18.2</li>
+<li>github.com/go-openapi/swag/pools: <a href="https://github.com/go-openapi/swag/tree/pools/v0.29.1" target="_blank">v0.29.1</a></li>
+<li>github.com/google/go-github/v92: <a href="https://github.com/google/go-github/tree/v92.0.0" target="_blank">v92.0.0</a></li>
+<li>github.com/google/s2a-go: <a href="https://github.com/google/s2a-go/tree/v0.1.9" target="_blank">v0.1.9</a></li>
+<li>github.com/googleapis/enterprise-certificate-proxy: <a href="https://github.com/googleapis/enterprise-certificate-proxy/tree/v0.3.11" target="_blank">v0.3.11</a></li>
+<li>github.com/googleapis/gax-go/v2: <a href="https://github.com/googleapis/gax-go/tree/v2.17.0" target="_blank">v2.17.0</a></li>
+</ul>
+
+<h3 id="changed">Changed</h3>
+
+<ul>
+<li>cel.dev/expr: v0.25.1 → v0.25.2</li>
+<li>github.com/Azure/go-ansiterm: <a href="https://github.com/Azure/go-ansiterm/compare/306776e...faa5f7b" target="_blank">306776e → faa5f7b</a></li>
+<li>github.com/GoogleCloudPlatform/opentelemetry-operations-go/detectors/gcp: <a href="https://github.com/GoogleCloudPlatform/opentelemetry-operations-go/compare/detectors/gcp/v1.32.0...detectors/gcp/v1.33.0" target="_blank">v1.32.0 → v1.33.0</a></li>
+<li>github.com/coredns/corefile-migration: <a href="https://github.com/coredns/corefile-migration/compare/v1.0.35...v1.0.36" target="_blank">v1.0.35 → v1.0.36</a></li>
+<li>github.com/emicklei/go-restful/v3: <a href="https://github.com/emicklei/go-restful/compare/v3.13.0...v3.14.0" target="_blank">v3.13.0 → v3.14.0</a></li>
+<li>github.com/fsnotify/fsnotify: <a href="https://github.com/fsnotify/fsnotify/compare/v1.9.0...v1.10.1" target="_blank">v1.9.0 → v1.10.1</a></li>
+<li>github.com/fxamacker/cbor/v2: <a href="https://github.com/fxamacker/cbor/compare/v2.9.1...v2.9.3" target="_blank">v2.9.1 → v2.9.3</a></li>
+<li>github.com/go-openapi/jsonpointer: <a href="https://github.com/go-openapi/jsonpointer/compare/v0.23.1...v1.0.0" target="_blank">v0.23.1 → v1.0.0</a></li>
+<li>github.com/go-openapi/jsonreference: <a href="https://github.com/go-openapi/jsonreference/compare/v0.21.5...v1.0.1" target="_blank">v0.21.5 → v1.0.1</a></li>
+<li>github.com/go-openapi/swag/cmdutils: <a href="https://github.com/go-openapi/swag/compare/cmdutils/v0.26.0...cmdutils/v0.29.1" target="_blank">v0.26.0 → v0.29.1</a></li>
+<li>github.com/go-openapi/swag/conv: <a href="https://github.com/go-openapi/swag/compare/conv/v0.26.0...conv/v0.29.1" target="_blank">v0.26.0 → v0.29.1</a></li>
+<li>github.com/go-openapi/swag/fileutils: <a href="https://github.com/go-openapi/swag/compare/fileutils/v0.26.0...fileutils/v0.29.1" target="_blank">v0.26.0 → v0.29.1</a></li>
+<li>github.com/go-openapi/swag/jsonutils/fixtures_test: <a href="https://github.com/go-openapi/swag/compare/jsonutils/fixtures_test/v0.26.0...jsonutils/fixtures_test/v0.29.1" target="_blank">v0.26.0 → v0.29.1</a></li>
+<li>github.com/go-openapi/swag/jsonutils: <a href="https://github.com/go-openapi/swag/compare/jsonutils/v0.26.0...jsonutils/v0.29.1" target="_blank">v0.26.0 → v0.29.1</a></li>
+<li>github.com/go-openapi/swag/loading: <a href="https://github.com/go-openapi/swag/compare/loading/v0.26.0...loading/v0.29.1" target="_blank">v0.26.0 → v0.29.1</a></li>
+<li>github.com/go-openapi/swag/mangling: <a href="https://github.com/go-openapi/swag/compare/mangling/v0.26.0...mangling/v0.29.1" target="_blank">v0.26.0 → v0.29.1</a></li>
+<li>github.com/go-openapi/swag/netutils: <a href="https://github.com/go-openapi/swag/compare/netutils/v0.26.0...netutils/v0.29.1" target="_blank">v0.26.0 → v0.29.1</a></li>
+<li>github.com/go-openapi/swag/stringutils: <a href="https://github.com/go-openapi/swag/compare/stringutils/v0.26.0...stringutils/v0.29.1" target="_blank">v0.26.0 → v0.29.1</a></li>
+<li>github.com/go-openapi/swag/typeutils: <a href="https://github.com/go-openapi/swag/compare/typeutils/v0.26.0...typeutils/v0.29.1" target="_blank">v0.26.0 → v0.29.1</a></li>
+<li>github.com/go-openapi/swag/yamlutils: <a href="https://github.com/go-openapi/swag/compare/yamlutils/v0.26.0...yamlutils/v0.29.1" target="_blank">v0.26.0 → v0.29.1</a></li>
+<li>github.com/go-openapi/swag: <a href="https://github.com/go-openapi/swag/compare/v0.26.0...v0.29.1" target="_blank">v0.26.0 → v0.29.1</a></li>
+<li>github.com/go-openapi/testify/enable/yaml/v2: <a href="https://github.com/go-openapi/testify/compare/enable/yaml/v2/v2.4.2...enable/yaml/v2/v2.6.1" target="_blank">v2.4.2 → v2.6.1</a></li>
+<li>github.com/go-openapi/testify/v2: <a href="https://github.com/go-openapi/testify/compare/v2.4.2...v2.6.1" target="_blank">v2.4.2 → v2.6.1</a></li>
+<li>github.com/golang-jwt/jwt/v5: <a href="https://github.com/golang-jwt/jwt/compare/v5.3.0...v5.3.1" target="_blank">v5.3.0 → v5.3.1</a></li>
+<li>github.com/google/cel-go: <a href="https://github.com/google/cel-go/compare/v0.29.0...v0.30.0" target="_blank">v0.29.0 → v0.30.0</a></li>
+<li>github.com/google/gnostic-models: <a href="https://github.com/google/gnostic-models/compare/v0.7.0...v0.7.1" target="_blank">v0.7.0 → v0.7.1</a></li>
+<li>github.com/grpc-ecosystem/grpc-gateway/v2: <a href="https://github.com/grpc-ecosystem/grpc-gateway/compare/v2.28.0...v2.29.0" target="_blank">v2.28.0 → v2.29.0</a></li>
+<li>github.com/klauspost/compress: <a href="https://github.com/klauspost/compress/compare/v1.18.0...v1.19.1" target="_blank">v1.18.0 → v1.19.1</a></li>
+<li>github.com/moby/term: <a href="https://github.com/moby/term/compare/v0.5.0...v0.5.2" target="_blank">v0.5.0 → v0.5.2</a></li>
+<li>github.com/olekukonko/tablewriter: <a href="https://github.com/olekukonko/tablewriter/compare/v1.1.4...v1.1.5" target="_blank">v1.1.4 → v1.1.5</a></li>
+<li>github.com/onsi/ginkgo/v2: <a href="https://github.com/onsi/ginkgo/compare/v2.32.0...v2.33.1" target="_blank">v2.32.0 → v2.33.1</a></li>
+<li>github.com/onsi/gomega: <a href="https://github.com/onsi/gomega/compare/v1.42.1...v1.44.0" target="_blank">v1.42.1 → v1.44.0</a></li>
+<li>github.com/prometheus/client_golang: <a href="https://github.com/prometheus/client_golang/compare/v1.23.2...v1.24.1" target="_blank">v1.23.2 → v1.24.1</a></li>
+<li>github.com/prometheus/client_model: <a href="https://github.com/prometheus/client_model/compare/v0.6.2...v0.6.3" target="_blank">v0.6.2 → v0.6.3</a></li>
+<li>github.com/prometheus/common: <a href="https://github.com/prometheus/common/compare/v0.67.5...v0.70.1" target="_blank">v0.67.5 → v0.70.1</a></li>
+<li>github.com/prometheus/procfs: <a href="https://github.com/prometheus/procfs/compare/v0.20.1...v0.21.1" target="_blank">v0.20.1 → v0.21.1</a></li>
+<li>github.com/sirupsen/logrus: <a href="https://github.com/sirupsen/logrus/compare/v1.9.3...v1.9.4" target="_blank">v1.9.3 → v1.9.4</a></li>
+<li>github.com/spiffe/go-spiffe/v2: <a href="https://github.com/spiffe/go-spiffe/compare/v2.6.0...v2.7.0" target="_blank">v2.6.0 → v2.7.0</a></li>
+<li>github.com/stretchr/objx: <a href="https://github.com/stretchr/objx/compare/v0.5.2...v0.5.3" target="_blank">v0.5.2 → v0.5.3</a></li>
+<li>github.com/stretchr/testify: <a href="https://github.com/stretchr/testify/compare/v1.11.1...v1.12.1" target="_blank">v1.11.1 → v1.12.1</a></li>
+<li>github.com/vmware-tanzu/vm-operator/api: <a href="https://github.com/vmware-tanzu/vm-operator/compare/46d6f2c...ca004a7" target="_blank">46d6f2c → ca004a7</a></li>
+<li>github.com/vmware-tanzu/vm-operator/external/ncp: <a href="https://github.com/vmware-tanzu/vm-operator/compare/external/ncp/46d6f2c...external/ncp/ca004a7" target="_blank">46d6f2c → ca004a7</a></li>
+<li>github.com/vmware-tanzu/vm-operator/external/tanzu-topology: <a href="https://github.com/vmware-tanzu/vm-operator/compare/external/tanzu-topology/46d6f2c...external/tanzu-topology/ca004a7" target="_blank">46d6f2c → ca004a7</a></li>
+<li>github.com/vmware/govmomi: <a href="https://github.com/vmware/govmomi/compare/v0.55.1...v0.56.2" target="_blank">v0.55.1 → v0.56.2</a></li>
+<li>go.etcd.io/bbolt: v1.4.3 → v1.5.0</li>
+<li>go.etcd.io/etcd/api/v3: v3.6.14 → v3.7.3</li>
+<li>go.etcd.io/etcd/client/pkg/v3: v3.6.14 → v3.7.3</li>
+<li>go.etcd.io/etcd/client/v3: v3.6.14 → v3.7.3</li>
+<li>go.etcd.io/etcd/pkg/v3: v3.6.8 → v3.7.0</li>
+<li>go.etcd.io/etcd/server/v3: v3.6.8 → v3.7.0</li>
+<li>go.etcd.io/raft/v3: v3.6.0 → v3.7.0</li>
+<li>go.opentelemetry.io/contrib/detectors/gcp: v1.43.0 → v1.44.0</li>
+<li>go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc: v0.65.0 → v0.68.0</li>
+<li>go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp: v0.65.0 → v0.69.0</li>
+<li>go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc: v1.43.0 → v1.45.0</li>
+<li>go.opentelemetry.io/otel/exporters/otlp/otlptrace: v1.43.0 → v1.45.0</li>
+<li>go.opentelemetry.io/otel/metric: v1.43.0 → v1.45.0</li>
+<li>go.opentelemetry.io/otel/sdk/metric: v1.43.0 → v1.45.0</li>
+<li>go.opentelemetry.io/otel/sdk: v1.43.0 → v1.45.0</li>
+<li>go.opentelemetry.io/otel/trace: v1.43.0 → v1.45.0</li>
+<li>go.opentelemetry.io/otel: v1.43.0 → v1.45.0</li>
+<li>go.opentelemetry.io/proto/otlp: v1.10.0 → v1.11.0</li>
+<li>go.yaml.in/yaml/v3: v3.0.4 → v3.0.5</li>
+<li>golang.org/x/crypto: v0.54.0 → v0.58.0</li>
+<li>golang.org/x/exp: 944ab1f → 746e56f</li>
+<li>golang.org/x/mod: v0.38.0 → v0.42.0</li>
+<li>golang.org/x/net: v0.57.0 → v0.61.0</li>
+<li>golang.org/x/oauth2: v0.36.0 → v0.37.0</li>
+<li>golang.org/x/sync: v0.22.0 → v0.24.0</li>
+<li>golang.org/x/sys: v0.47.0 → v0.49.0</li>
+<li>golang.org/x/telemetry: 49f421f → 97e8ea7</li>
+<li>golang.org/x/term: v0.45.0 → v0.47.0</li>
+<li>golang.org/x/text: v0.40.0 → v0.43.0</li>
+<li>golang.org/x/time: v0.14.0 → v0.15.0</li>
+<li>golang.org/x/tools: v0.48.0 → v0.52.0</li>
+<li>google.golang.org/genproto/googleapis/api: afd174a → 6ac0973</li>
+<li>google.golang.org/genproto/googleapis/rpc: afd174a → 6ac0973</li>
+<li>google.golang.org/grpc: v1.82.1 → v1.83.2</li>
+<li>google.golang.org/protobuf: f2248ac → v1.36.12</li>
+<li>k8s.io/api: v0.36.3 → v0.37.2</li>
+<li>k8s.io/apiextensions-apiserver: v0.36.3 → v0.37.2</li>
+<li>k8s.io/apimachinery: v0.36.3 → v0.37.2</li>
+<li>k8s.io/apiserver: v0.36.3 → v0.37.2</li>
+<li>k8s.io/client-go: v0.36.3 → v0.37.2</li>
+<li>k8s.io/cluster-bootstrap: v0.36.3 → v0.37.2</li>
+<li>k8s.io/code-generator: v0.36.3 → v0.37.2</li>
+<li>k8s.io/component-base: v0.36.3 → v0.37.2</li>
+<li>k8s.io/gengo/v2: ec3ebc5 → 25e2208</li>
+<li>k8s.io/kms: v0.36.3 → v0.37.2</li>
+<li>k8s.io/kube-openapi: 43fb72c → be32def</li>
+<li>k8s.io/streaming: v0.36.3 → v0.37.2</li>
+<li>k8s.io/utils: b8788ab → cf1189d</li>
+<li>sigs.k8s.io/apiserver-network-proxy/konnectivity-client: v0.34.0 → v0.36.0</li>
+<li>sigs.k8s.io/cluster-api/api: v1.14.1 → v1.15.0-beta.0</li>
+<li>sigs.k8s.io/cluster-api: v1.14.1 → v1.15.0-beta.0</li>
+<li>sigs.k8s.io/controller-runtime: v0.24.1 → v0.25.2</li>
+</ul>
+
+<h3 id="removed">Removed</h3>
+
+<ul>
+<li>github.com/go-openapi/swag/jsonname: <a href="https://github.com/go-openapi/swag/tree/jsonname/v0.26.0" target="_blank">v0.26.0</a></li>
+<li>github.com/google/go-github/v82: <a href="https://github.com/google/go-github/tree/v82.0.0" target="_blank">v82.0.0</a></li>
+<li>github.com/matttproud/golang_protobuf_extensions: <a href="https://github.com/matttproud/golang_protobuf_extensions/tree/v1.0.1" target="_blank">v1.0.1</a></li>
+<li>github.com/stoewer/go-strcase: <a href="https://github.com/stoewer/go-strcase/tree/v1.3.0" target="_blank">v1.3.0</a></li>
+<li>gopkg.in/fsnotify.v1: v1.4.7</li>
+</ul>
+
+<p></details>
+<br/>
+<em>Thanks to all our contributors!</em> 😊</p>
+<br><h2>prometheus/prometheus</h2> <h3>Release notes for 3.16.0 / 2026-11-04</h3><h4>2026-11-05</h4><ul>
+<li>[CHANGE] API: The experimental search endpoints now clamp <code>batch_size</code> to 1000. #19731</li>
+<li>[CHANGE] Configuration: Default &ndash;web.external-url to https when &ndash;web.config.file enables TLS. #19241</li>
+<li>[CHANGE] PromQL: Subquery samples are now included in the query TotalSamples and TotalSamplesPerStep statistics, and SamplesRead now counts reads from subqueries with an @ modifier in range queries. #19165</li>
+<li>[CHANGE] Remote write: Stop exposing the deprecated <code>prometheus_remote_storage_metadata_total</code>, <code>prometheus_remote_storage_metadata_failed_total</code>, <code>prometheus_remote_storage_metadata_retried_total</code>, and <code>prometheus_remote_storage_metadata_bytes_total</code> metrics for Remote Write 2.0 queues. #20080</li>
+<li>[CHANGE] Remote write receiver: Count Remote Write 2.x samples and histograms ingested without metadata in <code>prometheus_api_remote_write_without_metadata_appended_samples_total</code> even when <code>metadata-wal-records</code> is disabled. #19812</li>
+<li>[CHANGE] TSDB: Reject exemplars whose label names are not unique, instead of storing them and serving a duplicate JSON key from <code>/api/v1/query_exemplars</code>. #19896</li>
+<li>[FEATURE] API: Allow overriding PromQL Start Timestamp processing on a per-query basis using the <code>X-Prometheus-Use-Start-Timestamps</code> HTTP header. #19066</li>
+<li>[FEATURE] Agent: Support metadata-wal-records in Prometheus Agent mode. #19684</li>
+<li>[FEATURE] PromQL: Add experimental <code>integral()</code> function for computing integral-over-time of range vectors behind the <code>--enable-feature=promql-experimental-functions</code> flag. #14440</li>
+<li>[FEATURE] PromQL: Add experimental query cost estimation, actual cost reporting, and configurable execution limits, enabled with <code>--enable-feature=query-cost</code>. #20028</li>
+<li>[FEATURE] PromQL: Smoothed and Anchored vector selectors are now stable and always-on. #19697</li>
+<li>[FEATURE] PromQL: Use start timestamps to detect counter resets when float timeseries are queried using extended range selector modifiers (<code>anchored</code>, <code>smoothed</code>). This feature is hidden behind <code>use-start-timestamps</code> feature flag. #18966</li>
+<li>[FEATURE] Promtool: print test filename during promtool tests #18271</li>
+<li>[FEATURE] PromQL: Allow unquoted Unicode letters and dots behind a feature flag #20162</li>
+<li>[ENHANCEMENT] Search API: Warn when participating remote-read storage does not support search. #19992</li>
+<li>[ENHANCEMENT] Remote Read: Add native histogram prometheus_remote_read_handler_gate_wait_duration_seconds to measure concurrency-gate wait duration, including requests canceled while waiting. #18355</li>
+<li>[ENHANCEMENT] Remote Write: Add experimental flag <code>convert_nhcb_to_classic</code> to convert NHCB to classic histograms for external systems that dont support NHCBs. #17205</li>
+<li>[ENHANCEMENT] promtool: Add <code>--allow-incompatible-block-duration</code> so users can specify any max-block-duration instead of being restricted to the default Prometheus block durations. #19363</li>
+<li>[PERF] Remote write: Cache repeated OTLP histogram metric names. #19717</li>
+<li>[PERF] OpenMetrics 2.0 parser: Reuse classic histogram and summary expansion buffers across scrapes. #19907</li>
+<li>[PERF] PromQL: Decode only histogram sum/count (not buckets) for timestamp(), start_timestamp() and absent(). #19738</li>
+<li>[PERF] PromQL: Only select the fixed window for subqueries with an <code>@</code> modifier. #19863</li>
+<li>[PERF] Remote write / TSDB: Deduplicate per-series metadata structs in memory with <code>unique.Handle</code>. #20040</li>
+<li>[PERF] Scrape: Avoid some copies of scrape response bodies. #19394</li>
+<li>[PERF] TSDB: Improve XOR2 compression and append performance by selecting value windows based on encoding cost. #19962</li>
+<li>[PERF] TSDB: Reduce memory used writing and reading checkpoint metadata records. #19712</li>
+<li>[PERF] Scrape: Convert classic histograms to NHCB directly in the OpenMetrics 2.0 parser without wrapping in <code>NHCBParser</code>. #19880</li>
+<li>[PERF] Scrape: Reduce OpenMetrics 2.0 parser allocations and CPU overhead by lazily constructing composite series and exemplar labels. #19895</li>
+<li>[BUGFIX] Remote read: Abort failed streaming responses without writing duplicate headers or appending plain-text errors to the protobuf stream #19749</li>
+<li>[BUGFIX] TSDB: Fix loss of out-of-order samples when a WAL checkpoint drops a series record that the out-of-order write-behind log still needs #19737</li>
+<li>[BUGFIX] TSDB: Fix queries that seek within a head chunk returning samples committed after the query started #19854</li>
+<li>[BUGFIX] TSDB: Preserve mapped chunks when WAL replay merges multiple references for the same series, preventing missing out-of-order samples and duplicate in-order chunks after restart #19805</li>
+<li>[BUGFIX] Fix auto-reload logic to reload after reverting a failed configuration change #19838</li>
+<li>[BUGFIX] API: Do not match metric family metadata for doubled _total and _info suffixes in experimental search API. #19910</li>
+<li>[BUGFIX] API: Reject <code>timeout</code> and <code>lookback_delta</code> values that overflow int64 instead of turning them into a negative duration #19658</li>
+<li>[BUGFIX] API: Resolve metric family metadata for suffixed metric names in search results, in experimental search API. #19824</li>
+<li>[BUGFIX] AWS SD: Describe each ElastiCache cluster once instead of twice for clusters that are not replication group members. #19434</li>
+<li>[BUGFIX] Build: Allow installing promtool with version-suffixed go install commands #19754</li>
+<li>[BUGFIX] Discovery: Fix a panic in Azure service discovery when a VM tag has a null value. #19755</li>
+<li>[BUGFIX] Federation: fix corruption of float native histograms. #19679</li>
+<li>[BUGFIX] Fix ts_of_last_over_time for samples before the Unix epoch. #19828</li>
+<li>[BUGFIX] Histograms: Fix ConvertNHCBToClassic inflating classic bucket counts for integer native histograms whose spans have gaps. #19659</li>
+<li>[BUGFIX] Logging: Preserve rule and TSDB block values in JSON logs. #19572</li>
+<li>[BUGFIX] OTLP receiver: Drop exemplars with timestamps more than 10 minutes in the future instead of storing them and blocking subsequent exemplars for that series. #19812</li>
+<li>[BUGFIX] OTLP: Count only out-of-order exemplars in <code>prometheus_api_otlp_out_of_order_exemplars_total</code>, not every rejected exemplar. #20030</li>
+<li>[BUGFIX] OTLP: Do not drop exemplars that have a <code>trace_id</code> or <code>span_id</code> filtered attribute in addition to a trace or span ID. The trace context now takes precedence over the colliding attribute, as required by the OpenTelemetry specification. #20004</li>
+<li>[BUGFIX] OTLP: Do not emit <code>le=&quot;+Inf&quot;</code> twice when a histogram&rsquo;s explicit bounds end at <code>+Inf</code>, and warn about the bound. #19425</li>
+<li>[BUGFIX] OTLP: Stop dropping exemplars that arrive out of timestamp order within a data point. #20029</li>
+<li>[BUGFIX] OpenMetrics 2.0: Attach histogram exemplars to matching classic <code>_bucket</code> series and preserve them when scraping both native and classic histograms. #20020</li>
+<li>[BUGFIX] PromQL: Avoid intermediate overflow in <code>rad()</code> and <code>deg()</code> conversions. #19901</li>
+<li>[BUGFIX] PromQL: Consistently ignore and drop <code>__type__</code> and <code>__unit__</code> labels in <code>without</code> aggregations, <code>absent()</code>, <code>info()</code>, and binary operator fill matching. #19986</li>
+<li>[BUGFIX] PromQL: Do not panic when printing the partial AST returned alongside a parse error. #19797</li>
+<li>[BUGFIX] PromQL: Drop <strong>type</strong> and <strong>unit</strong> in binary operations so they are transparent to users, similar to how <strong>name</strong> is handled. #18680</li>
+<li>[BUGFIX] PromQL: Fix <code>==</code>, <code>!=</code>, <code>changes()</code> and <code>count_values</code> on native histograms giving wrong results inside <code>histogram_count()</code>, <code>histogram_sum()</code> and <code>histogram_avg()</code>. #20024</li>
+<li>[BUGFIX] PromQL: Fix histogram_fraction returning wrong results for native histograms with custom buckets when a bucket boundary is exactly 0. #19657</li>
+<li>[BUGFIX] PromQL: Fix histogram_quantile and histogram_quantiles interpolating within the wrong bucket for native histograms whose sum is NaN. #19973</li>
+<li>[BUGFIX] PromQL: Fix lexing of subqueries whose range is a duration keyword expression, e.g. <code>foo[range():1s]</code>. #19729</li>
+<li>[BUGFIX] PromQL: Fix warning and error locations for duration expressions <code>min_of</code> and <code>max_of</code>. #19742</li>
+<li>[BUGFIX] PromQL: Ignore NaN classic histogram bucket boundaries in <code>histogram_quantile</code>, <code>histogram_quantiles</code> and <code>histogram_fraction</code> and return correct value instead of NaN if there are normal buckets. #20057</li>
+<li>[BUGFIX] PromQL: Preserve infinite values at exact quantile ranks. #19899</li>
+<li>[BUGFIX] PromQL: Preserve original operand sides for experimental fill modifiers with group_right matching. #19939</li>
+<li>[BUGFIX] PromQL: Preserve subquery step expressions when printing queries after preprocessing. #19743</li>
+<li>[BUGFIX] PromQL: Range vector functions no longer raise a spurious &ldquo;vector cannot contain metrics with the same labelset&rdquo; error when series have different metric names but the same remaining labels, as long as their timestamps do not overlap within the evaluated range window #18631</li>
+<li>[BUGFIX] PromQL: do not count subquery materialized samples in total samples statistics #19873</li>
+<li>[BUGFIX] Remote write: Prevent future-dated exemplars from scaling shards down to the minimum. #19866</li>
+<li>[BUGFIX] Agent: Prevent future sent timestamps from advancing WAL truncation beyond the minimum retention window. #19866</li>
+<li>[BUGFIX] Rules: Restore firing alerts with for durations shorter than &ndash;rules.alert.for-grace-period after a restart. #19882</li>
+<li>[BUGFIX] Scrape: fix failing scrape when float histogram is emitted over protobuf with count, zero count and buckets all zero, for example a result of recording <code>rate(x[1m])</code> over constant histogram. #19682</li>
+<li>[BUGFIX] Search API: Return the lexically smallest label values when <code>limit</code> is set on <code>/api/v1/search/label_values</code>, instead of an arbitrary subset #19694</li>
+<li>[BUGFIX] TSDB: Fix WAL watcher permanently skipping checkpoint series garbage collection when lagging behind head truncation. #20041</li>
+<li>[BUGFIX] Search API: Avoid panics when the requested time range has no participating storage. #19992</li>
+<li>[BUGFIX] TSDB: Fix a race in selected-series and stale-series compaction where a sample committed after the block was written but before the series was evicted from the head could be silently lost. The fix no longer depends on isolation being enabled. #19666</li>
+<li>[BUGFIX] TSDB: Fix a rare case where a sample could be lost during selected-series or stale-series compaction if an unrelated write to the same series ran cleanup that erased the evidence needed to protect it. #19672</li>
+<li>[BUGFIX] TSDB: Fix spurious &ldquo;unknown series references&rdquo; warnings during WAL replay after a restart, when the only blocks on disk were produced by selected-series or stale-series compaction. #19734</li>
+<li>[BUGFIX] TSDB: Increment <code>prometheus_tsdb_wal_corruptions_total</code> when WAL corruption is detected during checkpoint creation, so the metric reflects corruption found at compaction time rather than only after a restart-triggered repair. #19858</li>
+<li>[BUGFIX] TSDB: Preserve series identities needed to recover exemplars after compaction and restart. #19940</li>
+<li>[BUGFIX] TSDB: Reject native histograms whose span offsets overflow the int32 bucket index instead of storing them with corrupted buckets. #20034</li>
+<li>[BUGFIX] TSDB: fix no passing metadata-wal-records to TSDB from main feature flag. #19678</li>
+<li>[BUGFIX] Templates: Preserve IPv6 addresses with dotted zone identifiers in <code>stripDomain</code>. #19908</li>
+<li>[BUGFIX] UI: Don&rsquo;t automatically open an autocomplete dropdown after closing a function call body or aggregation operator with a closing parenthesis. #19825</li>
+<li>[BUGFIX] Web: Fix HTTP/2 negotiation silently falling back to HTTP/1.1 under Go 1.27+ when TLS is enabled with <code>http2: true</code>. The server now correctly advertises <code>h2</code> via ALPN and multiplexes concurrent requests over a single connection. #19848</li>
+<li>[BUGFIX] mixin: Fix double-counting of failed samples in the <code>PrometheusRemoteStorageFailures</code> alert denominator. #19877</li>
+<li>[BUGFIX] promtool: Honor <code>--enable-feature</code> when evaluating rules in <code>test rules</code>. #20046</li>
+<li>[BUGFIX] Scrape: Ensure UTF-8 works with the experimental OpenMetrics 2.0 #19902</li>
+<li>[BUGFIX] Scrape: Reject sum-only classic histograms during NHCB conversion #19315</li>
+</ul>
+<br><h3>Release notes for 3.16.0-rc.4 / 2026-11-03</h3><h4>2026-11-03</h4><ul>
+<li>[CHANGE] API: The experimental search endpoints now clamp <code>batch_size</code> to 1000. #19731</li>
+<li>[CHANGE] Configuration: Default &ndash;web.external-url to https when &ndash;web.config.file enables TLS. #19241</li>
+<li>[CHANGE] PromQL: Subquery samples are now included in the query TotalSamples and TotalSamplesPerStep statistics, and SamplesRead now counts reads from subqueries with an @ modifier in range queries. #19165</li>
+<li>[CHANGE] Remote write: Stop exposing the deprecated <code>prometheus_remote_storage_metadata_total</code>, <code>prometheus_remote_storage_metadata_failed_total</code>, <code>prometheus_remote_storage_metadata_retried_total</code>, and <code>prometheus_remote_storage_metadata_bytes_total</code> metrics for Remote Write 2.0 queues. #20080</li>
+<li>[CHANGE] Remote write receiver: Count Remote Write 2.x samples and histograms ingested without metadata in <code>prometheus_api_remote_write_without_metadata_appended_samples_total</code> even when <code>metadata-wal-records</code> is disabled. #19812</li>
+<li>[CHANGE] TSDB: Reject exemplars whose label names are not unique, instead of storing them and serving a duplicate JSON key from <code>/api/v1/query_exemplars</code>. #19896</li>
+<li>[FEATURE] API: Allow overriding PromQL Start Timestamp processing on a per-query basis using the <code>X-Prometheus-Use-Start-Timestamps</code> HTTP header. #19066</li>
+<li>[FEATURE] Agent: Support metadata-wal-records in Prometheus Agent mode. #19684</li>
+<li>[FEATURE] PromQL: Add experimental <code>integral()</code> function for computing integral-over-time of range vectors behind the <code>--enable-feature=promql-experimental-functions</code> flag. #14440</li>
+<li>[FEATURE] PromQL: Add experimental query cost estimation, actual cost reporting, and configurable execution limits, enabled with <code>--enable-feature=query-cost</code>. #20028</li>
+<li>[FEATURE] PromQL: Smoothed and Anchored vector selectors are now stable and always-on. #19697</li>
+<li>[FEATURE] PromQL: Use start timestamps to detect counter resets when float timeseries are queried using extended range selector modifiers (<code>anchored</code>, <code>smoothed</code>). This feature is hidden behind <code>use-start-timestamps</code> feature flag. #18966</li>
+<li>[FEATURE] Promtool: print test filename during promtool tests #18271</li>
+<li>[FEATURE] PromQL: Allow unquoted Unicode letters and dots behind a feature flag #20162</li>
+<li>[ENHANCEMENT] Search API: Warn when participating remote-read storage does not support search. #19992</li>
+<li>[ENHANCEMENT] Remote Read: Add native histogram prometheus_remote_read_handler_gate_wait_duration_seconds to measure concurrency-gate wait duration, including requests canceled while waiting. #18355</li>
+<li>[ENHANCEMENT] Remote Write: Add experimental flag <code>convert_nhcb_to_classic</code> to convert NHCB to classic histograms for external systems that dont support NHCBs. #17205</li>
+<li>[ENHANCEMENT] promtool: Add <code>--allow-incompatible-block-duration</code> so users can specify any max-block-duration instead of being restricted to the default Prometheus block durations. #19363</li>
+<li>[PERF] Remote write: Cache repeated OTLP histogram metric names. #19717</li>
+<li>[PERF] OpenMetrics 2.0 parser: Reuse classic histogram and summary expansion buffers across scrapes. #19907</li>
+<li>[PERF] PromQL: Decode only histogram sum/count (not buckets) for timestamp(), start_timestamp() and absent(). #19738</li>
+<li>[PERF] PromQL: Only select the fixed window for subqueries with an <code>@</code> modifier. #19863</li>
+<li>[PERF] Remote write / TSDB: Deduplicate per-series metadata structs in memory with <code>unique.Handle</code>. #20040</li>
+<li>[PERF] Scrape: Avoid some copies of scrape response bodies. #19394</li>
+<li>[PERF] TSDB: Improve XOR2 compression and append performance by selecting value windows based on encoding cost. #19962</li>
+<li>[PERF] TSDB: Reduce memory used writing and reading checkpoint metadata records. #19712</li>
+<li>[PERF] Scrape: Convert classic histograms to NHCB directly in the OpenMetrics 2.0 parser without wrapping in <code>NHCBParser</code>. #19880</li>
+<li>[PERF] Scrape: Reduce OpenMetrics 2.0 parser allocations and CPU overhead by lazily constructing composite series and exemplar labels. #19895</li>
+<li>[BUGFIX] Remote read: Abort failed streaming responses without writing duplicate headers or appending plain-text errors to the protobuf stream #19749</li>
+<li>[BUGFIX] TSDB: Fix loss of out-of-order samples when a WAL checkpoint drops a series record that the out-of-order write-behind log still needs #19737</li>
+<li>[BUGFIX] TSDB: Fix queries that seek within a head chunk returning samples committed after the query started #19854</li>
+<li>[BUGFIX] TSDB: Preserve mapped chunks when WAL replay merges multiple references for the same series, preventing missing out-of-order samples and duplicate in-order chunks after restart #19805</li>
+<li>[BUGFIX] Fix auto-reload logic to reload after reverting a failed configuration change #19838</li>
+<li>[BUGFIX] API: Do not match metric family metadata for doubled _total and _info suffixes in experimental search API. #19910</li>
+<li>[BUGFIX] API: Reject <code>timeout</code> and <code>lookback_delta</code> values that overflow int64 instead of turning them into a negative duration #19658</li>
+<li>[BUGFIX] API: Resolve metric family metadata for suffixed metric names in search results, in experimental search API. #19824</li>
+<li>[BUGFIX] AWS SD: Describe each ElastiCache cluster once instead of twice for clusters that are not replication group members. #19434</li>
+<li>[BUGFIX] Build: Allow installing promtool with version-suffixed go install commands #19754</li>
+<li>[BUGFIX] Discovery: Fix a panic in Azure service discovery when a VM tag has a null value. #19755</li>
+<li>[BUGFIX] Federation: fix corruption of float native histograms. #19679</li>
+<li>[BUGFIX] Fix ts_of_last_over_time for samples before the Unix epoch. #19828</li>
+<li>[BUGFIX] Histograms: Fix ConvertNHCBToClassic inflating classic bucket counts for integer native histograms whose spans have gaps. #19659</li>
+<li>[BUGFIX] Logging: Preserve rule and TSDB block values in JSON logs. #19572</li>
+<li>[BUGFIX] OTLP receiver: Drop exemplars with timestamps more than 10 minutes in the future instead of storing them and blocking subsequent exemplars for that series. #19812</li>
+<li>[BUGFIX] OTLP: Count only out-of-order exemplars in <code>prometheus_api_otlp_out_of_order_exemplars_total</code>, not every rejected exemplar. #20030</li>
+<li>[BUGFIX] OTLP: Do not drop exemplars that have a <code>trace_id</code> or <code>span_id</code> filtered attribute in addition to a trace or span ID. The trace context now takes precedence over the colliding attribute, as required by the OpenTelemetry specification. #20004</li>
+<li>[BUGFIX] OTLP: Do not emit <code>le=&quot;+Inf&quot;</code> twice when a histogram&rsquo;s explicit bounds end at <code>+Inf</code>, and warn about the bound. #19425</li>
+<li>[BUGFIX] OTLP: Stop dropping exemplars that arrive out of timestamp order within a data point. #20029</li>
+<li>[BUGFIX] OpenMetrics 2.0: Attach histogram exemplars to matching classic <code>_bucket</code> series and preserve them when scraping both native and classic histograms. #20020</li>
+<li>[BUGFIX] PromQL: Avoid intermediate overflow in <code>rad()</code> and <code>deg()</code> conversions. #19901</li>
+<li>[BUGFIX] PromQL: Consistently ignore and drop <code>__type__</code> and <code>__unit__</code> labels in <code>without</code> aggregations, <code>absent()</code>, <code>info()</code>, and binary operator fill matching. #19986</li>
+<li>[BUGFIX] PromQL: Do not panic when printing the partial AST returned alongside a parse error. #19797</li>
+<li>[BUGFIX] PromQL: Drop <strong>type</strong> and <strong>unit</strong> in binary operations so they are transparent to users, similar to how <strong>name</strong> is handled. #18680</li>
+<li>[BUGFIX] PromQL: Fix <code>==</code>, <code>!=</code>, <code>changes()</code> and <code>count_values</code> on native histograms giving wrong results inside <code>histogram_count()</code>, <code>histogram_sum()</code> and <code>histogram_avg()</code>. #20024</li>
+<li>[BUGFIX] PromQL: Fix histogram_fraction returning wrong results for native histograms with custom buckets when a bucket boundary is exactly 0. #19657</li>
+<li>[BUGFIX] PromQL: Fix histogram_quantile and histogram_quantiles interpolating within the wrong bucket for native histograms whose sum is NaN. #19973</li>
+<li>[BUGFIX] PromQL: Fix lexing of subqueries whose range is a duration keyword expression, e.g. <code>foo[range():1s]</code>. #19729</li>
+<li>[BUGFIX] PromQL: Fix warning and error locations for duration expressions <code>min_of</code> and <code>max_of</code>. #19742</li>
+<li>[BUGFIX] PromQL: Ignore NaN classic histogram bucket boundaries in <code>histogram_quantile</code>, <code>histogram_quantiles</code> and <code>histogram_fraction</code> and return correct value instead of NaN if there are normal buckets. #20057</li>
+<li>[BUGFIX] PromQL: Preserve infinite values at exact quantile ranks. #19899</li>
+<li>[BUGFIX] PromQL: Preserve original operand sides for experimental fill modifiers with group_right matching. #19939</li>
+<li>[BUGFIX] PromQL: Preserve subquery step expressions when printing queries after preprocessing. #19743</li>
+<li>[BUGFIX] PromQL: Range vector functions no longer raise a spurious &ldquo;vector cannot contain metrics with the same labelset&rdquo; error when series have different metric names but the same remaining labels, as long as their timestamps do not overlap within the evaluated range window #18631</li>
+<li>[BUGFIX] PromQL: do not count subquery materialized samples in total samples statistics #19873</li>
+<li>[BUGFIX] Remote write: Prevent future-dated exemplars from scaling shards down to the minimum. #19866</li>
+<li>[BUGFIX] Agent: Prevent future sent timestamps from advancing WAL truncation beyond the minimum retention window. #19866</li>
+<li>[BUGFIX] Rules: Restore firing alerts with for durations shorter than &ndash;rules.alert.for-grace-period after a restart. #19882</li>
+<li>[BUGFIX] Scrape: fix failing scrape when float histogram is emitted over protobuf with count, zero count and buckets all zero, for example a result of recording <code>rate(x[1m])</code> over constant histogram. #19682</li>
+<li>[BUGFIX] Search API: Return the lexically smallest label values when <code>limit</code> is set on <code>/api/v1/search/label_values</code>, instead of an arbitrary subset #19694</li>
+<li>[BUGFIX] TSDB: Fix WAL watcher permanently skipping checkpoint series garbage collection when lagging behind head truncation. #20041</li>
+<li>[BUGFIX] Search API: Avoid panics when the requested time range has no participating storage. #19992</li>
+<li>[BUGFIX] TSDB: Fix a race in selected-series and stale-series compaction where a sample committed after the block was written but before the series was evicted from the head could be silently lost. The fix no longer depends on isolation being enabled. #19666</li>
+<li>[BUGFIX] TSDB: Fix a rare case where a sample could be lost during selected-series or stale-series compaction if an unrelated write to the same series ran cleanup that erased the evidence needed to protect it. #19672</li>
+<li>[BUGFIX] TSDB: Fix spurious &ldquo;unknown series references&rdquo; warnings during WAL replay after a restart, when the only blocks on disk were produced by selected-series or stale-series compaction. #19734</li>
+<li>[BUGFIX] TSDB: Increment <code>prometheus_tsdb_wal_corruptions_total</code> when WAL corruption is detected during checkpoint creation, so the metric reflects corruption found at compaction time rather than only after a restart-triggered repair. #19858</li>
+<li>[BUGFIX] TSDB: Preserve series identities needed to recover exemplars after compaction and restart. #19940</li>
+<li>[BUGFIX] TSDB: Reject native histograms whose span offsets overflow the int32 bucket index instead of storing them with corrupted buckets. #20034</li>
+<li>[BUGFIX] TSDB: fix no passing metadata-wal-records to TSDB from main feature flag. #19678</li>
+<li>[BUGFIX] Templates: Preserve IPv6 addresses with dotted zone identifiers in <code>stripDomain</code>. #19908</li>
+<li>[BUGFIX] UI: Don&rsquo;t automatically open an autocomplete dropdown after closing a function call body or aggregation operator with a closing parenthesis. #19825</li>
+<li>[BUGFIX] Web: Fix HTTP/2 negotiation silently falling back to HTTP/1.1 under Go 1.27+ when TLS is enabled with <code>http2: true</code>. The server now correctly advertises <code>h2</code> via ALPN and multiplexes concurrent requests over a single connection. #19848</li>
+<li>[BUGFIX] mixin: Fix double-counting of failed samples in the <code>PrometheusRemoteStorageFailures</code> alert denominator. #19877</li>
+<li>[BUGFIX] promtool: Honor <code>--enable-feature</code> when evaluating rules in <code>test rules</code>. #20046</li>
+<li>[BUGFIX] Scrape: Ensure UTF-8 works with the experimental OpenMetrics 2.0 #19902</li>
+<li>[BUGFIX] Scrape: Reject sum-only classic histograms during NHCB conversion #19315</li>
+</ul>
+<br><h2>grpc/grpc</h2> <h3>Release notes for Release v1.81.2</h3><h4>2026-11-06</h4><p>This is release 1.81.2 (<a href="https://github.com/grpc/grpc/blob/master/doc/g_stands_for.md" target="_blank">graphic</a>) of gRPC Core.</p>
+
+<p>For gRPC documentation, see <a href="https://grpc.io/" target="_blank">grpc.io</a>. For previous releases, see <a href="https://github.com/grpc/grpc/releases" target="_blank">Releases</a>.</p>
+
+<p>This release contains refinements, improvements, and bug fixes, with highlights listed below.</p>
+
+<h2 id="core">Core</h2>
+
+<ul>
+<li>[Backport][v1.81.x][security] Update gRPC repo roots. (<a href="https://github.com/grpc/grpc/pull/43822" target="_blank">#43822</a>)</li>
+<li>[EventEngine] Fix a potential use-after-free error on Windows. (<a href="https://github.com/grpc/grpc/pull/42078" target="_blank">#42078</a>)</li>
+<li>[ssl] Server side handshaker factory stores a map of key signers. (<a href="https://github.com/grpc/grpc/pull/42002" target="_blank">#42002</a>)</li>
+<li>[Core] Fix completion queue shutdown race on weak memory models (ARM). (<a href="https://github.com/grpc/grpc/pull/41510" target="_blank">#41510</a>)</li>
+<li>[EventEngine] Fix a Windows race that causes an assertion error. (<a href="https://github.com/grpc/grpc/pull/41563" target="_blank">#41563</a>)</li>
+<li>[grpc_error] enable error_flatten experiment in OSS. (<a href="https://github.com/grpc/grpc/pull/41471" target="_blank">#41471</a>)</li>
+</ul>
+
+<h2 id="objective-c">Objective-C</h2>
+
+<ul>
+<li>[ObjC] Add receiveNextMessage to GRPCUnaryProtoCall. (<a href="https://github.com/grpc/grpc/pull/42260" target="_blank">#42260</a>)</li>
+</ul>
+
+<h2 id="python">Python</h2>
+
+<ul>
+<li>[Backport][v1.81.x][export] Internal change. (<a href="https://github.com/grpc/grpc/pull/43790" target="_blank">#43790</a>)</li>
+<li>[Python] Add typing_extensions dep to aio Bazel target. (<a href="https://github.com/grpc/grpc/pull/42001" target="_blank">#42001</a>)</li>
+<li>[Python] [Pyright] Part 1 - Pyright for src/python/grpcio/grpc/aio/_base_server.py. (<a href="https://github.com/grpc/grpc/pull/42240" target="_blank">#42240</a>)</li>
+<li>[Python] Drop 3.9. (<a href="https://github.com/grpc/grpc/pull/42145" target="_blank">#42145</a>)</li>
+<li>[Python] grpc-status: Relax protobuf dependency upper bound to allow 7.x. (<a href="https://github.com/grpc/grpc/pull/41948" target="_blank">#41948</a>)</li>
+<li>[Python] [Typeguard] Part 5 - Add Typeguard SYNC Stack in tests. (<a href="https://github.com/grpc/grpc/pull/40278" target="_blank">#40278</a>)</li>
+<li>[Python] Remove GIL from ReceiveMessageOperation.un_c method. (<a href="https://github.com/grpc/grpc/pull/41812" target="_blank">#41812</a>)</li>
+<li>[Python] Support observability in AsyncIO stack. (<a href="https://github.com/grpc/grpc/pull/41573" target="_blank">#41573</a>)</li>
+<li>[Python] Trim Python2 backward compatiblity syntax - removed (object) inheritance. (<a href="https://github.com/grpc/grpc/pull/41708" target="_blank">#41708</a>)</li>
+</ul>
+
+<h2 id="ruby">Ruby</h2>
+
+<ul>
+<li>[Ruby] Drop support for EOL Ruby 3.1 and clean up. (<a href="https://github.com/grpc/grpc/pull/41435" target="_blank">#41435</a>)</li>
+<li>[Ruby] Composed CallCredentials keep a reference to their source. (<a href="https://github.com/grpc/grpc/pull/41782" target="_blank">#41782</a>)</li>
+</ul>
+<br><h3>Release notes for Release v1.80.1</h3><h4>2026-11-05</h4><p>This is release gRPC Core 1.80.1 (glimmering).</p>
+
+<p>For gRPC documentation, see <a href="https://grpc.io/" target="_blank">grpc.io</a>. For previous releases, see <a href="https://github.com/grpc/grpc/releases" target="_blank">Releases</a>.</p>
+
+<p>This release contains refinements, improvements, and bug fixes, with highlights listed below.</p>
+
+<h2 id="core">Core</h2>
+
+<h2 id="core-1">Core</h2>
+
+<ul>
+<li>[security] Update gRPC repo roots. (<a href="https://github.com/grpc/grpc/pull/43845" target="_blank">#43845</a>)</li>
+</ul>
+
+<h2 id="python">Python</h2>
+
+<ul>
+<li>Fixes Denial of service in Health Watch RPC (<a href="https://github.com/grpc/grpc/pull/43819" target="_blank">#43819</a>)</li>
+<li>Fixes Memory leak in AsyncIO client-streaming calls with interceptors (<a href="https://github.com/grpc/grpc/pull/43819" target="_blank">#43819</a>)</li>
+</ul>
+<br><h3>Release notes for Release v1.78.2</h3><h4>2026-11-05</h4><p>This is release gRPC Core 1.78.2 (gutsy).</p>
+
+<p>For gRPC documentation, see <a href="https://grpc.io/" target="_blank">grpc.io</a>. For previous releases, see <a href="https://github.com/grpc/grpc/releases" target="_blank">Releases</a>.</p>
+
+<p>This release contains refinements, improvements, and bug fixes, with highlights listed below.</p>
+
+<h2 id="php">PHP</h2>
+
+<ul>
+<li>Disable php infinite recursion check for callback from Core to PHP (<a href="https://github.com/grpc/grpc/pull/42600" target="_blank">42600</a>)</li>
+</ul>
+
+<h2 id="core">Core</h2>
+
+<ul>
+<li>[security] Update gRPC repo roots (<a href="https://github.com/grpc/grpc/pull/43847" target="_blank">43847</a>)</li>
+</ul>
+
+<h2 id="python">Python</h2>
+
+<ul>
+<li>Fixes Denial of service in Health Watch RPC (<a href="https://github.com/grpc/grpc/pull/43818" target="_blank">#43818</a>)</li>
+<li>Fixes Memory leak in AsyncIO client-streaming calls with interceptors (<a href="https://github.com/grpc/grpc/pull/43818" target="_blank">#43818</a>)</li>
+</ul>
+<br>
+</body>
+
+</html>
